@@ -2,7 +2,7 @@
 <html lang="fr-FR">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="{{ asset('bundles/lapaperieMain/css/style.css') }}" type="text/css" media="all" />
+<link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/style.css') }}" type="text/css" media="all" />
 
 
 
@@ -22,8 +22,25 @@ _gaq.push(['_trackPageview']);
 
 <body>
 
-{% block content %}
-{% endblock %}
+<div id="main">
+
+<nav id="mainnav">
+Centre national des Arts de la Rue<br />
+rue de la Paperie 49124 St Barthélemy d'Anjou<br />
+Tel. +33(0)2 41 66 04 47<br />
+</nav>
+
+<div class="dotted_line"></div>
+
+  {% block content %}
+  {% endblock %}
+
+<div class="dotted_line"></div>
+
+</div>
+
+<footer>
+</footer>
 
 </body>
 </html>

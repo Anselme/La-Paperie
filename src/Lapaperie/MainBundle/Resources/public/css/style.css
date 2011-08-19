@@ -1,0 +1,16 @@
+* {padding:0; margin:0;}
+
+.clear {
+ clear:both;
+}
+
+html {}
+
+body { font-family: Courier, "Courier New", monospace ; color: #E54020;}
+
+.dotted_line {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: thin dashed;
+    color: #E54020
+  }
