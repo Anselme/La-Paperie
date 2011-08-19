@@ -1,0 +1,7 @@
+parameters:
+#    lapaperie_main.example.class: Lapaperie\MainBundle\Example
+
+services:
+#    lapaperie_main.example:
+#        class: %lapaperie_main.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,3 @@
+LapaperieMainBundle_homepage:
+    pattern:  /
+    defaults: { _controller: LapaperieMainBundle:Main:index }
