@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
 
             new Lapaperie\MainBundle\LapaperieMainBundle(),
+            new Lapaperie\AgendaBundle\LapaperieAgendaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
