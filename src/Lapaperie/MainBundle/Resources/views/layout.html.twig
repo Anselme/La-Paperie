@@ -24,11 +24,32 @@ _gaq.push(['_trackPageview']);
 
 <div id="main">
 
-<nav id="mainnav">
-Centre national des Arts de la Rue<br />
-rue de la Paperie 49124 St Barthélemy d'Anjou<br />
-Tel. +33(0)2 41 66 04 47<br />
-</nav>
+    <header>
+    Centre national des Arts de la Rue<br />
+    rue de la Paperie 49124 St Barthélemy d'Anjou<br />
+    Tel. +33(0)2 41 66 04 47<br />
+    </header>
+    <nav id="mainnav">
+    <ul>
+
+        <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_homepage' ? 'active' : ''}}" >
+        <a href="{{ path('LapaperieMainBundle_homepage') }}">La Paperie</a>
+        </li>
+        <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_test2' ? 'active' : ''}}" >
+        <a href="{{ path('LapaperieMainBundle_test2') }}">Le Soutien à la Création</a>
+        </li>
+        <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_test3' ? 'active' : ''}}" >
+        <a href="{{ path('LapaperieMainBundle_test3') }}">Autres Rendez-vous</a>
+        </li>
+        <li class="{{ app.request.attributes.get('_route')== 'LapaperieAgendaBundle_home' ? 'active' : ''}}" >
+        <a href="{{ path('LapaperieAgendaBundle_home') }}">Agenda</a>
+        </li>
+
+    </ul>
+    </nav>
+
+   {% block sousmenu %}
+   {% endblock %}
 
 <div class="dotted_line"></div>
 
@@ -36,7 +57,10 @@ Tel. +33(0)2 41 66 04 47<br />
   {% endblock %}
 
 <div class="dotted_line"></div>
-
+<div class="float_right">
+    <a href="" class="red_button">Abonnez-vous aux News</a>
+    <a href="" class="red_button">Solliciter une Résidence</a>
+</div>
 </div>
 
 <footer>
