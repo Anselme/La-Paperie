@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/style.css') }}" type="text/css" media="all" />
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/style.css') }}" type="text/css" media="all" />
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
 
 
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'XXXXXXXXXXXXX']);
-_gaq.push(['_trackPageview']);
-
-(function() {
- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
- })();
-
-</script>
-</head>
+        <title>{% block title %}La Paperie - Centre National des Arts de la Rue{% endblock %}</title>
+    </head>
 
 <body>
 
 <div id="main">
 
     <header>
+    <img src="{{ asset('bundles/lapaperiemain/images/caravanelapaperie.png') }}" class="header" alt="Logo La Paperie - Centre National des Arts de la Rue" width="72" height="50"/>
+    <div class="header">
     Centre national des Arts de la Rue<br />
     rue de la Paperie 49124 St Barthélemy d'Anjou<br />
     Tel. +33(0)2 41 66 04 47<br />
+    </div>
+    <h1 class="header">
+        <img src="{{ asset('bundles/lapaperiemain/images/LaPaperie-CentreNationalDesArtsDeLaRue.gif') }}" alt="La Paperie" width="325" height="49"/>
+    </h1>
+    <div id="social" class="header">
+        <a href="" title="Suivez notre actualité sur Twitter">
+            <img src="{{ asset('bundles/lapaperiemain/images/twitter.png') }}" width="32" height="32" alt="Twitter"/>
+        </a>
+        <a href="https://www.facebook.com/pages/La-Paperie/217798074907593" title="Venez nous rendre visite sur facebook">
+            <img src="{{ asset('bundles/lapaperiemain/images/facebook.png') }}" width="32" height="32" alt="Facebook"/>
+        </a>
+        <a href="" title="Suivre notre flux RSS">
+            <img src="{{ asset('bundles/lapaperiemain/images/rss.png') }}" width="32" height="32" alt="RSS"/>
+        </a>
+        <a href="mailto:contact@lapaperie.fr" title="Nous écrire à contact@lapaperie.fr">
+            <img src="{{ asset('bundles/lapaperiemain/images/mail.png') }}" width="32" height="32" alt="Mail"/>
+        </a>
+    </div>
     </header>
-    <nav id="mainnav">
+    <nav id="mainnav" class="clear">
     <ul>
 
         <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_homepage' ? 'active' : ''}}" >
@@ -68,5 +78,17 @@ _gaq.push(['_trackPageview']);
 <footer>
 </footer>
 
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-16774877-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script>
 </body>
 </html>
