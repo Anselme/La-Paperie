@@ -5,3 +5,5 @@
 /vendor/
 /app/config/parameters.ini
 .rsync*
+Capfile
+/app/config/deploy.rb
