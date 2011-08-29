@@ -85,10 +85,14 @@ a.red_button:hover
 }
 
 ul {
-    list-style-position: inside;
+    list-style-type: none;
 }
 
 li {
+    background-image: url("/bundles/lapaperiemain/images/plusque.png");
+    background-repeat: no-repeat;
+    padding-left: 1em;
+
 }
 
 p {
