@@ -1,5 +1,22 @@
 {% extends "LapaperieMainBundle::layout.html.twig" %}
 
+{% block sousmenu %}
+<ul id="subnav">
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_homepage' ? 'active' : ''}}" >
+<a href="">Accueil</a>
+</li>
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_homepage_partners' ? 'active' : ''}}" >
+<a href="">Equipe / Partenaires</a>
+</li>
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_homepage_description' ? 'active' : ''}}" >
+<a href="">Fiche Technique du lieu</a>
+</li>
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_homepage_formation' ? 'active' : ''}}" >
+<a href="">Centre ressources / Formation</a>
+</li>
+</ul>
+{% endblock %}
+
 {% block content %}
 <h2>Ceci est un h2</h2>
 <p>

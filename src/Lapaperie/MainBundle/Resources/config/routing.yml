@@ -3,19 +3,15 @@ LapaperieMainBundle_homepage:
     defaults: { _controller: LapaperieMainBundle:Main:index }
 
 #ci-dessous routing provisoire pour avoir mes menus
-LapaperieMainBundle_test1:
-    pattern:  /test1
+LapaperieMainBundle_soutien_creation:
+    pattern:  /soutien-creation
     defaults: { _controller: LapaperieMainBundle:Main:index }
 
-LapaperieMainBundle_test2:
-    pattern:  /test2
+LapaperieMainBundle_action_culturelle:
+    pattern:  /action-culturelle
     defaults: { _controller: LapaperieMainBundle:Main:index }
 
-LapaperieMainBundle_test3:
-    pattern:  /test3
-    defaults: { _controller: LapaperieMainBundle:Main:index }
-
-LapaperieMainBundle_test4:
-    pattern:  /test4
+LapaperieMainBundle_diffusion_infusion:
+    pattern:  /diffusion-infusion
     defaults: { _controller: LapaperieMainBundle:Main:index }
 

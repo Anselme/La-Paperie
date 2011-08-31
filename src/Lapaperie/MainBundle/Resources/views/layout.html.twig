@@ -12,24 +12,24 @@
 <div id="main">
 
     <header>
-    <img src="{{ asset('bundles/lapaperiemain/images/logonet.png') }}" class="header" alt="Logo La Paperie - Centre National des Arts de la Rue" width="72" height="50"/>
+    <img src="{{ asset('bundles/lapaperiemain/images/logonet.png') }}" class="header" alt="Logo caravane - La Paperie - Centre National des Arts de la Rue" width="72" height="50"/>
     <div class="header">
     Centre national des Arts de la Rue<br />
     rue de la Paperie 49124 St Barthélemy d'Anjou<br />
     Tel. +33(0)2 41 66 04 47<br />
     </div>
     <h1 class="header">
-        <img src="{{ asset('bundles/lapaperiemain/images/LaPaperie-CentreNationalDesArtsDeLaRue.gif') }}" alt="La Paperie" width="325" height="49"/>
+        <img src="{{ asset('bundles/lapaperiemain/images/titreweb.png') }}" alt="La Paperie - Centre National des Arts de la Rue" width="325" height="50"/>
     </h1>
     <div id="social" class="header">
         <br/>
-        <a href="" title="Suivez notre actualité sur Twitter">
+        <a href="" title="Suivez l'actualié des Arts de la Rue sur Twitter">
             <img src="{{ asset('bundles/lapaperiemain/images/twitter.png') }}" width="32" height="32" alt="Twitter"/>
         </a>
-        <a href="https://www.facebook.com/pages/La-Paperie/217798074907593" title="Venez nous rendre visite sur facebook">
+        <a href="https://www.facebook.com/pages/La-Paperie/217798074907593" title="Venez rendre visite à La Paperie sur Facebook">
             <img src="{{ asset('bundles/lapaperiemain/images/facebook.png') }}" width="32" height="32" alt="Facebook"/>
         </a>
-        <a href="" title="Suivre notre flux RSS">
+        <a href="" title="Suivre le flux RSS de La Paperie">
             <img src="{{ asset('bundles/lapaperiemain/images/rss.png') }}" width="32" height="32" alt="RSS"/>
         </a>
         <a href="mailto:contact@lapaperie.fr" title="Nous écrire à contact@lapaperie.fr">
@@ -43,21 +43,27 @@
         <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_homepage' ? 'active' : ''}}" >
         <a href="{{ path('LapaperieMainBundle_homepage') }}">La Paperie</a>
         </li>
-        <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_test2' ? 'active' : ''}}" >
-        <a href="{{ path('LapaperieMainBundle_test2') }}">Le Soutien à la Création</a>
+        <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_soutien_creation' ? 'active' : ''}}" >
+        <a href="{{ path('LapaperieMainBundle_soutien_creation') }}">Le Soutien à la Création</a>
         </li>
-        <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_test3' ? 'active' : ''}}" >
-        <a href="{{ path('LapaperieMainBundle_test3') }}">Autres Rendez-vous</a>
+        <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_action_culturelle' ? 'active' : ''}}" >
+        <a href="{{ path('LapaperieMainBundle_action_culturelle') }}">Action Culturelle</a>
+        </li>
+        <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_diffusion_infusion' ? 'active' : ''}}" >
+        <a href="{{ path('LapaperieMainBundle_diffusion_infusion') }}">Diffusion - Infusion</a>
         </li>
         <li class="{{ app.request.attributes.get('_route')== 'LapaperieAgendaBundle_home' ? 'active' : ''}}" >
         <a href="{{ path('LapaperieAgendaBundle_home') }}">Agenda</a>
         </li>
+        <li class="{{ app.request.attributes.get('_route')== 'LapaperieVideoBundle_home' ? 'active' : ''}}" >
+        <a href="{{ path('LapaperieVideoBundle_home') }}">Vidéos</a>
+        </li>
 
     </ul>
-    </nav>
 
    {% block sousmenu %}
    {% endblock %}
+    </nav>
 
 <div class="dotted_line"></div>
 
@@ -74,6 +80,8 @@
 </div>
 
 <footer>
+    {% block footer %}
+    {% endblock %}
 </footer>
 
 <script type="text/javascript">
