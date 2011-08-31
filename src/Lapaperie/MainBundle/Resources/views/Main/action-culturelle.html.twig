@@ -1,0 +1,17 @@
+{% extends "LapaperieMainBundle:Main:index.html.twig" %}
+
+{% block title %}
+La Paperie - Centre National des Arts de la Rue - Action Culturelle
+{% endblock %}
+
+{% block sousmenu %}
+<ul id="subnav">
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_actionculturelle' ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_actionculturelle') }}">Action culturelle</a>
+</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+Contenu de Action Culturelle 
+{% endblock %}

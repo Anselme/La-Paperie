@@ -1,0 +1,26 @@
+{% extends "LapaperieMainBundle:Main:index.html.twig" %}
+
+{% block title %}
+La Paperie - Centre National des Arts de la Rue - Soutien à la Création
+{% endblock %}
+
+{% block sousmenu %}
+<ul id="subnav">
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_soutiencreation' ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_soutiencreation') }}">Soutien à la Création</a>
+</li>
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_soutiencreation_ter' ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_soutiencreation_ter') }}">T.E.R.</a>
+</li>
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_soutiencreation_projets' ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_soutiencreation_projets') }}">Les projets soutenus en 2011</a>
+</li>
+<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_soutiencreation_solliciter' ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_soutiencreation_solliciter') }}">Solliciter une résidence</a>
+</li>
+</ul>
+{% endblock %}
+
+{% block content %}
+Contenu de Soutien à la Création
+{% endblock %}

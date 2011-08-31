@@ -1,3 +1,11 @@
+LapaperieCompaniesBundle:
+    resource: "@LapaperieCompaniesBundle/Resources/config/routing.yml"
+    prefix:   /
+
+LapaperieVideoBundle:
+    resource: "@LapaperieVideoBundle/Resources/config/routing.yml"
+    prefix:   /videos
+
 LapaperieMainBundle:
     resource: "@LapaperieMainBundle/Resources/config/routing.yml"
     prefix:   /

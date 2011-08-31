@@ -1,0 +1,7 @@
+parameters:
+#    lapaperie_video.example.class: Lapaperie\VideoBundle\Example
+
+services:
+#    lapaperie_video.example:
+#        class: %lapaperie_video.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
