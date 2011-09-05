@@ -12,14 +12,18 @@
 <div id="main">
 
     <header>
-    <img src="{{ asset('bundles/lapaperiemain/images/logonet.png') }}" class="header" alt="Logo caravane - La Paperie - Centre National des Arts de la Rue" width="72" height="50"/>
+    <a href="{{ path('LapaperieMainBundle_homepage') }}" title="Retour page d'accueil">
+        <img src="{{ asset('bundles/lapaperiemain/images/logonet.png') }}" class="header" alt="Logo caravane - La Paperie - Centre National des Arts de la Rue" width="72" height="50"/>
+    </a>
     <div class="header">
     Centre national des Arts de la Rue<br />
     rue de la Paperie 49124 St Barthélemy d'Anjou<br />
     Tel. +33(0)2 41 66 04 47<br />
     </div>
     <h1 class="header">
-        <img src="{{ asset('bundles/lapaperiemain/images/titreweb.png') }}" alt="La Paperie - Centre National des Arts de la Rue" width="325" height="50"/>
+        <a href="{{ path('LapaperieMainBundle_homepage') }}" title="Retour page d'accueil">
+            <img src="{{ asset('bundles/lapaperiemain/images/titreweb.png') }}" alt="La Paperie - Centre National des Arts de la Rue" width="325" height="50"/>
+        </a>
     </h1>
     <div id="social" class="header">
         <br/>
@@ -75,7 +79,7 @@
 <div class="dotted_line"></div>
 <div class="float_right">
     <a href="" class="red_button">Abonnez-vous aux News</a>
-    <a href="" class="red_button">Solliciter une Résidence</a>
+    <a href="{{ path('LapaperieMainBundle_soutiencreation_solliciter') }}" class="red_button">Solliciter une Résidence</a>
 </div>
 </div>
 
