@@ -1,5 +1,6 @@
 LapaperieCompaniesBundle:
-    resource: "@LapaperieCompaniesBundle/Resources/config/routing.yml"
+    resource: "@LapaperieCompaniesBundle/Controller"
+    type:     annotation
     prefix:   /
 
 LapaperieVideoBundle:
