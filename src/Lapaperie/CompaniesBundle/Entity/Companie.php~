@@ -3,7 +3,6 @@
 namespace Lapaperie\CompaniesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Lapaperie\CompaniesBundle\Entity\Companie
@@ -229,25 +228,5 @@ class Companie
     public function getCreation()
     {
         return $this->creation;
-    }
-
-    /**
-     * Add images
-     *
-     * @param Lapaperie\CompaniesBundle\Entity\imageCompanie $images
-     */
-    public function addimageCompanie(\Lapaperie\CompaniesBundle\Entity\imageCompanie $images)
-    {
-        $this->images[] = $images;
-    }
-
-    /**
-     * Get images
-     *
-     * @return Doctrine\Common\Collections\Collection
-     */
-    public function getImages()
-    {
-        return $this->images;
     }
 }
