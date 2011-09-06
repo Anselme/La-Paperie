@@ -1,0 +1,41 @@
+{% extends "LapaperieMainBundle:Main:soutien-creation.html.twig" %}
+
+{% block title %}
+La Paperie - {{ companie.name }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="left-side">
+<ul>
+{% for projet in companies %}
+<li class="projets">
+{% if projet.id == companie.id%}
+{{ projet.name }} <img src="{{ asset('bundles/lapaperiemain/images/plusque.png') }}" />
+{% else %}
+<a href="{{ path('projet_show', {'id':projet.id}) }}">{{ projet.name }}</a>  <img src="{{ asset('bundles/lapaperiemain/images/moinsque.png') }}" />
+{% endif %}
+</li>
+{% endfor %}
+</ul>
+</div>
+
+<div class="right-side">
+  <div class="">
+    <div class="companie-img">
+    <img src="{{ asset('bundles/lapaperiemain/images/test.png') }}" alt="" />
+    </div>
+    <div class="short-text">
+    {{ companie.shorttext }}
+    </div>
+  </div>
+  <div class="long-text">
+  {{ companie.longtext }}
+  </div>
+</div>
+
+<div class="clear"></div>
+
+
+{% endblock %}

@@ -29,6 +29,13 @@ class Companie
     private $name;
 
     /**
+     * @var string $creation
+     *
+     * @ORM\Column(name="creation", type="string", length=255)
+     */
+    private $creation;
+
+    /**
      * @var date $date_residence_beginning
      *
      * @ORM\Column(name="date_residence_beginning", type="date")
@@ -166,7 +173,7 @@ class Companie
     /**
      * Get short_text
      *
-     * @return text 
+     * @return text
      */
     public function getShortText()
     {
@@ -186,10 +193,30 @@ class Companie
     /**
      * Get long_text
      *
-     * @return text 
+     * @return text
      */
     public function getLongText()
     {
         return $this->long_text;
+    }
+
+    /**
+     * Set creation
+     *
+     * @param string $creation
+     */
+    public function setCreation($creation)
+    {
+        $this->creation = $creation;
+    }
+
+    /**
+     * Get creation
+     *
+     * @return string 
+     */
+    public function getCreation()
+    {
+        return $this->creation;
     }
 }

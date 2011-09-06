@@ -12,8 +12,11 @@ LapaperieMainBundle_soutiencreation_ter:
     defaults: { _controller: LapaperieMainBundle:Main:soutien }
 
 LapaperieMainBundle_soutiencreation_projets:
-    pattern:  /soutien-creation
-    defaults: { _controller: LapaperieMainBundle:Main:soutien }
+    pattern:  /soutien-creation-projets
+    defaults: { _controller: LapaperieMainBundle:Main:projets }
+projet_show:
+    pattern:  /soutien-creation-projets/{id}
+    defaults: { _controller: LapaperieMainBundle:Main:projet }
 
 LapaperieMainBundle_soutiencreation_solliciter:
     pattern:  /soutien-creation

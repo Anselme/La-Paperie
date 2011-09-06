@@ -1,0 +1,20 @@
+{% extends "LapaperieMainBundle:Main:soutien-creation.html.twig" %}
+
+{% block title %}
+La Paperie - Centre National des Arts de la Rue - Les projets
+{% endblock %}
+
+
+{% block content %}
+<h2>Les projets soutenus en 2011</h2>
+<ul>
+{% for companie in companies %}
+<li>En résidence du {{ companie.dateresidencebeginning | date('j F') }} au {{ companie.dateresidenceend  | date('j F Y') }} :
+<a href="{{ path('projet_show', {'id':companie.id}) }}">{{ companie.name }}</a> - 
+<a href="{{ path('projet_show', {'id':companie.id}) }}">{{ companie.creation }}</a>
+</li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

@@ -11,6 +11,7 @@ class CompanieType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('creation')
             ->add('date_residence_beginning')
             ->add('date_residence_end')
             ->add('date_sortie_de_fabrique')
