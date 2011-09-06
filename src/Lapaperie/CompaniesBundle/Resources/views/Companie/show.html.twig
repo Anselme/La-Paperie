@@ -20,15 +20,15 @@
         </tr>
         <tr>
             <th>Date_residence_beginning</th>
-            <td>{{ entity.dateresidencebeginning|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.dateresidencebeginning|date('Y-m-d') }}</td>
         </tr>
         <tr>
             <th>Date_residence_end</th>
-            <td>{{ entity.dateresidenceend|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.dateresidenceend|date('Y-m-d') }}</td>
         </tr>
         <tr>
             <th>Date_sortie_de_fabrique</th>
-            <td>{{ entity.datesortiedefabrique|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.datesortiedefabrique|date('Y-m-d') }}</td>
         </tr>
         <tr>
             <th>Short text</th>
@@ -37,6 +37,10 @@
         <tr>
             <th>Short text</th>
             <td>{{ entity.longtext }}</td>
+        </tr>
+        <tr>
+            <th>Images</th>
+            <td>{% for image in entity.images %}{{ image.name }}<br/>{% endfor %}</td>
         </tr>
     </tbody>
 </table>

@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Lapaperie\CompaniesBundle\Entity\Companie;
 use Lapaperie\CompaniesBundle\Form\CompanieType;
+use Lapaperie\CompaniesBundle\Entity\ImageCompanie;
+use Lapaperie\CompaniesBundle\Form\ImageCompanieType;
 
 /**
  * Companie controller.
@@ -91,7 +93,7 @@ class CompanieController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('companie_show', array('id' => $entity->getId())));
-            
+
         }
 
         return array(
@@ -117,11 +119,14 @@ class CompanieController extends Controller
         }
 
         $editForm = $this->createForm(new CompanieType(), $entity);
+        //$editImageForm = $this->createForm(new ImageCompanieType());
         $deleteForm = $this->createDeleteForm($id);
+
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
+            //'edit_image_form'   => $editImageForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

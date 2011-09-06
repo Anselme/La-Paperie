@@ -3,14 +3,15 @@
 namespace Lapaperie\CompaniesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Lapaperie\CompaniesBundle\Entity\imageCompanie
+ * Lapaperie\CompaniesBundle\Entity\ImageCompanie
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Lapaperie\CompaniesBundle\Entity\imageCompanieRepository")
+ * @ORM\Entity(repositoryClass="Lapaperie\CompaniesBundle\Entity\ImageCompanieRepository")
  */
-class imageCompanie
+class ImageCompanie
 {
     /**
      * @var integer $id
@@ -42,11 +43,70 @@ class imageCompanie
      */
     private $extension;
 
+     /**
+     * @Assert\File(maxSize = "1024k", mimeTypes = {"image/gif","image/jpeg","image/png" })
+     *
+     */
+    public $image;
+
     /**
      * @ORM\ManyToOne(targetEntity="Companie", inversedBy="images")
      * @ORM\JoinColumn(name="companie_id", referencedColumnName="id")
      */
     protected $companie;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->image) {
+            return;
+        }
+
+        $extension = $this->image->guessExtension();
+        if(!$extension)
+        {
+            $extension = 'bin' ;
+        }
+
+        $brand_new_name = uniqid().'.'.$extension ;
+
+        // move takes the target directory and then the target filename to move to
+        $this->image->move($this->getUploadRootDir(), $brand_new_name);
+
+        // set the path property to the filename where you'ved saved the file
+        $this->setPath($brand_new_name);
+
+        // clean up the file property as you won't need it anymore
+        unset($this->image);
+    }
+
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
+        return 'uploads/documents';
+    }
 
     /**
      * Get id
@@ -131,7 +191,7 @@ class imageCompanie
     /**
      * Get companie
      *
-     * @return Lapaperie\CompaniesBundle\Entity\Companie 
+     * @return Lapaperie\CompaniesBundle\Entity\Companie
      */
     public function getCompanie()
     {

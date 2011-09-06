@@ -72,7 +72,7 @@ class Companie
     private $long_text;
 
     /**
-     * @ORM\OneToMany(targetEntity="imageCompanie", mappedBy="companie")
+     * @ORM\OneToMany(targetEntity="ImageCompanie", mappedBy="companie")
      */
     protected $images;
 
@@ -234,9 +234,9 @@ class Companie
     /**
      * Add images
      *
-     * @param Lapaperie\CompaniesBundle\Entity\imageCompanie $images
+     * @param Lapaperie\CompaniesBundle\Entity\ImageCompanie $images
      */
-    public function addimageCompanie(\Lapaperie\CompaniesBundle\Entity\imageCompanie $images)
+    public function addImageCompanie(\Lapaperie\CompaniesBundle\Entity\ImageCompanie $images)
     {
         $this->images[] = $images;
     }
