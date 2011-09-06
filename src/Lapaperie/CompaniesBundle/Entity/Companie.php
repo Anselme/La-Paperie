@@ -49,11 +49,24 @@ class Companie
      */
     private $date_sortie_de_fabrique;
 
+    /**
+     * @var short_text
+     *
+     * @ORM\Column(name="short_text", type="text")
+     */
+    private $short_text;
+
+    /**
+     * @var long_text
+     *
+     * @ORM\Column(name="long_text", type="text")
+     */
+    private $long_text;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -73,7 +86,7 @@ class Companie
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -93,7 +106,7 @@ class Companie
     /**
      * Get date_residence_beginning
      *
-     * @return date 
+     * @return date
      */
     public function getDateResidenceBeginning()
     {
@@ -113,7 +126,7 @@ class Companie
     /**
      * Get date_residence_end
      *
-     * @return date 
+     * @return date
      */
     public function getDateResidenceEnd()
     {
@@ -133,10 +146,50 @@ class Companie
     /**
      * Get date_sortie_de_fabrique
      *
-     * @return date 
+     * @return date
      */
     public function getDateSortieDeFabrique()
     {
         return $this->date_sortie_de_fabrique;
+    }
+
+    /**
+     * Set short_text
+     *
+     * @param text $shortText
+     */
+    public function setShortText($shortText)
+    {
+        $this->short_text = $shortText;
+    }
+
+    /**
+     * Get short_text
+     *
+     * @return text 
+     */
+    public function getShortText()
+    {
+        return $this->short_text;
+    }
+
+    /**
+     * Set long_text
+     *
+     * @param text $longText
+     */
+    public function setLongText($longText)
+    {
+        $this->long_text = $longText;
+    }
+
+    /**
+     * Get long_text
+     *
+     * @return text 
+     */
+    public function getLongText()
+    {
+        return $this->long_text;
     }
 }

@@ -12,6 +12,8 @@
             <th>Date_residence_beginning</th>
             <th>Date_residence_end</th>
             <th>Date_sortie_de_fabrique</th>
+            <th>Short Text</th>
+            <th>Long text</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -23,6 +25,8 @@
             <td>{{ entity.dateresidencebeginning|date('Y-m-d H:i:s') }}</td>
             <td>{{ entity.dateresidenceend|date('Y-m-d H:i:s') }}</td>
             <td>{{ entity.datesortiedefabrique|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.shorttext }}</td>
+            <td>{{ entity.longtext }}</td>
             <td>
                 <ul>
                     <li>
