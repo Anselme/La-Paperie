@@ -17,7 +17,7 @@ class CompanieType extends AbstractType
             ->add('date_sortie_de_fabrique')
             ->add('short_text')
             ->add('long_text')
-            ->add('images')
+//            ->add('images')
         ;
     }
 

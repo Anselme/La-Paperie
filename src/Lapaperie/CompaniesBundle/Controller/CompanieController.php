@@ -112,21 +112,26 @@ class CompanieController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('LapaperieCompaniesBundle:Companie')->find($id);
+        $companyEntity = $em->getRepository('LapaperieCompaniesBundle:Companie')->find($id);
 
-        if (!$entity) {
+        if (!$companyEntity) {
             throw $this->createNotFoundException('Unable to find Companie entity.');
         }
 
-        $editForm = $this->createForm(new CompanieType(), $entity);
-        //$editImageForm = $this->createForm(new ImageCompanieType());
+        $editForm = $this->createForm(new CompanieType(), $companyEntity);
+
         $deleteForm = $this->createDeleteForm($id);
+
+        //Images des companies
+        $imageEntity = new ImageCompanie();
+        $editImageForm = $this->createForm(new ImageCompanieType(), $imageEntity);
+
 
 
         return array(
-            'entity'      => $entity,
+            'entity'      => $companyEntity,
             'edit_form'   => $editForm->createView(),
-            //'edit_image_form'   => $editImageForm->createView(),
+            'edit_image_form'   => $editImageForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -151,20 +156,42 @@ class CompanieController extends Controller
         $editForm   = $this->createForm(new CompanieType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
+        //Images des companies
+        $imageEntity = new ImageCompanie();
+        $editImageForm = $this->createForm(new ImageCompanieType(), $imageEntity);
+
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        //update Companie ou Image ?
+        if($request->request->get('lapaperie_companiesbundle_imagecompanietype'))
+        {
+            $editImageForm->bindRequest($request);
 
-        if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
+            if ($editImageForm->isValid()) {
+                $imageEntity->upload($entity);
+                $em->persist($imageEntity);
+                $em->flush();
 
-            return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+                return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+            }
+        }
+        else
+        {
+
+            $editForm->bindRequest($request);
+
+            if ($editForm->isValid()) {
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+            }
         }
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
+            'edit_image_form'   => $editImageForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

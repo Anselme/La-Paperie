@@ -2,53 +2,38 @@
 
 {% block content %}
 
-<h1>Companie list</h1>
+<h1>Companies & Résidences</h1>
 
 <table class="records_list">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
+            <th>Nom</th>
             <th>Création</th>
-            <th>Date_residence_beginning</th>
-            <th>Date_residence_end</th>
-            <th>Date_sortie_de_fabrique</th>
-            <th>Short Text</th>
-            <th>Long text</th>
-            <th>Actions</th>
+            <th>Date début de résidence</th>
+            <th>Date fin de résidence</th>
+            <th>Date Sortie de Fabrique</th>
+            <th>Présentation</th>
+            <th>Détails</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('companie_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.name }}</td>
+            <td><a href="{{ path('companie_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.creation }}</td>
-            <td>{{ entity.dateresidencebeginning|date('Y-m-d H:i:s') }}</td>
-            <td>{{ entity.dateresidenceend|date('Y-m-d H:i:s') }}</td>
-            <td>{{ entity.datesortiedefabrique|date('Y-m-d H:i:s') }}</td>
-            <td>{{ entity.shorttext }}</td>
-            <td>{{ entity.longtext }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('companie_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('companie_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
+            <td>{{ entity.dateresidencebeginning|date('j M Y') }}</td>
+            <td>{{ entity.dateresidenceend|date('j M Y') }}</td>
+            <td>{{ entity.datesortiedefabrique|date('j M Y') }}</td>
+            <td>{{ entity.shorttext | truncate(100) }}</td>
+            <td>{{ entity.longtext  | truncate(150) }}</td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('companie_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+<div class="button">
+<a href="{{ path('companie_new') }}">
+Saisir une nouvelle Companie/Résidence
+</a>
+</div>
 {% endblock %}

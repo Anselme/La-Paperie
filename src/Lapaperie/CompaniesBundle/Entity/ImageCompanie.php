@@ -45,7 +45,6 @@ class ImageCompanie
 
      /**
      * @Assert\File(maxSize = "1024k", mimeTypes = {"image/gif","image/jpeg","image/png" })
-     *
      */
     public $image;
 
@@ -60,7 +59,7 @@ class ImageCompanie
         return $this->name;
     }
 
-    public function upload()
+    public function upload($companie)
     {
         // the file property can be empty if the field is not required
         if (null === $this->image) {
@@ -80,6 +79,15 @@ class ImageCompanie
 
         // set the path property to the filename where you'ved saved the file
         $this->setPath($brand_new_name);
+
+        // set the extension property to the filename where you'ved saved the file
+        $this->setExtension($extension);
+
+        // set the name
+        $this->setName($brand_new_name);
+
+        // set the companie
+        $this->setCompanie($companie);
 
         // clean up the file property as you won't need it anymore
         unset($this->image);
@@ -105,7 +113,7 @@ class ImageCompanie
     protected function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
+        return 'uploads/images';
     }
 
     /**

@@ -234,11 +234,11 @@ class Companie
     /**
      * Add images
      *
-     * @param Lapaperie\CompaniesBundle\Entity\ImageCompanie $images
+     * @param Lapaperie\CompaniesBundle\Entity\ImageCompanie $image
      */
-    public function addImageCompanie(\Lapaperie\CompaniesBundle\Entity\ImageCompanie $images)
+    public function addImageCompanie(\Lapaperie\CompaniesBundle\Entity\ImageCompanie $image)
     {
-        $this->images[] = $images;
+        $this->images[] = $image;
     }
 
     /**
