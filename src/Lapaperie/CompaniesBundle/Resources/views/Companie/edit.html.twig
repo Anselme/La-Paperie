@@ -2,33 +2,91 @@
 
 {% block content %}
 
-<h1>Companie edit</h1>
+<h1>{{ entity.name }} / {{ entity.creation }}</h1>
 
 <form action="{{ path('companie_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
+
+    {{ form_errors(edit_form) }}
+
     <p>
-        <button type="submit">Edit</button>
+    {{ form_label(edit_form.name, 'Nom') }}<br/>
+    {{ form_errors(edit_form.name) }}
+    {{ form_widget(edit_form.name) }}
+    </p>
+    <p>
+    {{ form_label(edit_form.creation, 'Création') }}<br/>
+    {{ form_errors(edit_form.creation) }}
+    {{ form_widget(edit_form.creation) }}
+    </p>
+    <p>
+
+    {{ form_label(edit_form.date_residence_beginning, 'Résidence débutant le :') }}<br/>
+    {{ form_errors(edit_form.date_residence_beginning) }}
+    {{ form_widget(edit_form.date_residence_beginning) }}
+    </p>
+    <p>
+
+    {{ form_label(edit_form.date_residence_end, 'Résidence se terminant le :') }}<br/>
+    {{ form_errors(edit_form.date_residence_end) }}
+    {{ form_widget(edit_form.date_residence_end) }}
+    </p>
+    <p>
+
+    {{ form_label(edit_form.date_sortie_de_fabrique, 'Sortie de fabrique le :') }}<br/>
+    {{ form_errors(edit_form.date_sortie_de_fabrique) }}
+    {{ form_widget(edit_form.date_sortie_de_fabrique) }}
+    </p>
+    <p>
+
+    {{ form_label(edit_form.short_text, 'Présentation') }}<br/>
+    {{ form_errors(edit_form.short_text) }}
+    {{ form_widget(edit_form.short_text) }}
+    </p>
+    <p>
+    {{ form_label(edit_form.long_text, 'Détails') }}<br/>
+    {{ form_errors(edit_form.long_text) }}
+    {{ form_widget(edit_form.long_text) }}
+    </p>
+
+    {{ form_rest(edit_form) }}
+
+    <p>
+        <button type="submit">Enregistrer les modifications</button>
     </p>
 </form>
+<div class="">
+
+{% if entity.images %}
+  {% for image in entity.images %}
+    <p>
+      <img src="/{{ image.getWebPath }}" width="238" height="148"/>
+    </p>
+  {% endfor %}
+{% endif %}
+
+</div>
 
 <form action="{{ path('companie_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_image_form) }}>
-    {{ form_widget(edit_image_form) }}
+    {{ form_errors(edit_image_form) }}
     <p>
-        <button type="submit">Edit</button>
+    {{ form_label(edit_image_form.image) }}<br/>
+    {{ form_errors(edit_image_form.image) }}
+    {{ form_widget(edit_image_form.image) }}
+    </p>
+
+    {{ form_rest(edit_image_form) }}
+    <p>
+        <button type="submit">Ajouter une image</button>
     </p>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('companie') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
         <form action="{{ path('companie_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button type="submit">Supprimer cette Companie / Résidence</button>
         </form>
-    </li>
-</ul>
+
+     <div class="button">
+        <a href="{{ path('companie') }}">
+        Retour à la liste des Companies/ Résidences
+        </a>
+     </div>
 {% endblock %}

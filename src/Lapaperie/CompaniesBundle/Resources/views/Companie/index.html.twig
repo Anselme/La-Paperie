@@ -9,9 +9,9 @@
         <tr>
             <th>Nom</th>
             <th>Création</th>
-            <th>Date début de résidence</th>
-            <th>Date fin de résidence</th>
-            <th>Date Sortie de Fabrique</th>
+            <th>Début de résidence</th>
+            <th>Fin de résidence</th>
+            <th>Sortie de Fabrique</th>
             <th>Présentation</th>
             <th>Détails</th>
         </tr>
@@ -19,7 +19,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('companie_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+            <td><a href="{{ path('companie_edit', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.creation }}</td>
             <td>{{ entity.dateresidencebeginning|date('j M Y') }}</td>
             <td>{{ entity.dateresidenceend|date('j M Y') }}</td>

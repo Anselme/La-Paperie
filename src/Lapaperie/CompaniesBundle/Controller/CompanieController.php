@@ -122,11 +122,9 @@ class CompanieController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        //Images des companies
+        //Formulaire pouruploader une nouvelel image
         $imageEntity = new ImageCompanie();
         $editImageForm = $this->createForm(new ImageCompanieType(), $imageEntity);
-
-
 
         return array(
             'entity'      => $companyEntity,

@@ -1,0 +1,44 @@
+/* form elements */
+form {
+	padding: 15px 25px 25px 25px;
+	border: 1px solid #88BF4A;
+	background: #F8F8F8;
+    width: 70%;
+}
+form p {
+	border-bottom: 1px solid #E6E6E6;
+	padding: 12px 0 5px 0;	margin: 0;
+	color: #666666;
+}
+label {
+	font-weight: bold;
+	color: #666666;
+}
+input, select, textarea {
+	margin: 5px 0;
+	padding: 5px;
+	color: #6A6969;
+	border-width: 1px;
+	border-style: solid;
+  	border-color: #D4D4D4 #EBEBEB #EBEBEB #D4D4D4;
+	font: 11px 'Lucida Grande', Verdana, Helvetica, sans-serif;
+}
+input:focus, select:focus, textarea:focus {
+	color: #7BA857;
+	background: #EFFAE6;
+}
+#name, #email, #message, #website {
+	width: 380px;
+}
+input.button {
+	font: bold 12px Arial, Sans-serif;
+	height: 30px;
+	margin: 0;
+	padding: 2px 3px;
+	color: #FFF;
+	background:#B4DB6F;
+
+	border-width: 1px;
+  	border-style: solid;
+  	border-color: #B6DE8F #91BD37 #91BD37 #B6DE8F;
+}
