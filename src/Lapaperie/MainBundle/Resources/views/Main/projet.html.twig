@@ -14,7 +14,8 @@ La Paperie - {{ companie.name }}
 {% if projet.id == companie.id%}
 {{ projet.name }} <img src="{{ asset('bundles/lapaperiemain/images/plusque.png') }}" />
 {% else %}
-<a href="{{ path('projet_show', {'id':projet.id}) }}">{{ projet.name }}</a>  <img src="{{ asset('bundles/lapaperiemain/images/moinsque.png') }}" />
+<a href="{{ path('projet_show', {'id':projet.id}) }}">{{ projet.name }}</a>  
+<img src="{{ asset('bundles/lapaperiemain/images/moinsque.png') }}" />
 {% endif %}
 </li>
 {% endfor %}
@@ -24,7 +25,13 @@ La Paperie - {{ companie.name }}
 <div class="right-side">
   <div class="">
     <div class="companie-img">
-    <img src="{{ asset('bundles/lapaperiemain/images/test.png') }}" alt="" />
+    <!-- img src="{#{ asset('bundles/lapaperiemain/images/test.png') | apply_filter('companie') }#}" alt="" /-->
+    {% if companie.images.isEmpty %}
+    <img src="{{  asset('bundles/lapaperiemain/images/caravanelapaperie_original.png') }}" width="143" alt="Pas d'images pour cette Companie" />
+    {% else %}
+    <img src="{{ companie.images[0].getWebPath | apply_filter('companie') }}" alt="{{ companie.name }}" width="252" />
+    {% endif %}
+
     </div>
     <div class="short-text">
     {{ companie.shorttext }}
@@ -33,6 +40,13 @@ La Paperie - {{ companie.name }}
   <div class="long-text">
   {{ companie.longtext }}
   </div>
+
+<div class="gallerie_thumbnails">
+  {% for image in companie.images %}
+    <img src="{{ image.getWebPath | apply_filter('companie_thumbnail') }}" alt="{{ companie.name }}" width="84" />
+  {% endfor %}
+  </div>
+
 </div>
 
 <div class="clear"></div>

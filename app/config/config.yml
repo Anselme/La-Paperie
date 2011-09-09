@@ -65,3 +65,12 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
 
+# Imagine Configuration (thumbnails creation)
+avalanche_imagine:
+    filters:
+       companie:
+           type:    thumbnail
+           options: { size: [252,210], mode: outbound}
+       companie_thumbnail:
+           type:    thumbnail
+           options: { size: [84,70], mode: outbound}

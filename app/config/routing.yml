@@ -19,3 +19,8 @@ LapaperieAgendaBundle:
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
+
+#Avalanche / Imagine / Bundle
+_imagine:
+    resource: .
+    type:     imagine
