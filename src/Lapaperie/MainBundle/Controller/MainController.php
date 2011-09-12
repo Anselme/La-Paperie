@@ -10,7 +10,14 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        return $this->render('LapaperieMainBundle:Main:index.html.twig');
+        $repository = $this->getDoctrine()->getRepository('LapaperieFocusBundle:Focus');
+        $focus = $repository->findOneBy(
+            array('isOnLine' => true),
+            array('publicationDate' => 'ASC')
+        );
+
+        return $this->render('LapaperieMainBundle:Main:index.html.twig', array('focus' => $focus));
+        //return $this->render('LapaperieMainBundle:Main:index.html.twig');
     }
 
     public function diffusionAction()
@@ -25,7 +32,6 @@ class MainController extends Controller
 
     public function projetsAction()
     {
-
         $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
         $companies = $repository->findAll();
 

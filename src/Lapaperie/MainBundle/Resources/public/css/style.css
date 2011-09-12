@@ -54,7 +54,7 @@ header {
 
 h2 {
     font-size: 1.6em;
-    font-weight: normal;
+    font-weight: bold;
     margin-bottom: 0.6em;
 }
 
@@ -147,4 +147,16 @@ p {
 .companie-img {
     position: relative;
     float: left;
+}
+
+#home_left {
+    position: relative;
+    float: left;
+    width: 50%;
+    text-align: justify;
+}
+
+#home_right {
+    position: relative;
+    float: right;
 }
