@@ -135,9 +135,13 @@ p {
 .short-text {
     position: relative;
     float: left;
-    width: 50%;
     margin-left: 1em;
 }
+
+.short-text p {
+    margin-bottom: 0em;
+}
+
 
 .long-text {
    clear: both;

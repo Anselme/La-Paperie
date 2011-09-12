@@ -25,7 +25,6 @@ La Paperie - {{ companie.name }}
 <div class="right-side">
   <div class="">
     <div class="companie-img">
-    <!-- img src="{#{ asset('bundles/lapaperiemain/images/test.png') | apply_filter('companie') }#}" alt="" /-->
     {% if companie.images.isEmpty %}
     <img src="{{  asset('bundles/lapaperiemain/images/caravanelapaperie_original.png') }}" width="143" alt="Pas d'images pour cette Companie" />
     {% else %}
@@ -34,11 +33,11 @@ La Paperie - {{ companie.name }}
 
     </div>
     <div class="short-text">
-    {{ companie.shorttext }}
+    {{ companie.shorttext | raw }}
     </div>
   </div>
   <div class="long-text">
-  {{ companie.longtext }}
+  {{ companie.longtext | raw }}
   </div>
 
 <div class="gallerie_thumbnails">
