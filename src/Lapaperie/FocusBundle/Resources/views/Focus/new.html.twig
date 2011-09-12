@@ -1,16 +1,63 @@
+{% extends "LapaperieCompaniesBundle::layout.html.twig" %}
+
+{% block content %}
+
 <h1>Focus creation</h1>
 
 <form action="{{ path('focus_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    {{ form_errors(form) }}
+
     <p>
-        <button type="submit">Create</button>
+    {{ form_label(form.title, 'Titre') }}<br/>
+    {{ form_errors(form.title) }}
+    {{ form_widget(form.title, {'attr':{'size' : '90'}}) }}
+    </p>
+
+    <p>
+    {{ form_label(form.text, 'Edito') }}<br/>
+    {{ form_errors(form.text) }}
+    {{ form_widget(form.text,  {'attr':{'cols' : '90', 'rows' : '10'}}) }}
+    </p>
+
+    <p>
+    {{ form_label(form.publicationDate, 'Date de Publication') }}<br/>
+    {{ form_errors(form.publicationDate) }}
+    {{ form_widget(form.publicationDate) }}
+    </p>
+
+    <p>
+    {{ form_label(form.isOnLine, 'Afficher en Une') }}<br/>
+    {{ form_errors(form.isOnLine) }}
+    {{ form_widget(form.isOnLine) }}
+    </p>
+
+    <p>
+    {{ form_label(form.video, 'Vidéo') }}<br/>
+    {{ form_errors(form.video) }}
+    {{ form_widget(form.video,  {'attr':{'cols' : '90', 'rows' : '5'}}) }}
+    </p>
+
+    <p>
+    {{ form_label(form.legend, 'Légende') }}<br/>
+    {{ form_errors(form.legend) }}
+    {{ form_widget(form.legend, {'attr':{'size' : '90'}}) }}
+    </p>
+
+    {{ form_rest(form) }}
+    <p>
+        <button type="submit">Enregistrer ce nouveau Focus</button>
     </p>
 </form>
 
-<ul class="record_actions">
-    <li>
+<script type="text/javascript">
+	CKEDITOR.replace( 'lapaperie_focusbundle_focustype_text',
+    {
+        toolbar : 'Bibi',
+    });
+</script>
+
+
         <a href="{{ path('focus') }}">
-            Back to the list
+        Retour à la liste des Focus
         </a>
-    </li>
-</ul>
+{% endblock %}

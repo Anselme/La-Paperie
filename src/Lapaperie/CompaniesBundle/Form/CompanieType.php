@@ -15,8 +15,8 @@ class CompanieType extends AbstractType
             ->add('date_residence_beginning')
             ->add('date_residence_end')
             ->add('date_sortie_de_fabrique')
-            ->add('short_text')
-            ->add('long_text')
+            ->add('short_text','textarea',array('required' => false))
+            ->add('long_text','textarea',array('required' => false))
         ;
     }
 

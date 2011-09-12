@@ -2,20 +2,69 @@
 
 {% block content %}
 
-<h1>Companie creation</h1>
+<h1>Nouvelle Companie</h1>
 
 <form action="{{ path('companie_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    {{ form_errors(form) }}
+
     <p>
-        <button type="submit">Create</button>
+    {{ form_label(form.name, 'Nom de la Companie') }}<br/>
+    {{ form_errors(form.name) }}
+    {{ form_widget(form.name) }}
+    </p>
+    <p>
+    {{ form_label(form.creation, 'Création') }}<br/>
+    {{ form_errors(form.creation) }}
+    {{ form_widget(form.creation) }}
+    </p>
+    <p>
+
+    {{ form_label(form.date_residence_beginning, 'Résidence débutant le :') }}<br/>
+    {{ form_errors(form.date_residence_beginning) }}
+    {{ form_widget(form.date_residence_beginning) }}
+    </p>
+    <p>
+
+    {{ form_label(form.date_residence_end, 'Résidence se terminant le :') }}<br/>
+    {{ form_errors(form.date_residence_end) }}
+    {{ form_widget(form.date_residence_end) }}
+    </p>
+    <p>
+
+    {{ form_label(form.date_sortie_de_fabrique, 'Sortie de fabrique le :') }}<br/>
+    {{ form_errors(form.date_sortie_de_fabrique) }}
+    {{ form_widget(form.date_sortie_de_fabrique) }}
+    </p>
+    <p>
+
+    {{ form_label(form.short_text, 'Présentation') }}<br/>
+    {{ form_errors(form.short_text) }}
+    {{ form_widget(form.short_text) }}
+    </p>
+    <p>
+    {{ form_label(form.long_text, 'Détails') }}<br/>
+    {{ form_errors(form.long_text) }}
+    {{ form_widget(form.long_text) }}
+    </p>
+
+    {{ form_rest(form) }}
+    <p>
+        <button type="submit">Enregistrer la nouvelle Companie</button>
     </p>
 </form>
 
-<ul class="record_actions">
-    <li>
+<script type="text/javascript">
+	CKEDITOR.replace( 'lapaperie_companiesbundle_companietype_short_text',
+    {
+        toolbar : 'Bibi',
+    });
+	CKEDITOR.replace( 'lapaperie_companiesbundle_companietype_long_text',
+    {
+        toolbar : 'Bibi',
+    });
+</script>
+
         <a href="{{ path('companie') }}">
-            Back to the list
+        Retour à la liste des Companies
         </a>
-    </li>
-</ul>
 {% endblock %}

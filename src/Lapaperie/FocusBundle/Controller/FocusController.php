@@ -90,8 +90,8 @@ class FocusController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('focus_show', array('id' => $entity->getId())));
-            
+            return $this->redirect($this->generateUrl('focus'));
+
         }
 
         return array(
@@ -198,5 +198,16 @@ class FocusController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+
+    //désactive tous les focus sauf le courant
+    private function desactivateAllFocus()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $entities = $em->getRepository('LapaperieFocusBundle:Focus')->findAll();
+        foreach($entities as $entity){
+            $entity->setIsOnLIne(false);
+        }
+        $em->flush();
     }
 }

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Focus Page d'Accueil</h1>
+<h1>Focus - Page d'Accueil</h1>
 
 <form action="{{ path('focus_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_errors(edit_form) }}
@@ -57,10 +57,10 @@
 </script>
 
         <a href="{{ path('focus') }}">
-        Retour à la liste des éditos
+        Retour à la liste des Focus
         </a>
         <form action="{{ path('focus_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Supprimer cet édito</button>
+            <button type="submit">Supprimer ce Focus</button>
         </form>
 {% endblock %}

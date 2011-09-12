@@ -11,7 +11,7 @@ class FocusType extends AbstractType
     {
         $builder
             ->add('title','text')
-            ->add('text','textarea')
+            ->add('text','textarea',array('required' => false))
             ->add('isOnLine', 'checkbox',array('required' => false))
             ->add('publicationDate','date')
             ->add('video','textarea')
