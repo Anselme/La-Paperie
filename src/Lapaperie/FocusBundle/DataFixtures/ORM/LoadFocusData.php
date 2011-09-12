@@ -20,9 +20,6 @@ LOREM;
 
         $vimeo = <<<VIMEO
 <iframe src="http://player.vimeo.com/video/26268856?title=0&amp;byline=0&amp;portrait=0" width="400" height="300" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
-<p>
-<a href="http://vimeo.com/26268856">Rictus</a> from <a href="http://vimeo.com/user2643401">mathieu delalle</a> on <a href="http://vimeo.com">Vimeo</a>.
-</p>
 VIMEO;
 
 

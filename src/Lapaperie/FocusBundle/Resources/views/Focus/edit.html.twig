@@ -1,0 +1,59 @@
+{% extends "LapaperieCompaniesBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h1>Focus Page d'Accueil</h1>
+
+<form action="{{ path('focus_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_errors(edit_form) }}
+
+    <p>
+    {{ form_label(edit_form.title, 'Titre') }}<br/>
+    {{ form_errors(edit_form.title) }}
+    {{ form_widget(edit_form.title, {'attr':{'size' : '90'}}) }}
+    </p>
+
+    <p>
+    {{ form_label(edit_form.text, 'Edito') }}<br/>
+    {{ form_errors(edit_form.text) }}
+    {{ form_widget(edit_form.text,  {'attr':{'cols' : '90', 'rows' : '10'}}) }}
+    </p>
+
+    <p>
+    {{ form_label(edit_form.publicationDate, 'Date de Publication') }}<br/>
+    {{ form_errors(edit_form.publicationDate) }}
+    {{ form_widget(edit_form.publicationDate) }}
+    </p>
+
+    <p>
+    {{ form_label(edit_form.isOnLine, 'Afficher en Une') }}<br/>
+    {{ form_errors(edit_form.isOnLine) }}
+    {{ form_widget(edit_form.isOnLine) }}
+    </p>
+
+    <p>
+    {{ form_label(edit_form.video, 'Vidéo') }}<br/>
+    {{ form_errors(edit_form.video) }}
+    {{ form_widget(edit_form.video,  {'attr':{'cols' : '90', 'rows' : '5'}}) }}
+    </p>
+
+    <p>
+    {{ form_label(edit_form.legend, 'Légende') }}<br/>
+    {{ form_errors(edit_form.legend) }}
+    {{ form_widget(edit_form.legend, {'attr':{'size' : '90'}}) }}
+    </p>
+
+    {{ form_rest(edit_form) }}
+    <p>
+        <button type="submit">Enregistrer les modifications</button>
+    </p>
+</form>
+
+        <a href="{{ path('focus') }}">
+        Retour à la liste des éditos
+        </a>
+        <form action="{{ path('focus_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Supprimer cet édito</button>
+        </form>
+{% endblock %}

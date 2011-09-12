@@ -1,0 +1,16 @@
+<h1>Focus creation</h1>
+
+<form action="{{ path('focus_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('focus') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>

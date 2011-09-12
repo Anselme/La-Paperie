@@ -17,7 +17,6 @@ class MainController extends Controller
         );
 
         return $this->render('LapaperieMainBundle:Main:index.html.twig', array('focus' => $focus));
-        //return $this->render('LapaperieMainBundle:Main:index.html.twig');
     }
 
     public function diffusionAction()

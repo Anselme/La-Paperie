@@ -95,6 +95,7 @@ a.red_button:hover
 
 ul {
     list-style-type: none;
+    line-height: 15px;
 }
 
 li {
