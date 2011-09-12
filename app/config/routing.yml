@@ -1,3 +1,7 @@
+LapaperieFocusBundle:
+    resource: "@LapaperieFocusBundle/Resources/config/routing.yml"
+    prefix:   /
+
 LapaperieCompaniesBundle:
     resource: "@LapaperieCompaniesBundle/Controller"
     type:     annotation
