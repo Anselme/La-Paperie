@@ -15,15 +15,17 @@ body {
 }
 
 #main {
-    width: 80% ;
+    width: 85% ;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 2em;
+    margin-top: 1em;
 }
 
 /* Menu principal */
 #mainnav {margin-top: 2em;}
-#mainnav ul {padding-top: 2.5em; padding-bottom: 2.5em;margin-left:1em; }
-#mainnav ul li {padding-left: 0em;}
+#mainnav ul {padding-top: 2.5em; padding-bottom: 2.5em;margin-left:1em; clear:both;}
+#mainnav ul li {padding-left: 0em; background-image: none; list-style: none;}
 #mainnav ul li a {text-decoration:none; display:block; float:left; border: solid 1px #E32119; color:#E32119;margin-right: 1em;padding-left:0.2em; padding-right:0.2em;}
 #mainnav ul li a:hover {background-color:#E32119 ; color:#FFF; text-decoration:none;}
 #mainnav ul li.active a {background-color:#E32119 ; color:#FFF; text-decoration:none;}
@@ -48,8 +50,8 @@ ul#subnav li.active a
 }
 
 header {
-    margin-top: 1em;
-    margin-bottom: 2em;
+    margin: 1em auto 2em;
+    width: 85%;
 }
 
 h2 {
@@ -64,7 +66,10 @@ h3 {
 
 a {
     color: #E32119;
+}
 
+a img {
+    border-width: 0;
 }
 
 a.red_button
@@ -113,6 +118,7 @@ li.projets {
 
 p {
     margin-bottom: 2em;
+    line-height: 16px;
 }
 
 #content {
@@ -123,13 +129,14 @@ p {
     position: relative;
     float: left;
     margin-left: 1em;
-    width: 75%;
+    width: 70%;
 }
 
 .left-side {
     position: relative;
     float: left;
     text-align: right;
+    width: 25%;
 }
 
 .short-text {

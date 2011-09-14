@@ -4,7 +4,7 @@
 
 <h1>Companies & Résidences</h1>
 
-<table class="records_list">
+<table class="records_list zebra-striped">
     <thead>
         <tr>
             <th>Nom dela Companie</th>
@@ -31,9 +31,7 @@
     </tbody>
 </table>
 
-<div class="button">
-<a href="{{ path('companie_new') }}">
+<a href="{{ path('companie_new') }}" class="btn primary">
 Saisir une nouvelle Companie/Résidence
 </a>
-</div>
 {% endblock %}
