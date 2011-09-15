@@ -99,8 +99,8 @@
     </div>
 
     {{ form_rest(edit_image_form) }}
-</fieldset>
         <button type="submit" class="btn primary">Ajouter une image</button>
+</fieldset>
 </form>
         <form action="{{ path('companie_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}

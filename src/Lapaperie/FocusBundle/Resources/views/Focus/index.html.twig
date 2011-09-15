@@ -4,7 +4,7 @@
 
 <h1>Focus</h1>
 
-<table class="records_list">
+<table class="records_list zebra-striped">
     <thead>
         <tr>
             <th>Titre</th>
@@ -31,9 +31,7 @@
     </tbody>
 </table>
 
-<div class="button">
-        <a href="{{ path('focus_new') }}">
-        Ecrire un nouvel Edito
+        <a href="{{ path('focus_new') }}" class="btn primary">
+        Ecrire un nouveeau Focus
         </a>
-</div>
 {% endblock %}

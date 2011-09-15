@@ -2,51 +2,60 @@
 
 {% block content %}
 
-<h1>Focus creation</h1>
-
 <form action="{{ path('focus_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_errors(form) }}
 
-    <p>
+<fieldset>
+    <legend>Nouveau Focus</legend>
+    <div class="clearfix">
     {{ form_label(form.title, 'Titre') }}<br/>
+    <div class="input">
     {{ form_errors(form.title) }}
     {{ form_widget(form.title, {'attr':{'size' : '90'}}) }}
-    </p>
-
-    <p>
+    </div>
+    </div>
+    <div class="clearfix">
     {{ form_label(form.text, 'Edito') }}<br/>
+    <div class="input">
     {{ form_errors(form.text) }}
     {{ form_widget(form.text,  {'attr':{'cols' : '90', 'rows' : '10'}}) }}
-    </p>
-
-    <p>
+    </div>
+    </div>
+    <div class="clearfix">
     {{ form_label(form.publicationDate, 'Date de Publication') }}<br/>
+    <div class="input">
     {{ form_errors(form.publicationDate) }}
     {{ form_widget(form.publicationDate) }}
-    </p>
-
-    <p>
+    </div>
+    </div>
+    <div class="clearfix">
     {{ form_label(form.isOnLine, 'Afficher en Une') }}<br/>
+    <div class="input">
     {{ form_errors(form.isOnLine) }}
     {{ form_widget(form.isOnLine) }}
-    </p>
-
-    <p>
+    </div>
+    </div>
+    <div class="clearfix">
     {{ form_label(form.video, 'Vidéo') }}<br/>
+    <div class="input">
     {{ form_errors(form.video) }}
-    {{ form_widget(form.video,  {'attr':{'cols' : '90', 'rows' : '5'}}) }}
-    </p>
-
-    <p>
+    {{ form_widget(form.video,  {'attr':{'cols' : '50', 'rows' : '5'}}) }}
+    </div>
+    </div>
+    <div class="clearfix">
     {{ form_label(form.legend, 'Légende') }}<br/>
+    <div class="input">
     {{ form_errors(form.legend) }}
     {{ form_widget(form.legend, {'attr':{'size' : '90'}}) }}
-    </p>
+    </div>
+    </div>
 
     {{ form_rest(form) }}
-    <p>
-        <button type="submit">Enregistrer ce nouveau Focus</button>
-    </p>
+</fieldset>
+        <button type="submit" class="btn primary">Enregistrer ce nouveau Focus</button>
+        <a href="{{ path('focus') }}" class="btn">
+        Retour à la liste des Focus
+        </a>
 </form>
 
 <script type="text/javascript">
@@ -57,7 +66,4 @@
 </script>
 
 
-        <a href="{{ path('focus') }}">
-        Retour à la liste des Focus
-        </a>
 {% endblock %}

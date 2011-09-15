@@ -60,6 +60,9 @@
     {{ form_rest(form) }}
 </fieldset>
         <button type="submit" class="btn primary">Enregistrer la nouvelle Companie</button>
+        <a href="{{ path('companie') }}" class="btn">
+        Retour à la liste des Companies
+        </a>
 </form>
 
 <script type="text/javascript">
@@ -73,7 +76,4 @@
     });
 </script>
 
-        <a href="{{ path('companie') }}" class="btn">
-        Retour à la liste des Companies
-        </a>
 {% endblock %}

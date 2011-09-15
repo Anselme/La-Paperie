@@ -2,51 +2,61 @@
 
 {% block content %}
 
-<h1>Focus - Page d'Accueil</h1>
 
 <form action="{{ path('focus_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_errors(edit_form) }}
+<fieldset>
+    <legend>Focus - Page d'Accueil : {{ entity.title }}</legend>
 
-    <p>
-    {{ form_label(edit_form.title, 'Titre') }}<br/>
+    <div class="clearfix">
+    {{ form_label(edit_form.title, 'Titre') }}
+    <div class="input">
     {{ form_errors(edit_form.title) }}
     {{ form_widget(edit_form.title, {'attr':{'size' : '90'}}) }}
-    </p>
-
-    <p>
-    {{ form_label(edit_form.text, 'Edito') }}<br/>
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(edit_form.text, 'Edito') }}
+    <div class="input">
     {{ form_errors(edit_form.text) }}
     {{ form_widget(edit_form.text,  {'attr':{'cols' : '90', 'rows' : '10'}}) }}
-    </p>
-
-    <p>
-    {{ form_label(edit_form.publicationDate, 'Date de Publication') }}<br/>
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(edit_form.publicationDate, 'Date de Publication') }}
+    <div class="input">
     {{ form_errors(edit_form.publicationDate) }}
     {{ form_widget(edit_form.publicationDate) }}
-    </p>
-
-    <p>
-    {{ form_label(edit_form.isOnLine, 'Afficher en Une') }}<br/>
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(edit_form.isOnLine, 'Afficher en Une') }}
+    <div class="input">
     {{ form_errors(edit_form.isOnLine) }}
     {{ form_widget(edit_form.isOnLine) }}
-    </p>
-
-    <p>
-    {{ form_label(edit_form.video, 'Vidéo') }}<br/>
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(edit_form.video, 'Vidéo') }}
+    <div class="input">
     {{ form_errors(edit_form.video) }}
-    {{ form_widget(edit_form.video,  {'attr':{'cols' : '90', 'rows' : '5'}}) }}
-    </p>
-
-    <p>
-    {{ form_label(edit_form.legend, 'Légende') }}<br/>
+    {{ form_widget(edit_form.video,  {'attr':{'cols' : '90', 'rows' : '5', 'width' : '350'}}) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(edit_form.legend, 'Légende') }}
+    <div class="input">
     {{ form_errors(edit_form.legend) }}
     {{ form_widget(edit_form.legend, {'attr':{'size' : '90'}}) }}
-    </p>
+    </div>
+    </div>
 
     {{ form_rest(edit_form) }}
-    <p>
-        <button type="submit">Enregistrer les modifications</button>
-    </p>
+        <button type="submit" class="btn primary">Enregistrer les modifications</button>
+        <a href="{{ path('focus') }}" class="btn">
+        Retour à la liste des Focus
+        </a>
+<fieldset>
 </form>
 
 <script type="text/javascript">
@@ -56,11 +66,8 @@
     });
 </script>
 
-        <a href="{{ path('focus') }}">
-        Retour à la liste des Focus
-        </a>
         <form action="{{ path('focus_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit">Supprimer ce Focus</button>
+            <button type="submit" class="btn danger">Supprimer ce Focus</button>
         </form>
 {% endblock %}
