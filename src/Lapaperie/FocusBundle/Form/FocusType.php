@@ -14,7 +14,6 @@ class FocusType extends AbstractType
             ->add('text','textarea',array('required' => false))
             ->add('isOnLine', 'checkbox',array('required' => false))
             ->add('publicationDate','date', array('input' => 'datetime', 'widget' => 'single_text','format' => \IntlDateFormatter::SHORT))
-            //->add('publicationDate','date', array('input' => 'string', 'widget' => 'single_text', 'format' => 'yy-mm-dd'))
             ->add('video','textarea',array('required' => false))
             ->add('legend','text',array('required' => false))
         ;

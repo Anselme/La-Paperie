@@ -16,19 +16,24 @@
 
     <body>
         <div class="topbar">
-        <div class="topbar-inner">
-        <div class="container">
-            <h3><a href="#">La Paperie Admin</a></h3>
-            <ul class="nav">
-                <li class="">
-                <a href="{{ path('focus') }}">Focus</a>
-                </li>
-                <li class="">
-                <a href="{{ path('companie') }}">Companies/Résidences</a>
-                </li>
-            </ul>
-        </div>
-        </div>
+            <div class="topbar-inner">
+                <div class="container">
+                    <h3><a href="#">La Paperie Admin</a></h3>
+                    <ul class="nav">
+                        <li class="">
+                        <a href="{{ path('focus') }}">Focus</a>
+                        </li>
+                        <li class="">
+                        <a href="{{ path('companie') }}">Companies/Résidences</a>
+                        </li>
+                    </ul>
+                    <ul class="nav secondary-nav">
+                        <li class="">
+                        <a href="{{ path('LapaperieMainBundle_homepage') }}">Retour à La Paperie</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="container">
