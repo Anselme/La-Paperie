@@ -32,42 +32,42 @@ class Companie
     /**
      * @var string $creation
      *
-     * @ORM\Column(name="creation", type="string", length=255)
+     * @ORM\Column(name="creation", type="string", length=255, nullable="true")
      */
     private $creation;
 
     /**
      * @var date $date_residence_beginning
      *
-     * @ORM\Column(name="date_residence_beginning", type="date")
+     * @ORM\Column(name="date_residence_beginning", type="date", nullable="true")
      */
     private $date_residence_beginning;
 
     /**
      * @var date $date_residence_end
      *
-     * @ORM\Column(name="date_residence_end", type="date")
+     * @ORM\Column(name="date_residence_end", type="date", nullable="true")
      */
     private $date_residence_end;
 
     /**
      * @var date $date_sortie_de_fabrique
      *
-     * @ORM\Column(name="date_sortie_de_fabrique", type="date")
+     * @ORM\Column(name="date_sortie_de_fabrique", type="date", nullable="true")
      */
     private $date_sortie_de_fabrique;
 
     /**
      * @var short_text
      *
-     * @ORM\Column(name="short_text", type="text")
+     * @ORM\Column(name="short_text", type="text", nullable="true")
      */
     private $short_text;
 
     /**
      * @var long_text
      *
-     * @ORM\Column(name="long_text", type="text")
+     * @ORM\Column(name="long_text", type="text", nullable="true")
      */
     private $long_text;
 
@@ -116,7 +116,7 @@ class Companie
      *
      * @param date $dateResidenceBeginning
      */
-    public function setDateResidenceBeginning(\DateTime $dateResidenceBeginning)
+    public function setDateResidenceBeginning(\DateTime $dateResidenceBeginning = null)
     {
         $this->date_residence_beginning = $dateResidenceBeginning;
     }
@@ -136,7 +136,7 @@ class Companie
      *
      * @param date $dateResidenceEnd
      */
-    public function setDateResidenceEnd(\DateTime $dateResidenceEnd)
+    public function setDateResidenceEnd(\DateTime $dateResidenceEnd = null)
     {
         $this->date_residence_end = $dateResidenceEnd;
     }
@@ -156,7 +156,7 @@ class Companie
      *
      * @param date $dateSortieDeFabrique
      */
-    public function setDateSortieDeFabrique(\DateTime $dateSortieDeFabrique)
+    public function setDateSortieDeFabrique(\DateTime $dateSortieDeFabrique = null)
     {
         $this->date_sortie_de_fabrique = $dateSortieDeFabrique;
     }

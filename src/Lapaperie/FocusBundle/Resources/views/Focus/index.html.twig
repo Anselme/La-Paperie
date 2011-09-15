@@ -8,7 +8,6 @@
     <thead>
         <tr>
             <th>Titre</th>
-            <th>Edito</th>
             <th>En ligne</th>
             <th>Date de publication</th>
         </tr>
@@ -17,7 +16,6 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('focus_edit', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-            <td>{{ entity.text | truncate(100) }}</td>
             <td>
             {% if entity.isOnLine %}
             <img width="16" height="16" src="{{ asset('bundles/lapaperiemain/images/icons/tick.png') }}" />

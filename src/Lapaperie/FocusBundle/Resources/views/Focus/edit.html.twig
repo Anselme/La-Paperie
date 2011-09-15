@@ -19,14 +19,14 @@
     {{ form_label(edit_form.text, 'Edito') }}
     <div class="input">
     {{ form_errors(edit_form.text) }}
-    {{ form_widget(edit_form.text,  {'attr':{'cols' : '90', 'rows' : '10'}}) }}
+    {{ form_widget(edit_form.text,  {'attr':{'cols' : '90', 'rows' : '10', 'class': 'editor'}}) }}
     </div>
     </div>
     <div class="clearfix">
     {{ form_label(edit_form.publicationDate, 'Date de Publication') }}
     <div class="input">
     {{ form_errors(edit_form.publicationDate) }}
-    {{ form_widget(edit_form.publicationDate) }}
+    {{ form_widget(edit_form.publicationDate, { 'attr': {'class': 'jsDate'} } ) }}
     </div>
     </div>
     <div class="clearfix">
@@ -59,23 +59,8 @@
 <fieldset>
 </form>
 
-<script type="text/javascript">
-	CKEDITOR.replace( 'lapaperie_focusbundle_focustype_text',
-    {
-        toolbar : 'Bibi',
-    });
-</script>
-
-<script type="text/javascript">
-$(function() {
-        $("#lapaperie_focusbundle_focustype_publicationDate").datepicker(
-            $.datepicker.regional['fr']
-            )
-        });
-</script>
-
 <form action="{{ path('focus_delete', { 'id': entity.id }) }}" method="post">
 {{ form_widget(delete_form) }}
-            <button type="submit" class="btn danger">Supprimer ce Focus</button>
+            <button type="submit" class="btn danger confirm">Supprimer ce Focus</button>
         </form>
 {% endblock %}

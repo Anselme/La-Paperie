@@ -9,7 +9,7 @@
 <fieldset>
     <legend>{{ entity.name }} / {{ entity.creation }}</legend>
     <div class="clearfix">
-    {{ form_label(edit_form.name, 'Nom de la Companie') }}
+    {{ form_label(edit_form.name, 'Companie') }}
     <div class="input">
     {{ form_errors(edit_form.name) }}
     {{ form_widget(edit_form.name) }}
@@ -26,35 +26,35 @@
     {{ form_label(edit_form.date_residence_beginning, 'Résidence débutant le :') }}
     <div class="input">
     {{ form_errors(edit_form.date_residence_beginning) }}
-    {{ form_widget(edit_form.date_residence_beginning) }}
+    {{ form_widget(edit_form.date_residence_beginning, { 'attr': {'class': 'jsDate'} } ) }}
     </div>
     </div>
     <div class="clearfix">
     {{ form_label(edit_form.date_residence_end, 'Résidence se terminant le :') }}
     <div class="input">
     {{ form_errors(edit_form.date_residence_end) }}
-    {{ form_widget(edit_form.date_residence_end) }}
+    {{ form_widget(edit_form.date_residence_end, { 'attr': {'class': 'jsDate'} } ) }}
     </div>
     </div>
     <div class="clearfix">
-    {{ form_label(edit_form.date_sortie_de_fabrique, 'Sortie de fabrique le :') }}
+    {{ form_label(edit_form.date_sortie_de_fabrique, 'Sortie de Fabrique le :') }}
     <div class="input">
     {{ form_errors(edit_form.date_sortie_de_fabrique) }}
-    {{ form_widget(edit_form.date_sortie_de_fabrique) }}
+    {{ form_widget(edit_form.date_sortie_de_fabrique, { 'attr': {'class': 'jsDate'} } ) }}
     </div>
     </div>
     <div class="clearfix">
     {{ form_label(edit_form.short_text, 'Présentation') }}
     <div class="input">
     {{ form_errors(edit_form.short_text) }}
-    {{ form_widget(edit_form.short_text) }}
+    {{ form_widget(edit_form.short_text, { 'attr': {'class': 'editor'} } ) }}
     </div>
     </div>
     <div class="clearfix">
     {{ form_label(edit_form.long_text, 'Détails') }}
     <div class="input">
     {{ form_errors(edit_form.long_text) }}
-    {{ form_widget(edit_form.long_text) }}
+    {{ form_widget(edit_form.long_text, { 'attr': {'class': 'editor'} } ) }}
     </div>
     </div>
 
@@ -62,18 +62,6 @@
 </fieldset>
         <button type="submit" class="btn primary">Enregistrer les modifications</button>
 </form>
-
-<script type="text/javascript">
-	CKEDITOR.replace( 'lapaperie_companiesbundle_companietype_short_text',
-    {
-        toolbar : 'Bibi',
-    });
-	CKEDITOR.replace( 'lapaperie_companiesbundle_companietype_long_text',
-    {
-        toolbar : 'Bibi',
-    });
-</script>
-
 
 <form action="{{ path('companie_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_image_form) }}>
     {{ form_errors(edit_image_form) }}
@@ -103,27 +91,10 @@
         Retour à la liste des Companies/ Résidences
         </a>
 </form>
+
         <form action="{{ path('companie_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button type="submit" class="btn danger">Supprimer cette Companie / Résidence</button>
+            <button type="submit" class="btn danger confirm">Supprimer cette Companie / Résidence</button>
         </form>
-
-<script type="text/javascript">
-$(function() {
-        $("#lapaperie_companiesbundle_companietype_date_residence_beginning ").datepicker(
-            $.datepicker.regional['fr']
-            )
-        });
-$(function() {
-        $("#lapaperie_companiesbundle_companietype_date_residence_end").datepicker(
-            $.datepicker.regional['fr']
-            )
-        });
-$(function() {
-        $("#lapaperie_companiesbundle_companietype_date_sortie_de_fabrique").datepicker(
-            $.datepicker.regional['fr']
-            )
-        });
-</script>
 
 {% endblock %}

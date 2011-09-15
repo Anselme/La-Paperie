@@ -6,10 +6,9 @@
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/redmond/jquery-ui.css" type="text/css" media="all" />
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         <script type="text/javascript" src="{{ asset('bundles/lapaperieadmin/ckeditor/ckeditor.js') }}"></script>
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/i18n/jquery-ui-i18n.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/i18n/jquery-ui-i18n.min.js"></script>
 
         <title>{% block title %}La Paperie - Administration du site{% endblock %}</title>
     </head>
@@ -41,6 +40,6 @@
             {% endblock %}
         </div>
 
+        <script type="text/javascript" src="{{ asset('bundles/lapaperieadmin/js/admin.js') }}"></script>
     </body>
 </html>
-

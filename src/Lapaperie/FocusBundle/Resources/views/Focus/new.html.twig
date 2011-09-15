@@ -18,14 +18,14 @@
     {{ form_label(form.text, 'Edito') }}
     <div class="input">
     {{ form_errors(form.text) }}
-    {{ form_widget(form.text,  {'attr':{'cols' : '90', 'rows' : '10'}}) }}
+    {{ form_widget(form.text,  {'attr':{'cols' : '90', 'rows' : '10', 'class': 'editor'}}) }}
     </div>
     </div>
     <div class="clearfix">
     {{ form_label(form.publicationDate, 'Date de Publication') }}
     <div class="input">
     {{ form_errors(form.publicationDate) }}
-    {{ form_widget(form.publicationDate) }}
+    {{ form_widget(form.publicationDate, { 'attr': {'class': 'jsDate'} } ) }}
     </div>
     </div>
     <div class="clearfix">
@@ -57,21 +57,5 @@
         Retour à la liste des Focus
         </a>
 </form>
-
-<script type="text/javascript">
-	CKEDITOR.replace( 'lapaperie_focusbundle_focustype_text',
-    {
-        toolbar : 'Bibi',
-    });
-</script>
-
-<script type="text/javascript">
-$(function() {
-        $("#lapaperie_focusbundle_focustype_publicationDate").datepicker(
-            $.datepicker.regional['fr']
-            )
-        });
-</script>
-
 
 {% endblock %}

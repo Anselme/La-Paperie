@@ -9,15 +9,21 @@ class CompanieType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
+
+        $dateArgsArray = array('required' => false,
+            'input' => 'datetime',
+            'widget' => 'single_text',
+            'format' => \IntlDateFormatter::SHORT);
+
         $builder
             ->add('name')
             ->add('creation')
-            ->add('date_residence_beginning','date', array('input' => 'datetime', 'widget' => 'single_text','format' => \IntlDateFormatter::SHORT))
-            ->add('date_residence_end','date', array('input' => 'datetime', 'widget' => 'single_text','format' => \IntlDateFormatter::SHORT))
-            ->add('date_sortie_de_fabrique','date', array('input' => 'datetime', 'widget' => 'single_text','format' => \IntlDateFormatter::SHORT))
+            ->add('date_residence_beginning','date', $dateArgsArray)
+            ->add('date_residence_end','date', $dateArgsArray)
+            ->add('date_sortie_de_fabrique','date', $dateArgsArray)
             ->add('short_text','textarea',array('required' => false))
             ->add('long_text','textarea',array('required' => false))
-        ;
+            ;
     }
 
     public function getName()

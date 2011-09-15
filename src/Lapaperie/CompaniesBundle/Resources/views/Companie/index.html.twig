@@ -12,8 +12,6 @@
             <th>Début de résidence</th>
             <th>Fin de résidence</th>
             <th>Sortie de Fabrique</th>
-            <th>Présentation</th>
-            <th>Détails</th>
         </tr>
     </thead>
     <tbody>
@@ -24,8 +22,6 @@
             <td>{{ entity.dateresidencebeginning|date('j M Y') }}</td>
             <td>{{ entity.dateresidenceend|date('j M Y') }}</td>
             <td>{{ entity.datesortiedefabrique|date('j M Y') }}</td>
-            <td>{{ entity.shorttext | truncate(100) }}</td>
-            <td>{{ entity.longtext  | truncate(150) }}</td>
         </tr>
     {% endfor %}
     </tbody>
