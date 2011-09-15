@@ -32,29 +32,6 @@ class FocusController extends Controller
     }
 
     /**
-     * Finds and displays a Focus entity.
-     *
-     * @Route("/{id}/show", name="focus_show")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('LapaperieFocusBundle:Focus')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Focus entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
-    }
-
-    /**
      * Displays a form to create a new Focus entity.
      *
      * @Route("/new", name="focus_new")
@@ -151,6 +128,7 @@ class FocusController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
+
             $em->persist($entity);
             $em->flush();
 
@@ -200,14 +178,4 @@ class FocusController extends Controller
         ;
     }
 
-    //désactive tous les focus sauf le courant
-    private function desactivateAllFocus()
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-        $entities = $em->getRepository('LapaperieFocusBundle:Focus')->findAll();
-        foreach($entities as $entity){
-            $entity->setIsOnLIne(false);
-        }
-        $em->flush();
-    }
 }

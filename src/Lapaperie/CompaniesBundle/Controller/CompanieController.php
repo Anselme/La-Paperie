@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use Lapaperie\CompaniesBundle\Entity\Companie;
 use Lapaperie\CompaniesBundle\Form\CompanieType;
 use Lapaperie\CompaniesBundle\Entity\ImageCompanie;
@@ -33,28 +34,6 @@ class CompanieController extends Controller
         return array('entities' => $entities);
     }
 
-    /**
-     * Finds and displays a Companie entity.
-     *
-     * @Route("/{id}/show", name="companie_show")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('LapaperieCompaniesBundle:Companie')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Companie entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
-    }
 
     /**
      * Displays a form to create a new Companie entity.
@@ -92,7 +71,6 @@ class CompanieController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            //return $this->redirect($this->generateUrl('companie_show', array('id' => $entity->getId())));
             return $this->redirect($this->generateUrl('companie' ));
 
         }
@@ -123,7 +101,7 @@ class CompanieController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        //Formulaire pouruploader une nouvelel image
+        //Formulaire pour uploader une nouvelle image
         $imageEntity = new ImageCompanie();
         $editImageForm = $this->createForm(new ImageCompanieType(), $imageEntity);
 
