@@ -7,7 +7,7 @@ CKEDITOR.editorConfig = function( config )
 {
 	// Define changes to default configuration here. For example:
 	 config.language = 'fr';
-	 config.uiColor = '#E32119';
+	 config.uiColor = '#56BCDA';
      config.toolbar_Bibi = 
          [
          [ 'Source', '-', 'Bold', 'Italic', 'FontSize', '-','NumberedList','BulletedList','-', 'Link','Unlink' ]

@@ -116,7 +116,7 @@ class Companie
      *
      * @param date $dateResidenceBeginning
      */
-    public function setDateResidenceBeginning($dateResidenceBeginning)
+    public function setDateResidenceBeginning(\DateTime $dateResidenceBeginning)
     {
         $this->date_residence_beginning = $dateResidenceBeginning;
     }
@@ -136,7 +136,7 @@ class Companie
      *
      * @param date $dateResidenceEnd
      */
-    public function setDateResidenceEnd($dateResidenceEnd)
+    public function setDateResidenceEnd(\DateTime $dateResidenceEnd)
     {
         $this->date_residence_end = $dateResidenceEnd;
     }
@@ -156,7 +156,7 @@ class Companie
      *
      * @param date $dateSortieDeFabrique
      */
-    public function setDateSortieDeFabrique($dateSortieDeFabrique)
+    public function setDateSortieDeFabrique(\DateTime $dateSortieDeFabrique)
     {
         $this->date_sortie_de_fabrique = $dateSortieDeFabrique;
     }

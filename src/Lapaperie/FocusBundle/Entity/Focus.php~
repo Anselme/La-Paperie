@@ -3,6 +3,8 @@
 namespace Lapaperie\FocusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Lapaperie\FocusBundle\Entity\Focus
@@ -50,16 +52,16 @@ class Focus
     private $publicationDate;
 
     /**
-     * @var string $vimeo
+     * @var string $video
      *
-     * @ORM\Column(name="vimeo", type="string", length=510)
+     * @ORM\Column(name="video", type="string", length=510, nullable="true")
      */
-    private $vimeo;
+    private $video;
 
     /**
      * @var string $legend
      *
-     * @ORM\Column(name="legend", type="string", length=255)
+     * @ORM\Column(name="legend", type="string", length=255, nullable="true")
      */
     private $legend;
 
@@ -67,7 +69,7 @@ class Focus
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -87,7 +89,7 @@ class Focus
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -107,7 +109,7 @@ class Focus
     /**
      * Get text
      *
-     * @return text 
+     * @return text
      */
     public function getText()
     {
@@ -127,7 +129,7 @@ class Focus
     /**
      * Get isOnLine
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsOnLine()
     {
@@ -139,7 +141,7 @@ class Focus
      *
      * @param date $publicationDate
      */
-    public function setPublicationDate($publicationDate)
+    public function setPublicationDate(\DateTime $publicationDate)
     {
         $this->publicationDate = $publicationDate;
     }
@@ -147,7 +149,7 @@ class Focus
     /**
      * Get publicationDate
      *
-     * @return date 
+     * @return date
      */
     public function getPublicationDate()
     {
@@ -155,23 +157,23 @@ class Focus
     }
 
     /**
-     * Set vimeo
+     * Set video
      *
-     * @param string $vimeo
+     * @param string $video
      */
-    public function setVimeo($vimeo)
+    public function setVideo($video)
     {
-        $this->vimeo = $vimeo;
+        $this->video = $video;
     }
 
     /**
-     * Get vimeo
+     * Get video
      *
-     * @return string 
+     * @return string
      */
-    public function getVimeo()
+    public function getVideo()
     {
-        return $this->vimeo;
+        return $this->video;
     }
 
     /**
@@ -187,7 +189,7 @@ class Focus
     /**
      * Get legend
      *
-     * @return string 
+     * @return string
      */
     public function getLegend()
     {

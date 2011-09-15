@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Lapaperie\VideoBundle\LapaperieVideoBundle(),
             new Lapaperie\CompaniesBundle\LapaperieCompaniesBundle(),
             new Lapaperie\FocusBundle\LapaperieFocusBundle(),
+            new Lapaperie\AdminBundle\LapaperieAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -3,6 +3,7 @@
 namespace Lapaperie\CompaniesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Lapaperie\CompaniesBundle\Entity\Companie
@@ -71,7 +72,7 @@ class Companie
     private $long_text;
 
     /**
-     * @ORM\OneToMany(targetEntity="imageCompanie", mappedBy="companie")
+     * @ORM\OneToMany(targetEntity="ImageCompanie", mappedBy="companie")
      */
     protected $images;
 
@@ -115,7 +116,7 @@ class Companie
      *
      * @param date $dateResidenceBeginning
      */
-    public function setDateResidenceBeginning($dateResidenceBeginning)
+    public function setDateResidenceBeginning(\DateTime $dateResidenceBeginning)
     {
         $this->date_residence_beginning = $dateResidenceBeginning;
     }
@@ -135,7 +136,7 @@ class Companie
      *
      * @param date $dateResidenceEnd
      */
-    public function setDateResidenceEnd($dateResidenceEnd)
+    public function setDateResidenceEnd(\DateTime $dateResidenceEnd)
     {
         $this->date_residence_end = $dateResidenceEnd;
     }
@@ -155,7 +156,7 @@ class Companie
      *
      * @param date $dateSortieDeFabrique
      */
-    public function setDateSortieDeFabrique($dateSortieDeFabrique)
+    public function setDateSortieDeFabrique(\DateTime $dateSortieDeFabrique)
     {
         $this->date_sortie_de_fabrique = $dateSortieDeFabrique;
     }
@@ -228,5 +229,25 @@ class Companie
     public function getCreation()
     {
         return $this->creation;
+    }
+
+    /**
+     * Add images
+     *
+     * @param Lapaperie\CompaniesBundle\Entity\ImageCompanie $image
+     */
+    public function addImageCompanie(\Lapaperie\CompaniesBundle\Entity\ImageCompanie $image)
+    {
+        $this->images[] = $image;
+    }
+
+    /**
+     * Get images
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

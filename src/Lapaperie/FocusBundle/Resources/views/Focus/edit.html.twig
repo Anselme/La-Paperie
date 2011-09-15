@@ -1,4 +1,4 @@
-{% extends "LapaperieCompaniesBundle::layout.html.twig" %}
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
 
 {% block content %}
 
@@ -66,8 +66,16 @@
     });
 </script>
 
-        <form action="{{ path('focus_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
+<script type="text/javascript">
+$(function() {
+        $("#lapaperie_focusbundle_focustype_publicationDate").datepicker(
+            $.datepicker.regional['fr']
+            )
+        });
+</script>
+
+<form action="{{ path('focus_delete', { 'id': entity.id }) }}" method="post">
+{{ form_widget(delete_form) }}
             <button type="submit" class="btn danger">Supprimer ce Focus</button>
         </form>
 {% endblock %}

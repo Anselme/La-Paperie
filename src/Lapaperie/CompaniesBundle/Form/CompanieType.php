@@ -12,9 +12,9 @@ class CompanieType extends AbstractType
         $builder
             ->add('name')
             ->add('creation')
-            ->add('date_residence_beginning')
-            ->add('date_residence_end')
-            ->add('date_sortie_de_fabrique')
+            ->add('date_residence_beginning','date', array('widget' => 'single_text'))
+            ->add('date_residence_end','date', array('widget' => 'single_text'))
+            ->add('date_sortie_de_fabrique','date', array('widget' => 'single_text'))
             ->add('short_text','textarea',array('required' => false))
             ->add('long_text','textarea',array('required' => false))
         ;

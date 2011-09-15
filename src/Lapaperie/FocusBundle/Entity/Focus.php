@@ -3,6 +3,8 @@
 namespace Lapaperie\FocusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Lapaperie\FocusBundle\Entity\Focus
@@ -52,14 +54,14 @@ class Focus
     /**
      * @var string $video
      *
-     * @ORM\Column(name="video", type="string", length=510)
+     * @ORM\Column(name="video", type="string", length=510, nullable="true")
      */
     private $video;
 
     /**
      * @var string $legend
      *
-     * @ORM\Column(name="legend", type="string", length=255)
+     * @ORM\Column(name="legend", type="string", length=255, nullable="true")
      */
     private $legend;
 
@@ -139,7 +141,7 @@ class Focus
      *
      * @param date $publicationDate
      */
-    public function setPublicationDate($publicationDate)
+    public function setPublicationDate(\DateTime $publicationDate)
     {
         $this->publicationDate = $publicationDate;
     }
