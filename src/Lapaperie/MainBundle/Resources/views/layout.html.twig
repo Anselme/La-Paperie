@@ -4,6 +4,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/reset.css') }}" type="text/css" media="all" />
         <link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/style.css') }}" type="text/css" media="all" />
+        {% block css %}{% endblock %}
+        {% block js %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         <title>{% block title %}La Paperie - Centre National des Arts de la Rue{% endblock %}</title>
     </head>

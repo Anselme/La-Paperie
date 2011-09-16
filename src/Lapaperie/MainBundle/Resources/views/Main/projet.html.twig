@@ -4,6 +4,15 @@
 La Paperie - {{ companie.name }}
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/prettyPhoto.css') }}" type="text/css" media="screen" charset="utf-8" />
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+<script src="{{ asset('bundles/lapaperiemain/js/jquery.prettyPhoto.js') }}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
 
 {% block content %}
 
@@ -42,13 +51,21 @@ La Paperie - {{ companie.name }}
 
 <div class="gallerie_thumbnails">
   {% for image in companie.images %}
-    <img src="{{ image.getWebPath | apply_filter('companie_thumbnail') }}" alt="{{ companie.name }}" width="84" />
+  <a href="{{ image.getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
+  <img src="{{ image.getWebPath | apply_filter('companie_thumbnail') }}" alt="{{ companie.name }}" width="84" />
+  </a>
   {% endfor %}
   </div>
 
 </div>
 
 <div class="clear"></div>
-
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+theme: 'light_rounded'
+    });
+  });
+</script>
 
 {% endblock %}

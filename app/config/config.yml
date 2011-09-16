@@ -68,6 +68,9 @@ jms_security_extra:
 # Imagine Configuration (thumbnails creation)
 avalanche_imagine:
     filters:
+       companie_big:
+           type:    thumbnail
+           options: { size: [504,420], mode: outbound}
        companie:
            type:    thumbnail
            options: { size: [252,210], mode: outbound}
