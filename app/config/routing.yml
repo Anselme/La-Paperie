@@ -33,3 +33,12 @@ LapaperieAgendaBundle:
 _imagine:
     resource: .
     type:     imagine
+
+#Security Admin
+login:
+    pattern: /login
+    defaults: {_controller: LapaperieAdminBundle:Admin:login }
+login_check:
+    pattern: /login_check
+logout:
+    pattern: /logout

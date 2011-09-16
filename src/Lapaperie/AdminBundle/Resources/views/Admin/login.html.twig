@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{{ asset('bundles/lapaperieadmin/css/bootstrap-1.2.0.min.css') }}" type="text/css" media="all" />
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+<title>{% block title %}La Paperie - Administration du site{% endblock %}</title>
+</head>
+
+<body>
+<div class="container">
+{% if error %}
+<div class="alert-message error">{{ error.message }}</div>
+{% endif %}
+
+<form action="{{ path('login_check') }}" method="post">
+<fieldset>
+<legend>Accès au Back-Office</legend>
+<div class="clearfix">
+<label for="username">Identifiant :</label>
+<div class="input">
+<input type="text" id="username" name="_username" value="{{ last_username }}" />
+</div>
+</div>
+
+<div class="clearfix">
+<label for="password">Mot de passe :</label>
+<div class="input">
+<input type="password" id="password" name="_password" />
+</div>
+</div>
+
+<input type="hidden" name="_target_path" value="/admin/focus" />
+
+<input type="submit" name="login" class="btn primary" value="S'identifier"/>
+<fieldset>
+</form>
+</div>
+</body>
+</html>

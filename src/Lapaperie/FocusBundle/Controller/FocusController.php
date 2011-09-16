@@ -12,7 +12,7 @@ use Lapaperie\FocusBundle\Form\FocusType;
 /**
  * Focus controller.
  *
- * @Route("/focus")
+ * @Route("/admin/focus")
  */
 class FocusController extends Controller
 {

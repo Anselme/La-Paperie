@@ -15,7 +15,7 @@ use Lapaperie\CompaniesBundle\Form\ImageCompanieType;
 /**
  * Companie controller.
  *
- * @Route("/companie")
+ * @Route("/admin/companie")
  */
 class CompanieController extends Controller
 {
