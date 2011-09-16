@@ -37,7 +37,9 @@ La Paperie - {{ companie.name }}
     {% if companie.images.isEmpty %}
     <img src="{{  asset('bundles/lapaperiemain/images/caravanelapaperie_original.png') }}" width="143" alt="Pas d'images pour cette Companie" />
     {% else %}
+  <a href="{{ companie.images[0].getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
     <img src="{{ companie.images[0].getWebPath | apply_filter('companie') }}" alt="{{ companie.name }}" width="252" />
+    </a>
     {% endif %}
 
     </div>
@@ -60,12 +62,5 @@ La Paperie - {{ companie.name }}
 </div>
 
 <div class="clear"></div>
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-    $("a[rel^='prettyPhoto']").prettyPhoto({
-theme: 'light_rounded'
-    });
-  });
-</script>
 
 {% endblock %}
