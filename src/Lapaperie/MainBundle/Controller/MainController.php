@@ -19,6 +19,21 @@ class MainController extends Controller
         return $this->render('LapaperieMainBundle:Main:index.html.twig', array('focus' => $focus));
     }
 
+    public function equipeAction()
+    {
+        return $this->render('LapaperieMainBundle:Paperie:equipe.html.twig');
+    }
+
+    public function descriptionAction()
+    {
+        return $this->render('LapaperieMainBundle:Paperie:description.html.twig');
+    }
+
+    public function formationAction()
+    {
+        return $this->render('LapaperieMainBundle:Paperie:formation.html.twig');
+    }
+
     public function diffusionAction()
     {
         return $this->render('LapaperieMainBundle:Main:diffusion-infusion.html.twig');
@@ -27,6 +42,16 @@ class MainController extends Controller
     public function soutienAction()
     {
         return $this->render('LapaperieMainBundle:Main:soutien-creation.html.twig');
+    }
+
+    public function terAction()
+    {
+        return $this->render('LapaperieMainBundle:Soutien:ter.html.twig');
+    }
+
+    public function solliciterAction()
+    {
+        return $this->render('LapaperieMainBundle:Soutien:solliciter.html.twig');
     }
 
     public function projetsAction()

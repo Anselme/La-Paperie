@@ -2,25 +2,36 @@ LapaperieMainBundle_homepage:
     pattern:  /
     defaults: { _controller: LapaperieMainBundle:Main:index }
 
-#ci-dessous routing provisoire pour avoir mes menus
+LapaperieMainBundle_homepage_partners:
+    pattern: /equipe-partenaires
+    defaults: { _controller: LapaperieMainBundle:Main:equipe }
+
+LapaperieMainBundle_homepage_description:
+    pattern: /description
+    defaults: { _controller: LapaperieMainBundle:Main:description }
+
+LapaperieMainBundle_homepage_formation:
+    pattern: /formation
+    defaults: { _controller: LapaperieMainBundle:Main:formation }
+
 LapaperieMainBundle_soutiencreation:
     pattern:  /soutien-creation
     defaults: { _controller: LapaperieMainBundle:Main:soutien }
 
 LapaperieMainBundle_soutiencreation_ter:
-    pattern:  /soutien-creation
-    defaults: { _controller: LapaperieMainBundle:Main:soutien }
+    pattern:  /soutien-creation/ter
+    defaults: { _controller: LapaperieMainBundle:Main:ter }
 
 LapaperieMainBundle_soutiencreation_projets:
-    pattern:  /soutien-creation-projets
+    pattern:  /soutien-creation/projets
     defaults: { _controller: LapaperieMainBundle:Main:projets }
 projet_show:
-    pattern:  /soutien-creation-projets/{id}
+    pattern:  /soutien-creation/projets/{id}
     defaults: { _controller: LapaperieMainBundle:Main:projet }
 
 LapaperieMainBundle_soutiencreation_solliciter:
-    pattern:  /soutien-creation
-    defaults: { _controller: LapaperieMainBundle:Main:soutien }
+    pattern:  /soutien-creation/solliciter-residence
+    defaults: { _controller: LapaperieMainBundle:Main:solliciter }
 
 LapaperieMainBundle_actionculturelle:
     pattern:  /action-culturelle
