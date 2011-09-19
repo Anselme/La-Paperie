@@ -7,7 +7,7 @@ La Paperie - Centre National des Arts de la Rue - Soutien à la Création
 {% block menu %}soutien{% endblock %}
 
 {% block sousmenu %}
-{% include "LapaperieMainBundle:Soutien:submenu.html.twig" %}
+{% include "LapaperieMainBundle:Soutien:submenu.html.twig"  with {"subcurrent": block('submenu')} %}
 {% endblock %}
 
 {% block content %}

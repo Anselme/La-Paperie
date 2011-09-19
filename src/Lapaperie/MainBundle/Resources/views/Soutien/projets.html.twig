@@ -4,9 +4,10 @@
 La Paperie - Centre National des Arts de la Rue - Les projets
 {% endblock %}
 
+{% block submenu %}projets{% endblock %}
 
 {% block content %}
-<h2>Les projets soutenus en 2011</h2>
+<h2>Les projets soutenus</h2>
 <ul>
 {% for companie in companies %}
 <li>En résidence du {{ companie.dateresidencebeginning | date('j F') }} au {{ companie.dateresidenceend  | date('j F Y') }} :

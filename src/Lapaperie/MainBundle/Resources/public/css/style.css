@@ -175,10 +175,18 @@ p {
 
 #home_right {
     position: relative;
-    float: right;
+    float: left;
+    padding-left: 2em;
+    margin-left: 2em;
 }
 
 strong {
+    font-style: inherit;
+    font-weight: bold;
+    font-height: inherit;
+}
+
+.strong {
     font-style: inherit;
     font-weight: bold;
     font-height: inherit;

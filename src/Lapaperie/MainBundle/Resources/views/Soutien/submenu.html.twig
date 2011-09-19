@@ -1,12 +1,12 @@
 
 <ul id="subnav">
-<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_soutiencreation_ter' ? 'active' : ''}}" >
+<li class="{{ 'ter' == subcurrent ? 'active' : ''}}" >
 <a href="{{ path('LapaperieMainBundle_soutiencreation_ter') }}">T.E.R.</a>
 </li>
-<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_soutiencreation_projets' ? 'active' : ''}}" >
+<li class="{{ 'projets' == subcurrent ? 'active' : ''}}" >
 <a href="{{ path('LapaperieMainBundle_soutiencreation_projets') }}">les projets soutenus</a>
 </li>
-<li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_soutiencreation_solliciter' ? 'active' : ''}}" >
+<li class="{{ 'solliciter' == subcurrent ? 'active' : ''}}" >
 <a href="{{ path('LapaperieMainBundle_soutiencreation_solliciter') }}">solliciter une résidence</a>
 </li>
 </ul>
