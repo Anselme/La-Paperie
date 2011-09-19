@@ -4,12 +4,14 @@
 La Paperie - Centre National des Arts de la Rue - Diffusion/Infusion
 {% endblock %}
 
+{% block menu %}diffusion{% endblock %}
+
 {% block sousmenu %}
-<ul id="subnav">
+<!-- ul id="subnav">
 <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_diffusioninfusion' ? 'active' : ''}}" >
 <a href="{{ path('LapaperieMainBundle_diffusioninfusion') }}">artistes en mouvements</a>
 </li>
-</ul>
+</ul-->
 {% endblock %}
 
 {% block content %}

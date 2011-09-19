@@ -1,0 +1,23 @@
+
+<ul>
+
+<li class="{{ 'paperie' == current ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_homepage_paperie') }}">La Paperie</a>
+</li>
+<li class="{{ 'soutien' == current ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_soutiencreation') }}">le soutien à la création</a>
+</li>
+<li class="{{ 'action' == current ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_actionculturelle') }}">action culturelle</a>
+</li>
+<li class="{{ 'diffusion' == current ? 'active' : ''}}" >
+<a href="{{ path('LapaperieMainBundle_diffusioninfusion') }}">diffusion - infusion</a>
+</li>
+<li class="{{ 'agenda' == current ? 'active' : ''}}" >
+<a href="{{ path('LapaperieAgendaBundle_home') }}">agenda</a>
+</li>
+<li class="{{ 'video' == current ? 'active' : ''}}" >
+<a href="{{ path('LapaperieVideoBundle_home') }}">vidéos</a>
+</li>
+
+</ul>

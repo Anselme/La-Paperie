@@ -35,7 +35,7 @@
                 <img src="{{ asset('bundles/lapaperiemain/images/facebook.png') }}" width="32" height="32" alt="Facebook"/>
             </a>
             <!--a href="" title="Suivre le flux RSS de La Paperie">
-                <img src="{{ asset('bundles/lapaperiemain/images/rss.png') }}" width="32" height="32" alt="RSS"/>
+            <img src="{{ asset('bundles/lapaperiemain/images/rss.png') }}" width="32" height="32" alt="RSS"/>
             </a-->
             <a href="mailto:contact@lapaperie.fr" title="Nous écrire à contact@lapaperie.fr">
                 <img src="{{ asset('bundles/lapaperiemain/images/mail.png') }}" width="32" height="32" alt="Mail"/>
@@ -44,64 +44,46 @@
         </header>
         <div id="main">
             <nav id="mainnav" class="clear">
-            <ul>
 
-                <li class="{{ app.request.attributes.get('_route') == 'LapaperieMainBundle_homepage_paperie' ? 'active' : ''}}" >
-                <a href="{{ path('LapaperieMainBundle_homepage_paperie') }}">La Paperie</a>
-                </li>
-                <li class="{{ app.request.attributes.get('_route') == 'LapaperieMainBundle_soutiencreation' ? 'active' : ''}}" >
-                <a href="{{ path('LapaperieMainBundle_soutiencreation') }}">le soutien à la création</a>
-                </li>
-                <li class="{{ app.request.attributes.get('_route') == 'LapaperieMainBundle_actionculturelle' ? 'active' : ''}}" >
-                <a href="{{ path('LapaperieMainBundle_actionculturelle') }}">action culturelle</a>
-                </li>
-                <li class="{{ app.request.attributes.get('_route') == 'LapaperieMainBundle_diffusioninfusion' ? 'active' : ''}}" >
-                <a href="{{ path('LapaperieMainBundle_diffusioninfusion') }}">diffusion - infusion</a>
-                </li>
-                <li class="{{ app.request.attributes.get('_route') == 'LapaperieAgendaBundle_home' ? 'active' : ''}}" >
-        <a href="{{ path('LapaperieAgendaBundle_home') }}">agenda</a>
-        </li>
-        <li class="{{ app.request.attributes.get('_route') == 'LapaperieVideoBundle_home' ? 'active' : ''}}" >
-        <a href="{{ path('LapaperieVideoBundle_home') }}">vidéos</a>
-        </li>
+            {% include "LapaperieMainBundle::menu.html.twig" with {"current": block('menu')} %}
 
-    </ul>
+            {% block sousmenu %}
+            {% endblock %}
 
-   {% block sousmenu %}
-   {% endblock %}
-    </nav>
+            </nav>
 
-<div class="dotted_line"></div>
+            <div class="dotted_line"></div>
 
-<div id="content">
-    {% block content %}
-    {% endblock %}
-</div>
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
 
-<div class="dotted_line"></div>
-<div class="float_right">
-    <a href="" class="red_button">Abonnez-vous aux News</a>
-    <a href="{{ path('LapaperieMainBundle_soutiencreation_solliciter') }}" class="red_button">Solliciter une Résidence</a>
-</div>
-</div>
+            <div class="dotted_line"></div>
 
-<footer>
-    {% block footer %}
-    {% endblock %}
-</footer>
+            <div class="float_right">
+                <a href="" class="red_button">Abonnez-vous aux News</a>
+                <a href="{{ path('LapaperieMainBundle_soutiencreation_solliciter') }}" class="red_button">Solliciter une Résidence</a>
+            </div>
+        </div>
 
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-16774877-1']);
-_gaq.push(['_trackPageview']);
+        <footer>
+        {% block footer %}
+        {% endblock %}
+        </footer>
 
-(function() {
- var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
- ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
- var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
- })();
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-16774877-1']);
+            _gaq.push(['_trackPageview']);
 
-</script>
-<script type="text/javascript" src="{{ asset('bundles/lapaperiemain/js/lapaperie.js') }}"></script>
-</body>
-</html>
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+             })();
+
+         </script>
+         <script type="text/javascript" src="{{ asset('bundles/lapaperiemain/js/lapaperie.js') }}"></script>
+     </body>
+ </html>

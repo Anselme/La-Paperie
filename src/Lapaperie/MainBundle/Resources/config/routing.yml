@@ -7,19 +7,19 @@ LapaperieMainBundle_homepage_paperie:
     defaults: { _controller: LapaperieMainBundle:Main:paperie }
 
 LapaperieMainBundle_homepage_cnar:
-    pattern:  /cnar
+    pattern:  /la-paperie/cnar
     defaults: { _controller: LapaperieMainBundle:Main:cnar }
 
 LapaperieMainBundle_homepage_partners:
-    pattern: /equipe-partenaires
+    pattern: /la-paperie/equipe-partenaires
     defaults: { _controller: LapaperieMainBundle:Main:equipe }
 
 LapaperieMainBundle_homepage_description:
-    pattern: /description
+    pattern: /la-paperie/description
     defaults: { _controller: LapaperieMainBundle:Main:description }
 
 LapaperieMainBundle_homepage_formation:
-    pattern: /formation
+    pattern: /la-paperie/formation
     defaults: { _controller: LapaperieMainBundle:Main:formation }
 
 LapaperieMainBundle_soutiencreation:
