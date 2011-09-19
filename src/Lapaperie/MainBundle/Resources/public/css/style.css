@@ -37,6 +37,11 @@ ul#subnav li a:hover,
 ul#subnav li.active a
 {background-color: #FFF; color: #E32119; text-decoration: underline;}
 
+/* Social */
+#social a {
+    text-decoration: none;
+}
+
 .dotted_line {
     margin-top: 1em;
     padding-top: 1em;
