@@ -19,6 +19,16 @@ class MainController extends Controller
         return $this->render('LapaperieMainBundle:Main:index.html.twig', array('focus' => $focus));
     }
 
+    public function paperieAction()
+    {
+        return $this->render('LapaperieMainBundle:Paperie:paperie.html.twig');
+    }
+
+    public function cnarAction()
+    {
+        return $this->render('LapaperieMainBundle:Paperie:cnar.html.twig');
+    }
+
     public function equipeAction()
     {
         return $this->render('LapaperieMainBundle:Paperie:equipe.html.twig');
@@ -59,7 +69,7 @@ class MainController extends Controller
         $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
         $companies = $repository->findAll();
 
-        return $this->render('LapaperieMainBundle:Main:projets.html.twig', array('companies' => $companies));
+        return $this->render('LapaperieMainBundle:Soutien:projets.html.twig', array('companies' => $companies));
     }
 
     public function projetAction($id)
@@ -68,7 +78,7 @@ class MainController extends Controller
         $companies = $repository->findAll();
         $companie = $repository->findOneById($id);
 
-        return $this->render('LapaperieMainBundle:Main:projet.html.twig', array('companies' => $companies, 'companie' => $companie));
+        return $this->render('LapaperieMainBundle:Soutien:projet.html.twig', array('companies' => $companies, 'companie' => $companie));
     }
 
     public function culturelleAction()

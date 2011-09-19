@@ -7,11 +7,11 @@ La Paperie - Centre National des Arts de la Rue - Action Culturelle
 {% block sousmenu %}
 <ul id="subnav">
 <li class="{{ app.request.attributes.get('_route')== 'LapaperieMainBundle_actionculturelle' ? 'active' : ''}}" >
-<a href="{{ path('LapaperieMainBundle_actionculturelle') }}">Action culturelle</a>
+<a href="{{ path('LapaperieMainBundle_actionculturelle') }}">action culturelle</a>
 </li>
 </ul>
 {% endblock %}
 
 {% block content %}
-Contenu de Action Culturelle 
+<h2>Contenu de Action Culturelle</h2>
 {% endblock %}

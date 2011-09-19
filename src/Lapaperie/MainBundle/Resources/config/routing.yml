@@ -2,6 +2,14 @@ LapaperieMainBundle_homepage:
     pattern:  /
     defaults: { _controller: LapaperieMainBundle:Main:index }
 
+LapaperieMainBundle_homepage_paperie:
+    pattern:  /la-paperie
+    defaults: { _controller: LapaperieMainBundle:Main:paperie }
+
+LapaperieMainBundle_homepage_cnar:
+    pattern:  /cnar
+    defaults: { _controller: LapaperieMainBundle:Main:cnar }
+
 LapaperieMainBundle_homepage_partners:
     pattern: /equipe-partenaires
     defaults: { _controller: LapaperieMainBundle:Main:equipe }
