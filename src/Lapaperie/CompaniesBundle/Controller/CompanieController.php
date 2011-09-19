@@ -34,29 +34,10 @@ class CompanieController extends Controller
         return array('entities' => $entities);
     }
 
-
-    /**
-     * Displays a form to create a new Companie entity.
-     *
-     * @Route("/new", name="companie_new")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Companie();
-        $form   = $this->createForm(new CompanieType(), $entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView()
-        );
-    }
-
     /**
      * Creates a new Companie entity.
      *
      * @Route("/create", name="companie_create")
-     * @Method("post")
      * @Template("LapaperieCompaniesBundle:Companie:new.html.twig")
      */
     public function createAction()
@@ -64,15 +45,19 @@ class CompanieController extends Controller
         $entity  = new Companie();
         $request = $this->getRequest();
         $form    = $this->createForm(new CompanieType(), $entity);
-        $form->bindRequest($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($entity);
-            $em->flush();
+        if ($request->getMethod() == 'POST') {
 
-            return $this->redirect($this->generateUrl('companie' ));
+            $form->bindRequest($request);
 
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('companie' ));
+
+            }
         }
 
         return array(
@@ -91,39 +76,6 @@ class CompanieController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $companyEntity = $em->getRepository('LapaperieCompaniesBundle:Companie')->find($id);
-
-        if (!$companyEntity) {
-            throw $this->createNotFoundException('Unable to find Companie entity.');
-        }
-
-        $editForm = $this->createForm(new CompanieType(), $companyEntity);
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        //Formulaire pour uploader une nouvelle image
-        $imageEntity = new ImageCompanie();
-        $editImageForm = $this->createForm(new ImageCompanieType(), $imageEntity);
-
-        return array(
-            'entity'      => $companyEntity,
-            'edit_form'   => $editForm->createView(),
-            'edit_image_form'   => $editImageForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-     * Edits an existing Companie entity.
-     *
-     * @Route("/{id}/update", name="companie_update")
-     * @Method("post")
-     * @Template("LapaperieCompaniesBundle:Companie:edit.html.twig")
-     */
-    public function updateAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
         $entity = $em->getRepository('LapaperieCompaniesBundle:Companie')->find($id);
 
         if (!$entity) {
@@ -139,29 +91,32 @@ class CompanieController extends Controller
 
         $request = $this->getRequest();
 
-        //update Companie ou Image ?
-        if($request->request->get('lapaperie_companiesbundle_imagecompanietype'))
-        {
-            $editImageForm->bindRequest($request);
+        if ($request->getMethod() == 'POST') {
 
-            if ($editImageForm->isValid()) {
-                $imageEntity->upload($entity);
-                $em->persist($imageEntity);
-                $em->flush();
+            //update Companie ou Image ?
+            if($request->request->get('lapaperie_companiesbundle_imagecompanietype'))
+            {
+                $editImageForm->bindRequest($request);
 
-                return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+                if ($editImageForm->isValid()) {
+                    $imageEntity->upload($entity);
+                    $em->persist($imageEntity);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+                }
             }
-        }
-        else
-        {
+            else
+            {
 
-            $editForm->bindRequest($request);
+                $editForm->bindRequest($request);
 
-            if ($editForm->isValid()) {
-                $em->persist($entity);
-                $em->flush();
+                if ($editForm->isValid()) {
+                    $em->persist($entity);
+                    $em->flush();
 
-                return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+                    return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+                }
             }
         }
 

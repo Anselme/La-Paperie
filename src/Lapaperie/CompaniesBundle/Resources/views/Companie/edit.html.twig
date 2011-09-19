@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="{{ path('companie_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<form action="{{ path('companie_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 
     {{ form_errors(edit_form) }}
 
@@ -63,7 +63,7 @@
         <button type="submit" class="btn primary">Enregistrer les modifications</button>
 </form>
 
-<form action="{{ path('companie_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_image_form) }}>
+<form action="{{ path('companie_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_image_form) }}>
     {{ form_errors(edit_image_form) }}
 <fieldset>
     <legend>Images Associées à la companie "{{ entity.name }}"</legend>
