@@ -52,8 +52,6 @@ class NewsletterController extends Controller
                 $em->persist($inscription);
                 $em->flush();
 
-                //
-
                 return $this->redirect($this->generateUrl('newsletter_create' ));
             }
         }
