@@ -29,9 +29,16 @@ class Inscription
     private $date_inscription;
 
     /**
+     * @var datetime $date_confirmation
+     *
+     * @ORM\Column(name="date_confirmation", type="datetime", nullable="true")
+     */
+    private $date_confirmation;
+
+    /**
      * @var datetime $date_unscribe
      *
-     * @ORM\Column(name="date_unscribe", type="datetime")
+     * @ORM\Column(name="date_unscribe", type="datetime", nullable="true")
      */
     private $date_unscribe;
 
@@ -55,6 +62,13 @@ class Inscription
      */
     protected $subscriber;
 
+    function __construct()
+    {
+        $this->setDateInscription(new \DateTime());
+        $this->setTokken(md5(uniqid()));
+        $this->setConfirmation(false);
+    }
+
     /**
      * Get id
      *
@@ -70,7 +84,7 @@ class Inscription
      *
      * @param datetime $dateInscription
      */
-    public function setDateInscription($dateInscription)
+    public function setDateInscription(\DateTime $dateInscription)
     {
         $this->date_inscription = $dateInscription;
     }
@@ -90,7 +104,7 @@ class Inscription
      *
      * @param datetime $dateUnscribe
      */
-    public function setDateUnscribe($dateUnscribe)
+    public function setDateUnscribe( \DateTime $dateUnscribe = null)
     {
         $this->date_unscribe = $dateUnscribe;
     }
@@ -130,7 +144,7 @@ class Inscription
      *
      * @param boolean $confirmation
      */
-    public function setConfirmation($confirmation)
+    public function setConfirmation($confirmation = false)
     {
         $this->confirmation = $confirmation;
     }
@@ -143,5 +157,25 @@ class Inscription
     public function getConfirmation()
     {
         return $this->confirmation;
+    }
+
+    /**
+     * Set subscriber
+     *
+     * @param Lapaperie\NewsletterBundle\Entity\Subscriber $subscriber
+     */
+    public function setSubscriber(\Lapaperie\NewsletterBundle\Entity\Subscriber $subscriber)
+    {
+        $this->subscriber = $subscriber;
+    }
+
+    /**
+     * Get subscriber
+     *
+     * @return Lapaperie\NewsletterBundle\Entity\Subscriber
+     */
+    public function getSubscriber()
+    {
+        return $this->subscriber;
     }
 }

@@ -1,24 +1,23 @@
-
 <form action="{{ path('newsletter_create') }}" method="post" >
     {{ form_errors(form) }}
 <fieldset>
-    <legend>Inscription à notre newsletter</legend>
-    <div class="clearfix">
-    {{ form_label(form.email, 'Courriel') }}
+    <h2>Newsletter de La Paperie</h2>
+    <div class="clear">
+    {{ form_label(form.email, 'Courriel(*) :') }} 
     <div class="input">
     {{ form_errors(form.email) }}
     {{ form_widget(form.email) }}
     </div>
     </div>
-    <div class="clearfix">
-    {{ form_label(form.firstname, 'Prénom') }}
+    <div class="clear">
+    {{ form_label(form.firstname, 'Prénom :') }}
     <div class="input">
     {{ form_errors(form.firstname) }}
     {{ form_widget(form.firstname) }}
     </div>
     </div>
-    <div class="clearfix">
-    {{ form_label(form.lastname, 'Nom') }}
+    <div class="clear">
+    {{ form_label(form.lastname, 'Nom :') }}
     <div class="input">
     {{ form_errors(form.lastname) }}
     {{ form_widget(form.lastname) }}
@@ -26,5 +25,7 @@
     </div>
     {{ form_rest(form) }}
 </fieldset>
+<p>
         <button type="submit" class="">S'inscrire à notre Newsletter</button>
+</p>
 </form>

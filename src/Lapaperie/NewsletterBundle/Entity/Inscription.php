@@ -29,6 +29,13 @@ class Inscription
     private $date_inscription;
 
     /**
+     * @var datetime $date_confirmation
+     *
+     * @ORM\Column(name="date_confirmation", type="datetime", nullable="true")
+     */
+    private $date_confirmation;
+
+    /**
      * @var datetime $date_unscribe
      *
      * @ORM\Column(name="date_unscribe", type="datetime", nullable="true")
@@ -58,7 +65,7 @@ class Inscription
     function __construct()
     {
         $this->setDateInscription(new \DateTime());
-        $this->setTokken("123");
+        $this->setTokken(md5(uniqid()));
         $this->setConfirmation(false);
     }
 
@@ -170,5 +177,25 @@ class Inscription
     public function getSubscriber()
     {
         return $this->subscriber;
+    }
+
+    /**
+     * Set date_confirmation
+     *
+     * @param datetime $dateConfirmation
+     */
+    public function setDateConfirmation(\DateTime $dateConfirmation)
+    {
+        $this->date_confirmation = $dateConfirmation;
+    }
+
+    /**
+     * Get date_confirmation
+     *
+     * @return datetime
+     */
+    public function getDateConfirmation()
+    {
+        return $this->date_confirmation;
     }
 }

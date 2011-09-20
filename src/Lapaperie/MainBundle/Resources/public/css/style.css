@@ -197,3 +197,18 @@ em {
     font-weight: inherit;
     font-height: inherit;
 }
+
+label {
+    float: left;
+    text-align: right;
+    padding-top: 6px;
+    width: 130px;
+}
+
+div.input {
+    margin-left: 150px;
+}
+
+form .clear {
+    margin-bottom: 18px;
+}

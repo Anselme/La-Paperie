@@ -4,6 +4,7 @@ namespace Lapaperie\NewsletterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Lapaperie\NewsletterBundle\Entity\Subscriber
@@ -25,14 +26,14 @@ class Subscriber
     /**
      * @var string $firstname
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255, nullable="true")
      */
     private $firstname;
 
     /**
      * @var string $lastname
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
+     * @ORM\Column(name="lastname", type="string", length=255, nullable="true")
      */
     private $lastname;
 
@@ -40,6 +41,7 @@ class Subscriber
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -122,5 +124,25 @@ class Subscriber
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Add inscriptions
+     *
+     * @param Lapaperie\NewsletterBundle\Entity\Inscription $inscriptions
+     */
+    public function addInscription(\Lapaperie\NewsletterBundle\Entity\Inscription $inscriptions)
+    {
+        $this->inscriptions[] = $inscriptions;
+    }
+
+    /**
+     * Get inscriptions
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getInscriptions()
+    {
+        return $this->inscriptions;
     }
 }
