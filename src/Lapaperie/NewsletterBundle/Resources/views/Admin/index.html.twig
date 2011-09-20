@@ -21,9 +21,21 @@
             <td>{{ entity.lastname}}</td>
             <td>{{ entity.firstname}}</td>
             <td>{{ entity.email}}</td>
-            <td>{{ entity.inscriptions[0].dateinscription | date('j M Y') }}</td>
-            <td>{{ entity.inscriptions[0].dateconfirmation | date('j M Y') }}</td>
-            <td>{{ entity.inscriptions[0].dateunscribe | date('j M Y') }}</td>
+            <td>
+            {% if  entity.inscriptions[0].dateinscription %}
+            {{ entity.inscriptions[0].dateinscription | date('j M Y') }}
+            {% endif %}
+            </td>
+            <td>
+            {% if  entity.inscriptions[0].dateconfirmation %}
+            {{ entity.inscriptions[0].dateconfirmation | date('j M Y') }}
+            {% endif %}
+            </td>
+            <td>
+            {% if  entity.inscriptions[0].dateunscribe %}
+            {{ entity.inscriptions[0].dateunscribe | date('j M Y') }}
+            {% endif %}
+            </td>
         </tr>
     {% endfor %}
     </tbody>
