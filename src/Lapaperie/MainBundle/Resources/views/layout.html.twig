@@ -3,9 +3,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/reset.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/prettyPhoto.css') }}" type="text/css" media="screen" charset="utf-8" />
         <link rel="stylesheet" href="{{ asset('bundles/lapaperiemain/css/style.css') }}" type="text/css" media="all" />
         {% block css %}{% endblock %}
-        {% block js %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         <title>{% block title %}La Paperie - Centre National des Arts de la Rue{% endblock %}</title>
     </head>
@@ -62,7 +62,7 @@
             <div class="dotted_line"></div>
 
             <div class="float_right">
-                <a href="" class="red_button">Abonnez-vous aux News</a>
+                <a href="{{ path('newsletter_create') }}?ajax=true&width=450&height=250" class="red_button" rel="prettyNewsletter[ajax]">Abonnez-vous aux News</a>
                 <a href="{{ path('LapaperieMainBundle_soutiencreation_solliciter') }}" class="red_button">Solliciter une Résidence</a>
             </div>
         </div>
@@ -84,6 +84,9 @@
              })();
 
          </script>
+         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+         <script src="{{ asset('bundles/lapaperiemain/js/jquery.prettyPhoto.js') }}" type="text/javascript" charset="utf-8"></script>
          <script type="text/javascript" src="{{ asset('bundles/lapaperiemain/js/lapaperie.js') }}"></script>
+        {% block js %}{% endblock %}
      </body>
  </html>

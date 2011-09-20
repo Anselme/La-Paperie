@@ -1,0 +1,7 @@
+parameters:
+    contact_email_from: no-reply@lapaperie.fr
+
+services:
+#    act_envcontact.example:
+#        class: %act_envcontact.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
