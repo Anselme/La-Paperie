@@ -78,7 +78,7 @@ class NewsletterController extends Controller
                         array('firstname' => $firstname,
                         'lastname' => $lastname,
                         'courriel' => $courriel,
-                        'tokken' => $inscription->getTokken(),
+                        'token' => $inscription->getToken(),
                     )
                 ));
 
@@ -106,11 +106,12 @@ class NewsletterController extends Controller
     {
         //$request = $this->getRequest();
         $courriel = $request->query->get('email');
-        $tokken = $request->query->get('tokken');
+        $token = $request->query->get('tokken');
 
         $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('LapaperieNewsletterBundle:Inscription');
-        $inscription = $repository->findOneByTokken($tokken);
+        $inscription = $repository->findOneBytoken($tokken);
+
         if(!$inscription)
         {
             throw $this->createNotFoundException('Pas d\'inscription à la Newsletter');
@@ -129,6 +130,20 @@ class NewsletterController extends Controller
         $inscription->setConfirmation(true);
         $inscription->setDateConfirmation(new \DateTime);
         $em->flush();
+
+        $mail = \Swift_Message::newInstance()
+            ->setSubject('Confirmation de votre inscription à la Newsletter de La Paperie')
+            ->setFrom($this->container->getParameter('contact_email_from'))
+            ->setTo($subscriber->getEmail())
+            ->setBody($this->renderView('LapaperieNewsletterBundle:Default:email-confirmation.txt.twig',
+                array('firstname' => $firstname,
+                'lastname' => $lastname,
+                'courriel' => $courriel,
+                'token' => $inscription->getToken(),
+            )
+        ));
+
+        $this->get('mailer')->send($mail);
 
         return array(
             'firstname' => $firstname,

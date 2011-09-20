@@ -1,9 +1,15 @@
+{% extends "LapaperieMainBundle::layout.html.twig" %}
 
+{% block content %}
 {% if app.session.hasFlash('notice') %}
     <div class="flash-notice">
         {{ app.session.flash('notice') }}
     </div>
 {% endif %}
-
-Merci {{ firstname }}  {{ lastname }}, Nous vous avons envoyé un mail à {{ courriel }}, merci de cliquer sur le lien s'y trouvant pour confirmer votre inscription.  
-
+<p>
+{{ firstname }}  {{ lastname }}, nous avons envoyé un mail à {{ courriel }}.
+</p>
+<p>
+Merci de cliquer sur le lien s'y trouvant pour confirmer votre inscription.  
+</p>
+{% endblock %}

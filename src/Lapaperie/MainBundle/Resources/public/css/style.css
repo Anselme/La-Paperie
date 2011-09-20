@@ -212,3 +212,8 @@ div.input {
 form .clear {
     margin-bottom: 18px;
 }
+
+button {
+    background: #E32119 ;
+    color: #FFF;
+}

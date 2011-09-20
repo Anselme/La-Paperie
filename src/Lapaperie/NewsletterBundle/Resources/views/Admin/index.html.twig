@@ -1,0 +1,32 @@
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+
+{% block content %}
+
+<h1>Inscriptions</h1>
+
+<table class="records_list zebra-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Inscription</th>
+            <th>Confirmation</th>
+            <th>Annulation</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.lastname}}</td>
+            <td>{{ entity.firstname}}</td>
+            <td>{{ entity.email}}</td>
+            <td>{{ entity.inscriptions[0].dateinscription | date('j M Y') }}</td>
+            <td>{{ entity.inscriptions[0].dateconfirmation | date('j M Y') }}</td>
+            <td>{{ entity.inscriptions[0].dateunscribe | date('j M Y') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
