@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for entity in entities %}
+    {% for entity in paginator %}
         <tr>
             <td>{{ entity.lastname}}</td>
             <td>{{ entity.firstname}}</td>
@@ -40,5 +40,13 @@
     {% endfor %}
     </tbody>
 </table>
+
+<div class="pagination">
+{{ pagerfanta(paginator, 'default') }}
+</div>
+
+<a href="{{ path('newsletter_export') }}" class="btn primary">
+Télécharger la liste des inscrits
+</a>
 
 {% endblock %}

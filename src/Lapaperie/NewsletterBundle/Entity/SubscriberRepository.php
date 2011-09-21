@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class SubscriberRepository extends EntityRepository
 {
+    public function findAllActive()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT s, i FROM LapaperieNewsletterBundle:Subscriber s
+                           JOIN s.inscriptions i
+                           WHERE i.date_confirmation IS NOT NULL
+                           AND i.date_unscribe IS NULL'
+                       )
+            ->getResult();
+    }
 }

@@ -106,11 +106,11 @@ class NewsletterController extends Controller
     {
         //$request = $this->getRequest();
         $courriel = $request->query->get('email');
-        $token = $request->query->get('tokken');
+        $token = $request->query->get('token');
 
         $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('LapaperieNewsletterBundle:Inscription');
-        $inscription = $repository->findOneBytoken($tokken);
+        $inscription = $repository->findOneBytoken($token);
 
         if(!$inscription)
         {

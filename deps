@@ -73,3 +73,10 @@
     git=http://github.com/avalanche123/AvalancheImagineBundle.git
     target=/bundles/Avalanche/Bundle/ImagineBundle
 
+[PagerFantaBundle]
+    git=http://github.com/whiteoctober/Pagerfanta.git
+    target=/pagerfanta
+
+[WhiteOctoberPagerFantaBundle]
+    git=http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+    target=/bundles/WhiteOctober/PagerfantaBundle

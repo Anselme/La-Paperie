@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
             new Lapaperie\MainBundle\LapaperieMainBundle(),
             new Lapaperie\AgendaBundle\LapaperieAgendaBundle(),
