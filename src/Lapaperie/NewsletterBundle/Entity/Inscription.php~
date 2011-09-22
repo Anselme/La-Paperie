@@ -43,11 +43,11 @@ class Inscription
     private $date_unscribe;
 
     /**
-     * @var string $tokken
+     * @var string $token
      *
-     * @ORM\Column(name="tokken", type="string", length=255)
+     * @ORM\Column(name="token", type="string", length=255)
      */
-    private $tokken;
+    private $token;
 
     /**
      * @var boolean $confirmation
@@ -65,7 +65,7 @@ class Inscription
     function __construct()
     {
         $this->setDateInscription(new \DateTime());
-        $this->setTokken(md5(uniqid()));
+        $this->setToken(md5(uniqid()));
         $this->setConfirmation(false);
     }
 
@@ -120,23 +120,23 @@ class Inscription
     }
 
     /**
-     * Set tokken
+     * Set token
      *
-     * @param string $tokken
+     * @param string $token
      */
-    public function setTokken($tokken)
+    public function setToken($token)
     {
-        $this->tokken = $tokken;
+        $this->token = $token;
     }
 
     /**
-     * Get tokken
+     * Get token
      *
      * @return string
      */
-    public function getTokken()
+    public function getToken()
     {
-        return $this->tokken;
+        return $this->token;
     }
 
     /**
@@ -177,5 +177,25 @@ class Inscription
     public function getSubscriber()
     {
         return $this->subscriber;
+    }
+
+    /**
+     * Set date_confirmation
+     *
+     * @param datetime $dateConfirmation
+     */
+    public function setDateConfirmation(\DateTime $dateConfirmation)
+    {
+        $this->date_confirmation = $dateConfirmation;
+    }
+
+    /**
+     * Get date_confirmation
+     *
+     * @return datetime
+     */
+    public function getDateConfirmation()
+    {
+        return $this->date_confirmation;
     }
 }

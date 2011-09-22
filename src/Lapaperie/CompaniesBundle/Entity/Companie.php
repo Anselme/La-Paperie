@@ -2,6 +2,8 @@
 
 namespace Lapaperie\CompaniesBundle\Entity;
 
+use Lapaperie\VideoBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -76,9 +78,15 @@ class Companie
      */
     protected $images;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Lapaperie\VideoBundle\Entity\Video", mappedBy="companie")
+     */
+    protected $videos;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     /**
@@ -249,5 +257,25 @@ class Companie
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param Lapaperie\CompaniesBundle\Entity\Video $videos
+     */
+    public function addVideo(\Lapaperie\CompaniesBundle\Entity\Video $videos)
+    {
+        $this->videos[] = $videos;
+    }
+
+    /**
+     * Get videos
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }
