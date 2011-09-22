@@ -54,7 +54,7 @@ class Focus
     /**
      * @var string $video
      *
-     * @ORM\Column(name="video", type="string", length=510, nullable="true")
+     * @ORM\Column(name="video", type="text", nullable="true")
      */
     private $video;
 

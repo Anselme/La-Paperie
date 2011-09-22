@@ -17,10 +17,10 @@ LapaperieCompaniesBundle:
     type:     annotation
     prefix:   /
 
-LapaperieVideoBundle:
+LapaperieVideoBundle_home:
     resource: "@LapaperieVideoBundle/Controller"
     type:     annotation
-    prefix:   /videos
+    prefix:   /
 
 LapaperieMainBundle:
     resource: "@LapaperieMainBundle/Resources/config/routing.yml"

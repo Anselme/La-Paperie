@@ -157,7 +157,7 @@ class  Video
      *
      * @param Lapaperie\CompaniesBundle\Entity\Companie $companie
      */
-    public function setCompanie(\Lapaperie\CompaniesBundle\Entity\Companie $companie)
+    public function setCompanie(\Lapaperie\CompaniesBundle\Entity\Companie $companie )
     {
         $this->companie = $companie;
     }
