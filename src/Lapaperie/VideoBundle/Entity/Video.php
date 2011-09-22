@@ -2,7 +2,6 @@
 
 namespace Lapaperie\VideoBundle\Entity;
 
-use Lapaperie\CompaniesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -47,16 +46,21 @@ class  Video
     /**
      * @var string $legend
      *
-     * @ORM\Column(name="legend", type="string", length=255)
+     * @ORM\Column(name="legend", type="string", length=255, nullable="true")
      */
     private $legend;
 
     /**
      * @ORM\ManyToOne(targetEntity="Lapaperie\CompaniesBundle\Entity\Companie", inversedBy="videos")
-     * @ORM\JoinColumn(name="companie_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="companie_id", referencedColumnName="id", nullable="true")
      */
     protected $companie;
 
+
+    function __construct()
+    {
+        $this->setPublicationDate(new \DateTime());
+    }
 
     /**
      * Get id
@@ -93,7 +97,7 @@ class  Video
      *
      * @param date $publicationDate
      */
-    public function setPublicationDate($publicationDate)
+    public function setPublicationDate(\DateTime $publicationDate)
     {
         $this->publicationDate = $publicationDate;
     }
@@ -151,9 +155,9 @@ class  Video
     /**
      * Set companie
      *
-     * @param Lapaperie\VideoBundle\Entity\Companie $companie
+     * @param Lapaperie\CompaniesBundle\Entity\Companie $companie
      */
-    public function setCompanie(\Lapaperie\VideoBundle\Entity\Companie $companie)
+    public function setCompanie(\Lapaperie\CompaniesBundle\Entity\Companie $companie)
     {
         $this->companie = $companie;
     }
@@ -161,7 +165,7 @@ class  Video
     /**
      * Get companie
      *
-     * @return Lapaperie\VideoBundle\Entity\Companie
+     * @return Lapaperie\CompaniesBundle\Entity\Companie
      */
     public function getCompanie()
     {

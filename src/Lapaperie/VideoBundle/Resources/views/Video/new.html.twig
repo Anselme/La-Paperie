@@ -1,0 +1,10 @@
+{% extends "LapaperieVideoBundle:Video:form.html.twig" %}
+
+{% block legend%}Nouvelle Vidéo{% endblock %}
+
+{% block action %}
+<form action="{{ path('video_create') }}" method="post" {{ form_enctype(form) }}>
+{% endblock %}
+
+{% block button %}Enregistrer cette nouvelle Vidéo{% endblock %}
+

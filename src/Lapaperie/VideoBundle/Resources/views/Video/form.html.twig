@@ -1,0 +1,62 @@
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+
+{% block content %}
+
+{% block action %}
+{% endblock %}
+
+    {{ form_errors(form) }}
+
+<fieldset>
+    <legend>{% block legend%}{% endblock %}</legend>
+
+    <div class="clearfix">
+    {{ form_label(form.embded, 'Embded') }}
+    <div class="input">
+    {{ form_errors(form.embded) }}
+    {{ form_widget(form.embded,  {'attr':{'cols' : '50', 'rows' : '5'}})}}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.legend, 'Légende') }}
+    <div class="input">
+    {{ form_errors(form.legend) }}
+    {{ form_widget(form.legend, {'attr':{'size' : '90'}}) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.publicationDate, 'Date de Publication') }}
+    <div class="input">
+    {{ form_errors(form.publicationDate) }}
+    {{ form_widget(form.publicationDate, { 'attr': {'class': 'jsDate'} } ) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.isOnLine, 'Publier') }}
+    <div class="input">
+    {{ form_errors(form.isOnLine) }}
+    {{ form_widget(form.isOnLine) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.companie, 'Companie') }}
+    <div class="input">
+    {{ form_errors(form.companie) }}
+    {{ form_widget(form.companie) }}
+    </div>
+    </div>
+
+
+    {{ form_rest(form) }}
+</fieldset>
+        <button type="submit" class="btn primary">{% block button %}{% endblock %}</button>
+
+        <a href="{{ path('video') }}" class="btn">
+        Retour à la liste des Vidéos
+        </a>
+</form>
+
+{% block delete %}
+{% endblock %}
+
+{% endblock %}

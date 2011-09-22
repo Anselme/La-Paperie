@@ -2,7 +2,6 @@
 
 namespace Lapaperie\CompaniesBundle\Entity;
 
-use Lapaperie\VideoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -87,6 +86,11 @@ class Companie
     {
         $this->images = new ArrayCollection();
         $this->videos = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**
@@ -262,9 +266,9 @@ class Companie
     /**
      * Add videos
      *
-     * @param Lapaperie\CompaniesBundle\Entity\Video $videos
+     * @param Lapaperie\VideoBundle\Entity\Video $videos
      */
-    public function addVideo(\Lapaperie\CompaniesBundle\Entity\Video $videos)
+    public function addVideo(\Lapaperie\VideoBundle\Entity\Video $videos)
     {
         $this->videos[] = $videos;
     }

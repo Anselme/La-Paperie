@@ -18,7 +18,8 @@ LapaperieCompaniesBundle:
     prefix:   /
 
 LapaperieVideoBundle:
-    resource: "@LapaperieVideoBundle/Resources/config/routing.yml"
+    resource: "@LapaperieVideoBundle/Controller"
+    type:     annotation
     prefix:   /videos
 
 LapaperieMainBundle:

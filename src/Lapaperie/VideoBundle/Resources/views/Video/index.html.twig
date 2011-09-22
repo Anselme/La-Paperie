@@ -1,0 +1,42 @@
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+
+{% block content %}
+
+<h1>Videos</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Companie</th>
+            <th>Date de Publication</th>
+            <th>En ligne</th>
+            <th>Légende</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.companie.name }}</td>
+            <td>
+            <a href="{{ path('video_edit', { 'id': entity.id }) }}">{{ entity.publicationDate|date('j M Y') }}</a>
+            
+            </td>
+            <td>
+            {% if entity.isOnLine %}
+            <img width="16" height="16" src="{{ asset('bundles/lapaperiemain/images/icons/tick.png') }}" />
+            {% else %}
+            <img width="16" height="16" src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png') }}" />
+            {% endif %}
+            </td>
+            <td>
+            <a href="{{ path('video_edit', { 'id': entity.id }) }}">{{ entity.legend }}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+        <a href="{{ path('video_create') }}" class="btn primary">
+        Saisir une nouvelle Vidéo
+        </a>
+{% endblock %}
