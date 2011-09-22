@@ -14,6 +14,12 @@ body {
     line-height: 1;
 }
 
+footer {
+    width: 85% ;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 #main {
     width: 85% ;
     margin-right: auto;
@@ -105,13 +111,14 @@ a.red_button:hover
 
 ul {
     list-style-type: none;
-    line-height: 15px;
+    line-height: 20px;
 }
 
 li {
     background-image: url("/bundles/lapaperiemain/images/plusque.png");
     background-repeat: no-repeat;
-    padding-left: 1em;
+    background-position: 0 0.4em;
+    padding-left: 1.5em;
 }
 
 li.projets {
@@ -126,7 +133,7 @@ p {
     line-height: 16px;
 }
 
-#content {
+.content {
     margin: 1em;
 }
 
