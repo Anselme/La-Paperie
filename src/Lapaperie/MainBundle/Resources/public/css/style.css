@@ -53,6 +53,7 @@ ul#subnav li.active a
     padding-top: 1em;
     border-top: thin dashed;
     color: #E32119
+    clear: both;
 }
 
 .header {
@@ -223,4 +224,9 @@ form .clear {
 button {
     background: #E32119 ;
     color: #FFF;
+}
+
+.video_home {
+    float: left ;
+    margin: 1em;
 }

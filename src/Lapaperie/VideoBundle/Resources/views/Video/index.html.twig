@@ -9,7 +9,7 @@
         <tr>
             <th>Companie</th>
             <th>Date de Publication</th>
-            <th>En ligne</th>
+            <!--th>En ligne</th-->
             <th>Légende</th>
         </tr>
     </thead>
@@ -21,13 +21,13 @@
             <a href="{{ path('video_edit', { 'id': entity.id }) }}">{{ entity.publicationDate|date('j M Y') }}</a>
             
             </td>
-            <td>
+            <!--td>
             {% if entity.isOnLine %}
             <img width="16" height="16" src="{{ asset('bundles/lapaperiemain/images/icons/tick.png') }}" />
             {% else %}
             <img width="16" height="16" src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png') }}" />
             {% endif %}
-            </td>
+            </td-->
             <td>
             <a href="{{ path('video_edit', { 'id': entity.id }) }}">{{ entity.legend }}</a>
             </td>

@@ -26,6 +26,8 @@ La Paperie - {{ companie.name }}
 
 <div class="right-side">
     <div class="companie-img">
+
+    {% if companie.videos.isEmpty %}
     {% if companie.images.isEmpty %}
     <img src="{{  asset('bundles/lapaperiemain/images/caravanelapaperie_original.png') }}" width="143" alt="Pas d'images pour cette Companie" />
     {% else %}
@@ -33,6 +35,11 @@ La Paperie - {{ companie.name }}
     <img src="{{ companie.images[0].getWebPath | apply_filter('companie') }}" alt="{{ companie.name }}" width="252" />
     </a>
     {% endif %}
+
+    {% else %}
+    {{ companie.videos[0].embded | raw }}
+    {% endif %}
+    
     </div>
 
     <div class="short-text">
@@ -44,7 +51,7 @@ La Paperie - {{ companie.name }}
 
 <div class="gallerie_thumbnails">
   {% for image in companie.images %}
-  {% if not (loop.first)  %}
+  {% if (not (loop.first)) or (not(companie.videos.isEmpty)) %}
   <a href="{{ image.getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
   <img src="{{ image.getWebPath | apply_filter('companie_thumbnail') }}" alt="{{ companie.name }}" width="84" />
   </a>

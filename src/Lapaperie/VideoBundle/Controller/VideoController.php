@@ -24,6 +24,9 @@ class VideoController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('LapaperieVideoBundle:Default:index.html.twig');
+        $repository = $this->getDoctrine()->getRepository('LapaperieVideoBundle:Video');
+        $videos = $repository->findAll();
+
+        return $this->render('LapaperieVideoBundle:Default:index.html.twig', array('videos' => $videos));
     }
 }

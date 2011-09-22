@@ -10,5 +10,13 @@ La Paperie - Centre National des Arts de la Rue - Videos
 {% endblock %}
 
 {% block content %}
-Insérer les videos ici via Viameo
+    {% for video in videos %}
+    {% if loop.index is divisibleby(5) %}
+    <div class="clear"></div>
+    {% endif %}
+    <div class="video_home">
+    {{ video.embded | raw }}
+    </div>
+    {% endfor %}
+    <div class="clear"></div>
 {% endblock %}
