@@ -3,6 +3,7 @@
 namespace Lapaperie\NewsletterBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -45,17 +46,29 @@ class NewsletterAdminController extends Controller
      * @Route("/export", name="newsletter_export")
      * @Template("LapaperieNewsletterBundle:Admin:export.csv.twig")
      */
-    public function exportAction()
+    public function exportAction(Request $request)
     {
+
+        $all = $request->query->get('all');
 
         $em = $this->getDoctrine()->getEntityManager();
 
-        //have a look in Entity/SubscriberRepository.php
-        $entities = $em->getRepository('LapaperieNewsletterBundle:Subscriber')->findAllActive();
-
         $file_name = date('YmdGis')."_newsletter.csv";
+        $csv_template = "LapaperieNewsletterBundle:Admin:export.csv.twig" ;
 
-        $csv = $this->render('LapaperieNewsletterBundle:Admin:export.csv.twig',array('entities' => $entities)) ;
+        if($all)
+        {
+            $file_name = "all_".$file_name ;
+            $csv_template = "LapaperieNewsletterBundle:Admin:export-all.csv.twig" ;
+            $entities = $em->getRepository('LapaperieNewsletterBundle:Subscriber')->findAll();
+        }
+        else
+        {
+            //have a look in Entity/SubscriberRepository.php
+            $entities = $em->getRepository('LapaperieNewsletterBundle:Subscriber')->findAllActive();
+        }
+
+        $csv = $this->render($csv_template, array('entities' => $entities)) ;
         $response = new Response($csv);
         $response->setContent($csv);
         $response->headers->set('Content-Type', 'text/csv');
