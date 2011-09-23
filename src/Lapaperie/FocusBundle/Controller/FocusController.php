@@ -52,7 +52,7 @@ class FocusController extends Controller
             if ($form->isValid()) {
 
                 $request_args = $request->request->get('lapaperie_focusbundle_focustype');
-                isset($request_args['isOnLine'])?$isOnline = true:$isOnLine = false ;
+                isset($request_args['isOnLine'])?$isOnLine = true:$isOnLine = false ;
 
                 if($isOnLine)
                 {
@@ -103,7 +103,7 @@ class FocusController extends Controller
 
                 //TODO -> vérifier le focntionnemetn d'accès aux variables $_POST
                 $request_args = $request->request->get('lapaperie_focusbundle_focustype');
-                isset($request_args['isOnLine'])?$isOnline = true:$isOnLine = false ;
+                isset($request_args['isOnLine'])?$isOnLine = true:$isOnLine = false ;
 
                 if($isOnLine)
                 {
@@ -120,7 +120,7 @@ class FocusController extends Controller
 
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

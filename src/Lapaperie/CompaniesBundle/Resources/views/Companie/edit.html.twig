@@ -28,7 +28,7 @@
         <button type="submit" class="btn primary">Ajouter l'image</button>
 </fieldset>
 <div class="clearfix">
--
+
 {% if entity.images %}
   {% for image in entity.images %}
       <img src="{{ image.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
@@ -37,7 +37,9 @@
 
 </div>
 </form>
+  {% endblock %}
 
+  {% block delete %}
         <form action="{{ path('companie_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
             <button type="submit" class="btn danger confirm">Supprimer cette Companie / Résidence</button>
