@@ -33,43 +33,39 @@ class FocusController extends Controller
     }
 
     /**
-     * Displays a form to create a new Focus entity.
-     *
-     * @Route("/new", name="focus_new")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Focus();
-        $form   = $this->createForm(new FocusType(), $entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView()
-        );
-    }
-
-    /**
      * Creates a new Focus entity.
      *
      * @Route("/create", name="focus_create")
-     * @Method("post")
      * @Template("LapaperieFocusBundle:Focus:new.html.twig")
      */
     public function createAction()
     {
         $entity  = new Focus();
-        $request = $this->getRequest();
         $form    = $this->createForm(new FocusType(), $entity);
-        $form->bindRequest($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($entity);
-            $em->flush();
+        $request = $this->getRequest();
 
-            return $this->redirect($this->generateUrl('focus'));
+        if ($request->getMethod() == 'POST') {
 
+            $form->bindRequest($request);
+
+            if ($form->isValid()) {
+
+                $request_args = $request->request->get('lapaperie_focusbundle_focustype');
+                isset($request_args['isOnLine'])?$isOnline = true:$isOnLine = false ;
+
+                if($isOnLine)
+                {
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $repository = $em->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine();
+                }
+
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('focus'));
+            }
         }
 
         return array(
@@ -94,46 +90,32 @@ class FocusController extends Controller
             throw $this->createNotFoundException('Unable to find Focus entity.');
         }
 
-        $editForm = $this->createForm(new FocusType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-     * Edits an existing Focus entity.
-     *
-     * @Route("/{id}/update", name="focus_update")
-     * @Method("post")
-     * @Template("LapaperieFocusBundle:Focus:edit.html.twig")
-     */
-    public function updateAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('LapaperieFocusBundle:Focus')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Focus entity.');
-        }
-
         $editForm   = $this->createForm(new FocusType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         $request = $this->getRequest();
 
-        $editForm->bindRequest($request);
+        if ($request->getMethod() == 'POST') {
 
-        if ($editForm->isValid()) {
+            $editForm->bindRequest($request);
 
-            $em->persist($entity);
-            $em->flush();
+            if ($editForm->isValid()) {
 
-            return $this->redirect($this->generateUrl('focus_edit', array('id' => $id)));
+                //TODO -> vérifier le focntionnemetn d'accès aux variables $_POST
+                $request_args = $request->request->get('lapaperie_focusbundle_focustype');
+                isset($request_args['isOnLine'])?$isOnline = true:$isOnLine = false ;
+
+                if($isOnLine)
+                {
+                    $em1 = $this->getDoctrine()->getEntityManager();
+                    $repository = $em1->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine($id);
+                }
+
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('focus_edit', array('id' => $id)));
+            }
         }
 
         return array(

@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class FocusRepository extends EntityRepository
 {
+    /**
+     * Met tous les focus à false sauf celui dont l'id est passé en argumebt
+     *
+     */
+    public function setOthersOffLine($id = null)
+    {
+        $em = $this->getEntityManager();
+        $focus = $em->getRepository('LapaperieFocusBundle:Focus')->findAll();
+        foreach($focus as $foc)
+        {
+            if($foc->getId()!=$id)$foc->setIsOnLine(false);
+        }
+        $em->flush();
+    }
 }

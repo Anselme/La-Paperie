@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<form action="{{ path('focus_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+<form action="{{ path('focus_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_errors(edit_form) }}
 <fieldset>
     <legend>Focus - Page d'Accueil : {{ entity.title }}</legend>
