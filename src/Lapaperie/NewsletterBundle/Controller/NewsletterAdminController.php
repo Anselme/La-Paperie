@@ -68,8 +68,8 @@ class NewsletterAdminController extends Controller
             $entities = $em->getRepository('LapaperieNewsletterBundle:Subscriber')->findAllActive();
         }
 
-        $csv = $this->render($csv_template, array('entities' => $entities)) ;
-        $response = new Response($csv);
+        $csv = $this->renderView($csv_template, array('entities' => $entities)) ;
+        $response = new Response();
         $response->setContent($csv);
         $response->headers->set('Content-Type', 'text/csv');
         $response->headers->set('Content-disposition', 'attachment;filename='.$file_name);

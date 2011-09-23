@@ -5,3 +5,14 @@ services:
 #    act_envcontact.example:
 #        class: %act_envcontact.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    pagerfanta.view.default:
+        class: Pagerfanta\View\DefaultView
+        public: false
+        tags: [{ name: pagerfanta.view, alias: default }]
+    pagerfanta.view.my_view_1:
+        class: Pagerfanta\View\OptionableView
+        arguments:
+            - @pagerfanta.view.default
+            - { proximity: 2, previous_message: Précédant, next_message: Suivant }
+        public: false
+        tags: [{ name: pagerfanta.view, alias: my_view_1 }]

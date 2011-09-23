@@ -51,10 +51,8 @@ class FocusController extends Controller
 
             if ($form->isValid()) {
 
-                $request_args = $request->request->get('lapaperie_focusbundle_focustype');
-                isset($request_args['isOnLine'])?$isOnLine = true:$isOnLine = false ;
-
-                if($isOnLine)
+                //si le Focus est Actif, on désactive les autres
+                if($entity->getIsOnLine())
                 {
                     $em = $this->getDoctrine()->getEntityManager();
                     $repository = $em->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine();
@@ -101,14 +99,10 @@ class FocusController extends Controller
 
             if ($editForm->isValid()) {
 
-                //TODO -> vérifier le focntionnemetn d'accès aux variables $_POST
-                $request_args = $request->request->get('lapaperie_focusbundle_focustype');
-                isset($request_args['isOnLine'])?$isOnLine = true:$isOnLine = false ;
-
-                if($isOnLine)
+                //si le Focus est Actif, on désactive les autres
+                if($entity->getIsOnLine())
                 {
-                    $em1 = $this->getDoctrine()->getEntityManager();
-                    $repository = $em1->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine($id);
+                    $em->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine($id);
                 }
 
                 $em->persist($entity);

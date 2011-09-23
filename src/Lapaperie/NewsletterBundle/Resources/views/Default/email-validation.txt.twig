@@ -4,5 +4,5 @@ Courriel : {{ courriel }}
 Nom : {{ lastname }}
 Prénom : {{ firstname }}
 
-{{ url('LapaperieNewsletterBundle_validation_inscription', {'token': token, 'email': courriel}) }}
+{{ url('LapaperieNewsletterBundle_validation_inscription', {'token': token, 'email': courriel}) |raw }}
 
