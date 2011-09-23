@@ -31,34 +31,6 @@ class Companie
     private $name;
 
     /**
-     * @var string $creation
-     *
-     * @ORM\Column(name="creation", type="string", length=255, nullable="true")
-     */
-    private $creation;
-
-    /**
-     * @var date $date_residence_beginning
-     *
-     * @ORM\Column(name="date_residence_beginning", type="date", nullable="true")
-     */
-    private $date_residence_beginning;
-
-    /**
-     * @var date $date_residence_end
-     *
-     * @ORM\Column(name="date_residence_end", type="date", nullable="true")
-     */
-    private $date_residence_end;
-
-    /**
-     * @var date $date_sortie_de_fabrique
-     *
-     * @ORM\Column(name="date_sortie_de_fabrique", type="date", nullable="true")
-     */
-    private $date_sortie_de_fabrique;
-
-    /**
      * @var short_text
      *
      * @ORM\Column(name="short_text", type="text", nullable="true")
@@ -71,6 +43,16 @@ class Companie
      * @ORM\Column(name="long_text", type="text", nullable="true")
      */
     private $long_text;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Residence", mappedBy="companie")
+     */
+    protected $residences;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Fabrique", mappedBy="companie")
+     */
+    protected $fabriques;
 
     /**
      * @ORM\OneToMany(targetEntity="ImageCompanie", mappedBy="companie")
@@ -86,6 +68,8 @@ class Companie
     {
         $this->images = new ArrayCollection();
         $this->videos = new ArrayCollection();
+        $this->residences = new ArrayCollection();
+        $this->fabriques = new ArrayCollection();
     }
 
     public function __toString()
@@ -121,66 +105,6 @@ class Companie
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set date_residence_beginning
-     *
-     * @param date $dateResidenceBeginning
-     */
-    public function setDateResidenceBeginning(\DateTime $dateResidenceBeginning = null)
-    {
-        $this->date_residence_beginning = $dateResidenceBeginning;
-    }
-
-    /**
-     * Get date_residence_beginning
-     *
-     * @return date
-     */
-    public function getDateResidenceBeginning()
-    {
-        return $this->date_residence_beginning;
-    }
-
-    /**
-     * Set date_residence_end
-     *
-     * @param date $dateResidenceEnd
-     */
-    public function setDateResidenceEnd(\DateTime $dateResidenceEnd = null)
-    {
-        $this->date_residence_end = $dateResidenceEnd;
-    }
-
-    /**
-     * Get date_residence_end
-     *
-     * @return date
-     */
-    public function getDateResidenceEnd()
-    {
-        return $this->date_residence_end;
-    }
-
-    /**
-     * Set date_sortie_de_fabrique
-     *
-     * @param date $dateSortieDeFabrique
-     */
-    public function setDateSortieDeFabrique(\DateTime $dateSortieDeFabrique = null)
-    {
-        $this->date_sortie_de_fabrique = $dateSortieDeFabrique;
-    }
-
-    /**
-     * Get date_sortie_de_fabrique
-     *
-     * @return date
-     */
-    public function getDateSortieDeFabrique()
-    {
-        return $this->date_sortie_de_fabrique;
     }
 
     /**
@@ -224,26 +148,6 @@ class Companie
     }
 
     /**
-     * Set creation
-     *
-     * @param string $creation
-     */
-    public function setCreation($creation)
-    {
-        $this->creation = $creation;
-    }
-
-    /**
-     * Get creation
-     *
-     * @return string
-     */
-    public function getCreation()
-    {
-        return $this->creation;
-    }
-
-    /**
      * Add images
      *
      * @param Lapaperie\CompaniesBundle\Entity\ImageCompanie $image
@@ -281,5 +185,45 @@ class Companie
     public function getVideos()
     {
         return $this->videos;
+    }
+
+    /**
+     * Add residences
+     *
+     * @param Lapaperie\CompaniesBundle\Entity\Residence $residences
+     */
+    public function addResidence(\Lapaperie\CompaniesBundle\Entity\Residence $residences)
+    {
+        $this->residences[] = $residences;
+    }
+
+    /**
+     * Get residences
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getResidences()
+    {
+        return $this->residences;
+    }
+
+    /**
+     * Add fabriques
+     *
+     * @param Lapaperie\CompaniesBundle\Entity\Fabrique $fabriques
+     */
+    public function addFabrique(\Lapaperie\CompaniesBundle\Entity\Fabrique $fabriques)
+    {
+        $this->fabriques[] = $fabriques;
+    }
+
+    /**
+     * Get fabriques
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getFabriques()
+    {
+        return $this->fabriques;
     }
 }
