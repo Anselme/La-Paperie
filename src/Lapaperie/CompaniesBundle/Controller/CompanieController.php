@@ -122,7 +122,7 @@ class CompanieController extends Controller
 
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'edit_image_form'   => $editImageForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );

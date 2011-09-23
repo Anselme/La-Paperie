@@ -1,69 +1,18 @@
-{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+{% extends "LapaperieCompaniesBundle:Companie:form.html.twig" %}
 
-{% block content %}
 
-<form action="{{ path('companie_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+  {% block action %}
+    <form action="{{ path('companie_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
+  {% endblock %}
+  
+  {% block legend %}
+    {{ entity.name }} / {{ entity.creation }}
+  {% endblock %}
 
-    {{ form_errors(edit_form) }}
+  {% block button %}Enregistrer les modifications{% endblock %}
 
-<fieldset>
-    <legend>{{ entity.name }} / {{ entity.creation }}</legend>
-    <div class="clearfix">
-    {{ form_label(edit_form.name, 'Companie') }}
-    <div class="input">
-    {{ form_errors(edit_form.name) }}
-    {{ form_widget(edit_form.name) }}
-    </div>
-    </div>
-    <div class="clearfix">
-    {{ form_label(edit_form.creation, 'Création') }}
-    <div class="input">
-    {{ form_errors(edit_form.creation) }}
-    {{ form_widget(edit_form.creation) }}
-    </div>
-    </div>
-    <div class="clearfix">
-    {{ form_label(edit_form.date_residence_beginning, 'Résidence débutant le :') }}
-    <div class="input">
-    {{ form_errors(edit_form.date_residence_beginning) }}
-    {{ form_widget(edit_form.date_residence_beginning, { 'attr': {'class': 'jsDate'} } ) }}
-    </div>
-    </div>
-    <div class="clearfix">
-    {{ form_label(edit_form.date_residence_end, 'Résidence se terminant le :') }}
-    <div class="input">
-    {{ form_errors(edit_form.date_residence_end) }}
-    {{ form_widget(edit_form.date_residence_end, { 'attr': {'class': 'jsDate'} } ) }}
-    </div>
-    </div>
-    <div class="clearfix">
-    {{ form_label(edit_form.date_sortie_de_fabrique, 'Sortie de Fabrique le :') }}
-    <div class="input">
-    {{ form_errors(edit_form.date_sortie_de_fabrique) }}
-    {{ form_widget(edit_form.date_sortie_de_fabrique, { 'attr': {'class': 'jsDate'} } ) }}
-    </div>
-    </div>
-    <div class="clearfix">
-    {{ form_label(edit_form.short_text, 'Présentation') }}
-    <div class="input">
-    {{ form_errors(edit_form.short_text) }}
-    {{ form_widget(edit_form.short_text, { 'attr': {'class': 'editor'} } ) }}
-    </div>
-    </div>
-    <div class="clearfix">
-    {{ form_label(edit_form.long_text, 'Détails') }}
-    <div class="input">
-    {{ form_errors(edit_form.long_text) }}
-    {{ form_widget(edit_form.long_text, { 'attr': {'class': 'editor'} } ) }}
-    </div>
-    </div>
-
-    {{ form_rest(edit_form) }}
-</fieldset>
-        <button type="submit" class="btn primary">Enregistrer les modifications</button>
-</form>
-
-<form action="{{ path('companie_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_image_form) }}>
+  {% block images %}
+  <form action="{{ path('companie_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_image_form) }}>
     {{ form_errors(edit_image_form) }}
 <fieldset>
     <legend>Images Associées à la companie "{{ entity.name }}"</legend>
@@ -79,7 +28,7 @@
         <button type="submit" class="btn primary">Ajouter l'image</button>
 </fieldset>
 <div class="clearfix">
-
+-
 {% if entity.images %}
   {% for image in entity.images %}
       <img src="{{ image.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
@@ -87,9 +36,6 @@
 {% endif %}
 
 </div>
-        <a href="{{ path('companie') }}" class="btn">
-        Retour à la liste des Companies/ Résidences
-        </a>
 </form>
 
         <form action="{{ path('companie_delete', { 'id': entity.id }) }}" method="post">
@@ -97,4 +43,5 @@
             <button type="submit" class="btn danger confirm">Supprimer cette Companie / Résidence</button>
         </form>
 
-{% endblock %}
+  {% endblock %}
+

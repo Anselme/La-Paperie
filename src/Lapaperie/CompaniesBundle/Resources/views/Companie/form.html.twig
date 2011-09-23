@@ -1,0 +1,71 @@
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+
+{% block content %}
+
+  {% block action %}
+  {% endblock %}
+
+    {{ form_errors(form) }}
+<fieldset>
+  <legend>{% block legend %}{% endblock %}</legend>
+
+    <div class="clearfix">
+    {{ form_label(form.name, 'Companie') }}
+    <div class="input">
+    {{ form_errors(form.name) }}
+    {{ form_widget(form.name) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.creation, 'Création') }}
+    <div class="input">
+    {{ form_errors(form.creation) }}
+    {{ form_widget(form.creation) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.date_residence_beginning, 'Résidence débutant le') }}
+    <div class="input">
+    {{ form_errors(form.date_residence_beginning) }}
+    {{ form_widget(form.date_residence_beginning, { 'attr': {'class': 'jsDate'} } ) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.date_residence_end, 'Résidence se terminant le') }}
+    <div class="input">
+    {{ form_errors(form.date_residence_end) }}
+    {{ form_widget(form.date_residence_end, { 'attr': {'class': 'jsDate'} } ) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.date_sortie_de_fabrique, 'Sortie de Fabrique le') }}
+    <div class="input">
+    {{ form_errors(form.date_sortie_de_fabrique) }}
+    {{ form_widget(form.date_sortie_de_fabrique, { 'attr': {'class': 'jsDate'} } ) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.short_text, 'Présentation') }}
+    <div class="input">
+    {{ form_errors(form.short_text) }}
+    {{ form_widget(form.short_text, { 'attr': {'class': 'editor'} } ) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.long_text, 'Détails') }}
+    <div class="input">
+    {{ form_errors(form.long_text) }}
+    {{ form_widget(form.long_text, { 'attr': {'class': 'editor'} } ) }}
+    </div>
+    </div>
+
+    {{ form_rest(form) }}
+</fieldset>
+        <button type="submit" class="btn primary">{% block button %}{% endblock %}</button>
+        <a href="{{ path('companie') }}" class="btn">
+        Retour à la liste des Companies
+        </a>
+</form>
+{% block images %}
+{% endblock %}
+{% endblock %}
