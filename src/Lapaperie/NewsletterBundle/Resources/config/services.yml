@@ -9,10 +9,18 @@ services:
         class: Pagerfanta\View\DefaultView
         public: false
         tags: [{ name: pagerfanta.view, alias: default }]
-    pagerfanta.view.my_view_1:
-        class: Pagerfanta\View\OptionableView
+    pagerfanta.view.adminView:
+        class: Lapaperie\AdminBundle\pagerView
         arguments:
             - @pagerfanta.view.default
-            - { proximity: 2, previous_message: Précédant, next_message: Suivant }
-        public: false
-        tags: [{ name: pagerfanta.view, alias: my_view_1 }]
+            - { proximity: 2, previous_message: Précédent, next_message: Suivant }
+        public: true
+        tags: [{ name: pagerfanta.view, alias: adminView }]
+
+    lapaperie_newsletter.create_inscription:
+        class: Lapaperie\NewsletterBundle\createInscription
+        arguments:
+            - @doctrine.orm.default_entity_manager
+            - @mailer
+            - %contact_email_from%
+            - @templating

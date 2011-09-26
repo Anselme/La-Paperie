@@ -30,11 +30,12 @@ class NewsletterAdminController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $newsLetterRepository = $this->getDoctrine()->getEntityManager()->getRepository('LapaperieNewsletterBundle:Subscriber');;
 
-        $query = $em->createQuery('SELECT t FROM LapaperieNewsletterBundle:Subscriber t');
+        //createQueyrBuilder créé une query findAll() par defaut
+        $query = $newsLetterRepository->createQueryBuilder('n');
         $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage(5);
+        $paginator->setMaxPerPage(25);
         $paginator->setCurrentPage($this->get('request')->query->get('page', 1), false, true);
 
         return array('paginator' => $paginator);
@@ -68,9 +69,7 @@ class NewsletterAdminController extends Controller
             $entities = $em->getRepository('LapaperieNewsletterBundle:Subscriber')->findAllActive();
         }
 
-        $csv = $this->renderView($csv_template, array('entities' => $entities)) ;
-        $response = new Response();
-        $response->setContent($csv);
+        $response = $this->render($csv_template, array('entities' => $entities)) ;
         $response->headers->set('Content-Type', 'text/csv');
         $response->headers->set('Content-disposition', 'attachment;filename='.$file_name);
 

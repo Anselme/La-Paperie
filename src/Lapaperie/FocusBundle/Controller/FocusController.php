@@ -55,7 +55,7 @@ class FocusController extends Controller
                 if($entity->getIsOnLine())
                 {
                     $em = $this->getDoctrine()->getEntityManager();
-                    $repository = $em->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine();
+                    $repository = $em->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine($entity);
                 }
 
                 $em = $this->getDoctrine()->getEntityManager();
@@ -100,9 +100,8 @@ class FocusController extends Controller
             if ($editForm->isValid()) {
 
                 //si le Focus est Actif, on désactive les autres
-                if($entity->getIsOnLine())
-                {
-                    $em->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine($id);
+                if($entity->getIsOnLine()) {
+                    $em->getRepository('LapaperieFocusBundle:Focus')->setOthersOffLine($entity);
                 }
 
                 $em->persist($entity);

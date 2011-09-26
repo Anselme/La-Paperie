@@ -46,47 +46,13 @@ class NewsletterController extends Controller
 
             if ($form->isValid()) {
 
-                //recherche si le subscriber existe déjà
-                $repository = $this->getDoctrine()->getRepository('LapaperieNewsletterBundle:Subscriber');
-                $postData = $request->request->get('lapaperie_subscriberbundle_subscribertype');
-                $subscriber_exists = $repository->findOneByEmail($postData['email']);
-                if($subscriber_exists)
-                {
-                    $subscriber = $subscriber_exists ;
-                }
-
-                //Inscription
-                $inscription = new Inscription();
-                $inscription->setSubscriber($subscriber);
-
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($subscriber);
-                $em->persist($inscription);
-                $em->flush();
-
-                //Envoi du mail demandant confirmation
-                //de l'inscription
-                $lastname = $subscriber->getLastname() ;
-                $firstname =  $subscriber->getFirstname() ;
-                $courriel =  $subscriber->getEmail() ;
-
-                $mail = \Swift_Message::newInstance()
-                    ->setSubject('Inscription à la Newsletter de La Paperie')
-                    ->setFrom($this->container->getParameter('contact_email_from'))
-                    ->setTo($subscriber->getEmail())
-                    ->setBody($this->renderView('LapaperieNewsletterBundle:Default:email-validation.txt.twig',
-                        array('firstname' => $firstname,
-                        'lastname' => $lastname,
-                        'courriel' => $courriel,
-                        'token' => $inscription->getToken(),
-                    )
-                ));
-
-                $this->get('mailer')->send($mail);
+                //TODO appeler Service
+                $this->get('lapaperie_newsletter.create_inscription')->create($subscriber);
+                $this->getDoctrine()->getEntityManager()->flush();
 
                 $this->get('session')->setFlash('notice', 'Votre inscription a bien été pris en compte.');
 
-                return $this->render('LapaperieNewsletterBundle:Default:confirmation.html.twig', array('lastname' => $lastname, 'firstname' => $firstname, 'courriel' => $courriel));
+                return $this->render('LapaperieNewsletterBundle:Default:confirmation.html.twig', array('lastname' => $subscriber->getLastname(), 'firstname' => $subscriber->getFirstname(), 'courriel' => $subscriber->getEmail() ));
             }
         }
 
