@@ -46,7 +46,6 @@ class NewsletterController extends Controller
 
             if ($form->isValid()) {
 
-                //TODO appeler Service
                 $this->get('lapaperie_newsletter.create_inscription')->create($subscriber);
                 $this->getDoctrine()->getEntityManager()->flush();
 

@@ -232,3 +232,7 @@ button {
     float: left ;
     margin: 1em;
 }
+
+#vimeo_badge_logo {
+    display: none;
+}

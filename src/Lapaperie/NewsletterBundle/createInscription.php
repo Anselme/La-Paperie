@@ -63,6 +63,5 @@ class createInscription
 
         $this->mailer->send($mail);
     }
-
 }
 
