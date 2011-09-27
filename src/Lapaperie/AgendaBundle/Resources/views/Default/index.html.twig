@@ -12,19 +12,28 @@ La Paperie - Centre National des Arts de la Rue - Agenda
 {% block content %}
  <h2>Agenda</h2>
 
-<div class="">
+<div class="agenda-left-side">
 <ul>
 {% for month in calendar %}
+<li class="{{ month.active }} projets">
 <a href="{{ path('LapaperieAgendaBundle_home', {'month': month.order, 'year': month.year}) }}">
-<li class="{{ month.active }}">{{ month.name }}</li>
+{{ month.name }}
 </a>
+</li>
 {% endfor %}
 </ul>
 </div>
 
-<div class="">
+<div class="agenda-right-side">
+<ul>
 {% for actualite in agenda %}
+<li>
 {{ actualite.actualite | raw }}
+</li>
 {% endfor %}
+</ul>
 </div>
+
+<div class="clear"></div>
+
 {% endblock %}
