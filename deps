@@ -42,7 +42,6 @@
 
 [metadata]
     git=http://github.com/schmittjoh/metadata.git
-    version=1.0.0
 
 [SensioFrameworkExtraBundle]
     git=http://github.com/sensio/SensioFrameworkExtraBundle.git
@@ -51,6 +50,14 @@
 [JMSSecurityExtraBundle]
     git=http://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
+
+; see https://github.com/schmittjoh/JMSAopBundle/blob/master/Resources/doc/index.rst
+[JMSAopBundle]
+    git=https://github.com/schmittjoh/JMSAopBundle.git
+    target=/bundles/JMS/AopBundle
+
+[cg-library]
+    git=https://github.com/schmittjoh/cg-library.git
 
 [SensioDistributionBundle]
     git=http://github.com/sensio/SensioDistributionBundle.git

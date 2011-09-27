@@ -15,6 +15,7 @@ $loader->registerNamespaces(array(
     'Monolog'          => __DIR__.'/../vendor/monolog/src',
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
+    'CG'               => __DIR__.'/../vendor/cg-library/src',
     'Imagine'          => __DIR__.'/../vendor/imagine/lib',
     'Avalanche'        => __DIR__.'/../vendor/bundles',
     'WhiteOctober\PagerfantaBundle' => __DIR__.'/../vendor/bundles',
