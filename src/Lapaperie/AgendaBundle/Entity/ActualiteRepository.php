@@ -12,4 +12,51 @@ use Doctrine\ORM\EntityRepository;
  */
 class ActualiteRepository extends EntityRepository
 {
+
+    public function findHomeActualite()
+    {
+        $now = new \DateTime();
+
+        return $this->getEntityManager()
+            ->createQuery('SELECT a FROM LapaperieAgendaBundle:Actualite a
+                           WHERE a.isOnHome = 1
+                           AND a.date_beginning > :now
+                           ORDER BY a.date_beginning ASC
+                           '
+                       )->setParameter('now',$now)
+            ->getResult();
+    }
+
+    public function findActiveActualiteByMonth($date_beginning = null, $date_end = null)
+    {
+
+        if($date_beginning == null){
+            $date_beginning = new \DateTime();
+        }
+        if($date_end == null){
+            $date_end = new \DateTime();
+        }
+
+        return $this->getEntityManager()
+            ->createQuery('SELECT a FROM LapaperieAgendaBundle:Actualite a
+                                   WHERE a.isOnHome = 1
+                                   AND
+                                   (
+                                       (
+                                           a.date_beginning > :now
+                                           AND
+                                           a.date_beginning < :end
+                                       )
+                                       OR
+                                       (
+                                           a.date_end > :now
+                                           AND
+                                           a.date_end < :end
+                                       )
+                                   )
+                                   ORDER BY a.date_beginning ASC
+                           '
+                       )->setParameters(array('now' => $date_beginning, 'end' => $date_end ))
+                       ->getResult();
+    }
 }

@@ -176,7 +176,7 @@ p {
     float: left;
 }
 
-#home_left {
+.home_left {
     position: relative;
     float: left;
     width: 50%;
@@ -236,4 +236,21 @@ button {
 
 #vimeo_badge_logo {
     display: none;
+}
+
+.align_right {
+    text-align: right;
+}
+
+.agenda_home li {
+    margin-bottom: 1em;
+    background: none;
+}
+
+.agenda_home li p {
+    margin-bottom: 0px;
+}
+
+.active {
+    font-weight: bold;
 }

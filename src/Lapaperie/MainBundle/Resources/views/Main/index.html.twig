@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<div id="home_left">
+<div class="home_left">
   <h2>{{ focus.title }}</h2>
   <div id="focus">
     {{ focus.text | raw }}
@@ -14,9 +14,9 @@
 <div id="home_right">
   <div id="video">
     {{ focus.video | raw }}
-    <p>
+    <!--p>
     {{ focus.legend }}
-    </p>
+    </p-->
   </div>
 </div>
 <div class="clear"></div>
@@ -24,5 +24,16 @@
 {% endblock %}
 
         {% block footer %}
-        <h2>Calendrier</h2>
+<div class="clear"></div>
+<div class="home_left align_right">
+        <a href="{{ path('LapaperieAgendaBundle_home') }}"><h2>Agenda</h2></a>
+    <ul class="agenda_home">
+    {% for actualite in agenda %}
+    <li>
+    {{ actualite.actualite | raw }}
+    </li>
+    {% endfor %}
+    </ul>
+</div>
+<div class="clear"></div>
         {% endblock %}
