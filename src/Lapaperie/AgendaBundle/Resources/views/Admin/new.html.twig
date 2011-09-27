@@ -1,0 +1,9 @@
+{% extends "LapaperieAgendaBundle:Admin:form.html.twig" %}
+
+  {% block action %}
+<form action="{{ path('agenda_create') }}" method="post" {{ form_enctype(form) }}>
+  {% endblock %}
+
+  {% block legend %}Nouvelle Actualité{% endblock %}
+
+  {% block button %}Enregistrer cette nouvelle Actualité{% endblock %}

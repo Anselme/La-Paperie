@@ -27,8 +27,9 @@ LapaperieMainBundle:
     prefix:   /
 
 LapaperieAgendaBundle:
-    resource: "@LapaperieAgendaBundle/Resources/config/routing.yml"
-    prefix:   /agenda
+    resource: "@LapaperieAgendaBundle/Controller"
+    type:     annotation
+    prefix:   /
 
 # Internal routing configuration to handle ESI
 #_internal:

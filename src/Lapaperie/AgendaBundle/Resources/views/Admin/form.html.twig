@@ -1,0 +1,52 @@
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+
+{% block content %}
+
+  {% block action %}
+  {% endblock %}
+
+    {{ form_errors(form) }}
+<fieldset>
+    <legend>{% block legend %}{% endblock %}</legend>
+
+    <div class="clearfix">
+    {{ form_label(form.actualite, 'Actualité') }}
+    <div class="input">
+    {{ form_errors(form.actualite) }}
+    {{ form_widget(form.actualite,  {'attr':{'cols' : '90', 'rows' : '10', 'class': 'editor'}}) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.date_beginning, 'Date de début') }}
+    <div class="input">
+    {{ form_errors(form.date_beginning) }}
+    {{ form_widget(form.date_beginning, { 'attr': {'class': 'jsDate'} } ) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.date_end, 'Date de fin') }}
+    <div class="input">
+    {{ form_errors(form.date_end) }}
+    {{ form_widget(form.date_end, { 'attr': {'class': 'jsDate'} } ) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.isOnHome, 'Afficher en Une') }}
+    <div class="input">
+    {{ form_errors(form.isOnHome) }}
+    {{ form_widget(form.isOnHome) }}
+    </div>
+    </div>
+
+    {{ form_rest(form) }}
+        <button type="submit" class="btn primary">{% block button %}{% endblock %}</button>
+        <a href="{{ path('agenda') }}" class="btn">
+        Retour à l'Agenda
+        </a>
+<fieldset>
+</form>
+
+{% block delete %}
+{% endblock %}
+
+{% endblock %}
