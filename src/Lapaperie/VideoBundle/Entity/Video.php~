@@ -2,7 +2,9 @@
 
 namespace Lapaperie\VideoBundle\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Lapaperie\VideoBundle\Entity\ Video
@@ -45,16 +47,48 @@ class  Video
     /**
      * @var string $legend
      *
-     * @ORM\Column(name="legend", type="string", length=255)
+     * @ORM\Column(name="legend", type="string", length=255, nullable="true")
      */
     private $legend;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Companie", inversedBy="videos")
-     * @ORM\JoinColumn(name="companie_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Lapaperie\CompaniesBundle\Entity\Companie", inversedBy="videos")
+     * @ORM\JoinColumn(name="companie_id", referencedColumnName="id", nullable="true")
      */
     protected $companie;
 
+    /**
+     * @var string $path
+     *
+     * @ORM\Column(name="path", type="string", length=255)
+     */
+    private $pathThumb;
+
+     /**
+     * @Assert\File(maxSize = "1024k", mimeTypes = {"image/gif","image/jpeg","image/png" })
+     */
+    public $imageThumb;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $nameThumb;
+
+    /**
+     * @var string $extension
+     *
+     * @ORM\Column(name="extension", type="string", length=255)
+     */
+    private $extensionThumb;
+
+
+
+    function __construct()
+    {
+        $this->setPublicationDate(new \DateTime());
+    }
 
     /**
      * Get id
@@ -91,7 +125,7 @@ class  Video
      *
      * @param date $publicationDate
      */
-    public function setPublicationDate($publicationDate)
+    public function setPublicationDate(\DateTime $publicationDate)
     {
         $this->publicationDate = $publicationDate;
     }
@@ -149,9 +183,9 @@ class  Video
     /**
      * Set companie
      *
-     * @param Lapaperie\VideoBundle\Entity\Companie $companie
+     * @param Lapaperie\CompaniesBundle\Entity\Companie $companie
      */
-    public function setCompanie(\Lapaperie\VideoBundle\Entity\Companie $companie)
+    public function setCompanie(\Lapaperie\CompaniesBundle\Entity\Companie $companie )
     {
         $this->companie = $companie;
     }
@@ -159,10 +193,68 @@ class  Video
     /**
      * Get companie
      *
-     * @return Lapaperie\VideoBundle\Entity\Companie
+     * @return Lapaperie\CompaniesBundle\Entity\Companie
      */
     public function getCompanie()
     {
         return $this->companie;
     }
+
+    public function upload($companie)
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->image) {
+            return;
+        }
+
+        $extension = $this->image->guessExtension();
+        if(!$extension)
+        {
+            $extension = 'bin' ;
+        }
+
+        $brand_new_name = uniqid().'.'.$extension ;
+
+        // move takes the target directory and then the target filename to move to
+        $this->image->move($this->getUploadRootDir(), $brand_new_name);
+
+        // set the path property to the filename where you'ved saved the file
+        $this->setPath($brand_new_name);
+
+        // set the extension property to the filename where you'ved saved the file
+        $this->setExtension($extension);
+
+        // set the name
+        $this->setName($brand_new_name);
+
+        // set the companie
+        $this->setCompanie($companie);
+
+        // clean up the file property as you won't need it anymore
+        unset($this->image);
+    }
+
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
+        return 'uploads/images';
+    }
+
 }

@@ -13,3 +13,13 @@ $(function(){
     });
 });
 
+//onHover sur les videos
+$(function() {
+    $(".video_home").hover(function(){
+        src = $(this).find("> a > img").attr("src");
+        $(this).find("> a > img").attr("src","/bundles/lapaperiemain/images/caravanelapaperie_original.png") ;
+    }, function() {
+        $(this).find("> a > img").attr("src",src) ;
+    }
+    );
+});

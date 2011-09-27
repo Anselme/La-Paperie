@@ -11,11 +11,13 @@ La Paperie - Centre National des Arts de la Rue - Videos
 
 {% block content %}
     {% for video in videos %}
-    {% if loop.index is divisibleby(4) %}
+    {% if loop.index is divisibleby(7) %}
     <div class="clear"></div>
     {% endif %}
-    <div class="video_home">
-    {{ video.embded | raw }}
+    <div class="video_home" id="{{ video.id }}" >
+    <a href="{{ video.src ? video.src | raw : asset('bundles/lapaperiemain/images/caravanelapaperie_original.png') }}" rel="prettyPhoto" title="{{ video.legend }}">
+    <img src="{{ video.nameThumb ?  video.getWebPath  | apply_filter('video_thumbnail') : asset('bundles/lapaperiemain/images/caravanelapaperie_original.png') | apply_filter('video_thumbnail') }}" width="100" height="75" alt="{{ video.legend }}"/>
+    </a>
     </div>
     {% endfor %}
     <div class="clear"></div>

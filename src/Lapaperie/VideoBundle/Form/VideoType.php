@@ -18,6 +18,7 @@ class VideoType extends AbstractType
             //->add('companie','choice',array('required' => false))
             //->add('companie','choice')
             ->add('companie')
+            ->add('imageThumb')
         ;
     }
 

@@ -45,6 +45,14 @@
     {{ form_widget(form.companie) }}
     </div>
     </div>
+    <div class="clearfix">
+    {{ form_label(form.imageThumb, 'Vignette') }}
+    <div class="input">
+    {{ form_errors(form.imageThumb) }}
+    {{ form_widget(form.imageThumb) }}
+    </div>
+    </div>
+
 
 
     {{ form_rest(form) }}

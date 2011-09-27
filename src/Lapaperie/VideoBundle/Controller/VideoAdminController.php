@@ -88,11 +88,12 @@ class VideoAdminController extends Controller
 
         if ($request->getMethod() == 'POST') {
 
-            $request = $this->getRequest();
 
             $editForm->bindRequest($request);
 
             if ($editForm->isValid()) {
+                $entity->upload();
+                $entity->setSrc();
                 $em->persist($entity);
                 $em->flush();
 

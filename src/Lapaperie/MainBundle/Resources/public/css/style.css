@@ -230,7 +230,8 @@ button {
 
 .video_home {
     float: left ;
-    margin: 1em;
+    margin: 0.2em;
+    display: block;
 }
 
 #vimeo_badge_logo {
