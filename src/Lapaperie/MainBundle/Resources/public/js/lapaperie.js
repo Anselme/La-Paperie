@@ -17,7 +17,7 @@ $(function(){
 $(function() {
     $(".video_home").hover(function(){
         src = $(this).find("> a > img").attr("src");
-        $(this).find("> a > img").attr("src","/bundles/lapaperiemain/images/logonet.png") ;
+        $(this).find("> a > img").attr("src","/bundles/lapaperiemain/images/fondalter-100.png") ;
     }, function() {
         $(this).find("> a > img").attr("src",src) ;
     }

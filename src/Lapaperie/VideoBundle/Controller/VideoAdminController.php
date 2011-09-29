@@ -51,6 +51,8 @@ class VideoAdminController extends Controller
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
+                $entity->upload();
+                $entity->setSrc();
                 $em->persist($entity);
                 $em->flush();
 

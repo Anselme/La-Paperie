@@ -29,7 +29,7 @@ La Paperie - {{ companie.name }}
 
     {% if companie.videos.isEmpty %}
     {% if companie.images.isEmpty %}
-    <img src="{{  asset('bundles/lapaperiemain/images/caravanelapaperie_original.png') }}" width="143" alt="Pas d'images pour cette Companie" />
+    <img src="{{  asset('bundles/lapaperiemain/images/fondalter-252.png') }}" width="252" alt="Pas d'images pour cette Companie" />
     {% else %}
   <a href="{{ companie.images[0].getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
     <img src="{{ companie.images[0].getWebPath | apply_filter('companie') }}" alt="{{ companie.name }}" width="252" />
