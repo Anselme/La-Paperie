@@ -1,5 +1,20 @@
 {% extends "LapaperieMainBundle:Paperie:index.html.twig" %}
 
+{# provisoire pour test #}
+{% block sousmenu %}
+{% endblock %}
+{# end provisoire pour test #}
+
+
 {% block content %}
-<h2>Contenu de La Paperie</h2>
+
+<div class="center_flash">
+<object type="application/x-shockwave-flash" data="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}" style="width:400px;height:400px;">
+<param name="base" value="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}"/>
+<param name="movie" value="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}"/>
+<param name="quality" value="high">
+<param name="wmode" value="transparent"/>
+<param name="menu" value="true"/>
+</object>
+</div>
 {% endblock %}

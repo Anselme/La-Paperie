@@ -279,3 +279,10 @@ button {
 .active {
     font-weight: bold;
 }
+
+.center_flash {
+
+    width: 50% ;
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -12,12 +12,13 @@
   </div>
 </div>
 <div id="home_right">
-  <div id="video">
-    {{ focus.video | raw }}
-    <!--p>
-    {{ focus.legend }}
-    </p-->
-  </div>
+<object type="application/x-shockwave-flash" data="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}" style="width:400px;height:400px;">
+<param name="base" value="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}"/>
+<param name="movie" value="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}"/>
+<param name="quality" value="high">
+<param name="wmode" value="transparent"/>
+<param name="menu" value="true"/>
+</object>
 </div>
 <div class="clear"></div>
 
