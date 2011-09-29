@@ -1,0 +1,17 @@
+{% extends "LapaperieActionCulturelleBundle:Admin:form.html.twig" %}
+
+{% block legend%}Action Culturelle :  {{ entity.title}} {% endblock %}
+
+{% block action %}
+<form action="{{ path('actionculturelle_edit', { 'id': entity.id } ) }}" method="post" {{ form_enctype(form) }}>
+{% endblock %}
+
+{% block button %}Enregistrer les modifications{% endblock %}
+
+
+{% block delete %}
+        <form action="{{ path('actionculturelle_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit" class="btn danger confirm">Supprimer cette Action Culturelle</button>
+        </form>
+{% endblock %}
