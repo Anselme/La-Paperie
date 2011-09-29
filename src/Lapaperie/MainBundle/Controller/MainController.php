@@ -86,6 +86,12 @@ class MainController extends Controller
 
     public function culturelleAction()
     {
-        return $this->render('LapaperieMainBundle:Main:action-culturelle.html.twig');
+        $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
+        $actions = $repository->findAllYear();
+        $active_actions = $repository->findAllNotPreviousYear();
+        return $this->render('LapaperieMainBundle:Main:action-culturelle.html.twig',
+            array('archives' => $actions,
+                  'actionsculturelles' => $active_actions,
+        ));
     }
 }

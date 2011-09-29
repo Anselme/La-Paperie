@@ -44,6 +44,13 @@ class ActionCulturelle
     private $video;
 
     /**
+     * @var boolean $ispreviousYear
+     *
+     * @ORM\Column(name="isPreviousYear", type="boolean", nullable="true")
+     */
+    private $isPreviousYear;
+
+    /**
      * @var integer $year
      *
      * @ORM\Column(name="year", type="integer")
@@ -278,5 +285,25 @@ class ActionCulturelle
     public function getExtension()
     {
         return $this->extension;
+    }
+
+    /**
+     * Set isPreviousYear
+     *
+     * @param boolean $isPreviousYear
+     */
+    public function setIsPreviousYear($isPreviousYear)
+    {
+        $this->isPreviousYear = $isPreviousYear;
+    }
+
+    /**
+     * Get isPreviousYear
+     *
+     * @return boolean
+     */
+    public function getIsPreviousYear()
+    {
+        return $this->isPreviousYear;
     }
 }

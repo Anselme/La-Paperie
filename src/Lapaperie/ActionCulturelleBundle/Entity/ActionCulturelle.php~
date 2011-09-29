@@ -44,11 +44,11 @@ class ActionCulturelle
     private $video;
 
     /**
-     * @var string $link
+     * @var boolean $ispreviousYear
      *
-     * @ORM\Column(name="link", type="string", length=255, nullable="true")
+     * @ORM\Column(name="isPreviousYear", type="boolean", nullable="true")
      */
-    private $link;
+    private $isPreviousYear;
 
     /**
      * @var integer $year
@@ -154,26 +154,6 @@ class ActionCulturelle
     }
 
     /**
-     * Set link
-     *
-     * @param string $link
-     */
-    public function setLink($link)
-    {
-        $this->link = $link;
-    }
-
-    /**
-     * Get link
-     *
-     * @return string
-     */
-    public function getLink()
-    {
-        return $this->link;
-    }
-
-    /**
      * Set year
      *
      * @param integer $year
@@ -245,5 +225,85 @@ class ActionCulturelle
     {
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
         return 'uploads/images';
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set extension
+     *
+     * @param string $extension
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+    }
+
+    /**
+     * Get extension
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
+     * Set isPreviousYear
+     *
+     * @param boolean $isPreviousYear
+     */
+    public function setIsPreviousYear($isPreviousYear)
+    {
+        $this->isPreviousYear = $isPreviousYear;
+    }
+
+    /**
+     * Get isPreviousYear
+     *
+     * @return boolean
+     */
+    public function getIsPreviousYear()
+    {
+        return $this->isPreviousYear;
     }
 }

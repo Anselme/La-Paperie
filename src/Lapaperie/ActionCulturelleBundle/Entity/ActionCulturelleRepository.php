@@ -12,4 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class ActionCulturelleRepository extends EntityRepository
 {
+    public function findAllYear()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT DISTINCT a.year FROM LapaperieActionCulturelleBundle:ActionCulturelle a
+                ORDER BY a.year ASC'
+            )
+            ->getResult();
+    }
+
+    public function findAllNotPreviousYear()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT  a FROM LapaperieActionCulturelleBundle:ActionCulturelle a
+                WHERE a.isPreviousYear = 0
+                ORDER BY a.year ASC'
+            )
+            ->getResult();
+    }
 }

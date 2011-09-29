@@ -12,7 +12,8 @@ class ActionCulturelleType extends AbstractType
         $builder
             ->add('title')
             ->add('video', 'textarea',array('required' => false))
-            ->add('contenu','textarea',array('required' => true))
+            ->add('contenu','textarea',array('required' => false))
+            ->add('isPreviousYear', 'checkbox',array('required' => false))
             ->add('year')
             ->add('image')
         ;
