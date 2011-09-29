@@ -6,6 +6,14 @@
 <form action="{{ path('actionculturelle_edit', { 'id': entity.id } ) }}" method="post" {{ form_enctype(form) }}>
 {% endblock %}
 
+{% block image %}
+      <div class="clearfix">
+      <div class="input">
+      <img src="{{ entity.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
+      </div>
+      </div>
+{% endblock %}
+
 {% block button %}Enregistrer les modifications{% endblock %}
 
 

@@ -8,6 +8,14 @@
 
 {% block button %}Enregistrer les modifications{% endblock %}
 
+{% block image %}
+      <div class="clearfix">
+      <div class="input">
+      <img src="{{ entity.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
+      </div>
+      </div>
+{% endblock %}
+
 
 {% block delete %}
         <form action="{{ path('video_delete', { 'id': entity.id }) }}" method="post">
