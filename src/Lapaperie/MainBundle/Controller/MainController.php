@@ -90,8 +90,9 @@ class MainController extends Controller
         $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
         return $this->render('LapaperieMainBundle:Main:action-culturelle.html.twig',
-            array('archives' => $actions,
-                  'actionsculturelles' => $active_actions,
+            array(
+                'archives' => $actions,
+                'actionsculturelles' => $active_actions,
         ));
     }
 }

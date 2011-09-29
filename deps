@@ -29,6 +29,14 @@
     git=http://github.com/symfony/DoctrineFixturesBundle.git
     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
 
+[DoctrineExtensions]
+    git=git://github.com/l3pp4rd/DoctrineExtensions.git
+    target=/gedmo-doctrine-extensions
+
+[DoctrineExtensionsbundle]
+    git=git://github.com/stof/StofDoctrineExtensionsBundle.git
+    target=/bundles/Stof/DoctrineExtensionsBundle
+
 [swiftmailer]
     git=http://github.com/swiftmailer/swiftmailer.git
     version=v4.1.1

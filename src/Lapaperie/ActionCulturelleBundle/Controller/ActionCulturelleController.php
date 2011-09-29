@@ -11,16 +11,25 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * ActionCulturelle controller.
  *
- * @Route("/action-culturelle/{year}")
+ * @Route("/action-culturelle-projet")
  */
 class ActionCulturelleController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/{id}", name="actionculturelle_detail")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction($id)
     {
-        return array('name' => $name);
+        $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
+        $actions = $repository->findAllYear();
+        $active_actions = $repository->findAllNotPreviousYear();
+        $action = $repository->findOneById($id);
+        return $this->render('LapaperieActionCulturelleBundle:Default:index.html.twig',
+            array('action' => $action,
+                'archives' => $actions,
+                'actionsculturelles' => $active_actions,
+
+        ));
     }
 }

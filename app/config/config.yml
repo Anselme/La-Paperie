@@ -77,6 +77,16 @@ avalanche_imagine:
        companie_thumbnail:
            type:    thumbnail
            options: { size: [84,70], mode: outbound}
+       action:
+           type:    thumbnail
+           options: { size: [352,293], mode: outbound}
        video_thumbnail:
            type:    thumbnail
            options: { size: [100,75], mode: outbound}
+
+#Doctrine Behaviours
+stof_doctrine_extensions:
+    default_locale: fr_FR
+    orm:
+        default:
+            sluggable: true

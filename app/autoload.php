@@ -12,6 +12,8 @@ $loader->registerNamespaces(array(
     'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib',
     'Doctrine\\DBAL'   => __DIR__.'/../vendor/doctrine-dbal/lib',
     'Doctrine'         => __DIR__.'/../vendor/doctrine/lib',
+    'Stof'             => __DIR__.'/../vendor/bundles',
+    'Gedmo'            => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
     'Monolog'          => __DIR__.'/../vendor/monolog/src',
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',

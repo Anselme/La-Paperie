@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 
             new Lapaperie\MainBundle\LapaperieMainBundle(),
             new Lapaperie\AgendaBundle\LapaperieAgendaBundle(),

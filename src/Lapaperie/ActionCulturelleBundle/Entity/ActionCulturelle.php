@@ -4,6 +4,7 @@ namespace Lapaperie\ActionCulturelleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelle
@@ -25,6 +26,7 @@ class ActionCulturelle
     /**
      * @var string $title
      *
+     * @Gedmo:Sluggable
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -83,6 +85,17 @@ class ActionCulturelle
      */
     public $image;
 
+    /**
+     * @var string $slug
+     *
+     * @Gedmo:Slug
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    function __construct()
+    {
+    }
     /**
      * Get id
      *
@@ -305,5 +318,25 @@ class ActionCulturelle
     public function getIsPreviousYear()
     {
         return $this->isPreviousYear;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return slug
+     */
+    public function getSug()
+    {
+        return $this->slug;
     }
 }
