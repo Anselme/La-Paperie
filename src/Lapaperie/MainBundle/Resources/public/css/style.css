@@ -211,8 +211,6 @@ p {
 #home_right {
     position: relative;
     float: right;
-    padding-left: 2em;
-    margin-left: 2em;
 }
 
 strong {
