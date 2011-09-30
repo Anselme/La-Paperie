@@ -32,4 +32,28 @@ class ActionCulturelleController extends Controller
 
         ));
     }
+
+    /**
+     * @Route("/annee/{year}", name="actionculturelle_byyear")
+     * @Template()
+     */
+    public function byYearAction($year)
+    {
+        $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
+
+        //pour le menu
+        $actions = $repository->findAllYear();
+        $active_actions = $repository->findAllNotPreviousYear();
+
+        //Projets affichés
+        $all_by_year = $repository->findByYear($year);
+
+        return $this->render('LapaperieActionCulturelleBundle:Default:year.html.twig',
+            array('actionsbyyear' => $all_by_year,
+                'archives' => $actions,
+                'actionsculturelles' => $active_actions,
+                'year'     => $year,
+
+        ));
+    }
 }

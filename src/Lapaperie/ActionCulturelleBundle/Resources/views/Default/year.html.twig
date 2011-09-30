@@ -1,8 +1,9 @@
 {% extends "LapaperieMainBundle:Main:action-culturelle.html.twig" %}
 
-{% block submenu %}{{ action.id }}{% endblock %}
+{% block submenu %}{{ year }}{% endblock %}
 
 {% block content %}
+{% for action in actionsbyyear %}
 <div class="home_left">
 <h2>{{ action.title }}</h2>
   <div id="focus">
@@ -21,5 +22,8 @@
 {% endif %}
 </div>
 <div class="clear"></div>
-
+{% if loop.index != loop.length %}
+<div class="dotted_line"></div>
+{% endif %}
+{% endfor %}
 {% endblock %}
