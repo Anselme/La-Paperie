@@ -89,7 +89,7 @@ class ActionCulturelle
      * @var string $slug
      *
      * @Gedmo:Slug
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, nullable="true")
      */
     private $slug;
 
