@@ -10,6 +10,7 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/i18n/jquery-ui-i18n.min.js"></script>
+        <script type="text/javascript" src="{{ asset('bundles/lapaperieadmin/js/bootstrap-dropdown.js') }}"></script>
 
         <title>{% block title %}La Paperie - Administration du site{% endblock %}</title>
     </head>
@@ -26,9 +27,19 @@
                         <li class="">
                         <a href="{{ path('companie') }}">Companies/Résidences</a>
                         </li>
+
+                        <li class="dropdown" data-dropdown="dropdown">
+                        <a href="#" class="dropdown-toggle">Projets</a>
+                        <ul class="dropdown-menu">
                         <li class="">
-                        <a href="{{ path('actionculturelle') }}">Actions Culturelles</a>
+                            <a href="{{ path('actionculturelle') }}">Actions Culturelles</a>
                         </li>
+                        <li class="">
+                            <a href="{{ path('diffusion') }}">Diffusion/Infusion</a>
+                        </li>
+                        </ul>
+                        </li>
+
                         <li class="">
                         <a href="{{ path('agenda') }}">Agenda</a>
                         </li>

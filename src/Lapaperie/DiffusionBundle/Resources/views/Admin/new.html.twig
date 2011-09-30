@@ -1,0 +1,10 @@
+{% extends "LapaperieDiffusionBundle:Admin:form.html.twig" %}
+
+{% block legend%}Nouvelle Diffusion/Infusion{% endblock %}
+
+{% block action %}
+<form action="{{ path('diffusion_create') }}" method="post" {{ form_enctype(form) }}>
+{% endblock %}
+
+{% block button %}Enregistrer cette nouvelle Diffusion/Infusion{% endblock %}
+

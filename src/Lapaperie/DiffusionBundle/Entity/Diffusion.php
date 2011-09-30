@@ -1,6 +1,6 @@
 <?php
 
-namespace Lapaperie\ActionCulturelleBundle\Entity;
+namespace Lapaperie\DiffusionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -8,12 +8,12 @@ use Gedmo\Sluggable\Util\Urlizer;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelle
+ * Lapaperie\DiffusionBundle\Entity\Diffusion
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelleRepository")
+ * @ORM\Entity(repositoryClass="Lapaperie\DiffusionBundle\Entity\DiffusionRepository")
  */
-class ActionCulturelle
+class Diffusion
 {
     /**
      * @var integer $id
@@ -29,7 +29,7 @@ class ActionCulturelle
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    protected $title;
+    private $title;
 
     /**
      * @var text $contenu
@@ -84,6 +84,18 @@ class ActionCulturelle
      * @Assert\File(maxSize = "1024k", mimeTypes = {"image/gif","image/jpeg","image/png" })
      */
     public $image;
+
+     /**
+     * @Assert\File(maxSize = "5000000")
+     */
+    public $file;
+
+    /**
+     * @var string $link
+     *
+     * @ORM\Column(name="link", type="string", length=255, nullable="true")
+     */
+    private $link;
 
     /**
      * @var string $slug
@@ -339,4 +351,25 @@ class ActionCulturelle
     {
         return $this->slug;
     }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
 }

@@ -16,7 +16,7 @@ La Paperie - {{ companie.name }}
 {{ projet.name }} <img src="{{ asset('bundles/lapaperiemain/images/plusque.png') }}" />
 {% else %}
 <li class="projets">
-<a href="{{ path('projet_show', {'id':projet.id}) }}">{{ projet.name }}</a>  
+<a href="{{ path('projet_show', {'slug':projet.slug}) }}">{{ projet.name }}</a>  
 <img src="{{ asset('bundles/lapaperiemain/images/moinsque.png') }}" />
 {% endif %}
 </li>

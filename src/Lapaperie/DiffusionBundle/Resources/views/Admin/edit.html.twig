@@ -1,0 +1,25 @@
+{% extends "LapaperieDiffusionBundle:Admin:form.html.twig" %}
+
+{% block legend%}Diffusion/Infusion :  {{ entity.title}} {% endblock %}
+
+{% block action %}
+<form action="{{ path('diffusion_edit', { 'id': entity.id } ) }}" method="post" {{ form_enctype(form) }}>
+{% endblock %}
+
+{% block image %}
+      <div class="clearfix">
+      <div class="input">
+      <img src="{{ entity.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
+      </div>
+      </div>
+{% endblock %}
+
+{% block button %}Enregistrer les modifications{% endblock %}
+
+
+{% block delete %}
+        <form action="{{ path('diffusion_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit" class="btn danger confirm">Supprimer cette Diffusion/Infusion</button>
+        </form>
+{% endblock %}

@@ -49,7 +49,14 @@ class MainController extends Controller
 
     public function diffusionAction()
     {
-        return $this->render('LapaperieMainBundle:Main:diffusion-infusion.html.twig');
+        $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
+        $actions = $repository->findAllYear();
+        $active_actions = $repository->findAllNotPreviousYear();
+        return $this->render('LapaperieMainBundle:Main:diffusion-infusion.html.twig',
+            array(
+                'archives' => $actions,
+                'diffusions' => $active_actions,
+        ));
     }
 
     public function soutienAction()
@@ -75,11 +82,11 @@ class MainController extends Controller
         return $this->render('LapaperieMainBundle:Soutien:projets.html.twig', array('companies' => $companies));
     }
 
-    public function projetAction($id)
+    public function projetAction($slug)
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
         $companies = $repository->findAll();
-        $companie = $repository->findOneById($id);
+        $companie = $repository->findOneBySlug($slug);
 
         return $this->render('LapaperieMainBundle:Soutien:projet.html.twig', array('companies' => $companies, 'companie' => $companie));
     }

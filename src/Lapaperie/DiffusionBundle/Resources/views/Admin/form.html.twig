@@ -1,0 +1,85 @@
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+
+{% block content %}
+
+{% block action %}
+{% endblock %}
+
+    {{ form_errors(form) }}
+
+<fieldset>
+    <legend>{% block legend%}{% endblock %}</legend>
+
+    <div class="clearfix">
+    {{ form_label(form.title, 'Titre') }}
+    <div class="input">
+    {{ form_errors(form.title) }}
+    {{ form_widget(form.title) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.contenu, 'Contenu') }}
+    <div class="input">
+    {{ form_errors(form.contenu) }}
+    {{ form_widget(form.contenu, { 'attr': {'class': 'editor'} } ) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.video, 'Embded') }}
+    <div class="input">
+    {{ form_errors(form.video) }}
+    {{ form_widget(form.video) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.isPreviousYear, 'Archiver') }}
+    <div class="input">
+    {{ form_errors(form.isPreviousYear) }}
+    {{ form_widget(form.isPreviousYear) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.year, 'Année de classement') }}
+    <div class="input">
+    {{ form_errors(form.year) }}
+    {{ form_widget(form.year) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.file, 'Fichier joint') }}
+    <div class="input">
+    {{ form_errors(form.file) }}
+    {{ form_widget(form.file) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.link, 'Lien du fichier joint') }}
+    <div class="input">
+    {{ form_errors(form.link) }}
+    {{ form_widget(form.link) }}
+    </div>
+    </div>
+    <div class="clearfix">
+    {{ form_label(form.image, 'Visuel') }}
+    <div class="input">
+    {{ form_errors(form.image) }}
+    {{ form_widget(form.image) }}
+    </div>
+    </div>
+
+{% block image %}
+{% endblock %}
+
+    {{ form_rest(form) }}
+</fieldset>
+        <button type="submit" class="btn primary">{% block button %}{% endblock %}</button>
+
+        <a href="{{ path('diffusion') }}" class="btn">
+        Retour à la liste des Diffusion/Infusion
+        </a>
+</form>
+
+{% block delete %}
+{% endblock %}
+
+{% endblock %}

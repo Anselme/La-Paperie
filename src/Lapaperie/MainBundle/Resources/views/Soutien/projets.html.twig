@@ -11,8 +11,8 @@ La Paperie - Centre National des Arts de la Rue - Les projets
 <ul>
 {% for companie in companies %}
 <li>En résidence du {{ companie.dateresidencebeginning | date('j F') }} au {{ companie.dateresidenceend  | date('j F Y') }} :
-<a href="{{ path('projet_show', {'id':companie.id}) }}">{{ companie.name }}</a> - 
-<a href="{{ path('projet_show', {'id':companie.id}) }}">{{ companie.creation }}</a>
+<a href="{{ path('projet_show', {'slug':companie.slug}) }}">{{ companie.name }}</a> - 
+<a href="{{ path('projet_show', {'slug':companie.slug}) }}">{{ companie.creation }}</a>
 </li>
 {% endfor %}
 </ul>

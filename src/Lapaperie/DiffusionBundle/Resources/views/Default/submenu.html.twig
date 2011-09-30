@@ -1,8 +1,8 @@
-{% if actionsculturelles %}
+{% if diffusions %}
 <ul class="subnav">
-{% for action in actionsculturelles %}
+{% for action in diffusions %}
 <li class="{{ action.id == subcurrent ? 'active' : ''}}" >
-<a href="{{ path('actionculturelle_detail', {'slug':  action.slug  }) }}">{{ action.title }}</a>
+<a href="{{ path('diffusion_detail', {'slug':  action.slug  }) }}">{{ action.title }}</a>
 </li>
 {% endfor %}
 </ul>
@@ -12,7 +12,7 @@
 <ul class="subnav">
 {% for archive in archives %}
 <li class="{{ archive.year == subcurrent ? 'active' : ''}}" >
-<a href="{{ path('actionculturelle_byyear', {'year': archive.year}) }}">{{ archive.year }}</a>
+<a href="{{ path('diffusion_byyear', {'year': archive.year}) }}">{{ archive.year }}</a>
 </li>
 {% endfor %}
 </ul>

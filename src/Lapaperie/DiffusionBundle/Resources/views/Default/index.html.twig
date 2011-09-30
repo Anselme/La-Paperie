@@ -1,0 +1,25 @@
+{% extends "LapaperieMainBundle:Main:diffusion-infusion.html.twig" %}
+
+{% block submenu %}{{ action.id }}{% endblock %}
+
+{% block content %}
+<div class="home_left">
+<h2>{{ action.title }}</h2>
+  <div id="focus">
+    {{ action.contenu | raw }}
+  </div>
+</div>
+<div id="home_right">
+{% if action.video %}
+<div id="video">
+{{ action.video | raw }}
+</div>
+{% else %}
+  <a href="{{ action.getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
+    <img src="{{ action.getWebPath | apply_filter('action') }}" alt="{{ action.name }}" width="352" />
+    </a>
+{% endif %}
+</div>
+<div class="clear"></div>
+
+{% endblock %}

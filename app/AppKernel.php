@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new Lapaperie\AdminBundle\LapaperieAdminBundle(),
             new Lapaperie\NewsletterBundle\LapaperieNewsletterBundle(),
             new Lapaperie\ActionCulturelleBundle\LapaperieActionCulturelleBundle(),
+            new Lapaperie\DiffusionBundle\LapaperieDiffusionBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

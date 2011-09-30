@@ -5,6 +5,8 @@ namespace Lapaperie\CompaniesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Sluggable\Util\Urlizer;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Lapaperie\CompaniesBundle\Entity\Companie
@@ -81,6 +83,14 @@ class Companie
      * @ORM\OneToMany(targetEntity="Lapaperie\VideoBundle\Entity\Video", mappedBy="companie")
      */
     protected $videos;
+
+    /**
+     * @var string $slug
+     *
+     * @Gedmo\Slug(fields={"name"},unique="true", updatable="true")
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -281,5 +291,25 @@ class Companie
     public function getVideos()
     {
         return $this->videos;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

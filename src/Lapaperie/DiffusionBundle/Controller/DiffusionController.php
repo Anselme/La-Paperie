@@ -1,6 +1,6 @@
 <?php
 
-namespace Lapaperie\ActionCulturelleBundle\Controller;
+namespace Lapaperie\DiffusionBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -9,37 +9,38 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
- * ActionCulturelle controller.
+ * Diffusion controller.
  *
- * @Route("/action-culturelle-projet")
+ * @Route("/diffusion-projet")
  */
-class ActionCulturelleController extends Controller
+class DiffusionController extends Controller
 {
     /**
-     * @Route("/{slug}", name="actionculturelle_detail")
+     * @Route("/{slug}", name="diffusion_detail")
      * @Template()
      */
     public function indexAction($slug)
     {
-        $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
+        $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
         $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
+
         $action = $repository->findOneBySlug($slug);
-        return $this->render('LapaperieActionCulturelleBundle:Default:index.html.twig',
+        return $this->render('LapaperieDiffusionBundle:Default:index.html.twig',
             array('action' => $action,
                 'archives' => $actions,
-                'actionsculturelles' => $active_actions,
+                'diffusions' => $active_actions,
 
         ));
     }
 
     /**
-     * @Route("/annee/{year}", name="actionculturelle_byyear")
+     * @Route("/annee/{year}", name="diffusion_byyear")
      * @Template()
      */
     public function byYearAction($year)
     {
-        $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
+        $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
 
         //pour le menu
         $actions = $repository->findAllYear();
@@ -48,10 +49,10 @@ class ActionCulturelleController extends Controller
         //Projets affichés
         $all_by_year = $repository->findByYear($year);
 
-        return $this->render('LapaperieActionCulturelleBundle:Default:year.html.twig',
+        return $this->render('LapaperieDiffusionBundle:Default:year.html.twig',
             array('actionsbyyear' => $all_by_year,
                 'archives' => $actions,
-                'actionsculturelles' => $active_actions,
+                'diffusions' => $active_actions,
                 'year'     => $year,
 
         ));

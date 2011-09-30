@@ -34,7 +34,7 @@ LapaperieMainBundle_soutiencreation_projets:
     pattern:  /soutien-creation/projets
     defaults: { _controller: LapaperieMainBundle:Main:projets }
 projet_show:
-    pattern:  /soutien-creation/projets/{id}
+    pattern:  /soutien-creation/projets/{slug}
     defaults: { _controller: LapaperieMainBundle:Main:projet }
 
 LapaperieMainBundle_soutiencreation_solliciter:
