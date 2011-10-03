@@ -11,18 +11,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Diffusion controller.
  *
- * @Route("/diffusion-projet")
+ * @Route("/diffusion-projets")
  */
 class DiffusionController extends Controller
 {
     /**
-     * @Route("/{slug}", name="diffusion_detail")
+     * @Route("/projet/{slug}", name="diffusion_detail")
      * @Template()
      */
     public function indexAction($slug)
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
-        $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
 
         $action = $repository->findOneBySlug($slug);
@@ -32,7 +31,6 @@ class DiffusionController extends Controller
 
         return $this->render('LapaperieDiffusionBundle:Default:index.html.twig',
             array('action' => $action,
-                'archives' => $actions,
                 'diffusions' => $active_actions,
 
         ));
@@ -47,7 +45,6 @@ class DiffusionController extends Controller
         $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
 
         //pour le menu
-        $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
 
         //Projets affichés
@@ -55,10 +52,28 @@ class DiffusionController extends Controller
 
         return $this->render('LapaperieDiffusionBundle:Default:year.html.twig',
             array('actionsbyyear' => $all_by_year,
-                'archives' => $actions,
                 'diffusions' => $active_actions,
                 'year'     => $year,
 
+        ));
+    }
+
+    /**
+     * @Route("/archives", name="diffusion_archives")
+     * @Template()
+     */
+    public function archivesAction()
+    {
+
+        $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
+        $entities = $repository->findAllByYear();
+
+        //pour le menu
+        $diffusions = $repository->findAllNotPreviousYear();
+
+        return $this->render('LapaperieDiffusionBundle:Default:archives.html.twig',
+            array('entities' => $entities,
+                'diffusions' => $diffusions,
         ));
     }
 }

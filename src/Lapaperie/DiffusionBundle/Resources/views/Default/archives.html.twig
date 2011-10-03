@@ -1,0 +1,24 @@
+{% extends "LapaperieMainBundle:Main:diffusion-infusion.html.twig" %}
+
+{% block submenu %}archives{% endblock %}
+
+{% block content %}
+
+
+<ul>
+{% for entity in entities %}
+{% if loop.index == 1 %}
+<h2>{{ entity.year }}</h2>
+{% elseif year != entity.year %}
+</ul>
+<h2>{{ entity.year }}</h2>
+<ul>
+{% endif %}
+
+<li><a href="{{ path('diffusion_detail', {'slug':  entity.slug  }) }}" title="">{{ entity.title }}</a></li>
+
+{% set year = entity.year %}
+{% endfor %}
+</ul>
+
+{% endblock %}

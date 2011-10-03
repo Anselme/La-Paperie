@@ -2,18 +2,11 @@
 <ul class="subnav">
 {% for action in actionsculturelles %}
 <li class="{{ action.id == subcurrent ? 'active' : ''}}" >
-<a href="{{ path('actionculturelle_detail', {'slug':  action.slug  }) }}">{{ action.title }}</a>
+<a href="{{ path('actionculturelle_detail', {'slug':  action.slug  }) }}" title="">{{ action.title }}</a>
 </li>
 {% endfor %}
-</ul>
-{% endif %}
-
-{% if archives %}
-<ul class="subnav">
-{% for archive in archives %}
-<li class="{{ archive.year == subcurrent ? 'active' : ''}}" >
-<a href="{{ path('actionculturelle_byyear', {'year': archive.year}) }}">{{ archive.year }}</a>
+<li class="{{ 'archives' == subcurrent ? 'active' : ''}}">
+<a href="{{ path('actionculturelle_archives') }}" title="Années précédentes">Archives</a>
 </li>
-{% endfor %}
 </ul>
 {% endif %}

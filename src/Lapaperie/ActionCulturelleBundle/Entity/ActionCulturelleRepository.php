@@ -12,12 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class ActionCulturelleRepository extends EntityRepository
 {
-    public function findAllYear()
+    public function findAllByYear()
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT DISTINCT a.year FROM LapaperieActionCulturelleBundle:ActionCulturelle a
-                ORDER BY a.year ASC'
+                'SELECT  a FROM LapaperieActionCulturelleBundle:ActionCulturelle a
+                ORDER BY a.year DESC'
             )
             ->getResult();
     }

@@ -51,7 +51,6 @@ class MainController extends Controller
     public function diffusionAction($_route)
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
-        $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
 
         $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
@@ -65,7 +64,6 @@ class MainController extends Controller
 
         return $this->render('LapaperieMainBundle:Main:diffusion-infusion.html.twig',
             array(
-                'archives' => $actions,
                 'diffusions' => $active_actions,
                 'page' => $page,
         ));
@@ -143,7 +141,6 @@ class MainController extends Controller
     public function culturelleAction($_route)
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
-        $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
 
         $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
@@ -157,7 +154,6 @@ class MainController extends Controller
 
         return $this->render('LapaperieMainBundle:Main:action-culturelle.html.twig',
             array(
-                'archives' => $actions,
                 'actionsculturelles' => $active_actions,
                 'page' => $page,
         ));

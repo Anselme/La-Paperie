@@ -11,18 +11,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * ActionCulturelle controller.
  *
- * @Route("/action-culturelle-projet")
+ * @Route("/action-culturelle-projets")
  */
 class ActionCulturelleController extends Controller
 {
     /**
-     * @Route("/{slug}", name="actionculturelle_detail")
+     * @Route("/projet/{slug}", name="actionculturelle_detail")
      * @Template()
      */
     public function indexAction($slug)
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
-        $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
 
         $action = $repository->findOneBySlug($slug);
@@ -33,9 +32,7 @@ class ActionCulturelleController extends Controller
 
         return $this->render('LapaperieActionCulturelleBundle:Default:index.html.twig',
             array('action' => $action,
-                'archives' => $actions,
                 'actionsculturelles' => $active_actions,
-
         ));
     }
 
@@ -48,7 +45,6 @@ class ActionCulturelleController extends Controller
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
 
         //pour le menu
-        $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
 
         //Projets affichés
@@ -56,10 +52,28 @@ class ActionCulturelleController extends Controller
 
         return $this->render('LapaperieActionCulturelleBundle:Default:year.html.twig',
             array('actionsbyyear' => $all_by_year,
-                'archives' => $actions,
                 'actionsculturelles' => $active_actions,
                 'year'     => $year,
 
+        ));
+    }
+
+    /**
+     * @Route("/archives", name="actionculturelle_archives")
+     * @Template()
+     */
+    public function archivesAction()
+    {
+
+        $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
+        $entities = $repository->findAllByYear();
+
+        //pour le menu
+        $active_actions = $repository->findAllNotPreviousYear();
+
+        return $this->render('LapaperieActionCulturelleBundle:Default:archives.html.twig',
+            array('entities' => $entities,
+                'actionsculturelles' => $active_actions,
         ));
     }
 }

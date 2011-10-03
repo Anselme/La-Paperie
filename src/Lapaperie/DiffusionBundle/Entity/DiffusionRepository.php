@@ -12,12 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class DiffusionRepository extends EntityRepository
 {
-    public function findAllYear()
+    public function findAllByYear()
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT DISTINCT a.year FROM LapaperieDiffusionBundle:Diffusion a
-                ORDER BY a.year ASC'
+                'SELECT a FROM LapaperieDiffusionBundle:Diffusion a
+                ORDER BY a.year DESC'
             )
             ->getResult();
     }
