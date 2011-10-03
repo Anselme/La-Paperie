@@ -2,8 +2,11 @@
 
 namespace Lapaperie\CompaniesBundle\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Sluggable\Util\Urlizer;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Lapaperie\CompaniesBundle\Entity\Companie
@@ -35,6 +38,20 @@ class Companie
      * @ORM\Column(name="creation", type="string", length=255, nullable="true")
      */
     private $creation;
+
+    /**
+     * @var boolean $ispreviousYear
+     *
+     * @ORM\Column(name="isPreviousYear", type="boolean", nullable="true")
+     */
+    private $isPreviousYear;
+
+    /**
+     * @var integer $year
+     *
+     * @ORM\Column(name="year", type="integer")
+     */
+    private $year;
 
     /**
      * @var date $date_residence_beginning
@@ -77,14 +94,27 @@ class Companie
     protected $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="Video", mappedBy="companie")
+     * @ORM\OneToMany(targetEntity="Lapaperie\VideoBundle\Entity\Video", mappedBy="companie")
      */
     protected $videos;
+
+    /**
+     * @var string $slug
+     *
+     * @Gedmo\Slug(fields={"name"},unique="true", updatable="true")
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->videos = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**
@@ -260,9 +290,9 @@ class Companie
     /**
      * Add videos
      *
-     * @param Lapaperie\CompaniesBundle\Entity\Video $videos
+     * @param Lapaperie\VideoBundle\Entity\Video $videos
      */
-    public function addVideo(\Lapaperie\CompaniesBundle\Entity\Video $videos)
+    public function addVideo(\Lapaperie\VideoBundle\Entity\Video $videos)
     {
         $this->videos[] = $videos;
     }
@@ -270,10 +300,30 @@ class Companie
     /**
      * Get videos
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getVideos()
     {
         return $this->videos;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

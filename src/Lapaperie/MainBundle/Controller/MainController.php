@@ -113,23 +113,29 @@ class MainController extends Controller
         return $this->render('LapaperieMainBundle:Soutien:solliciter.html.twig', array('page' => $page));
     }
 
-    public function projetsAction()
+    public function projetsAction($year)
     {
-        $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
-        $companies = $repository->findAll();
 
-        return $this->render('LapaperieMainBundle:Soutien:projets.html.twig', array('companies' => $companies));
+        $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
+
+        $archives = $repository->findAllYear();
+
+        $companies = $repository->findByYear($year);
+
+        return $this->render('LapaperieMainBundle:Soutien:projets.html.twig',
+            array('companies' => $companies, 'archives' => $archives));
     }
 
     public function projetAction($slug)
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
-        $companies = $repository->findAll();
         $companie = $repository->findOneBySlug($slug);
 
         if (!$companie) {
             throw $this->createNotFoundException('Unable to find Focus entity.');
         }
+
+        $companies = $repository->findAllByYear($companie->getYear());
 
         return $this->render('LapaperieMainBundle:Soutien:projet.html.twig', array('companies' => $companies, 'companie' => $companie));
     }

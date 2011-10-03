@@ -23,6 +23,8 @@ class CompanieType extends AbstractType
             ->add('date_sortie_de_fabrique','date', $dateArgsArray)
             ->add('short_text','textarea',array('required' => false))
             ->add('long_text','textarea',array('required' => false))
+            ->add('isPreviousYear', 'checkbox',array('required' => false))
+            ->add('year')
             ;
     }
 

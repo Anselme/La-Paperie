@@ -40,6 +40,20 @@ class Companie
     private $creation;
 
     /**
+     * @var boolean $ispreviousYear
+     *
+     * @ORM\Column(name="isPreviousYear", type="boolean", nullable="true")
+     */
+    private $isPreviousYear;
+
+    /**
+     * @var integer $year
+     *
+     * @ORM\Column(name="year", type="integer")
+     */
+    private $year;
+
+    /**
      * @var date $date_residence_beginning
      *
      * @ORM\Column(name="date_residence_beginning", type="date", nullable="true")
@@ -311,5 +325,45 @@ class Companie
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set isPreviousYear
+     *
+     * @param boolean $isPreviousYear
+     */
+    public function setIsPreviousYear($isPreviousYear)
+    {
+        $this->isPreviousYear = $isPreviousYear;
+    }
+
+    /**
+     * Get isPreviousYear
+     *
+     * @return boolean 
+     */
+    public function getIsPreviousYear()
+    {
+        return $this->isPreviousYear;
+    }
+
+    /**
+     * Set year
+     *
+     * @param integer $year
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+    }
+
+    /**
+     * Get year
+     *
+     * @return integer 
+     */
+    public function getYear()
+    {
+        return $this->year;
     }
 }

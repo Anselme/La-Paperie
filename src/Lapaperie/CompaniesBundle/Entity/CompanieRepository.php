@@ -12,4 +12,36 @@ use Doctrine\ORM\EntityRepository;
  */
 class CompanieRepository extends EntityRepository
 {
+    public function findAllYear()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT DISTINCT a.year FROM LapaperieCompaniesBundle:Companie a
+                ORDER BY a.year ASC'
+            )
+            ->getResult();
+    }
+
+    public function findAllNotPreviousYear()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT  a FROM LapaperieCompaniesBundle:Companie a
+                WHERE a.isPreviousYear = 0
+                ORDER BY a.year ASC'
+            )
+            ->getResult();
+    }
+
+    public function findAllByYear($year)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT  a FROM LapaperieCompaniesBundle:Companie a
+                WHERE a.year = :year
+                ORDER BY a.year ASC'
+            )->setParameter('year',$year)
+            ->getResult();
+    }
+
 }
