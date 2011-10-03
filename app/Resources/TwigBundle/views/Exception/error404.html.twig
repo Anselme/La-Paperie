@@ -1,0 +1,18 @@
+{% extends "LapaperieMainBundle:Paperie:index.html.twig" %}
+
+{% block sousmenu %}
+{% endblock %}
+
+{% block content %}
+<h2>Page Non Trouvée</h2>
+
+<div class="center_flash">
+<object type="application/x-shockwave-flash" data="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}" style="width:600px;height:450px;">
+<param name="base" value="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}"/>
+<param name="movie" value="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}"/>
+<param name="quality" value="high">
+<param name="wmode" value="transparent"/>
+<param name="menu" value="true"/>
+</object>
+</div>
+{% endblock %}
