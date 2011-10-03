@@ -123,7 +123,7 @@ class MainController extends Controller
         $companies = $repository->findByYear($year);
 
         return $this->render('LapaperieMainBundle:Soutien:projets.html.twig',
-            array('companies' => $companies, 'archives' => $archives));
+            array('companies' => $companies, 'archives' => $archives, 'year' => $year));
     }
 
     public function projetAction($slug)

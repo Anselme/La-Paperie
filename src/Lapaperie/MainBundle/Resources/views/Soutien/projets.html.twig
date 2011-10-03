@@ -10,7 +10,7 @@ La Paperie - Centre National des Arts de la Rue - Les projets
 {% if archives %}
 <ul class="subnav">
 {% for archive in archives %}
-<li class="{{ archive.year == 0 ? 'active' : ''}}" >
+<li class="{{ archive.year == year ? 'active' : ''}}" >
 <a href="{{ path('LapaperieMainBundle_soutiencreation_projets', {'year': archive.year}) }}">{{ archive.year }}</a>
 </li>
 {% endfor %}
@@ -19,7 +19,7 @@ La Paperie - Centre National des Arts de la Rue - Les projets
 {% endblock %}
 
 {% block content %}
-<h2>Les projets soutenus</h2>
+<h2>Les projets soutenus en {{ year }}</h2>
 <ul>
 {% for companie in companies %}
 <li>En résidence du {{ companie.dateresidencebeginning | date('j F') }} au {{ companie.dateresidenceend  | date('j F Y') }} :
