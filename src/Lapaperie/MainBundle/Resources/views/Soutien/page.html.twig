@@ -17,6 +17,6 @@
 </div>
 <div class="clear"></div>
 {% if page.link %}
-<a href="{{ page.getWebFilePath | raw }}" title="{{ page.link }}">{{ page.link }}</a>
+<a href="{{ page.getWebFilePath | raw }}" title="{{ page.fileExtension}} {{ page.fileSize // 1024 }}Ko">{{ page.link }}</a>
 <div class="clear"></div>
 {% endif %}

@@ -98,7 +98,7 @@ class Page
     /**
      * @var string $fileSize
      *
-     * @ORM\Column(name="fileSize", type="integer", nullable="true")
+     * @ORM\Column(name="fileSize", type="int", nullable="true")
      */
     private $fileSize;
 
@@ -318,7 +318,7 @@ class Page
         $brand_new_name = uniqid().'.'.$extension ;
 
         // set the size property to the filename where you'ved saved the file
-        $this->setFileSize(filesize($this->file));
+        $this->setFileSize($this->file);
 
         // move takes the target directory and then the target filename to move to
         $this->file->move($this->getUploadFileRootDir(), $brand_new_name);
@@ -327,7 +327,7 @@ class Page
         $this->setFilePath($brand_new_name);
 
         // set the extension property to the filename where you'ved saved the file
-        $this->setFileExtension($extension);
+        $this->setExtension($extension);
 
         // set the name
         $this->setFileName($brand_new_name);
@@ -406,44 +406,4 @@ class Page
         unset($this->image);
     }
 
-
-    /**
-     * Set fileExtension
-     *
-     * @param string $fileExtension
-     */
-    public function setFileExtension($fileExtension)
-    {
-        $this->fileExtension = $fileExtension;
-    }
-
-    /**
-     * Get fileExtension
-     *
-     * @return string
-     */
-    public function getFileExtension()
-    {
-        return $this->fileExtension;
-    }
-
-    /**
-     * Set fileSize
-     *
-     * @param int $fileSize
-     */
-    public function setFileSize($fileSize)
-    {
-        $this->fileSize = $fileSize;
-    }
-
-    /**
-     * Get fileSize
-     *
-     * @return int
-     */
-    public function getFileSize()
-    {
-        return $this->fileSize;
-    }
 }
