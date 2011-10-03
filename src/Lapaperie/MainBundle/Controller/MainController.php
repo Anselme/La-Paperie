@@ -24,64 +24,93 @@ class MainController extends Controller
 
     public function paperieAction()
     {
+        // a modifier une fois l'histoire du flash tranchée
         return $this->render('LapaperieMainBundle:Paperie:paperie.html.twig');
     }
 
-    public function cnarAction()
+    public function cnarAction($_route)
     {
+        return $this->renderLaPaperiePage($_route);
+    }
+
+    public function equipeAction($_route)
+    {
+        return $this->renderLaPaperiePage($_route);
+    }
+
+    public function descriptionAction($_route)
+    {
+        return $this->renderLaPaperiePage($_route);
+    }
+
+    public function formationAction($_route)
+    {
+        return $this->renderLaPaperiePage($_route);
+    }
+
+    public function diffusionAction($_route)
+    {
+        $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
+        $actions = $repository->findAllYear();
+        $active_actions = $repository->findAllNotPreviousYear();
+
         $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
         $page = $repository->findOneBylinkWithRouting(
-            'LapaperieMainBundle_homepage_cnar'
+            $_route
         );
 
         if (!$page) {
             throw $this->createNotFoundException('Unable to find Page entity.');
         }
 
-        return $this->render('LapaperieMainBundle:Paperie:cnar.html.twig', array('page' => $page));
-    }
-
-    public function equipeAction()
-    {
-        return $this->render('LapaperieMainBundle:Paperie:equipe.html.twig');
-    }
-
-    public function descriptionAction()
-    {
-        return $this->render('LapaperieMainBundle:Paperie:description.html.twig');
-    }
-
-    public function formationAction()
-    {
-        return $this->render('LapaperieMainBundle:Paperie:formation.html.twig');
-    }
-
-    public function diffusionAction()
-    {
-        $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
-        $actions = $repository->findAllYear();
-        $active_actions = $repository->findAllNotPreviousYear();
-
         return $this->render('LapaperieMainBundle:Main:diffusion-infusion.html.twig',
             array(
                 'archives' => $actions,
                 'diffusions' => $active_actions,
+                'page' => $page,
         ));
     }
 
-    public function soutienAction()
+    public function soutienAction($_route)
     {
-        return $this->render('LapaperieMainBundle:Main:soutien-creation.html.twig');
+        $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
+        $page = $repository->findOneBylinkWithRouting(
+            $_route
+        );
+
+        if (!$page) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        return $this->render('LapaperieMainBundle:Main:soutien-creation.html.twig', array('page' => $page));
     }
 
-    public function terAction()
+    public function terAction($_route)
     {
-        return $this->render('LapaperieMainBundle:Soutien:ter.html.twig');
+        $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
+        $page = $repository->findOneBylinkWithRouting(
+            $_route
+        );
+
+        if (!$page) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        return $this->render('LapaperieMainBundle:Soutien:ter.html.twig', array('page' => $page));
     }
 
-    public function solliciterAction()
+    public function solliciterAction($_route)
     {
-        return $this->render('LapaperieMainBundle:Soutien:solliciter.html.twig');
+        $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
+        $page = $repository->findOneBylinkWithRouting(
+            $_route
+        );
+
+        if (!$page) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        return $this->render('LapaperieMainBundle:Soutien:solliciter.html.twig', array('page' => $page));
     }
 
     public function projetsAction()
@@ -105,16 +134,47 @@ class MainController extends Controller
         return $this->render('LapaperieMainBundle:Soutien:projet.html.twig', array('companies' => $companies, 'companie' => $companie));
     }
 
-    public function culturelleAction()
+    public function culturelleAction($_route)
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
         $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
 
+        $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
+        $page = $repository->findOneBylinkWithRouting(
+            $_route
+        );
+
+        if (!$page) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
         return $this->render('LapaperieMainBundle:Main:action-culturelle.html.twig',
             array(
                 'archives' => $actions,
                 'actionsculturelles' => $active_actions,
+                'page' => $page,
         ));
     }
+
+    /**
+     * Render la Paperie Pages
+     *
+     * Can be override in the *Action() function
+     *
+     */
+    public function renderLaPaperiePage($_route)
+    {
+        $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
+        $page = $repository->findOneBylinkWithRouting(
+            $_route
+        );
+
+        if (!$page) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        return $this->render('LapaperieMainBundle:Paperie:page.html.twig', array('page' => $page));
+    }
+
 }

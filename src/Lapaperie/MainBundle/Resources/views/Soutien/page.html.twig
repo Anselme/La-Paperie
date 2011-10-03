@@ -1,0 +1,23 @@
+
+<div class="home_left">
+<h2>{{ page.title }}</h2>
+  <div class="page">
+    {{ page.contenu | raw }}
+  </div>
+</div>
+<div class="home_right">
+{% if page.video %}
+<div class="video">
+{{ page.video | raw }}
+</div>
+{% else %}
+  <a href="{{ page.getWebImagePath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
+    <img src="{{ page.getWebImagePath | apply_filter('action') }}" alt="Illustration {{ page.title }}" width="352" />
+    </a>
+{% endif %}
+</div>
+<div class="clear"></div>
+{% if page.link %}
+<a href="{{ page.getWebFilePath }}" title="{{ page.link }}">{{ page.link }}</a>
+<div class="clear"></div>
+{% endif %}

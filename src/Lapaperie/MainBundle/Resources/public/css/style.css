@@ -208,7 +208,7 @@ p {
     text-align: justify;
 }
 
-#home_right {
+.home_right {
     position: relative;
     float: right;
 }
