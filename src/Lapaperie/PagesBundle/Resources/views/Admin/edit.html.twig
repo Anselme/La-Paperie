@@ -1,0 +1,17 @@
+{% extends "LapaperiePagesBundle:Admin:form.html.twig" %}
+
+{% block legend%} {{ entity.title}} {% endblock %}
+
+{% block action %}
+<form action="{{ path('page_edit', { 'id': entity.id } ) }}" method="post" {{ form_enctype(form) }}>
+{% endblock %}
+
+{% block image %}
+      <div class="clearfix">
+      <div class="input">
+      <img src="{{ entity.getWebImagePath  | apply_filter('companie_thumbnail') }}" width="84"/>
+      </div>
+      </div>
+{% endblock %}
+
+{% block button %}Enregistrer les modifications{% endblock %}

@@ -285,7 +285,7 @@ class Page
     protected function getUploadFileDir()
     {
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
+        return '/uploads/documents';
     }
 
     public function uploadFile()

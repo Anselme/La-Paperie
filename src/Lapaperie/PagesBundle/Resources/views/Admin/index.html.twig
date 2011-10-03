@@ -1,0 +1,26 @@
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+
+{% block content %}
+
+<h1>Pages</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Titre</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>
+            <a href="{{ path('page_edit', { 'id': entity.id }) }}">
+            {{ entity.title }}
+            </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

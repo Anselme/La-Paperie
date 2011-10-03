@@ -1,4 +1,3 @@
-
 <div class="home_left">
 <h2>{{ page.title }}</h2>
   <div class="page">
@@ -18,6 +17,6 @@
 </div>
 <div class="clear"></div>
 {% if page.link %}
-<a href="{{ page.getWebFilePath }}" title="{{ page.link }}">{{ page.link }}</a>
+<a href="{{ page.getWebFilePath | raw }}" title="{{ page.link }}">{{ page.link }}</a>
 <div class="clear"></div>
 {% endif %}
