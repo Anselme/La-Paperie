@@ -29,7 +29,16 @@ class MainController extends Controller
 
     public function cnarAction()
     {
-        return $this->render('LapaperieMainBundle:Paperie:cnar.html.twig');
+        $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
+        $page = $repository->findOneBylinkWithRouting(
+            'LapaperieMainBundle_homepage_cnar'
+        );
+
+        if (!$page) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        return $this->render('LapaperieMainBundle:Paperie:cnar.html.twig', array('page' => $page));
     }
 
     public function equipeAction()
