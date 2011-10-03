@@ -26,6 +26,10 @@ class DiffusionController extends Controller
         $active_actions = $repository->findAllNotPreviousYear();
 
         $action = $repository->findOneBySlug($slug);
+        if (!$action) {
+            throw $this->createNotFoundException('Unable to find Focus entity.');
+        }
+
         return $this->render('LapaperieDiffusionBundle:Default:index.html.twig',
             array('action' => $action,
                 'archives' => $actions,

@@ -1,0 +1,362 @@
+<?php
+
+namespace Lapaperie\PagesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Lapaperie\PagesBundle\Entity\Pages
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Lapaperie\PagesBundle\Entity\PagesRepository")
+ */
+class Pages
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string $title
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var text $contenu
+     *
+     * @ORM\Column(name="contenu", type="text")
+     */
+    private $contenu;
+
+    /**
+     * @var text $video
+     *
+     * @ORM\Column(name="video", type="text")
+     */
+    private $video;
+
+    /**
+     * @var string $linkWithRouting
+     *
+     * @ORM\Column(name="linkWithRouting", type="string", length=255)
+     */
+    private $linkWithRouting;
+
+    /**
+     * @Assert\File(maxSize = "1024k", mimeTypes = {"image/gif","image/jpeg","image/png" })
+     */
+    public $image;
+
+    /**
+     * @var string $imageName
+     *
+     * @ORM\Column(name="imageName", type="string", length=255)
+     */
+    private $imageName;
+
+    /**
+     * @var string $pathName
+     *
+     * @ORM\Column(name="imagePath", type="string", length=255)
+     */
+    private $imagePath;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+
+    /**
+     * @var string $fileName
+     *
+     * @ORM\Column(name="fileName", type="string", length=255)
+     */
+    private $fileName;
+
+    /**
+     * @var string $filePath
+     *
+     * @ORM\Column(name="filePath", type="string", length=255)
+     */
+    private $filePath;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param text $contenu
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return text
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * Set video
+     *
+     * @param text $video
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+    }
+
+    /**
+     * Get video
+     *
+     * @return text
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set linkWithRouting
+     *
+     * @param string $linkWithRouting
+     */
+    public function setLinkWithRouting($linkWithRouting)
+    {
+        $this->linkWithRouting = $linkWithRouting;
+    }
+
+    /**
+     * Get linkWithRouting
+     *
+     * @return string
+     */
+    public function getLinkWithRouting()
+    {
+        return $this->linkWithRouting;
+    }
+
+    /**
+     * Set imageName
+     *
+     * @param string $imageName
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Set imagePath
+     *
+     * @param string $imagePath
+     */
+    public function setImagePath($imagePath)
+    {
+        $this->imagePath = $imagePath;
+    }
+
+    /**
+     * Get imagePath
+     *
+     * @return string
+     */
+    public function getImagePath()
+    {
+        return $this->imagePath;
+    }
+
+    /**
+     * Set fileName
+     *
+     * @param string $fileName
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
+    }
+
+    /**
+     * Get fileName
+     *
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * Set filePath
+     *
+     * @param string $filePath
+     */
+    public function setFilePath($filePath)
+    {
+        $this->filePath = $filePath;
+    }
+
+    /**
+     * Get filePath
+     *
+     * @return string
+     */
+    public function getFilePath()
+    {
+        return $this->filePath;
+    }
+
+    public function getAbsoluteFilePath()
+    {
+        return null === $this->filePath ? null : $this->getUploadFileRootDir().'/'.$this->filePath;
+    }
+
+    public function getWebFilePath()
+    {
+        return null === $this->filePath ? null : $this->getUploadFileDir().'/'.$this->filePath;
+    }
+
+    protected function getUploadFileRootDir()
+    {
+        // the absolute directory path where uploaded documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadFileDir();
+    }
+
+    protected function getUploadFileDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
+        return 'uploads/documents';
+    }
+
+    public function uploadFile()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->file) {
+            return;
+        }
+
+        $extension = $this->file->guessExtension();
+        if(!$extension)
+        {
+            $extension = 'bin' ;
+        }
+
+        $brand_new_name = uniqid().'.'.$extension ;
+
+        // move takes the target directory and then the target filename to move to
+        $this->file->move($this->getUploadFileRootDir(), $brand_new_name);
+
+        // set the path property to the filename where you'ved saved the file
+        $this->setFilePath($brand_new_name);
+
+        // set the name
+        $this->setFileName($brand_new_name);
+
+        // clean up the file property as you won't need it anymore
+        unset($this->file);
+    }
+
+    public function getAbsoluteImagePath()
+    {
+        return null === $this->imagePath ? null : $this->getUploadImageRootDir().'/'.$this->imagePath;
+    }
+
+    public function getWebImagePath()
+    {
+        return null === $this->imagePath ? null : $this->getUploadImageDir().'/'.$this->imagePath;
+    }
+
+    protected function getUploadImageRootDir()
+    {
+        // the absolute directory path where uploaded documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadImageDir();
+    }
+
+    protected function getUploadImageDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
+        return 'uploads/images';
+    }
+
+    public function uploadImg()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->image) {
+            return;
+        }
+
+        $extension = $this->image->guessExtension();
+        if(!$extension)
+        {
+            $extension = 'bin' ;
+        }
+
+        $brand_new_name = uniqid().'.'.$extension ;
+
+        // move takes the target directory and then the target filename to move to
+        $this->image->move($this->getUploadImageRootDir(), $brand_new_name);
+
+        // set the path property to the filename where you'ved saved the file
+        $this->setImagePath($brand_new_name);
+
+        // set the name
+        $this->setImageName($brand_new_name);
+
+        // clean up the file property as you won't need it anymore
+        unset($this->image);
+    }
+
+}

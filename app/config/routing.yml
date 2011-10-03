@@ -1,3 +1,8 @@
+LapaperiePagesBundle:
+    resource: "@LapaperiePagesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 LapaperieDiffusionBundle:
     resource: "@LapaperieDiffusionBundle/Controller/"
     type:     annotation

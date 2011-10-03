@@ -52,6 +52,7 @@ class MainController extends Controller
         $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
         $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
+
         return $this->render('LapaperieMainBundle:Main:diffusion-infusion.html.twig',
             array(
                 'archives' => $actions,
@@ -88,6 +89,10 @@ class MainController extends Controller
         $companies = $repository->findAll();
         $companie = $repository->findOneBySlug($slug);
 
+        if (!$companie) {
+            throw $this->createNotFoundException('Unable to find Focus entity.');
+        }
+
         return $this->render('LapaperieMainBundle:Soutien:projet.html.twig', array('companies' => $companies, 'companie' => $companie));
     }
 
@@ -96,6 +101,7 @@ class MainController extends Controller
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
         $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
+
         return $this->render('LapaperieMainBundle:Main:action-culturelle.html.twig',
             array(
                 'archives' => $actions,

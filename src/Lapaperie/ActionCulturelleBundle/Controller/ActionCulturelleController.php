@@ -24,7 +24,13 @@ class ActionCulturelleController extends Controller
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
         $actions = $repository->findAllYear();
         $active_actions = $repository->findAllNotPreviousYear();
+
         $action = $repository->findOneBySlug($slug);
+
+        if (!$action) {
+            throw $this->createNotFoundException('Unable to find Focus entity.');
+        }
+
         return $this->render('LapaperieActionCulturelleBundle:Default:index.html.twig',
             array('action' => $action,
                 'archives' => $actions,
