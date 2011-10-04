@@ -43,14 +43,14 @@
 {% endblock %}
 
     <div class="clearfix">
-    {{ form_label(form.file, 'Fichier à télécharger') }}
+    {{ form_label(form.file, 'Fichier à télécharger (ou mp3)') }}
     <div class="input">
     {{ form_errors(form.file) }}
     {{ form_widget(form.file) }}
     </div>
     </div>
     <div class="clearfix">
-    {{ form_label(form.link, 'Lien du fichier') }}
+    {{ form_label(form.link, 'Texte du lien du fichier') }}
     <div class="input">
     {{ form_errors(form.link) }}
     {{ form_widget(form.link) }}
