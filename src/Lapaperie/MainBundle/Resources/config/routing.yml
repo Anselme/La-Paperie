@@ -31,10 +31,15 @@ LapaperieMainBundle_soutiencreation_ter:
     defaults: { _controller: LapaperieMainBundle:Main:ter }
 
 LapaperieMainBundle_soutiencreation_projets:
+    pattern:  /soutien-creation/projets
+    defaults: { _controller: LapaperieMainBundle:Main:projets }
+
+LapaperieMainBundle_soutiencreation_projets_byyear:
     pattern:  /soutien-creation/projets/{year}
     defaults: { _controller: LapaperieMainBundle:Main:projets, year:2011 }
     requirements:
         year: \d+
+
 projet_show:
     pattern:  /soutien-creation/projets/{slug}
     defaults: { _controller: LapaperieMainBundle:Main:projet }

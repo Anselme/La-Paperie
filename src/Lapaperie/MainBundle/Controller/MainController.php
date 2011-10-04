@@ -111,13 +111,17 @@ class MainController extends Controller
         return $this->render('LapaperieMainBundle:Soutien:solliciter.html.twig', array('page' => $page));
     }
 
-    public function projetsAction($year)
+    public function projetsAction($year = null)
     {
 
         $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
 
         $archives = $repository->findAllYear();
 
+        if($year == null)
+        {
+            $year = date('Y');
+        }
         $companies = $repository->findByYear($year);
 
         return $this->render('LapaperieMainBundle:Soutien:projets.html.twig',
