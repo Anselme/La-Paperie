@@ -20,9 +20,26 @@
 {% endif %}
 </div>
 <div class="clear"></div>
+
 {% if page.link %}
-<a href="{{ page.getWebFilePath }}" title="{{ page.link }}">{{ page.link }}</a>
-<div class="clear"></div>
+
+{% if page.fileExtension == 'mp3' %}
+
+<object width="289" height="28" data="{{ asset('bundles/lapaperiemain/flash/audio-player.swf') }}?audioUrl={{ page.getWebFilePath }}" type="application/x-shockwave-flash">
+ 
+<param name="bgcolor" value="#ffffff" />
+<param name="flashvars" value="playerMode=embedded" />
+<param name="src" value="{{ asset('bundles/lapaperiemain/flash/audio-player.swf') }}?audioUrl=={{ page.getWebFilePath }}" />
+<param name="wmode" value="window" />
+<param name="quality" value="best" />
+</object>
+
+{% else %}
+
+<a href="{{ page.getWebFilePath | raw }}" title="{{ page.fileExtension}} {{ page.fileSize // 1024 }}Ko">{{ page.link }}</a>
+
 {% endif %}
 
-{% endblock %}
+<div class="clear"></div>
+
+{% endif %}

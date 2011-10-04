@@ -70,7 +70,7 @@ class Page
     private $imagePath;
 
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="10M")
      */
     public $file;
 
