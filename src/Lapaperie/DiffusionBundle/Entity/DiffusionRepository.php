@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class DiffusionRepository extends EntityRepository
 {
-    public function findAllByYear()
+    public function findAllOrderByYearDesc()
     {
         return $this->getEntityManager()
             ->createQuery(

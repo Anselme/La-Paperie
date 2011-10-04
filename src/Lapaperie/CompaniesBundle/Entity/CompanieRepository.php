@@ -33,7 +33,7 @@ class CompanieRepository extends EntityRepository
             ->getResult();
     }
 
-    public function findAllByYear($year)
+    public function findAllByYearAsc($year)
     {
         return $this->getEntityManager()
             ->createQuery(
