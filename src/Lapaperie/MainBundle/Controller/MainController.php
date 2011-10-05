@@ -16,10 +16,7 @@ class MainController extends Controller
             array('publicationDate' => 'ASC')
         );
 
-        $repository_agenda = $this->getDoctrine()->getRepository('LapaperieAgendaBundle:Actualite');
-        $agenda = $repository_agenda->findHomeActualite();
-
-        return $this->render('LapaperieMainBundle:Main:index.html.twig', array('focus' => $focus, 'agenda' => $agenda));
+        return $this->render('LapaperieMainBundle:Main:index.html.twig', array('focus' => $focus));
     }
 
     public function paperieAction($_route)

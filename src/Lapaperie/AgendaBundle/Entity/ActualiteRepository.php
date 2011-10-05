@@ -26,15 +26,8 @@ class ActualiteRepository extends EntityRepository
             ->getResult();
     }
 
-    public function findActiveActualiteByMonth($date_beginning = null, $date_end = null)
+    public function findActiveActualiteByMonth(\DateTime $dateBeginning, \DateTime $dateEnd )
     {
-
-        if($date_beginning == null){
-            $date_beginning = new \DateTime();
-        }
-        if($date_end == null){
-            $date_end = new \DateTime();
-        }
 
         return $this->getEntityManager()
             ->createQuery('SELECT a FROM LapaperieAgendaBundle:Actualite a
@@ -54,7 +47,7 @@ class ActualiteRepository extends EntityRepository
                                    )
                                    ORDER BY a.date_beginning ASC
                            '
-                       )->setParameters(array('now' => $date_beginning, 'end' => $date_end ))
+                       )->setParameters(array('now' => $dateBeginning, 'end' => $dateEnd ))
                        ->getResult();
     }
 }

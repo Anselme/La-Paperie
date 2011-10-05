@@ -27,14 +27,16 @@ class AgendaController extends Controller
 
         $actual_month = date('n') ;
         $actual_year = date('Y') ;
-        if(!isset($current_month)){
+        if (!isset($current_month))
+        {
             $current_month = $actual_month ;
             $current_year = $actual_year ;
         }
 
         $date = new \DateTime($current_year."-".$current_month."-01");
         $next_month = $current_month + 1 ;
-        if($next_month>12){
+        if ($next_month>12)
+        {
             $next_month -= 12 ;
             $current_year++;
         }
