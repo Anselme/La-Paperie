@@ -70,7 +70,7 @@ class NewsletterAdminController extends Controller
         }
 
         $response = $this->render($csv_template, array('entities' => $entities)) ;
-        $response->headers->set('Content-Type', 'text/csv');
+        $response->headers->set('Content-Type', 'text/csv; charset=UTF-8');
         $response->headers->set('Content-disposition', 'attachment;filename='.$file_name);
 
         return $response;
