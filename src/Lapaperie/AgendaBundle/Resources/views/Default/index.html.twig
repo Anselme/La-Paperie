@@ -25,6 +25,13 @@ La Paperie - Centre National des Arts de la Rue - Agenda
 </div>
 
 <div class="agenda-right-side">
+{% if agenda is empty %}
+<ul>
+<li>
+En cours d'actualisation...
+</li>
+</ul>
+{% else %}
 <ul>
 {% for actualite in agenda %}
 <li>
@@ -32,8 +39,18 @@ La Paperie - Centre National des Arts de la Rue - Agenda
 </li>
 {% endfor %}
 </ul>
+{% endif %}
 </div>
 
+<div class="home_right">
+<object type="application/x-shockwave-flash" data="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}" style="width:400px;height:400px;">
+<param name="base" value="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}"/>
+<param name="movie" value="{{ asset('bundles/lapaperiemain/flash/RotatingLogo.swf') }}"/>
+<param name="quality" value="high">
+<param name="wmode" value="transparent"/>
+<param name="menu" value="true"/>
+</object>
+</div>
 <div class="clear"></div>
 
 {% endblock %}

@@ -19,8 +19,7 @@ class ActualiteRepository extends EntityRepository
 
         return $this->getEntityManager()
             ->createQuery('SELECT a FROM LapaperieAgendaBundle:Actualite a
-                           WHERE a.isOnHome = 1
-                           AND a.date_beginning > :now
+                           WHERE a.date_beginning > :now
                            ORDER BY a.date_beginning ASC
                            '
                        )->setParameter('now',$now)
@@ -39,19 +38,18 @@ class ActualiteRepository extends EntityRepository
 
         return $this->getEntityManager()
             ->createQuery('SELECT a FROM LapaperieAgendaBundle:Actualite a
-                                   WHERE a.isOnHome = 1
-                                   AND
+                                   WHERE
                                    (
                                        (
-                                           a.date_beginning > :now
+                                           a.date_beginning >= :now
                                            AND
-                                           a.date_beginning < :end
+                                           a.date_beginning <= :end
                                        )
                                        OR
                                        (
-                                           a.date_end > :now
+                                           a.date_end >= :now
                                            AND
-                                           a.date_end < :end
+                                           a.date_end <= :end
                                        )
                                    )
                                    ORDER BY a.date_beginning ASC
