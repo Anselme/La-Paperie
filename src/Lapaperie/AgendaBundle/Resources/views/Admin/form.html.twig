@@ -30,13 +30,6 @@
     {{ form_widget(form.date_end, { 'attr': {'class': 'jsDate'} } ) }}
     </div>
     </div>
-    <div class="clearfix">
-    {{ form_label(form.isOnHome, 'Afficher en Une') }}
-    <div class="input">
-    {{ form_errors(form.isOnHome) }}
-    {{ form_widget(form.isOnHome) }}
-    </div>
-    </div>
 
     {{ form_rest(form) }}
         <button type="submit" class="btn primary">{% block button %}{% endblock %}</button>

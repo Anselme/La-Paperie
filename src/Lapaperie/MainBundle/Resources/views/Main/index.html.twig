@@ -25,16 +25,4 @@
 {% endblock %}
 
         {% block footer %}
-<div class="clear"></div>
-<div class="home_left align_right">
-        <a href="{{ path('LapaperieAgendaBundle_home') }}"><h2>Agenda</h2></a>
-    <ul class="agenda_home">
-    {% for actualite in agenda %}
-    <li>
-    {{ actualite.actualite | raw }}
-    </li>
-    {% endfor %}
-    </ul>
-</div>
-<div class="clear"></div>
         {% endblock %}

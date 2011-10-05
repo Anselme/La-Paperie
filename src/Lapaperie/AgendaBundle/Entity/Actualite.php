@@ -44,14 +44,6 @@ class Actualite
     private $actualite;
 
     /**
-     * @var boolean $isOnHome
-     *
-     * @ORM\Column(name="isOnHome", type="boolean")
-     */
-    private $isOnHome;
-
-
-    /**
      * Get id
      *
      * @return integer
@@ -121,23 +113,4 @@ class Actualite
         return $this->actualite;
     }
 
-    /**
-     * Set isOnHome
-     *
-     * @param boolean $isOnHome
-     */
-    public function setIsOnHome($isOnHome)
-    {
-        $this->isOnHome = $isOnHome;
-    }
-
-    /**
-     * Get isOnHome
-     *
-     * @return boolean
-     */
-    public function getIsOnHome()
-    {
-        return $this->isOnHome;
-    }
 }

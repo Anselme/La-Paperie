@@ -8,7 +8,6 @@
     <thead>
         <tr>
             <th>Actualité</th>
-            <th>Affichée en Home</th>
             <th>Date Début</th>
             <th>Date Fin</th>
         </tr>
@@ -16,14 +15,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('agenda_edit', { 'id': entity.id }) }}">{{ entity.actualite | truncate(100) | raw }}</a></td>
-            <td>
-            {% if entity.isOnHome %}
-            <img width="16" height="16" src="{{ asset('bundles/lapaperiemain/images/icons/tick.png') }}" />
-            {% else %}
-            <img width="16" height="16" src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png') }}" />
-            {% endif %}
-            </td>
+            <td><a href="{{ path('agenda_edit', { 'id': entity.id }) }}">{{ entity.actualite | truncate(100) }}</a></td>
             <td>{{ entity.dateBeginning | date('j M Y') }}</td>
             <td>{{ entity.dateEnd | date('j M Y') }}</td>
         </tr>

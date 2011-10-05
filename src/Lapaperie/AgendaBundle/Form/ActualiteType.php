@@ -10,7 +10,7 @@ class ActualiteType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
 
-        $dateArgsArray = array('required' => false,
+        $dateArgsArray = array('required' => true,
             'input' => 'datetime',
             'widget' => 'single_text',
             'format' => \IntlDateFormatter::SHORT);
@@ -19,7 +19,6 @@ class ActualiteType extends AbstractType
             ->add('date_beginning','date', $dateArgsArray)
             ->add('date_end','date', $dateArgsArray)
             ->add('actualite','textarea',array('required' => false))
-            ->add('isOnHome', 'checkbox',array('required' => false))
             ;
     }
 
