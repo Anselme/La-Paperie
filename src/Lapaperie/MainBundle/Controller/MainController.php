@@ -22,10 +22,9 @@ class MainController extends Controller
         return $this->render('LapaperieMainBundle:Main:index.html.twig', array('focus' => $focus, 'agenda' => $agenda));
     }
 
-    public function paperieAction()
+    public function paperieAction($_route)
     {
-        // a modifier une fois l'histoire du flash tranchée
-        return $this->render('LapaperieMainBundle:Paperie:paperie.html.twig');
+        return $this->renderLaPaperiePage($_route);
     }
 
     public function cnarAction($_route)
@@ -122,6 +121,7 @@ class MainController extends Controller
         {
             $year = date('Y');
         }
+        //TODO findByYearOrderByDebutResidence
         $companies = $repository->findByYear($year);
 
         return $this->render('LapaperieMainBundle:Soutien:projets.html.twig',

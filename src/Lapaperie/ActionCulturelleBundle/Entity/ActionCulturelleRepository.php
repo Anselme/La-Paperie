@@ -12,11 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class ActionCulturelleRepository extends EntityRepository
 {
-    public function findAllOrderByYearDesc()
+    public function findArchivesOrderByYearDesc()
     {
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT  a FROM LapaperieActionCulturelleBundle:ActionCulturelle a
+                WHERE a.isPreviousYear = 1
                 ORDER BY a.year DESC'
             )
             ->getResult();

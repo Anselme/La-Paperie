@@ -66,7 +66,7 @@ class DiffusionController extends Controller
     {
 
         $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
-        $entities = $repository->findAllOrderByYearDesc();
+        $entities = $repository->findArchivesOrderByYearDesc();
 
         //pour le menu
         $diffusions = $repository->findAllNotPreviousYear();

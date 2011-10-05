@@ -66,7 +66,7 @@ class ActionCulturelleController extends Controller
     {
 
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
-        $entities = $repository->findAllOrderByYearDesc();
+        $entities = $repository->findArchivesOrderByYearDesc();
 
         //pour le menu
         $active_actions = $repository->findAllNotPreviousYear();

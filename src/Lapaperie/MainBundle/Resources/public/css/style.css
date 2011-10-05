@@ -33,7 +33,7 @@ footer {
 #mainnav {margin-top: 2em;}
 ul.mainnav {padding-top: 2.5em; padding-bottom: 2.5em;margin-left:1em; clear:both;}
 ul.mainnav li {padding-left: 0em; background-image: none; list-style: none;}
-ul.mainnav li a {text-decoration:none; display:block; float:left; border: solid 1px #E32119; color:#E32119;margin-right: 2em;padding-left:0.2em; padding-right:0.2em;}
+ul.mainnav li a {text-decoration:none; display:block; float:left; border: solid 1px #E32119; color:#E32119;margin-right: 1em;padding-left:0.2em; padding-right:0.2em;}
 ul.mainnav li a:hover {background-color:#E32119 ; color:#FFF; text-decoration:none;}
 ul.mainnav li.active a {background-color:#E32119 ; color:#FFF; text-decoration:none;}
 
@@ -177,6 +177,10 @@ p {
     width: 10%;
 }
 
+.agenda-left-side ul {
+    text-align: right ;
+}
+
 .agenda-left-side a {
     text-decoration: none;
 }
@@ -200,6 +204,13 @@ p {
 .companie-img {
     position: relative;
     float: left;
+}
+
+.home_all {
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: justify;
 }
 
 .home_left {

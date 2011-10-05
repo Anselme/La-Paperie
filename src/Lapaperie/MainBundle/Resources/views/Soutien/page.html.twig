@@ -1,4 +1,4 @@
-<div class="home_left">
+<div class="{{ (page.imageName or page.video)?'home_left':'home_all'}}">
 <h2>{{ page.title }}</h2>
   <div class="page">
     {{ page.contenu | raw }}
@@ -9,7 +9,7 @@
 <div class="video">
 {{ page.video | raw }}
 </div>
-{% else %}
+{% elseif page.imageName %}
   <a href="{{ page.getWebImagePath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
     <img src="{{ page.getWebImagePath | apply_filter('action') }}" alt="Illustration {{ page.title }}" width="352" />
     </a>
