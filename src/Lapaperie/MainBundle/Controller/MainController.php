@@ -10,13 +10,7 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        $repository = $this->getDoctrine()->getRepository('LapaperieFocusBundle:Focus');
-        $focus = $repository->findOneBy(
-            array('isOnLine' => true),
-            array('publicationDate' => 'ASC')
-        );
-
-        return $this->render('LapaperieMainBundle:Main:index.html.twig', array('focus' => $focus));
+        return $this->renderLaPaperiePage('LapaperieMainBundle_homepage_paperie');
     }
 
     public function paperieAction($_route)
