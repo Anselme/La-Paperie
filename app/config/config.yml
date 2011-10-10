@@ -83,6 +83,9 @@ avalanche_imagine:
        video_thumbnail:
            type:    thumbnail
            options: { size: [100,75], mode: outbound}
+       illustration:
+           type:    thumbnail
+           options: { size: [352,320], mode: outbound}
 
 #Doctrine Behaviours
 stof_doctrine_extensions:

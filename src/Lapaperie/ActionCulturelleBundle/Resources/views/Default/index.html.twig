@@ -3,7 +3,7 @@
 {% block submenu %}{{ action.id }}{% endblock %}
 
 {% block content %}
-<div class="home_left">
+<div class="{{ (action.name or action.video)?'home_left':'home_all'}}">
 <h2>{{ action.title }}</h2>
   <div id="focus">
     {{ action.contenu | raw }}
