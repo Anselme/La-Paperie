@@ -30,9 +30,14 @@
 <div class="clearfix">
 
 {% if entity.images %}
+        <!-- form action="{{ path('imagecompanie_delete') }}" method="post"-->
   {% for image in entity.images %}
       <img src="{{ image.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
+    {#{ form_widget(delete_image_form.id) }#}
   {% endfor %}
+<!--div class="clearfix"></div>
+            <button type="submit" class="btn danger confirm">Supprimer l'image sélectionnée</button>
+        </form-->
 {% endif %}
 
 </div>

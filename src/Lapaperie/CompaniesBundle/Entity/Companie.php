@@ -89,12 +89,12 @@ class Companie
     private $long_text;
 
     /**
-     * @ORM\OneToMany(targetEntity="ImageCompanie", mappedBy="companie")
+     * @ORM\OneToMany(targetEntity="ImageCompanie", mappedBy="companie",cascade={"remove"})
      */
     protected $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="Lapaperie\VideoBundle\Entity\Video", mappedBy="companie")
+     * @ORM\OneToMany(targetEntity="Lapaperie\VideoBundle\Entity\Video", mappedBy="companie", cascade={"remove"})
      */
     protected $videos;
 
@@ -340,7 +340,7 @@ class Companie
     /**
      * Get isPreviousYear
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPreviousYear()
     {
@@ -360,7 +360,7 @@ class Companie
     /**
      * Get year
      *
-     * @return integer 
+     * @return integer
      */
     public function getYear()
     {

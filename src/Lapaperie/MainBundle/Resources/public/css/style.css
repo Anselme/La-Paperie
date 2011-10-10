@@ -168,6 +168,7 @@ p {
     position: relative;
     float: left;
     margin-left: 1em;
+    margin-top: 1em;
     width: 50%;
 }
 
@@ -185,6 +186,7 @@ p {
     float: left;
     width: 10%;
     margin-right: 2em;
+    margin-top: 1em;
     padding-right: 2em;
 }
 

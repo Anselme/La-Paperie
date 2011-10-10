@@ -46,6 +46,7 @@ class AgendaController extends Controller
         $agenda = $repository->findActiveActualiteByMonth($date, $date_end);
 
         $calendar = array();
+        $years = array();
 
         for($i = -4; $i<8; $i++)
         {
@@ -56,12 +57,18 @@ class AgendaController extends Controller
                 "name" => date("F",$toto),
                 "order" => date("n",$toto),
                 "year" => date("Y",$toto),
-                "active" => $active ));
+                "active" => $active,
+            ));
+
+            $years[date("Y", $toto)] =  date("Y", $toto);
         }
+
+        $years = implode(" / ", $years);
 
         return $this->render('LapaperieAgendaBundle:Default:index.html.twig',
             array('agenda' => $agenda,
             'calendar' => $calendar,
+            'years' => $years,
         ));
     }
 }
