@@ -5,8 +5,12 @@
 <a href="{{ path('diffusion_detail', {'slug':  action.slug  }) }}" title="{{ action.year }} {{ action.title }}">{{ action.title }}</a>
 </li>
 {% endfor %}
+
+{% if archives is not empty %}
 <li class="{{ 'archives' == subcurrent ? 'active' : ''}}">
 <a href="{{ path('diffusion_archives') }}" title="Années précédentes">Archives</a>
 </li>
+{% endif %}
+
 </ul>
 {% endif %}

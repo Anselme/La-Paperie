@@ -23,7 +23,7 @@ class ActionCulturelleController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
         $active_actions = $repository->findAllNotPreviousYear();
-
+        $archives = $repository->findArchivesOrderByYearDesc();
         $action = $repository->findOneBySlug($slug);
 
         if (!$action) {
@@ -32,7 +32,8 @@ class ActionCulturelleController extends Controller
 
         return $this->render('LapaperieActionCulturelleBundle:Default:index.html.twig',
             array('action' => $action,
-                'actionsculturelles' => $active_actions,
+                  'actionsculturelles' => $active_actions,
+                  'archives' => $archives,
         ));
     }
 
@@ -73,7 +74,8 @@ class ActionCulturelleController extends Controller
 
         return $this->render('LapaperieActionCulturelleBundle:Default:archives.html.twig',
             array('entities' => $entities,
-                'actionsculturelles' => $active_actions,
+                  'actionsculturelles' => $active_actions,
+                  'archives' => $entities,
         ));
     }
 }

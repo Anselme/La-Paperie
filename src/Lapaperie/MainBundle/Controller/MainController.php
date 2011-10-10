@@ -42,6 +42,7 @@ class MainController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
         $active_actions = $repository->findAllNotPreviousYear();
+        $archives = $repository->findArchivesOrderByYearDesc();
 
         $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
         $page = $repository->findOneBylinkWithRouting(
@@ -56,6 +57,7 @@ class MainController extends Controller
             array(
                 'diffusions' => $active_actions,
                 'page' => $page,
+                'archives' => $archives,
         ));
     }
 
@@ -137,6 +139,7 @@ class MainController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle');
         $active_actions = $repository->findAllNotPreviousYear();
+        $archives = $repository->findArchivesOrderByYearDesc();
 
         $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
         $page = $repository->findOneBylinkWithRouting(
@@ -151,6 +154,7 @@ class MainController extends Controller
             array(
                 'actionsculturelles' => $active_actions,
                 'page' => $page,
+                'archives' => $archives,
         ));
     }
 

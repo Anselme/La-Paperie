@@ -23,16 +23,17 @@ class DiffusionController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieDiffusionBundle:Diffusion');
         $active_actions = $repository->findAllNotPreviousYear();
-
+        $archives = $repository->findArchivesOrderByYearDesc();
         $action = $repository->findOneBySlug($slug);
+
         if (!$action) {
             throw $this->createNotFoundException('Unable to find Focus entity.');
         }
 
         return $this->render('LapaperieDiffusionBundle:Default:index.html.twig',
             array('action' => $action,
-                'diffusions' => $active_actions,
-
+                  'diffusions' => $active_actions,
+                  'archives' => $archives,
         ));
     }
 
@@ -73,7 +74,8 @@ class DiffusionController extends Controller
 
         return $this->render('LapaperieDiffusionBundle:Default:archives.html.twig',
             array('entities' => $entities,
-                'diffusions' => $diffusions,
+                  'diffusions' => $diffusions,
+                  'archives' => $entities,
         ));
     }
 }

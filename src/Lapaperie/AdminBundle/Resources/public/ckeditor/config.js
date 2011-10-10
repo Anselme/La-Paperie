@@ -10,6 +10,6 @@ CKEDITOR.editorConfig = function( config )
 	 config.uiColor = '#56BCDA';
      config.toolbar_Bibi = 
          [
-         [ 'Source', '-', 'Bold', 'Italic', 'FontSize', '-','NumberedList','BulletedList','-', 'Link','Unlink' ]
+         [ 'Source', '-', 'Bold', 'Italic', 'Underline', 'FontSize', '-','NumberedList','BulletedList','-', 'Link','Unlink' ]
          ];
 };
