@@ -336,3 +336,6 @@ img.bg {
         }
 }
 
+.hide {
+    display: none;
+}

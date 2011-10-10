@@ -1,7 +1,12 @@
+//affiche l'image d'intro
+$(function(){
+    $('.hide').show();
+});
+
 //page d'accueil - disparition image
 $(function(){
     $('.bg').click(function(){
-        $('.bg').hide("puff", {}, 1500);
+        $('.bg').fadeOut(1500);
         });
 });
 
