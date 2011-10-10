@@ -114,8 +114,8 @@ class MainController extends Controller
         {
             $year = date('Y');
         }
-        //TODO findByYearOrderByDebutResidence
-        $companies = $repository->findByYear($year);
+
+        $companies = $repository->findAllByYearOrderbyDebutResidence($year);
 
         return $this->render('LapaperieMainBundle:Soutien:projets.html.twig',
             array('companies' => $companies, 'archives' => $archives, 'year' => $year));

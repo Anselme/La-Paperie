@@ -159,6 +159,11 @@ p {
     width: 25%;
 }
 
+.agenda-title {
+    width: 10%;
+    text-align: right;
+}
+
 .agenda-right-side {
     position: relative;
     float: left;
@@ -179,6 +184,8 @@ p {
     position: relative;
     float: left;
     width: 10%;
+    margin-right: 2em;
+    padding-right: 2em;
 }
 
 .agenda-left-side ul {

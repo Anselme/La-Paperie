@@ -44,4 +44,15 @@ class CompanieRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findAllByYearOrderByDebutResidence($year)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT  a FROM LapaperieCompaniesBundle:Companie a
+                WHERE a.year = :year
+                ORDER BY a.date_residence_beginning ASC'
+            )->setParameter('year',$year)
+            ->getResult();
+    }
+
 }
