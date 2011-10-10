@@ -1,3 +1,11 @@
+//page d'accueil - disparition image
+$(function(){
+    $('.bg').mousemove(function(){
+        $('.bg').hide(1500);
+        });
+});
+
+
 //pop up d'iscription à la Newsletter
 $(function(){
     $("a[rel^='prettyNewsletter']").prettyPhoto({
