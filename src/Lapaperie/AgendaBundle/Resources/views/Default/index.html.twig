@@ -20,6 +20,9 @@ La Paperie - Centre National des Arts de la Rue - Agenda
 <a href="{{ path('LapaperieAgendaBundle_home', {'month': month.order, 'year': month.year}) }}">
 {{ month.name }}
 </a>
+{% if month.active %}
+<img src="{{ asset('bundles/lapaperiemain/images/moinsque.png') }}"/>
+{% endif %}
 </li>
 {% endfor %}
 </ul>

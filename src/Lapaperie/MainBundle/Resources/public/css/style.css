@@ -160,7 +160,7 @@ p {
 }
 
 .agenda-title {
-    width: 10%;
+    width: 12%;
     text-align: right;
 }
 
@@ -184,7 +184,7 @@ p {
 .agenda-left-side {
     position: relative;
     float: left;
-    width: 10%;
+    width: 12%;
     margin-right: 2em;
     margin-top: 1em;
     padding-right: 2em;

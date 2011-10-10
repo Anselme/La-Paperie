@@ -1,7 +1,7 @@
 //page d'accueil - disparition image
 $(function(){
-    $('.bg').mousemove(function(){
-        $('.bg').hide(1500);
+    $('.bg').click(function(){
+        $('.bg').hide("puff", {}, 1500);
         });
 });
 
