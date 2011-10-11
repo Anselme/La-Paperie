@@ -177,10 +177,10 @@ class CompanieController extends Controller
     /**
      * Deletes a ImageCompanie entity.
      *
-     * @Route("/deleteimage", name="imagecompanie_delete")
+     * @Route("/{id}/deleteimage", name="imagecompanie_delete")
      * @Method("post")
      */
-    public function deleteImageAction()
+    public function deleteImageAction($id)
     {
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
