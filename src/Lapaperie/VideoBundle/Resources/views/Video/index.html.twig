@@ -16,7 +16,7 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td>{{ entity.companie.name }}</td>
+            <td>{{ entity.companie ? entity.companie.name : '---' }}</td>
             <td>
             <a href="{{ path('video_edit', { 'id': entity.id }) }}">{{ entity.publicationDate|date('j M Y') }}</a>
             
