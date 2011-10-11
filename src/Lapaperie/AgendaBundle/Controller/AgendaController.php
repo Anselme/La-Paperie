@@ -22,6 +22,7 @@ class AgendaController extends Controller
      */
     public function indexAction(Request $request)
     {
+        setlocale(LC_TIME, 'fr_FR');
         $current_month = $request->query->get('month');
         $current_year = $request->query->get('year');
 
@@ -47,6 +48,7 @@ class AgendaController extends Controller
 
         $calendar = array();
         $years = array();
+        setlocale(LC_TIME, 'fr_FR.utf8');
 
         for($i = -4; $i<8; $i++)
         {
@@ -54,7 +56,7 @@ class AgendaController extends Controller
             $current_month == date("n", $toto) ? $active = "active" : $active = "" ;
 
             array_push($calendar, array(
-                "name" => date("F",$toto),
+                "name" => strftime("%B",$toto),
                 "order" => date("n",$toto),
                 "year" => date("Y",$toto),
                 "active" => $active,
