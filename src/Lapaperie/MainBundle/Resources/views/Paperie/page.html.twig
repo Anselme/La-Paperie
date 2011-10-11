@@ -2,46 +2,6 @@
 
 {% block content %}
 
-<div class="{{ (page.imageName or page.video)?'home_left':'home_all'}}">
-<h2>{{ page.title }}</h2>
-  <div class="page">
-    {{ page.contenu | raw }}
-  </div>
-</div>
+{% include "LapaperieMainBundle:Soutien:page.html.twig" %}
 
-<div class="home_right">
-{% if page.video %}
-<div class="video">
-{{ page.video | raw }}
-</div>
-{% elseif page.imageName %}
-  <a href="{{ page.getWebImagePath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
-    <img src="{{ page.getWebImagePath | apply_filter('action') }}" alt="Illustration {{ page.title }}" width="352" />
-    </a>
-{% endif %}
-</div>
-<div class="clear"></div>
-
-{% if page.link %}
-
-{% if page.fileExtension == 'mp3' %}
-
-<object width="289" height="28" data="{{ asset('bundles/lapaperiemain/flash/audio-player.swf') }}?audioUrl={{ page.getWebFilePath }}" type="application/x-shockwave-flash">
- 
-<param name="bgcolor" value="#ffffff" />
-<param name="flashvars" value="playerMode=embedded" />
-<param name="src" value="{{ asset('bundles/lapaperiemain/flash/audio-player.swf') }}?audioUrl=={{ page.getWebFilePath }}" />
-<param name="wmode" value="window" />
-<param name="quality" value="best" />
-</object>
-
-{% else %}
-
-<a href="{{ page.getWebFilePath | raw }}" title="{{ page.fileExtension}} {{ page.fileSize // 1024 }}Ko">{{ page.link }}</a>
-
-{% endif %}
-
-<div class="clear"></div>
-
-{% endif %}
 {% endblock %}
