@@ -67,7 +67,7 @@ class  Video
     /**
      * @var string $path
      *
-     * @ORM\Column(name="path_thumb", type="string", length=255)
+     * @ORM\Column(name="path_thumb", type="string", length=255, nullable="true")
      */
     private $pathThumb;
 
@@ -79,14 +79,14 @@ class  Video
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name_thumb", type="string", length=255)
+     * @ORM\Column(name="name_thumb", type="string", length=255, nullable="true")
      */
     private $nameThumb;
 
     /**
      * @var string $extension
      *
-     * @ORM\Column(name="extension_thumb", type="string", length=255)
+     * @ORM\Column(name="extension_thumb", type="string", length=255, nullable="true")
      */
     private $extensionThumb;
 
@@ -340,9 +340,16 @@ class  Video
                 $srcs[] = $elm->getAttribute('src');
         }
 
-        $count = preg_match('/video\/(.*)\?/',$srcs[0],$numero); ;
+        if(empty($srcs))
+        {
+            $this->src = "http://vimeo.com/";
+        }
+        else
+        {
+            $count = preg_match('/video\/(.*)\?/',$srcs[0],$numero);
 
-        $this->src = "http://vimeo.com/".$numero[1] ;
+            $this->src = "http://vimeo.com/".$numero[1] ;
+        }
     }
 
     /**
