@@ -3,22 +3,27 @@
 {% block submenu %}{{ action.id }}{% endblock %}
 
 {% block content %}
-<div class="{{ (action.name or action.video)?'home_left':'home_all'}}">
+<div class="page_content">
+
 <h2>{{ action.title }}</h2>
-  <div id="focus">
-    {{ action.contenu | raw }}
-  </div>
-</div>
-<div class="home_right">
+
 {% if action.video %}
-<div class="video">
+<div class="illustration_right">
 {{ action.video | raw }}
 </div>
 {% else %}
+<div class="illustration_right">
   <a href="{{ action.getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
     <img src="{{ action.getWebPath | apply_filter('action') }}" alt="{{ action.name }}" width="352" />
     </a>
+</div>
 {% endif %}
+
+  <div id="focus">
+    {{ action.contenu | raw }}
+  </div>
+
+
 </div>
 <div class="clear"></div>
 

@@ -141,6 +141,13 @@ p {
     line-height: 16px;
 }
 
+.page_content {
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: justify;
+}
+
 .content {
     margin: 1em;
 }
@@ -338,4 +345,10 @@ img.bg {
 
 .hide {
     display: none;
+}
+
+.illustration_right {
+    float: right;
+    margin-left: 3em;
+    margin-bottom: 1.5em;
 }
