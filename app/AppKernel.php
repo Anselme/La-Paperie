@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Lapaperie\DiffusionBundle\LapaperieDiffusionBundle(),
             new Lapaperie\PagesBundle\LapaperiePagesBundle(),
             new Lapaperie\FileUploadBundle\LapaperieFileUploadBundle(),
+            new Lapaperie\GalleryBundle\LapaperieGalleryBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
