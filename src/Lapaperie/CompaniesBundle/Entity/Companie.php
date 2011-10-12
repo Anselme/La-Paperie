@@ -5,6 +5,7 @@ namespace Lapaperie\CompaniesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Gedmo\Sluggable\Util\Urlizer;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -385,7 +386,7 @@ class Companie
     /**
      * Get file
      *
-     * @return Lapaperie\FileUploadBundle\Entity\FileUpload 
+     * @return Lapaperie\FileUploadBundle\Entity\FileUpload
      */
     public function getFile()
     {
