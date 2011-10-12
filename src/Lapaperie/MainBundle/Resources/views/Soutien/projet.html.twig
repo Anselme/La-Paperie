@@ -49,6 +49,11 @@ La Paperie - {{ companie.name }}
   {{ companie.longtext | raw }}
   </div>
 
+  {% if companie.file %}
+  {% set file = companie.file %}
+  {% include('LapaperieFileUploadBundle:Default:index.html.twig') %}
+  {% endif %}
+
 <div class="gallerie_thumbnails">
   {% for image in companie.images %}
   {% if (not (loop.first)) or (not(companie.videos.isEmpty)) %}

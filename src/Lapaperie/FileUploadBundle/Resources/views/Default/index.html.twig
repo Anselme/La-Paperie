@@ -1,1 +1,18 @@
-Hello {{ name }}!
+
+
+{% if file.fileExtension == 'mp3' %}
+
+<object width="289" height="28" data="{{ asset('bundles/lapaperiemain/flash/audio-player.swf') }}?audioUrl={{ file.getWebFilePath }}" type="application/x-shockwave-flash">
+ 
+<param name="bgcolor" value="#ffffff" />
+<param name="flashvars" value="playerMode=embedded" />
+<param name="src" value="{{ asset('bundles/lapaperiemain/flash/audio-player.swf') }}?audioUrl=={{ file.getWebFilePath }}" />
+<param name="wmode" value="window" />
+<param name="quality" value="best" />
+</object>
+
+{% else %}
+
+<a href="{{ file.getWebFilePath | raw }}" title="{{ file.fileExtension}} {{ file.fileSize // 1024 }}Ko">{{ file.link }}</a>
+
+{% endif %}
