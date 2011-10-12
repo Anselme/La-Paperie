@@ -16,8 +16,6 @@ class DiffusionType extends AbstractType
             ->add('isPreviousYear', 'checkbox',array('required' => false))
             ->add('year')
             ->add('image')
-            ->add('file')
-            ->add('link', 'text',array('required' => false))
         ;
     }
 

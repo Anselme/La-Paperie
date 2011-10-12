@@ -23,8 +23,12 @@
     {{ action.contenu | raw }}
   </div>
 
-
 </div>
 <div class="clear"></div>
+
+  {% if action.file %}
+  {% set file = action.file %}
+  {% include('LapaperieFileUploadBundle:Default:index.html.twig') %}
+  {% endif %}
 
 {% endblock %}

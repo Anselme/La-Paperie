@@ -11,6 +11,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Lapaperie\DiffusionBundle\Entity\Diffusion;
 use Lapaperie\DiffusionBundle\Form\DiffusionType;
 
+use Lapaperie\FileUploadBundle\Entity\FileUpload;
+use Lapaperie\FileUploadBundle\Form\FileUploadType;
+
 /**
  * Diffusion Admin controller.
  *
@@ -85,25 +88,48 @@ class DiffusionAdminController extends Controller
         $editForm = $this->createForm(new DiffusionType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
+        //File Upload
+        $fileEntity = new FileUpload();
+        $editFileForm = $this->createForm(new FileUploadType(), $fileEntity);
+
         $request = $this->getRequest();
 
         if ($request->getMethod() == 'POST') {
 
+            //update Diffusion ou fileUpload ?
+            if($request->request->get('lapaperie_fileuploadbundle_fileuploadtype'))
+            {
 
-            $editForm->bindRequest($request);
+                $editFileForm->bindRequest($request);
 
-            if ($editForm->isValid()) {
-                $entity->upload();
-                $em->persist($entity);
-                $em->flush();
+                if ($editFileForm->isValid()) {
+                    $fileEntity->uploadFile();
+                    $em->persist($fileEntity);
+                    $entity->setFile($fileEntity);
+                    $em->flush();
 
-                return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id)));
+                    return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id)));
+                }
+            }
+            else
+            {
+
+                $editForm->bindRequest($request);
+
+                if ($editForm->isValid()) {
+                    $entity->upload();
+                    $em->persist($entity);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id)));
+                }
             }
         }
 
         return array(
             'entity'      => $entity,
             'form'   => $editForm->createView(),
+            'edit_file_form'   => $editFileForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

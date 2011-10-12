@@ -85,18 +85,6 @@ class Diffusion
      */
     public $image;
 
-     /**
-     * @Assert\File(maxSize = "10000000")
-     */
-    public $file;
-
-    /**
-     * @var string $link
-     *
-     * @ORM\Column(name="link", type="string", length=255, nullable="true")
-     */
-    private $link;
-
     /**
      * @var string $slug
      *
@@ -104,6 +92,11 @@ class Diffusion
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Lapaperie\FileUploadBundle\Entity\FileUpload", cascade={"remove"})
+     */
+    protected $file;
 
     function __construct()
     {
@@ -353,23 +346,22 @@ class Diffusion
     }
 
     /**
-     * Set link
+     * Set file
      *
-     * @param string $link
+     * @param Lapaperie\FileUploadBundle\Entity\FileUpload $file
      */
-    public function setLink($link)
+    public function setFile(\Lapaperie\FileUploadBundle\Entity\FileUpload $file)
     {
-        $this->link = $link;
+        $this->file = $file;
     }
 
     /**
-     * Get link
+     * Get file
      *
-     * @return string
+     * @return Lapaperie\FileUploadBundle\Entity\FileUpload
      */
-    public function getLink()
+    public function getFile()
     {
-        return $this->link;
+        return $this->file;
     }
-
 }
