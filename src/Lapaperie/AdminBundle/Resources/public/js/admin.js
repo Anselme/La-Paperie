@@ -15,6 +15,12 @@ $(function() {
 });
 
 $(function() {
+    $(".confirmimg").click(function(){
+        if(!confirm($(this).find("> img").attr("alt")+" ?")) return false ;
+    });
+});
+
+$(function() {
     $(".jsDate").datepicker(
         $.datepicker.regional['fr']
         )

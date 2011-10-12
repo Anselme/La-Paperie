@@ -164,6 +164,31 @@ class DiffusionAdminController extends Controller
     }
 
     /**
+     * delete an Image
+     *
+     * @Route("/{id}/delete_image", name="image_delete")
+     */
+    public function deleteImage($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $image = $em->getRepository('LapaperieGalleryBundle:Image')->find($id);
+
+        if (!$image)
+        {
+            throw $this->createNotFoundException('Unable to find Image entity.');
+        }
+
+        $diffusion = $em->getRepository('LapaperieDiffusionBundle:Diffusion')->findByImageId($id);
+        $id_diffusion = $diffusion[0]->getId();
+
+        $em->remove($image);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id_diffusion)));
+    }
+
+    /**
      * Deletes a Diffusion entity.
      *
      * @Route("/{id}/delete", name="diffusion_delete")
