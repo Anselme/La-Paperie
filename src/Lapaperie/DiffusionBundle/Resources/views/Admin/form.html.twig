@@ -48,16 +48,6 @@
     {{ form_widget(form.year) }}
     </div>
     </div>
-    <div class="clearfix">
-    {{ form_label(form.image, 'Visuel') }}
-    <div class="input">
-    {{ form_errors(form.image) }}
-    {{ form_widget(form.image) }}
-    </div>
-    </div>
-
-{% block image %}
-{% endblock %}
 
     {{ form_rest(form) }}
 </fieldset>
@@ -67,6 +57,9 @@
         Retour à la liste des Diffusion/Infusion
         </a>
 </form>
+
+{% block image %}
+{% endblock %}
 
 {% block file %}
 {% endblock %}

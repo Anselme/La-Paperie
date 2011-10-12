@@ -14,6 +14,11 @@ use Lapaperie\DiffusionBundle\Form\DiffusionType;
 use Lapaperie\FileUploadBundle\Entity\FileUpload;
 use Lapaperie\FileUploadBundle\Form\FileUploadType;
 
+use Lapaperie\GalleryBundle\Entity\Gallery;
+
+use Lapaperie\GalleryBundle\Entity\Image;
+use Lapaperie\GalleryBundle\Form\ImageType;
+
 /**
  * Diffusion Admin controller.
  *
@@ -48,18 +53,18 @@ class DiffusionAdminController extends Controller
         $request = $this->getRequest();
         $form    = $this->createForm(new DiffusionType(), $entity);
 
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST')
+        {
 
             $form->bindRequest($request);
 
-            if ($form->isValid()) {
+            if ($form->isValid())
+            {
                 $em = $this->getDoctrine()->getEntityManager();
-                $entity->upload();
                 $em->persist($entity);
                 $em->flush();
 
                 return $this->redirect($this->generateUrl('diffusion', array('id' => $entity->getId())));
-
             }
         }
 
@@ -81,7 +86,8 @@ class DiffusionAdminController extends Controller
 
         $entity = $em->getRepository('LapaperieDiffusionBundle:Diffusion')->find($id);
 
-        if (!$entity) {
+        if (!$entity)
+        {
             throw $this->createNotFoundException('Unable to find Diffusion entity.');
         }
 
@@ -92,17 +98,22 @@ class DiffusionAdminController extends Controller
         $fileEntity = new FileUpload();
         $editFileForm = $this->createForm(new FileUploadType(), $fileEntity);
 
+        //Images
+        $imageEntity = new Image();
+        $editImageForm = $this->createForm(new ImageType(), $imageEntity);
+
         $request = $this->getRequest();
 
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST')
+        {
 
-            //update Diffusion ou fileUpload ?
+            //update Diffusion ou fileUpload ou Images?
             if($request->request->get('lapaperie_fileuploadbundle_fileuploadtype'))
             {
-
                 $editFileForm->bindRequest($request);
 
-                if ($editFileForm->isValid()) {
+                if ($editFileForm->isValid())
+                {
                     $fileEntity->uploadFile();
                     $em->persist($fileEntity);
                     $entity->setFile($fileEntity);
@@ -111,13 +122,27 @@ class DiffusionAdminController extends Controller
                     return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id)));
                 }
             }
+            elseif($request->request->get('lapaperie_gallerybundle_imagetype'))
+            {
+                $editImageForm->bindRequest($request);
+
+                if ($editImageForm->isValid())
+                {
+                    $imageEntity->upload();
+                    $imageEntity->setGallery($entity->getGallery());
+
+                    $em->persist($imageEntity);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id)));
+                }
+            }
             else
             {
-
                 $editForm->bindRequest($request);
 
-                if ($editForm->isValid()) {
-                    $entity->upload();
+                if ($editForm->isValid())
+                {
                     $em->persist($entity);
                     $em->flush();
 
@@ -126,11 +151,15 @@ class DiffusionAdminController extends Controller
             }
         }
 
+        //sans cette ligne, twig ne voit pas les images de l'entité !?
+        $images = $entity->getGallery()->getImages();
+
         return array(
-            'entity'      => $entity,
-            'form'   => $editForm->createView(),
+            'entity'           => $entity,
+            'form'             => $editForm->createView(),
             'edit_file_form'   => $editFileForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'edit_image_form'  => $editImageForm->createView(),
+            'delete_form'      => $deleteForm->createView(),
         );
     }
 

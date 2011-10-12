@@ -15,7 +15,6 @@ class DiffusionType extends AbstractType
             ->add('contenu','textarea',array('required' => false))
             ->add('isPreviousYear', 'checkbox',array('required' => false))
             ->add('year')
-            ->add('image')
         ;
     }
 

@@ -1,0 +1,13 @@
+    {{ form_errors(edit_image_form) }}
+<fieldset>
+    <div class="clearfix">
+    {{ form_label(edit_image_form.image, 'Image') }}
+    <div class="input">
+    {{ form_errors(edit_image_form.image) }}
+    {{ form_widget(edit_image_form.image) }}
+    </div>
+    </div>
+
+    {{ form_rest(edit_image_form) }}
+        <button type="submit" class="btn primary">Ajouter une image</button>
+</fieldset>

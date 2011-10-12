@@ -42,6 +42,7 @@ class Gallery
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->name = "--";
     }
 
     public function __toString()
@@ -52,7 +53,7 @@ class Gallery
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -72,7 +73,7 @@ class Gallery
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -92,7 +93,7 @@ class Gallery
     /**
      * Get images
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getImages()
     {

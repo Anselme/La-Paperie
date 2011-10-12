@@ -234,24 +234,4 @@ class Diffusion
     {
         return $this->file;
     }
-
-    /**
-     * Set gallery
-     *
-     * @param Lapaperie\GalleryBundle\Entity\Gallery $gallery
-     */
-    public function setGallery(\Lapaperie\GalleryBundle\Entity\Gallery $gallery)
-    {
-        $this->gallery = $gallery;
-    }
-
-    /**
-     * Get gallery
-     *
-     * @return Lapaperie\GalleryBundle\Entity\Gallery 
-     */
-    public function getGallery()
-    {
-        return $this->gallery;
-    }
 }
