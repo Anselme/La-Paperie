@@ -35,12 +35,10 @@
 
 {% if entity.images %}
   {% for image in entity.images %}
-        <!--form action="{#{ path('imagecompanie_delete') }#}" method="post"-->
       <img src="{{ image.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
-    {#{ form_widget(delete_image_form.id) }#}
-            {#{ form_widget(image_delete_form) }#}
-            <!--button type="submit" class="btn danger confirm">Supprimer l'image sélectionnée</button>
-        </form-->
+      <a href="{{ path('image_delete', { 'id':image.id}) }}" class="confirmimg">
+      <img src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png')}}" alt="Supprimer cette image">
+      </a>
   {% endfor %}
 <div class="clearfix"></div>
 {% endif %}

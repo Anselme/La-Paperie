@@ -89,7 +89,6 @@ class CompanieController extends Controller
 
         $editForm   = $this->createForm(new CompanieType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
-        //$deleteImageForm = $this->createImageDeleteForm($id);
 
         //Images des companies
         $imageEntity = new ImageCompanie();
@@ -150,8 +149,31 @@ class CompanieController extends Controller
             'edit_image_form'   => $editImageForm->createView(),
             'edit_file_form'   => $editFileForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            //'image_delete_form' => $deleteImageForm->createView(),
         );
+    }
+
+    /**
+     * delete an Image
+     *
+     * @Route("/{id}/delete_image", name="image_delete")
+     */
+    public function deleteImage($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $image = $em->getRepository('LapaperieCompaniesBundle:ImageCompanie')->find($id);
+
+        if (!$image)
+        {
+            throw $this->createNotFoundException('Unable to find ImageCompanie entity.');
+        }
+
+        $id_companie = $image->getCompanie()->getId();
+
+        $em->remove($image);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('companie_edit', array('id' => $id_companie)));
     }
 
     /**
@@ -189,43 +211,4 @@ class CompanieController extends Controller
             ->getForm()
         ;
     }
-
-    private function createImageDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
-        ;
-    }
-
-    /**
-     * Deletes a ImageCompanie entity.
-     *
-     * @Route("/{id}/deleteimage", name="imagecompanie_delete")
-     * @Method("post")
-     */
-    public function deleteImageAction($id)
-    {
-        $form = $this->createDeleteForm($id);
-        $request = $this->getRequest();
-
-        $form->bindRequest($request);
-
-        $em = $this->getDoctrine()->getEntityManager();
-        $entity = $em->getRepository('LapaperieCompaniesBundle:ImageCompanie')->find($id);
-        $idCompanie = $entity->getCompanie()->getId();
-
-        if ($form->isValid()) {
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find ImageCompanie entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('companie_edit', array('id' => $idCompanie)));
-    }
-
 }
