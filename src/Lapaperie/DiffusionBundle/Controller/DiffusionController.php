@@ -30,6 +30,9 @@ class DiffusionController extends Controller
             throw $this->createNotFoundException('Unable to find Focus entity.');
         }
 
+        //si pas d'appel explicite à getImages, twig ne les voit pas !?
+        $action->getGallery()->getImages();
+
         return $this->render('LapaperieDiffusionBundle:Default:index.html.twig',
             array('action' => $action,
                   'diffusions' => $active_actions,
