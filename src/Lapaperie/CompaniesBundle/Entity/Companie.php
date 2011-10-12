@@ -99,6 +99,11 @@ class Companie
     protected $videos;
 
     /**
+     * @ORM\OneToOne(targetEntity="Lapaperie\FileUploadBundle\Entity\FileUpload", cascade={"remove"})
+     */
+    protected $file;
+
+    /**
      * @var string $slug
      *
      * @Gedmo\Slug(fields={"name"},unique="true", updatable="true")
