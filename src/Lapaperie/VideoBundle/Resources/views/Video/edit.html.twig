@@ -18,8 +18,12 @@
 
 
 {% block delete %}
+  <div class="row">
+    <div class="span5 offset11">
         <form action="{{ path('video_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
             <button type="submit" class="btn danger confirm">Supprimer cette Vidéo</button>
         </form>
+      </div>
+      </div>
 {% endblock %}

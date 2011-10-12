@@ -18,8 +18,12 @@
 
 
 {% block delete %}
+  <div class="row">
+    <div class="span5 offset12">
         <form action="{{ path('diffusion_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
             <button type="submit" class="btn danger confirm">Supprimer cette Diffusion/Infusion</button>
         </form>
+      </div>
+      </div>
 {% endblock %}

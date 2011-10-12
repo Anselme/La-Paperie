@@ -7,10 +7,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+
 use Lapaperie\CompaniesBundle\Entity\Companie;
 use Lapaperie\CompaniesBundle\Form\CompanieType;
+
 use Lapaperie\CompaniesBundle\Entity\ImageCompanie;
 use Lapaperie\CompaniesBundle\Form\ImageCompanieType;
+
+use Lapaperie\FileUploadBundle\Entity\FileUpload;
+use Lapaperie\FileUploadBundle\Form\FileUploadType;
 
 /**
  * Companie controller.
@@ -90,11 +95,15 @@ class CompanieController extends Controller
         $imageEntity = new ImageCompanie();
         $editImageForm = $this->createForm(new ImageCompanieType(), $imageEntity);
 
+        //File Upload
+        $fileEntity = new FileUpload();
+        $editFileForm = $this->createForm(new FileUploadType(), $fileEntity);
+
         $request = $this->getRequest();
 
         if ($request->getMethod() == 'POST') {
 
-            //update Companie ou Image ?
+            //update Companie ou Image ou fileUpload ?
             if($request->request->get('lapaperie_companiesbundle_imagecompanietype'))
             {
                 $editImageForm->bindRequest($request);
@@ -102,6 +111,20 @@ class CompanieController extends Controller
                 if ($editImageForm->isValid()) {
                     $imageEntity->upload($entity);
                     $em->persist($imageEntity);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+                }
+            }
+            elseif($request->request->get('lapaperie_fileuploadbundle_fileuploadtype'))
+            {
+
+                $editFileForm->bindRequest($request);
+
+                if ($editFileForm->isValid()) {
+                    $fileEntity->uploadFile();
+                    $em->persist($fileEntity);
+                    $entity->setFile($fileEntity);
                     $em->flush();
 
                     return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
@@ -125,6 +148,7 @@ class CompanieController extends Controller
             'entity'      => $entity,
             'form'   => $editForm->createView(),
             'edit_image_form'   => $editImageForm->createView(),
+            'edit_file_form'   => $editFileForm->createView(),
             'delete_form' => $deleteForm->createView(),
             //'image_delete_form' => $deleteImageForm->createView(),
         );

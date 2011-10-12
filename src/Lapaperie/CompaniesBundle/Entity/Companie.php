@@ -371,4 +371,24 @@ class Companie
     {
         return $this->year;
     }
+
+    /**
+     * Set file
+     *
+     * @param Lapaperie\FileUploadBundle\Entity\FileUpload $file
+     */
+    public function setFile(\Lapaperie\FileUploadBundle\Entity\FileUpload $file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file
+     *
+     * @return Lapaperie\FileUploadBundle\Entity\FileUpload 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
 }

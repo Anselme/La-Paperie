@@ -89,14 +89,19 @@ class Companie
     private $long_text;
 
     /**
-     * @ORM\OneToMany(targetEntity="ImageCompanie", mappedBy="companie")
+     * @ORM\OneToMany(targetEntity="ImageCompanie", mappedBy="companie",cascade={"remove"})
      */
     protected $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="Lapaperie\VideoBundle\Entity\Video", mappedBy="companie")
+     * @ORM\OneToMany(targetEntity="Lapaperie\VideoBundle\Entity\Video", mappedBy="companie", cascade={"remove"})
      */
     protected $videos;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Lapaperie\FileUploadBundle\Entity\FileUpload", cascade={"remove"})
+     */
+    protected $file;
 
     /**
      * @var string $slug
@@ -325,5 +330,45 @@ class Companie
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set isPreviousYear
+     *
+     * @param boolean $isPreviousYear
+     */
+    public function setIsPreviousYear($isPreviousYear)
+    {
+        $this->isPreviousYear = $isPreviousYear;
+    }
+
+    /**
+     * Get isPreviousYear
+     *
+     * @return boolean
+     */
+    public function getIsPreviousYear()
+    {
+        return $this->isPreviousYear;
+    }
+
+    /**
+     * Set year
+     *
+     * @param integer $year
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+    }
+
+    /**
+     * Get year
+     *
+     * @return integer
+     */
+    public function getYear()
+    {
+        return $this->year;
     }
 }

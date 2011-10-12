@@ -5,9 +5,12 @@
   {% block action %}
   {% endblock %}
 
+<div class="page-header">
+<h2>{% block legend %}{% endblock %}</h2>
+</div>
+
     {{ form_errors(form) }}
 <fieldset>
-  <legend>{% block legend %}{% endblock %}</legend>
 
     <div class="clearfix">
     {{ form_label(form.name, 'Companie') }}
@@ -82,6 +85,9 @@
 </form>
 
 {% block images %}
+{% endblock %}
+
+{% block file %}
 {% endblock %}
 
 {% block delete %}

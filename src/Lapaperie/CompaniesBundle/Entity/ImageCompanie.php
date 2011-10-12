@@ -59,7 +59,7 @@ class ImageCompanie
         return $this->name;
     }
 
-    public function upload($companie)
+    public function upload(\Lapaperie\CompaniesBundle\Entity\Companie $companie)
     {
         // the file property can be empty if the field is not required
         if (null === $this->image) {

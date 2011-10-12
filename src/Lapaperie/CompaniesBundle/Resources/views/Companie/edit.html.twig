@@ -12,10 +12,14 @@
   {% block button %}Enregistrer les modifications{% endblock %}
 
   {% block images %}
+
+<div class="page-header">
+<h2>Images Associées à la companie "{{ entity.name }}"</h2>
+</div>
+
   <form action="{{ path('companie_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_image_form) }}>
     {{ form_errors(edit_image_form) }}
 <fieldset>
-    <legend>Images Associées à la companie "{{ entity.name }}"</legend>
     <div class="clearfix">
     {{ form_label(edit_image_form.image) }}
     <div class="input">
@@ -45,11 +49,25 @@
 </form>
   {% endblock %}
 
-  {% block delete %}
-        <form action="{{ path('companie_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit" class="btn danger confirm">Supprimer cette Companie / Résidence</button>
-        </form>
+  {% block file %}
 
+<div class="page-header">
+<h2>Fichier à télécharger ou mp3</h2>
+</div>
+
+  <form action="{{ path('companie_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_file_form) }}>
+{% include('LapaperieFileUploadBundle:Admin:form.html.twig') %}
+</form>
+<div class="clearfix"> </div>
   {% endblock %}
 
+  {% block delete %}
+  <div class="row">
+    <div class="span5 offset11">
+      <form action="{{ path('companie_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+      <button type="submit" class="btn danger confirm">Supprimer cette Companie / Résidence</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}

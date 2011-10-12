@@ -1,0 +1,22 @@
+
+    {{ form_errors(edit_file_form) }}
+<fieldset>
+    <div class="clearfix">
+    {{ form_label(edit_file_form.file, 'Fichier à télécharger (ou mp3)') }}
+    <div class="input">
+    {{ form_errors(edit_file_form.file) }}
+    {{ form_widget(edit_file_form.file) }}
+    </div>
+    </div>
+
+    <div class="clearfix">
+    {{ form_label(edit_file_form.link, 'Texte du lien du fichier') }}
+    <div class="input">
+    {{ form_errors(edit_file_form.link) }}
+    {{ form_widget(edit_file_form.link) }}
+    </div>
+    </div>
+
+    {{ form_rest(edit_file_form) }}
+        <button type="submit" class="btn primary">Ajouter le fichier</button>
+</fieldset>
