@@ -51,7 +51,6 @@ ul.subnav li.active a
 }
 
 .dotted_line {
-    margin-top: 1em;
     padding-top: 1em;
     border-top: thin dashed;
     color: #E32119
@@ -129,6 +128,7 @@ li.projets {
 }
 
 .projets a {
+    text-decoration: none;
 }
 
 p {
@@ -149,7 +149,17 @@ p {
 }
 
 .content {
-    margin: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    margin-top: 2.5em;
+}
+
+.content_video {
+width: 50%;
+margin-left: auto;
+margin-left: auto;
+
 }
 
 .right-side {
@@ -164,6 +174,10 @@ p {
     float: left;
     text-align: right;
     width: 25%;
+}
+
+.left-side ul{
+    padding-right: 1.5em;
 }
 
 .agenda-title {
