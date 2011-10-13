@@ -50,7 +50,7 @@ class CompanieRepository extends EntityRepository
             ->createQuery(
                 'SELECT  a FROM LapaperieCompaniesBundle:Companie a
                 WHERE a.year = :year
-                ORDER BY a.date_residence_beginning ASC'
+                ORDER BY a.date_residence_beginning DESC'
             )->setParameter('year',$year)
             ->getResult();
     }
