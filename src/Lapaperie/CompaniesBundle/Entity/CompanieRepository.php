@@ -65,4 +65,9 @@ class CompanieRepository extends EntityRepository
             ->getResult();
     }
 
+    public function createQBfindAllOrderByDebutResidenceDesc()
+    {
+        return $this->createQueryBuilder('n')->add('orderBy', 'n.date_residence_beginning DESC');
+    }
+
 }

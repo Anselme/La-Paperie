@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for entity in entities %}
+    {% for entity in paginator %}
         <tr>
             <td><a href="{{ path('companie_edit', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.creation }}</td>
@@ -26,6 +26,10 @@
     {% endfor %}
     </tbody>
 </table>
+
+<div class="pagination">
+{{ pagerfanta(paginator, 'adminView') }}
+</div>
 
 <a href="{{ path('companie_create') }}" class="btn primary">
 Saisir une nouvelle Companie/Résidence
