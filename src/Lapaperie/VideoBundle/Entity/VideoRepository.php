@@ -21,4 +21,9 @@ class  VideoRepository extends EntityRepository
             )
             ->getResult();
     }
+
+    public function createQBfindAllOrderByPublicationDateDesc()
+    {
+        return $this->createQueryBuilder('n')->add('orderBy', 'n.publicationDate DESC');
+    }
 }

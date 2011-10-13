@@ -8,6 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+
 use Lapaperie\VideoBundle\Entity\Video;
 use Lapaperie\VideoBundle\Form\VideoType;
 
@@ -26,11 +29,14 @@ class VideoAdminController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $this->getDoctrine()->getEntityManager()->getRepository('LapaperieVideoBundle:Video');
 
-        $entities = $em->getRepository('LapaperieVideoBundle:Video')->findAllOrderByPublicationDateDesc();
+        $query = $repo->createQBfindAllOrderByPublicationDateDesc();
+        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
+        $paginator->setMaxPerPage(10);
+        $paginator->setCurrentPage($this->get('request')->query->get('page', 1), false, true);
 
-        return array('entities' => $entities);
+        return array('paginator' => $paginator);
     }
 
     /**

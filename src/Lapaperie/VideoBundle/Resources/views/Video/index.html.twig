@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for entity in entities %}
+    {% for entity in paginator %}
         <tr>
             <td>{{ entity.companie ? entity.companie.name : '---' }}</td>
             <td>
@@ -35,6 +35,10 @@
     {% endfor %}
     </tbody>
 </table>
+
+<div class="pagination">
+{{ pagerfanta(paginator, 'adminView') }}
+</div>
 
         <a href="{{ path('video_create') }}" class="btn primary">
         Saisir une nouvelle Vidéo
