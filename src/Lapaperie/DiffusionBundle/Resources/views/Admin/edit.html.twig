@@ -20,7 +20,7 @@
 <div class="clearfix"></div>
   {% for image in entity.gallery.images %}
       <img src="{{ image.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
-      <a href="{{ path('image_delete', { 'id':image.id}) }}" class="confirmimg">
+      <a href="{{ path('image_diffusion_delete', { 'id':image.id}) }}" class="confirmimg">
       <img src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png')}}" alt="Supprimer cette image">
       </a>
   {% endfor %}

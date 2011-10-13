@@ -130,7 +130,7 @@ class MainController extends Controller
             throw $this->createNotFoundException('Unable to find Focus entity.');
         }
 
-        $companies = $repository->findAllByYearAsc($companie->getYear());
+        $companies = $repository->findAllByYearOrderbyDebutResidence($companie->getYear());
 
         return $this->render('LapaperieMainBundle:Soutien:projet.html.twig', array('companies' => $companies, 'companie' => $companie));
     }

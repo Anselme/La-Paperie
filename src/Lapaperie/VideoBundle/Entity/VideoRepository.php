@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class  VideoRepository extends EntityRepository
 {
+    public function findAllOrderByPublicationDateDesc()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT  a FROM LapaperieVideoBundle:Video a
+                ORDER BY a.publicationDate DESC'
+            )
+            ->getResult();
+    }
 }

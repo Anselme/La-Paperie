@@ -28,7 +28,7 @@ class VideoAdminController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('LapaperieVideoBundle:Video')->findAll();
+        $entities = $em->getRepository('LapaperieVideoBundle:Video')->findAllOrderByPublicationDateDesc();
 
         return array('entities' => $entities);
     }

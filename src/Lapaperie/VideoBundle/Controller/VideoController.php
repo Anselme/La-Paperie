@@ -25,7 +25,7 @@ class VideoController extends Controller
     public function indexAction()
     {
         $repository = $this->getDoctrine()->getRepository('LapaperieVideoBundle:Video');
-        $videos = $repository->findAll();
+        $videos = $repository->findAllOrderByPublicationDateDesc();
 
         return $this->render('LapaperieVideoBundle:Default:index.html.twig', array('videos' => $videos));
     }

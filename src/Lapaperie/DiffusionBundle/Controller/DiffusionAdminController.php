@@ -166,7 +166,7 @@ class DiffusionAdminController extends Controller
     /**
      * delete an Image
      *
-     * @Route("/{id}/delete_image", name="image_delete")
+     * @Route("/{id}/delete_image", name="image_diffusion_delete")
      */
     public function deleteImage($id)
     {
