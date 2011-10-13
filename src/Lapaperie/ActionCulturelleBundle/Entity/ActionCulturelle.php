@@ -4,8 +4,11 @@ namespace Lapaperie\ActionCulturelleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 use Gedmo\Sluggable\Util\Urlizer;
 use Gedmo\Mapping\Annotation as Gedmo;
+
+use Lapaperie\GalleryBundle\Entity\Gallery;
 
 /**
  * Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelle
@@ -60,32 +63,6 @@ class ActionCulturelle
     private $year;
 
     /**
-     * @var string $path
-     *
-     * @ORM\Column(name="path", type="string", length=255, nullable="true")
-     */
-    private $path;
-
-    /**
-     * @var string $name
-     *
-     * @ORM\Column(name="name", type="string", length=255, nullable="true")
-     */
-    private $name;
-
-    /**
-     * @var string $extension
-     *
-     * @ORM\Column(name="extension", type="string", length=255, nullable="true")
-     */
-    private $extension;
-
-     /**
-     * @Assert\File(maxSize = "1024k", mimeTypes = {"image/gif","image/jpeg","image/png" })
-     */
-    public $image;
-
-    /**
      * @var string $slug
      *
      * @Gedmo\Slug(fields={"title"},unique="true", updatable="true")
@@ -93,8 +70,19 @@ class ActionCulturelle
      */
     private $slug;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Lapaperie\GalleryBundle\Entity\Gallery", cascade={"persist"})
+     */
+    protected $gallery;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Lapaperie\FileUploadBundle\Entity\FileUpload", cascade={"remove"})
+     */
+    protected $file;
+
     function __construct()
     {
+        $this->gallery = new Gallery();
     }
     /**
      * Get id
@@ -186,119 +174,6 @@ class ActionCulturelle
         return $this->year;
     }
 
-    public function upload()
-    {
-        // the file property can be empty if the field is not required
-        if (null === $this->image) {
-            return;
-        }
-
-        $extension = $this->image->guessExtension();
-        if(!$extension)
-        {
-            $extension = 'bin' ;
-        }
-
-        $brand_new_name = uniqid().'.'.$extension ;
-
-        // move takes the target directory and then the target filename to move to
-        $this->image->move($this->getUploadRootDir(), $brand_new_name);
-
-        // set the path property to the filename where you'ved saved the file
-        $this->setPath($brand_new_name);
-
-        // set the extension property to the filename where you'ved saved the file
-        $this->setExtension($extension);
-
-        // set the name
-        $this->setName($brand_new_name);
-
-        // clean up the file property as you won't need it anymore
-        unset($this->image);
-    }
-
-
-    public function getAbsolutePath()
-    {
-        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
-        return 'uploads/images';
-    }
-
-    /**
-     * Set path
-     *
-     * @param string $path
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set extension
-     *
-     * @param string $extension
-     */
-    public function setExtension($extension)
-    {
-        $this->extension = $extension;
-    }
-
-    /**
-     * Get extension
-     *
-     * @return string
-     */
-    public function getExtension()
-    {
-        return $this->extension;
-    }
 
     /**
      * Set isPreviousYear
@@ -338,5 +213,45 @@ class ActionCulturelle
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set file
+     *
+     * @param Lapaperie\FileUploadBundle\Entity\FileUpload $file
+     */
+    public function setFile(\Lapaperie\FileUploadBundle\Entity\FileUpload $file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file
+     *
+     * @return Lapaperie\FileUploadBundle\Entity\FileUpload
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set gallery
+     *
+     * @param Lapaperie\GalleryBundle\Entity\Gallery $gallery
+     */
+    public function setGallery(\Lapaperie\GalleryBundle\Entity\Gallery $gallery)
+    {
+        $this->gallery = $gallery;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return Lapaperie\GalleryBundle\Entity\Gallery
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
     }
 }

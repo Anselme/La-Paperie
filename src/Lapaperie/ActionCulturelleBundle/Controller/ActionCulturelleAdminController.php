@@ -11,6 +11,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelle;
 use Lapaperie\ActionCulturelleBundle\Form\ActionCulturelleType;
 
+use Lapaperie\FileUploadBundle\Entity\FileUpload;
+use Lapaperie\FileUploadBundle\Form\FileUploadType;
+
+use Lapaperie\GalleryBundle\Entity\Gallery;
+
+use Lapaperie\GalleryBundle\Entity\Image;
+use Lapaperie\GalleryBundle\Form\ImageType;
+
 /**
  * ActionCulturelle Admin controller.
  *
@@ -45,18 +53,18 @@ class ActionCulturelleAdminController extends Controller
         $request = $this->getRequest();
         $form    = $this->createForm(new ActionCulturelleType(), $entity);
 
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST')
+        {
 
             $form->bindRequest($request);
 
-            if ($form->isValid()) {
+            if ($form->isValid())
+            {
                 $em = $this->getDoctrine()->getEntityManager();
-                $entity->upload();
                 $em->persist($entity);
                 $em->flush();
 
                 return $this->redirect($this->generateUrl('actionculturelle', array('id' => $entity->getId())));
-
             }
         }
 
@@ -78,60 +86,134 @@ class ActionCulturelleAdminController extends Controller
 
         $entity = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->find($id);
 
-        if (!$entity) {
+        if (!$entity)
+        {
             throw $this->createNotFoundException('Unable to find ActionCulturelle entity.');
         }
 
         $editForm = $this->createForm(new ActionCulturelleType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
+        //File Upload
+        $fileEntity = new FileUpload();
+        $editFileForm = $this->createForm(new FileUploadType(), $fileEntity);
+
+        //Images
+        $imageEntity = new Image();
+        $editImageForm = $this->createForm(new ImageType(), $imageEntity);
+
         $request = $this->getRequest();
 
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST')
+        {
 
+            //update Action ou fileUpload ou Images?
+            if($request->request->get('lapaperie_fileuploadbundle_fileuploadtype'))
+            {
+                $editFileForm->bindRequest($request);
 
-            $editForm->bindRequest($request);
+                if ($editFileForm->isValid())
+                {
+                    $fileEntity->uploadFile();
+                    $em->persist($fileEntity);
+                    $entity->setFile($fileEntity);
+                    $em->flush();
 
-            if ($editForm->isValid()) {
-                $entity->upload();
-                $em->persist($entity);
-                $em->flush();
+                    return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id)));
+                }
+            }
+            elseif($request->request->get('lapaperie_gallerybundle_imagetype'))
+            {
+                $editImageForm->bindRequest($request);
 
-                return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id)));
+                if ($editImageForm->isValid())
+                {
+                    $imageEntity->upload();
+                    $imageEntity->setGallery($entity->getGallery());
+
+                    $em->persist($imageEntity);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id)));
+                }
+            }
+            else
+            {
+                $editForm->bindRequest($request);
+
+                if ($editForm->isValid())
+                {
+                    $em->persist($entity);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id)));
+                }
             }
         }
+
+        //sans cette ligne, twig ne voit pas les images de l'entité !?
+        $images = $entity->getGallery()->getImages();
 
         return array(
             'entity'      => $entity,
             'form'   => $editForm->createView(),
+            'edit_file_form'   => $editFileForm->createView(),
+            'edit_image_form'  => $editImageForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-     * Deletes a ActionCulturelle entity.
+     * delete an Image
      *
-     * @Route("/{id}/delete", name="actionculturelle_delete")
-     * @Method("post")
+     * @Route("/{id}/delete_image", name="image_actionculturelle_delete")
      */
-    public function deleteAction($id)
+    public function deleteImage($id)
     {
-        $form = $this->createDeleteForm($id);
-        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
 
-        $form->bindRequest($request);
+        $image = $em->getRepository('LapaperieGalleryBundle:Image')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find ActionCulturelle entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$image)
+        {
+            throw $this->createNotFoundException('Unable to find Image entity.');
         }
+
+        $diffusion = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->findByImageId($id);
+        $id_diffusion = $diffusion[0]->getId();
+
+        $em->remove($image);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id_diffusion)));
+    }
+
+        /**
+         * Deletes a ActionCulturelle entity.
+         *
+         * @Route("/{id}/delete", name="actionculturelle_delete")
+         * @Method("post")
+         */
+        public function deleteAction($id)
+        {
+            $form = $this->createDeleteForm($id);
+            $request = $this->getRequest();
+
+            $form->bindRequest($request);
+
+            if ($form->isValid())
+            {
+                $em = $this->getDoctrine()->getEntityManager();
+                $entity = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->find($id);
+
+                if (!$entity)
+                {
+                    throw $this->createNotFoundException('Unable to find ActionCulturelle entity.');
+                }
+
+                $em->remove($entity);
+                $em->flush();
+            }
 
         return $this->redirect($this->generateUrl('actionculturelle'));
     }

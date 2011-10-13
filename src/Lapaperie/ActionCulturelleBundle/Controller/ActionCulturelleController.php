@@ -27,8 +27,11 @@ class ActionCulturelleController extends Controller
         $action = $repository->findOneBySlug($slug);
 
         if (!$action) {
-            throw $this->createNotFoundException('Unable to find Focus entity.');
+            throw $this->createNotFoundException('Unable to find ActionCulturelle entity.');
         }
+
+        //si pas d'appel explicite à getImages, twig ne les voit pas !?
+        $action->getGallery()->getImages();
 
         return $this->render('LapaperieActionCulturelleBundle:Default:index.html.twig',
             array('action' => $action,

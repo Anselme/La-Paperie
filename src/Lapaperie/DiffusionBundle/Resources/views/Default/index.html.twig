@@ -5,8 +5,6 @@
 {% block content %}
 <div class="page_content">
 
-<h2>{{ action.title }}</h2>
-
 {% if action.video %}
 <div class="illustration_right">
 {{ action.video | raw }}
@@ -20,6 +18,7 @@
 {% endif %}
 
   <div id="focus">
+    <h2>{{ action.title }}</h2>
     {{ action.contenu | raw }}
   </div>
 

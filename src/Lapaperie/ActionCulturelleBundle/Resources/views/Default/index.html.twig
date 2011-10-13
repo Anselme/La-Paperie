@@ -3,29 +3,40 @@
 {% block submenu %}{{ action.id }}{% endblock %}
 
 {% block content %}
-
 <div class="page_content">
-
-<h2>{{ action.title }}</h2>
 
 {% if action.video %}
 <div class="illustration_right">
 {{ action.video | raw }}
 </div>
-{% else %}
+{% elseif not action.gallery.images.isEmpty %}
 <div class="illustration_right">
-  <a href="{{ action.getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
-    <img src="{{ action.getWebPath | apply_filter('action') }}" alt="{{ action.name }}" width="352" />
+  <a href="{{ action.gallery.images[0].getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
+    <img src="{{ action.gallery.images[0].getWebPath | apply_filter('action') }}" width="352" />
     </a>
   </div>
 {% endif %}
 
   <div id="focus">
+<h2>{{ action.title }}</h2>
     {{ action.contenu | raw }}
   </div>
 
 
 </div>
 <div class="clear"></div>
+
+  {% if action.file %}
+  {% set file = action.file %}
+  {% include('LapaperieFileUploadBundle:Default:index.html.twig') %}
+  {% endif %}
+
+<div class="gallerie_thumbnails">
+  {% for image in action.gallery.images %}
+  <a href="{{ image.getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
+  <img src="{{ image.getWebPath | apply_filter('companie_thumbnail') }}" width="84" />
+  </a>
+  {% endfor %}
+  </div>
 
 {% endblock %}

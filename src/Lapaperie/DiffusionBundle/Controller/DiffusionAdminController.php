@@ -201,11 +201,13 @@ class DiffusionAdminController extends Controller
 
         $form->bindRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isValid())
+        {
             $em = $this->getDoctrine()->getEntityManager();
             $entity = $em->getRepository('LapaperieDiffusionBundle:Diffusion')->find($id);
 
-            if (!$entity) {
+            if (!$entity)
+            {
                 throw $this->createNotFoundException('Unable to find Diffusion entity.');
             }
 

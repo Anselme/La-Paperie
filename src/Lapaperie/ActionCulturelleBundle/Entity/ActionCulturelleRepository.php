@@ -33,4 +33,18 @@ class ActionCulturelleRepository extends EntityRepository
             )
             ->getResult();
     }
+
+    public function findByImageId($id)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a
+                   FROM LapaperieActionCulturelleBundle:ActionCulturelle a
+                   JOIN a.gallery g
+                   JOIN g.images i
+                  WHERE i.id = :id
+                 '
+             )->setParameter('id',$id)
+             ->getResult();
+    }
 }

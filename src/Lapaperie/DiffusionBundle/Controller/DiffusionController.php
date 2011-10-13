@@ -27,7 +27,7 @@ class DiffusionController extends Controller
         $action = $repository->findOneBySlug($slug);
 
         if (!$action) {
-            throw $this->createNotFoundException('Unable to find Focus entity.');
+            throw $this->createNotFoundException('Unable to find Diffusion entity.');
         }
 
         //si pas d'appel explicite à getImages, twig ne les voit pas !?

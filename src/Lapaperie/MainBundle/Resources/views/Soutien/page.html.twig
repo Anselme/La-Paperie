@@ -1,7 +1,5 @@
 <div class="page_content">
 
-<h2>{{ page.title }}</h2>
-
 {% if page.video %}
 <div class="illustration_right">
 {{ page.video | raw }}
@@ -15,6 +13,9 @@
 {% endif %}
 
   <div class="page">
+
+  <h2>{{ page.title }}</h2>
+
     {{ page.contenu | raw }}
   </div>
 
