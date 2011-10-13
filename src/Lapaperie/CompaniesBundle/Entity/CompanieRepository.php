@@ -55,4 +55,14 @@ class CompanieRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findAllOrderByDebutResidenceDesc()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT  a FROM LapaperieCompaniesBundle:Companie a
+                ORDER BY a.date_residence_beginning DESC'
+            )
+            ->getResult();
+    }
+
 }

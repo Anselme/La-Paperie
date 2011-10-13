@@ -30,7 +30,7 @@ class NewsletterAdminController extends Controller
      */
     public function indexAction()
     {
-        $newsLetterRepository = $this->getDoctrine()->getEntityManager()->getRepository('LapaperieNewsletterBundle:Subscriber');;
+        $newsLetterRepository = $this->getDoctrine()->getEntityManager()->getRepository('LapaperieNewsletterBundle:Subscriber');
 
         //createQueyrBuilder créé une query findAll() par defaut
         $query = $newsLetterRepository->createQueryBuilder('n');

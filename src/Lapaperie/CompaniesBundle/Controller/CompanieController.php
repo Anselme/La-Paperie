@@ -34,7 +34,7 @@ class CompanieController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('LapaperieCompaniesBundle:Companie')->findAll();
+        $entities = $em->getRepository('LapaperieCompaniesBundle:Companie')->findAllOrderByDebutResidenceDesc();
 
         return array('entities' => $entities);
     }

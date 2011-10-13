@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for entity in entities %}
+    {% for entity in paginator %}
         <tr>
             <td><a href="{{ path('agenda_edit', { 'id': entity.id }) }}">{{ entity.actualite | truncate(100) }}</a></td>
             <td>{{ entity.dateBeginning | date('j M Y') }}</td>
@@ -22,6 +22,10 @@
     {% endfor %}
     </tbody>
 </table>
+
+<div class="pagination">
+{{ pagerfanta(paginator, 'adminView') }}
+</div>
 
         <a href="{{ path('agenda_create') }}" class="btn primary">
         Saisir une nouvelle entrée dans l'Agenda

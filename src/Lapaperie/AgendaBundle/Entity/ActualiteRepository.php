@@ -26,6 +26,16 @@ class ActualiteRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findAllOrderByDateBeginning()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT a FROM LapaperieAgendaBundle:Actualite a
+                           ORDER BY a.date_beginning DESC
+                           '
+                       )
+            ->getResult();
+    }
+
     public function findActiveActualiteByMonth(\DateTime $dateBeginning, \DateTime $dateEnd )
     {
 
@@ -49,5 +59,10 @@ class ActualiteRepository extends EntityRepository
                            '
                        )->setParameters(array('now' => $dateBeginning, 'end' => $dateEnd ))
                        ->getResult();
+    }
+
+    public function createQBfindAllOrderByDateBeginning()
+    {
+        return $this->createQueryBuilder('n')->add('orderBy', 'n.date_beginning DESC');
     }
 }
