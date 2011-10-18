@@ -32,11 +32,6 @@ LapaperieAdminBundle:
     resource: "@LapaperieAdminBundle/Resources/config/routing.yml"
     prefix:   /
 
-LapaperieFocusBundle:
-    resource: "@LapaperieFocusBundle/Controller"
-    type:     annotation
-    prefix:   /
-
 LapaperieCompaniesBundle:
     resource: "@LapaperieCompaniesBundle/Controller"
     type:     annotation
