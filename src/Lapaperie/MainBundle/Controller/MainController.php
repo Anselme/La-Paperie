@@ -108,17 +108,20 @@ class MainController extends Controller
 
         $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
 
-        $archives = $repository->findAllYear();
-
         if($year == null)
         {
             $year = date('Y');
         }
 
-        $companies = $repository->findAllByYearOrderbyDebutResidence($year);
+        $companie = $repository->findOneByYearOrderbyDebutResidence($year);
 
-        return $this->render('LapaperieMainBundle:Soutien:projets.html.twig',
-            array('companies' => $companies, 'archives' => $archives, 'year' => $year));
+        if (!$companie) {
+            throw $this->createNotFoundException('Unable to find Companie entity.');
+        }
+
+        $slug = $companie[0]->getSlug() ;
+
+        return $this->projetAction($slug);
     }
 
     public function projetAction($slug)
@@ -126,13 +129,27 @@ class MainController extends Controller
         $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
         $companie = $repository->findOneBySlug($slug);
 
+        $year = $companie->getYear();
+
+        if($year == null)
+        {
+            $year = date('Y');
+        }
+
         if (!$companie) {
-            throw $this->createNotFoundException('Unable to find Focus entity.');
+            throw $this->createNotFoundException('Unable to find Companie entity.');
         }
 
         $companies = $repository->findAllByYearOrderbyDebutResidence($companie->getYear());
 
-        return $this->render('LapaperieMainBundle:Soutien:projet.html.twig', array('companies' => $companies, 'companie' => $companie));
+        $archives = $repository->findAllYear();
+
+        return $this->render('LapaperieMainBundle:Soutien:projet.html.twig',
+            array('companies' => $companies,
+            'companie' => $companie,
+            'archives' => $archives,
+            'year' => $year,
+        ));
     }
 
     public function culturelleAction($_route)

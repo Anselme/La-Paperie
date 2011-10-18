@@ -55,6 +55,18 @@ class CompanieRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findOneByYearOrderByDebutResidence($year)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT  a FROM LapaperieCompaniesBundle:Companie a
+                WHERE a.year = :year
+                ORDER BY a.date_residence_beginning DESC'
+            )->setParameter('year',$year)
+            ->setMaxresults(1)
+            ->getResult();
+    }
+
     public function findAllOrderByDebutResidenceDesc()
     {
         return $this->getEntityManager()
