@@ -53,7 +53,7 @@ class AgendaController extends Controller
         for($i = -4; $i<8; $i++)
         {
             $toto = mktime(0, 0, 0,$actual_month + $i,1,date('Y'));
-            $current_month == date("n", $toto) ? $active = "active" : $active = "" ;
+            $current_month == date("n", $toto) ? $active = "active-agenda" : $active = "" ;
 
             array_push($calendar, array(
                 "name" => strftime("%B",$toto),

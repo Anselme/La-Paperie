@@ -14,7 +14,7 @@ $(function(){
 //pop up d'iscription à la Newsletter
 $(function(){
     $("a[rel^='prettyNewsletter']").prettyPhoto({
-        theme: 'light_rounded',
+        theme: 'la_paperie',
         social_tools: ''
     });
 });
