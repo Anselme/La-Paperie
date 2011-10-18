@@ -28,7 +28,6 @@ class AppKernel extends Kernel
             new Lapaperie\AgendaBundle\LapaperieAgendaBundle(),
             new Lapaperie\VideoBundle\LapaperieVideoBundle(),
             new Lapaperie\CompaniesBundle\LapaperieCompaniesBundle(),
-            new Lapaperie\FocusBundle\LapaperieFocusBundle(),
             new Lapaperie\AdminBundle\LapaperieAdminBundle(),
             new Lapaperie\NewsletterBundle\LapaperieNewsletterBundle(),
             new Lapaperie\ActionCulturelleBundle\LapaperieActionCulturelleBundle(),

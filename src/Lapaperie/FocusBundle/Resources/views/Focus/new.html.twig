@@ -1,9 +1,0 @@
-{% extends "LapaperieFocusBundle:Focus:form.html.twig" %}
-
-  {% block action %}
-<form action="{{ path('focus_create') }}" method="post" {{ form_enctype(form) }}>
-  {% endblock %}
-
-  {% block legend %}Nouveau Focus{% endblock %}
-
-  {% block button %}Enregistrer ce nouveau Focus{% endblock %}

@@ -1,7 +1,0 @@
-parameters:
-#    lapaperie_focus.example.class: Lapaperie\FocusBundle\Example
-
-services:
-#    lapaperie_focus.example:
-#        class: %lapaperie_focus.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

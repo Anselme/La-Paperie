@@ -1,3 +1,0 @@
-LapaperieFocusBundle_homepage:
-    pattern:  /
-    defaults: { _controller: LapaperieFocusBundle:Focus:index }
