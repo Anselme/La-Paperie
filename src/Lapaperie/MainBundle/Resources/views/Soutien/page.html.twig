@@ -38,10 +38,13 @@
 
 {% else %}
 
-<a href="{{ page.getWebFilePath | raw }}" title="{{ page.fileExtension}} {{ page.fileSize // 1024 }}Ko">{{ page.link }}</a>
+<a href="{{ page.getWebFilePath | raw }}" title="{{ page.fileExtension}} {{ page.fileSize // 1024 }}Ko">
+{{ page.link }}
+</a>
+<img src="{{ asset('bundles/lapaperiemain/images/download.png') }}" width="16">
 
 {% endif %}
 
-<div class="clear"></div>
+<div class="clear pb-1"></div>
 
 {% endif %}

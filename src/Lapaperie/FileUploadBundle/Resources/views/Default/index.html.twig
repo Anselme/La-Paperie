@@ -1,5 +1,3 @@
-
-
 {% if file.fileExtension == 'mp3' %}
 
 <object width="289" height="28" data="{{ asset('bundles/lapaperiemain/flash/audio-player.swf') }}?audioUrl={{ file.getWebFilePath }}" type="application/x-shockwave-flash">
@@ -14,5 +12,7 @@
 {% else %}
 
 <a href="{{ file.getWebFilePath | raw }}" title="{{ file.fileExtension}} {{ file.fileSize // 1024 }}Ko">{{ file.link }}</a>
+<img src="{{ asset('bundles/lapaperiemain/images/download.png') }}" width="16">
 
 {% endif %}
+<div class="clear pb-1"></div>

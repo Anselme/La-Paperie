@@ -371,3 +371,7 @@ img.bg {
     margin-left: 3em;
     margin-bottom: 1.5em;
 }
+
+.pb-1 {
+    padding-bottom: 1em;
+}
