@@ -23,6 +23,13 @@ class Actualite
     private $id;
 
     /**
+     * @var string $title
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable="true")
+     */
+    private $title;
+
+    /**
      * @var datetime $date_beginning
      *
      * @ORM\Column(name="date_beginning", type="datetime")
@@ -111,6 +118,26 @@ class Actualite
     public function getActualite()
     {
         return $this->actualite;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
 }

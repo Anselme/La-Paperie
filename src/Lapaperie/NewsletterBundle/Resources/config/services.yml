@@ -1,5 +1,5 @@
 parameters:
-    contact_email_from: no-reply@lapaperie.fr
+    contact_email_from: contact@lapaperie.fr
 
 services:
 #    act_envcontact.example:

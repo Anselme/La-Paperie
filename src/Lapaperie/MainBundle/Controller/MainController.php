@@ -129,15 +129,15 @@ class MainController extends Controller
         $repository = $this->getDoctrine()->getRepository('LapaperieCompaniesBundle:Companie');
         $companie = $repository->findOneBySlug($slug);
 
+        if (!$companie) {
+            throw $this->createNotFoundException('Unable to find Companie entity.');
+        }
+
         $year = $companie->getYear();
 
         if($year == null)
         {
             $year = date('Y');
-        }
-
-        if (!$companie) {
-            throw $this->createNotFoundException('Unable to find Companie entity.');
         }
 
         $companies = $repository->findAllByYearOrderbyDebutResidence($companie->getYear());

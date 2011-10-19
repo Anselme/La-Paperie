@@ -22,6 +22,16 @@ class  VideoRepository extends EntityRepository
             ->getResult();
     }
 
+    //TODO Random with Doctrine ??
+    public function findAllOrderByRandom()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a FROM LapaperieVideoBundle:Video a '
+            )
+            ->getResult();
+    }
+
     public function createQBfindAllOrderByPublicationDateDesc()
     {
         return $this->createQueryBuilder('n')->add('orderBy', 'n.publicationDate DESC');

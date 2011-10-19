@@ -16,6 +16,7 @@ class ActualiteType extends AbstractType
             'format' => \IntlDateFormatter::SHORT);
 
         $builder
+            ->add('title')
             ->add('date_beginning','date', $dateArgsArray)
             ->add('date_end','date', $dateArgsArray)
             ->add('actualite','textarea',array('required' => false))
