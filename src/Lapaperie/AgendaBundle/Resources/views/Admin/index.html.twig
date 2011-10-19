@@ -15,7 +15,7 @@
     <tbody>
     {% for entity in paginator %}
         <tr>
-            <td><a href="{{ path('agenda_edit', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
+            <td><a href="{{ path('agenda_edit', { 'id': entity.id }) }}">- {{ entity.title }} -</a></td>
             <td>{{ entity.dateBeginning | date('j M Y') }}</td>
             <td>{{ entity.dateEnd | date('j M Y') }}</td>
         </tr>
