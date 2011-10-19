@@ -173,7 +173,6 @@ p {
     position: relative;
     float: left;
     text-align: right;
-    width: 25%;
 }
 
 .left-side ul{
@@ -181,7 +180,7 @@ p {
 }
 
 .agenda-title {
-    width: 12%;
+    width: 14%;
     text-align: right;
 }
 
@@ -205,7 +204,7 @@ p {
 .agenda-left-side {
     position: relative;
     float: left;
-    width: 12%;
+    width: 14%;
     margin-right: 2em;
     margin-top: 1em;
     padding-right: 2em;
@@ -269,6 +268,7 @@ strong {
     font-style: inherit;
     font-weight: bold;
     font-height: inherit;
+    font-size: 1.3em;
 }
 
 em {
