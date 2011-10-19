@@ -30,10 +30,11 @@ class NewsletterAdminController extends Controller
      */
     public function indexAction()
     {
-        $newsLetterRepository = $this->getDoctrine()->getEntityManager()->getRepository('LapaperieNewsletterBundle:Subscriber');
+        $newsLetterRepository = $this->getDoctrine()->getEntityManager()->getRepository('LapaperieNewsletterBundle:Inscription');
 
         //createQueyrBuilder créé une query findAll() par defaut
-        $query = $newsLetterRepository->createQueryBuilder('n');
+        $query = $newsLetterRepository->createQueryBuilder('n')->add('orderBy','n.date_inscription DESC');
+
         $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
         $paginator->setMaxPerPage(25);
         $paginator->setCurrentPage($this->get('request')->query->get('page', 1), false, true);

@@ -18,22 +18,20 @@
     <tbody>
     {% for entity in paginator %}
         <tr>
-            <td>{{ entity.lastname}}</td>
-            <td>{{ entity.firstname}}</td>
-            <td>{{ entity.email}}</td>
+            <td>{{ entity.subscriber.lastname}}</td>
+            <td>{{ entity.subscriber.firstname}}</td>
+            <td>{{ entity.subscriber.email}}</td>
             <td>
-            {% if  entity.inscriptions[0].dateinscription %}
-            {{ entity.inscriptions[0].dateinscription | date('j M Y') }}
+            {{ entity.dateinscription | date('j M Y') }}
+            </td>
+            <td>
+            {% if entity.dateconfirmation %}
+            {{ entity.dateconfirmation | date('j M Y') }}
             {% endif %}
             </td>
             <td>
-            {% if  entity.inscriptions[0].dateconfirmation %}
-            {{ entity.inscriptions[0].dateconfirmation | date('j M Y') }}
-            {% endif %}
-            </td>
-            <td>
-            {% if  entity.inscriptions[0].dateunscribe %}
-            {{ entity.inscriptions[0].dateunscribe | date('j M Y') }}
+            {% if entity.dateunscribe %}
+            {{ entity.dateunscribe | date('j M Y') }}
             {% endif %}
             </td>
         </tr>
