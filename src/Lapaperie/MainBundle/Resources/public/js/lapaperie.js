@@ -3,13 +3,17 @@ $(function(){
     $('.hide').show();
 });
 
-//page d'accueil - disparition image
+//page d'accueil - disparition image sur click
 $(function(){
     $('.bg').click(function(){
-        $('.bg').fadeOut(1500);
+        $('.bg').fadeOut(1000);
         });
 });
 
+//page d'accueil - disparition image au bout de 4 sec'
+$(function(){
+    $('.bg').delay(4000).fadeOut(1000);
+});
 
 //pop up d'iscription à la Newsletter
 $(function(){
