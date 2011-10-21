@@ -7,11 +7,16 @@
 {% endblock %}
 
 {% block image %}
+{% if entity.getImageName %}
       <div class="clearfix">
       <div class="input">
       <img src="{{ entity.getWebImagePath  | apply_filter('companie_thumbnail') }}" width="84"/>
+      <a href="{{ path('image_page_delete', { 'id':entity.id}) }}" class="confirmimg">
+      <img src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png')}}" alt="Supprimer cette image">
+      </a>
       </div>
       </div>
+{% endif %}
 {% endblock %}
 
 {% block button %}Enregistrer les modifications{% endblock %}

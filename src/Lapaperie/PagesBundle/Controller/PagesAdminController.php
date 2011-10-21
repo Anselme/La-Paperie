@@ -73,4 +73,28 @@ class PagesAdminController extends Controller
             'form'   => $editForm->createView(),
         );
     }
+
+    /**
+     * delete an Image
+     *
+     * @Route("/{id}/delete_image", name="image_page_delete")
+     */
+    public function deleteImage($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $page = $em->getRepository('LapaperiePagesBundle:Page')->find($id);
+
+        if (!$page)
+        {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        $page->setImagePath(null);
+        $page->setImageName(null);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('page_edit', array('id' => $id)));
+    }
+
 }
