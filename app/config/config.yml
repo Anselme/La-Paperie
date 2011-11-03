@@ -79,10 +79,10 @@ avalanche_imagine:
            options: { size: [84,70], mode: outbound}
        action:
            type:    thumbnail
-           options: { size: [352,293], mode: outbound}
+           options: { size: [352,352], mode: outbound}
        video_thumbnail:
            type:    thumbnail
-           options: { size: [100,75], mode: outbound}
+           options: { size: [125,94], mode: outbound}
        illustration:
            type:    thumbnail
            options: { size: [300,272], mode: outbound}

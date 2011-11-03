@@ -34,7 +34,7 @@ $(function(){
 $(function() {
     $(".video_home").hover(function(){
         src = $(this).find("> a > img").attr("src");
-        $(this).find("> a > img").attr("src","/bundles/lapaperiemain/images/fondalter-100.png") ;
+        $(this).find("> a > img").attr("src","/bundles/lapaperiemain/images/fondalter-125.png") ;
     }, function() {
         $(this).find("> a > img").attr("src",src) ;
     }
