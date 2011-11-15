@@ -1,7 +1,12 @@
 {% extends "LapaperieMainBundle:Paperie:index.html.twig" %}
 
 {% block content %}
-
 {% include "LapaperieMainBundle:Soutien:page.html.twig" %}
+{% endblock %}
 
+{% block footer %}
+
+{% if app.request.attributes.get('_route') == 'LapaperieMainBundle_homepage_partners' %}
+{% include "LapaperieMainBundle:Main:credit.html.twig" %}
+{% endif %}
 {% endblock %}

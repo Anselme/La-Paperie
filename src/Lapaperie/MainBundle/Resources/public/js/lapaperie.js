@@ -33,10 +33,12 @@ $(function(){
 //onHover sur les videos
 $(function() {
     $(".video_home").hover(function(){
-        src = $(this).find("> a > img").attr("src");
-        $(this).find("> a > img").attr("src","/bundles/lapaperiemain/images/fondalter-125.png") ;
+        alt = $(this).find("> a > img").attr("alt");
+        $(this).find("> a > img").fadeTo("fast",0.3);
+        $(this).append("<div class='video_hover'>"+alt+"</div>") ;
     }, function() {
-        $(this).find("> a > img").attr("src",src) ;
+        $(this).find("> a > img").fadeTo("fast",1);
+        $('.video_hover').detach() ;
     }
     );
 });

@@ -300,6 +300,7 @@ button {
     float: left ;
     margin: 0.2em;
     display: block;
+    height: 94px;
 }
 
 #vimeo_badge_logo {
@@ -373,4 +374,13 @@ img.bg {
 
 .pb-1 {
     padding-bottom: 1em;
+}
+
+.video_hover {
+    background: #E32119;
+    color: #fff ;
+    position: relative;
+    top: -50px;
+    left: 0px ;
+    width: 125px;
 }

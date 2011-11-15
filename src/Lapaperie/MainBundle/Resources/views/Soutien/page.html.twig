@@ -6,9 +6,7 @@
 </div>
 {% elseif page.imageName %}
 <div class="illustration_right">
-  <a href="{{ page.getWebImagePath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
     <img src="{{ page.getWebImagePath | apply_filter('action') }}" alt="Illustration {{ page.title }}" width="352" />
-    </a>
 </div>
 {% endif %}
 
