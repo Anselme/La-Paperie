@@ -19,4 +19,20 @@
 {% endif %}
 {% endblock %}
 
+{% block file_delete %}
+{% if entity.fileName %}
+<div class="page-header">
+<h3>Fichier en ligne
+<small>
+{{entity.link}}
+<a href="{{ path('file_page_delete', { 'id':entity.id}) }}" class="confirmfile">
+<img src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png')}}" alt="Supprimer ce fichier">
+</a>
+</small>
+</h3>
+</div>
+<div class="clearfix"></div>
+{% endif %}
+{% endblock %}
+
 {% block button %}Enregistrer les modifications{% endblock %}

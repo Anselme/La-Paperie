@@ -39,7 +39,9 @@
 <a href="{{ page.getWebFilePath | raw }}" title="{{ page.fileExtension}} {{ page.fileSize // 1024 }}Ko">
 {{ page.link }}
 </a>
+<a href="{{ page.getWebFilePath | raw }}" title="{{ page.fileExtension}} {{ page.fileSize // 1024 }}Ko">
 <img src="{{ asset('bundles/lapaperiemain/images/download.png') }}" width="16">
+</a>
 
 {% endif %}
 

@@ -97,4 +97,27 @@ class PagesAdminController extends Controller
         return $this->redirect($this->generateUrl('page_edit', array('id' => $id)));
     }
 
+    /**
+     * Delete the File
+     *
+     * @Route("/{id}/delete_file", name="file_page_delete")
+     */
+    public function deleteFile($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $page = $em->getRepository('LapaperiePagesBundle:Page')->find($id);
+
+        if (!$page)
+        {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        $page->removeFile();
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('page_edit', array('id' => $id)));
+
+    }
+
 }

@@ -60,7 +60,13 @@
     </div>
     </div>
 
+
+{% block file_delete %}
+{% endblock %}
+
     {{ form_rest(form) }}
+
+
 </fieldset>
         <button type="submit" class="btn primary">{% block button %}{% endblock %}</button>
 

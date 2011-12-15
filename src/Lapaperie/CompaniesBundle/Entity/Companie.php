@@ -392,4 +392,9 @@ class Companie
     {
         return $this->file;
     }
+
+    public function removeFile()
+    {
+        $this->file = null ;
+    }
 }

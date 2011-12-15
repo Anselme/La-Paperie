@@ -57,11 +57,13 @@ class CompanieController extends Controller
         $request = $this->getRequest();
         $form    = $this->createForm(new CompanieType(), $entity);
 
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST')
+        {
 
             $form->bindRequest($request);
 
-            if ($form->isValid()) {
+            if ($form->isValid())
+            {
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($entity);
                 $em->flush();
@@ -89,7 +91,8 @@ class CompanieController extends Controller
 
         $entity = $em->getRepository('LapaperieCompaniesBundle:Companie')->find($id);
 
-        if (!$entity) {
+        if (!$entity)
+        {
             throw $this->createNotFoundException('Unable to find Companie entity.');
         }
 
@@ -106,14 +109,16 @@ class CompanieController extends Controller
 
         $request = $this->getRequest();
 
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST')
+        {
 
             //update Companie ou Image ou fileUpload ?
             if($request->request->get('lapaperie_companiesbundle_imagecompanietype'))
             {
                 $editImageForm->bindRequest($request);
 
-                if ($editImageForm->isValid()) {
+                if ($editImageForm->isValid())
+                {
                     $imageEntity->upload($entity);
                     $em->persist($imageEntity);
                     $em->flush();
@@ -126,7 +131,8 @@ class CompanieController extends Controller
 
                 $editFileForm->bindRequest($request);
 
-                if ($editFileForm->isValid()) {
+                if ($editFileForm->isValid())
+                {
                     $fileEntity->uploadFile();
                     $em->persist($fileEntity);
                     $entity->setFile($fileEntity);
@@ -140,7 +146,8 @@ class CompanieController extends Controller
 
                 $editForm->bindRequest($request);
 
-                if ($editForm->isValid()) {
+                if ($editForm->isValid())
+                {
                     $em->persist($entity);
                     $em->flush();
 
@@ -183,6 +190,30 @@ class CompanieController extends Controller
     }
 
     /**
+     * delete a File
+     *
+     * @Route("/{id}/delete_file", name="file_delete")
+     */
+    public function deleteFile($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $companie = $em->getRepository('LapaperieCompaniesBundle:Companie')->find($id);
+
+        if (!$companie)
+        {
+            throw $this->createNotFoundException('Unable to find Companie entity.');
+        }
+
+        $companie->removeFile();
+        $em->persist($companie);
+        $em->flush();
+
+
+        return $this->redirect($this->generateUrl('companie_edit', array('id' => $id)));
+    }
+
+    /**
      * Deletes a Companie entity.
      *
      * @Route("/{id}/delete", name="companie_delete")
@@ -195,11 +226,13 @@ class CompanieController extends Controller
 
         $form->bindRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isValid())
+        {
             $em = $this->getDoctrine()->getEntityManager();
             $entity = $em->getRepository('LapaperieCompaniesBundle:Companie')->find($id);
 
-            if (!$entity) {
+            if (!$entity)
+            {
                 throw $this->createNotFoundException('Unable to find Companie entity.');
             }
 

@@ -446,4 +446,19 @@ class Page
     {
         return $this->fileSize;
     }
+
+    /**
+     *
+     * Remove File
+     *
+     */
+    public function removeFile()
+    {
+        $this->setFileExtension(null);
+        $this->setFilePath(null);
+        $this->setFileSize(null);
+        $this->setFileName(null);
+        $this->setLink(null);
+
+    }
 }

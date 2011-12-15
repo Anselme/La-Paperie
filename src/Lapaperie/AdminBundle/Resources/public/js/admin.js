@@ -21,6 +21,12 @@ $(function() {
 });
 
 $(function() {
+    $(".confirmfile").click(function(){
+        if(!confirm("Supprimer ce fichier ?")) return false ;
+    });
+});
+
+$(function() {
     $(".jsDate").datepicker(
         $.datepicker.regional['fr']
         )
