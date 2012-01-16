@@ -28,7 +28,7 @@ $(function() {
 
 $(function() {
     $(".jsDate").datepicker(
-        $.datepicker.regional['fr']
+        { dateFormat: 'mm/dd/yy'}
         )
 });
 

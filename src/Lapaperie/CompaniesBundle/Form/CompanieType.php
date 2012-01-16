@@ -13,7 +13,8 @@ class CompanieType extends AbstractType
         $dateArgsArray = array('required' => false,
             'input' => 'datetime',
             'widget' => 'single_text',
-            'format' => \IntlDateFormatter::SHORT);
+            'format' => 'MM/dd/yyyy',
+        );
 
         $builder
             ->add('name')
