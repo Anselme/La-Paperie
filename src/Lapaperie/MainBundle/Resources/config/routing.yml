@@ -36,7 +36,7 @@ LapaperieMainBundle_soutiencreation_projets:
 
 LapaperieMainBundle_soutiencreation_projets_byyear:
     pattern:  /soutien-creation/projets/{year}
-    defaults: { _controller: LapaperieMainBundle:Main:projets, year:2011 }
+    defaults: { _controller: LapaperieMainBundle:Main:projets}
     requirements:
         year: \d+
 
