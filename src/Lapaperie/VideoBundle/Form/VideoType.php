@@ -11,7 +11,11 @@ class VideoType extends AbstractType
     {
         $builder
             ->add('embded')
-            ->add('publicationDate','date', array('input' => 'datetime', 'widget' => 'single_text','format' => \IntlDateFormatter::SHORT))
+            ->add('publicationDate','date', array('input' => 'datetime',
+                                                  'widget' => 'single_text',
+                                                  'format' => 'MM/dd/yyyy',
+                                                  )
+                  )
             ->add('isOnLine', 'checkbox',array('required' => false))
             ->add('legend','text',array('required' => false))
             ->add('companie','entity',array('class' => 'LapaperieCompaniesBundle:Companie',

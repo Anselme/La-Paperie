@@ -13,7 +13,8 @@ class ActualiteType extends AbstractType
         $dateArgsArray = array('required' => true,
             'input' => 'datetime',
             'widget' => 'single_text',
-            'format' => \IntlDateFormatter::SHORT);
+            'format' => 'MM/dd/yyyy',
+        );
 
         $builder
             ->add('title')
