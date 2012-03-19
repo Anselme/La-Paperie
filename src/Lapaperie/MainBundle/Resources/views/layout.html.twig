@@ -9,6 +9,9 @@
         <!--[if IE]>
         <script type="text/javascript" src="{{ asset('bundles/lapaperiemain/js/modernizr.custom.08780.js') }}"></script>
         <![endif]-->
+         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+         <script type="text/javascript" src="{{ asset('bundles/lapaperiemain/js/lapaperie.js') }}"></script>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         <title>{% block title %}La Paperie - Centre National des Arts de la Rue{% endblock %}</title>
     </head>
@@ -80,6 +83,7 @@
             </div>
         </footer>
 
+         <script src="https://www.google.com/jsapi?key=ABQIAAAA3As8m9xjou7uGCjqA37IYBTuPGIAa-QdLkTp6aFCbn3S4jNSIBSYdF3OGOktrl-b4-SUTx7uEx461Q" type="text/javascript"></script>
         <script type="text/javascript">
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-16774877-1']);
@@ -92,11 +96,7 @@
              })();
 
          </script>
-         <script src="https://www.google.com/jsapi?key=ABQIAAAA3As8m9xjou7uGCjqA37IYBTuPGIAa-QdLkTp6aFCbn3S4jNSIBSYdF3OGOktrl-b4-SUTx7uEx461Q" type="text/javascript"></script>
-         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
          <script src="{{ asset('bundles/lapaperiemain/js/jquery.prettyPhoto.js') }}" type="text/javascript" charset="utf-8"></script>
-         <script type="text/javascript" src="{{ asset('bundles/lapaperiemain/js/lapaperie.js') }}"></script>
         {% block js %}{% endblock %}
      </body>
  </html>

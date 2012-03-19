@@ -1,6 +1,6 @@
 //affiche l'image d'intro
 $(function(){
-    $('.hide').fadeIn();
+    $('#intro_background').fadeIn();
 });
 
 //page d'accueil - disparition image sur click
