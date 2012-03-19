@@ -27,6 +27,8 @@ $(function() {
 });
 
 $(function() {
+    $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+
     $(".jsDate").datepicker(
         { dateFormat: 'mm/dd/yy'}
         )
