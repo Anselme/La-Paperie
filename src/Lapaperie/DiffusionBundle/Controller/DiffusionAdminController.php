@@ -189,6 +189,30 @@ class DiffusionAdminController extends Controller
     }
 
     /**
+     * delete a File
+     *
+     * @Route("/{id}/diffusion_delete_file", name="diffusion_file_delete")
+     */
+    public function deleteFile($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $diffusion = $em->getRepository('LapaperieDiffusionBundle:Diffusion')->find($id);
+
+        if (!$diffusion)
+        {
+            throw $this->createNotFoundException('Unable to find Diffusion entity.');
+        }
+
+        $diffusion->removeFile();
+        $em->persist($diffusion);
+        $em->flush();
+
+
+        return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id)));
+    }
+
+    /**
      * Deletes a Diffusion entity.
      *
      * @Route("/{id}/delete", name="diffusion_delete")

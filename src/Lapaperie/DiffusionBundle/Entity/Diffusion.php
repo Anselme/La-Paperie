@@ -235,6 +235,11 @@ class Diffusion
         return $this->file;
     }
 
+    public function removeFile()
+    {
+        $this->file = null ;
+    }
+
     /**
      * Set gallery
      *
@@ -248,7 +253,7 @@ class Diffusion
     /**
      * Get gallery
      *
-     * @return Lapaperie\GalleryBundle\Entity\Gallery 
+     * @return Lapaperie\GalleryBundle\Entity\Gallery
      */
     public function getGallery()
     {
