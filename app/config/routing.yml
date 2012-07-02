@@ -1,3 +1,8 @@
+LapaperieRessourcesBundle:
+    resource: "@LapaperieRessourcesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 LapaperieGalleryBundle:
     resource: "@LapaperieGalleryBundle/Controller/"
     type:     annotation

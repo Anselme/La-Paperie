@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Actions Culturelles</h1>
+<h1>Centre Ressources / Formation</h1>
 
 <table class="records_list">
     <thead>
@@ -15,7 +15,7 @@
     {% for entity in entities %}
         <tr>
             <td>
-            <a href="{{ path('actionculturelle_edit', { 'id': entity.id }) }}">
+            <a href="{{ path('ressources_edit', { 'id': entity.id }) }}">
             {{ entity.title }}
             </a>
             </td>
@@ -27,7 +27,7 @@
     </tbody>
 </table>
 
-        <a href="{{ path('actionculturelle_create') }}" class="btn primary">
-        Saisir une nouvelle Action Culturelle
+        <a href="{{ path('ressources_create') }}" class="btn primary">
+        Saisir une nouvelle Ressources / Centre Formation
         </a>
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends "LapaperieMainBundle:Main:action-culturelle.html.twig" %}
+{% extends "LapaperieMainBundle:Main:ressources.html.twig" %}
 
 {% block submenu %}archives{% endblock %}
 
@@ -15,7 +15,7 @@
 <ul>
 {% endif %}
 
-<li><a href="{{ path('actionculturelle_detail', {'slug':  entity.slug  }) }}" title="{{ entity.year }} {{ entity.title }}">{{ entity.title }}</a></li>
+<li><a href="{{ path('ressources_detail', {'slug':  entity.slug  }) }}" title="{{ entity.year }} {{ entity.title }}">{{ entity.title }}</a></li>
 
 {% set year = entity.year %}
 {% endfor %}

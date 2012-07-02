@@ -1,0 +1,18 @@
+{% extends "LapaperieMainBundle:Main:index.html.twig" %}
+
+{% block title %}
+La Paperie - Centre National des Arts de la Rue - Ressources
+{% endblock %}
+
+{% block menu %}action{% endblock %}
+
+{% block sousmenu %}
+{% include "LapaperieRessourcesBundle:Default:submenu.html.twig"  with {"subcurrent": block('submenu')} %}
+{% endblock %}
+
+{% block content %}
+{% include "LapaperieMainBundle:Soutien:page.html.twig" %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

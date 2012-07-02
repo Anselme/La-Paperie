@@ -1,11 +1,11 @@
 <?php
 
-namespace Lapaperie\ActionCulturelleBundle\Form;
+namespace Lapaperie\RessourcesBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class ActionCulturelleType extends AbstractType
+class RessourcesType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -20,6 +20,6 @@ class ActionCulturelleType extends AbstractType
 
     public function getName()
     {
-        return 'lapaperie_actionculturellebundle_actionculturelletype';
+        return 'lapaperie_ressourcesbundle_ressourcestype';
     }
 }

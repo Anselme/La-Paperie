@@ -1,6 +1,6 @@
 <?php
 
-namespace Lapaperie\ActionCulturelleBundle\Controller;
+namespace Lapaperie\RessourcesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,8 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelle;
-use Lapaperie\ActionCulturelleBundle\Form\ActionCulturelleType;
+use Lapaperie\RessourcesBundle\Entity\Ressources;
+use Lapaperie\RessourcesBundle\Form\RessourcesType;
 
 use Lapaperie\FileUploadBundle\Entity\FileUpload;
 use Lapaperie\FileUploadBundle\Form\FileUploadType;
@@ -20,38 +20,38 @@ use Lapaperie\GalleryBundle\Entity\Image;
 use Lapaperie\GalleryBundle\Form\ImageType;
 
 /**
- * ActionCulturelle Admin controller.
+ * Ressources Admin controller.
  *
- * @Route("/admin/action-cul")
+ * @Route("/admin/ressources")
  */
-class ActionCulturelleAdminController extends Controller
+class RessourcesAdminController extends Controller
 {
     /**
-     * Lists all ActionCulturelle entities.
+     * Lists all Ressources entities.
      *
-     * @Route("/", name="actionculturelle")
-     * @Template("LapaperieActionCulturelleBundle:Admin:index.html.twig")
+     * @Route("/", name="ressources")
+     * @Template("LapaperieRessourcesBundle:Admin:index.html.twig")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->findAll();
+        $entities = $em->getRepository('LapaperieRessourcesBundle:Ressources')->findAll();
 
         return array('entities' => $entities);
     }
 
     /**
-     * Creates a new ActionCulturelle entity.
+     * Creates a new Ressources entity.
      *
-     * @Route("/create", name="actionculturelle_create")
-     * @Template("LapaperieActionCulturelleBundle:Admin:new.html.twig")
+     * @Route("/create", name="ressources_create")
+     * @Template("LapaperieRessourcesBundle:Admin:new.html.twig")
      */
     public function createAction()
     {
-        $entity  = new ActionCulturelle();
+        $entity  = new Ressources();
         $request = $this->getRequest();
-        $form    = $this->createForm(new ActionCulturelleType(), $entity);
+        $form    = $this->createForm(new RessourcesType(), $entity);
 
         if ($request->getMethod() == 'POST')
         {
@@ -64,7 +64,7 @@ class ActionCulturelleAdminController extends Controller
                 $em->persist($entity);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('actionculturelle', array('id' => $entity->getId())));
+                return $this->redirect($this->generateUrl('ressources', array('id' => $entity->getId())));
             }
         }
 
@@ -75,23 +75,23 @@ class ActionCulturelleAdminController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing ActionCulturelle entity.
+     * Displays a form to edit an existing Ressources entity.
      *
-     * @Route("/{id}/edit", name="actionculturelle_edit")
-     * @Template("LapaperieActionCulturelleBundle:Admin:edit.html.twig")
+     * @Route("/{id}/edit", name="ressources_edit")
+     * @Template("LapaperieRessourcesBundle:Admin:edit.html.twig")
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->find($id);
+        $entity = $em->getRepository('LapaperieRessourcesBundle:Ressources')->find($id);
 
         if (!$entity)
         {
-            throw $this->createNotFoundException('Unable to find ActionCulturelle entity.');
+            throw $this->createNotFoundException('Unable to find Ressources entity.');
         }
 
-        $editForm = $this->createForm(new ActionCulturelleType(), $entity);
+        $editForm = $this->createForm(new RessourcesType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         //File Upload
@@ -119,7 +119,7 @@ class ActionCulturelleAdminController extends Controller
                     $entity->setFile($fileEntity);
                     $em->flush();
 
-                    return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id)));
+                    return $this->redirect($this->generateUrl('ressources_edit', array('id' => $id)));
                 }
             }
             elseif($request->request->get('lapaperie_gallerybundle_imagetype'))
@@ -134,7 +134,7 @@ class ActionCulturelleAdminController extends Controller
                     $em->persist($imageEntity);
                     $em->flush();
 
-                    return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id)));
+                    return $this->redirect($this->generateUrl('ressources_edit', array('id' => $id)));
                 }
             }
             else
@@ -146,7 +146,7 @@ class ActionCulturelleAdminController extends Controller
                     $em->persist($entity);
                     $em->flush();
 
-                    return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id)));
+                    return $this->redirect($this->generateUrl('ressources_edit', array('id' => $id)));
                 }
             }
         }
@@ -166,7 +166,7 @@ class ActionCulturelleAdminController extends Controller
     /**
      * delete an Image
      *
-     * @Route("/{id}/delete_image", name="image_actionculturelle_delete")
+     * @Route("/{id}/delete_image", name="image_ressources_delete")
      */
     public function deleteImage($id)
     {
@@ -179,19 +179,19 @@ class ActionCulturelleAdminController extends Controller
             throw $this->createNotFoundException('Unable to find Image entity.');
         }
 
-        $diffusion = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->findByImageId($id);
+        $diffusion = $em->getRepository('LapaperieRessourcesBundle:Ressources')->findByImageId($id);
         $id_diffusion = $diffusion[0]->getId();
 
         $em->remove($image);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id_diffusion)));
+        return $this->redirect($this->generateUrl('ressources_edit', array('id' => $id_diffusion)));
     }
 
         /**
-         * Deletes a ActionCulturelle entity.
+         * Deletes a Ressources entity.
          *
-         * @Route("/{id}/delete", name="actionculturelle_delete")
+         * @Route("/{id}/delete", name="ressources_delete")
          * @Method("post")
          */
         public function deleteAction($id)
@@ -204,18 +204,18 @@ class ActionCulturelleAdminController extends Controller
             if ($form->isValid())
             {
                 $em = $this->getDoctrine()->getEntityManager();
-                $entity = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->find($id);
+                $entity = $em->getRepository('LapaperieRessourcesBundle:Ressources')->find($id);
 
                 if (!$entity)
                 {
-                    throw $this->createNotFoundException('Unable to find ActionCulturelle entity.');
+                    throw $this->createNotFoundException('Unable to find Ressources entity.');
                 }
 
                 $em->remove($entity);
                 $em->flush();
             }
 
-        return $this->redirect($this->generateUrl('actionculturelle'));
+        return $this->redirect($this->generateUrl('ressources'));
     }
 
     private function createDeleteForm($id)

@@ -1,10 +1,10 @@
-{% extends "LapaperieActionCulturelleBundle:Admin:form.html.twig" %}
+{% extends "LapaperieRessourcesBundle:Admin:form.html.twig" %}
 
-{% block legend%}Nouvelle Action Culturelle{% endblock %}
+{% block legend%}Nouvelle Ressources{% endblock %}
 
 {% block action %}
-<form action="{{ path('actionculturelle_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('ressources_create') }}" method="post" {{ form_enctype(form) }}>
 {% endblock %}
 
-{% block button %}Enregistrer cette nouvelle Action Culturelle{% endblock %}
+{% block button %}Enregistrer cette nouvelle Ressource{% endblock %}
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lapaperie\ActionCulturelleBundle\Entity;
+namespace Lapaperie\RessourcesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -11,12 +11,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Lapaperie\GalleryBundle\Entity\Gallery;
 
 /**
- * Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelle
+ * Lapaperie\RessourcesBundle\Entity\Ressources
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelleRepository")
+ * @ORM\Entity(repositoryClass="Lapaperie\RessourcesBundle\Entity\RessourcesRepository")
  */
-class ActionCulturelle
+class Ressources
 {
     /**
      * @var integer $id
