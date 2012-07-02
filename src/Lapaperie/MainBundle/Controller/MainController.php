@@ -175,6 +175,29 @@ class MainController extends Controller
         ));
     }
 
+    public function ressourcesAction($_route)
+    {
+        $repository = $this->getDoctrine()->getRepository('LapaperieRessourcesBundle:Ressources');
+        $active_actions = $repository->findAllNotPreviousYear();
+        $archives = $repository->findArchivesOrderByYearDesc();
+
+        $repository = $this->getDoctrine()->getRepository('LapaperiePagesBundle:Page');
+        $page = $repository->findOneBylinkWithRouting(
+            $_route
+        );
+
+        if (!$page) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
+
+        return $this->render('LapaperieMainBundle:Main:ressources.html.twig',
+            array(
+                'actionsculturelles' => $active_actions,
+                'page' => $page,
+                'archives' => $archives,
+        ));
+    }
+
     /**
      * Render la Paperie Pages
      *

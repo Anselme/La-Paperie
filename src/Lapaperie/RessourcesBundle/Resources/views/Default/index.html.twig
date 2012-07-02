@@ -1,38 +1,38 @@
 {% extends "LapaperieMainBundle:Main:ressources.html.twig" %}
 
-{% block submenu %}{{ action.id }}{% endblock %}
+{% block submenu %}{{ ressource.id }}{% endblock %}
 
 {% block content %}
 <div class="page_content">
 
-{% if action.video %}
+{% if ressource.video %}
 <div class="illustration_right">
-{{ action.video | raw }}
+{{ ressource.video | raw }}
 </div>
-{% elseif not action.gallery.images.isEmpty %}
+{% elseif not ressource.gallery.images.isEmpty %}
 <div class="illustration_right">
-  <a href="{{ action.gallery.images[0].getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
-    <img src="{{ action.gallery.images[0].getWebPath | apply_filter('action') }}" width="352" />
+  <a href="{{ ressource.gallery.images[0].getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
+    <img src="{{ ressource.gallery.images[0].getWebPath | apply_filter('action') }}" width="352" />
     </a>
   </div>
 {% endif %}
 
   <div id="focus">
-<h2>{{ action.title }}</h2>
-    {{ action.contenu | raw }}
+<h2>{{ ressource.title }}</h2>
+    {{ ressource.contenu | raw }}
   </div>
 
 
 </div>
 <div class="clear"></div>
 
-  {% if action.file %}
-  {% set file = action.file %}
+  {% if ressource.file %}
+  {% set file = ressource.file %}
   {% include('LapaperieFileUploadBundle:Default:index.html.twig') %}
   {% endif %}
 
 <div class="gallerie_thumbnails">
-  {% for image in action.gallery.images %}
+  {% for image in ressource.gallery.images %}
   <a href="{{ image.getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
   <img src="{{ image.getWebPath | apply_filter('companie_thumbnail') }}" width="84" />
   </a>
