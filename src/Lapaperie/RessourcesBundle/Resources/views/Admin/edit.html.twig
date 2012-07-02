@@ -1,0 +1,50 @@
+{% extends "LapaperieActionCulturelleBundle:Admin:form.html.twig" %}
+
+{% block legend%}Action Culturelle :  {{ entity.title}} {% endblock %}
+
+{% block action %}
+<form action="{{ path('actionculturelle_edit', { 'id': entity.id } ) }}" method="post" {{ form_enctype(form) }}>
+{% endblock %}
+
+{% block button %}Enregistrer les modifications{% endblock %}
+
+{% block image %}
+<div class="page-header">
+<h2>Galerie d'images</h2>
+</div>
+
+<form action="{{ path('actionculturelle_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_image_form) }}>
+{% include('LapaperieGalleryBundle:Admin:form.html.twig') %}
+</form>
+
+<div class="clearfix"></div>
+  {% for image in entity.gallery.images %}
+      <img src="{{ image.getWebPath  | apply_filter('companie_thumbnail') }}" width="84"/>
+      <a href="{{ path('image_actionculturelle_delete', { 'id':image.id}) }}" class="confirmimg">
+      <img src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png')}}" alt="Supprimer cette image">
+      </a>
+  {% endfor %}
+{% endblock %}
+
+{% block file %}
+<div class="page-header">
+<h2>Fichier à télécharger ou mp3</h2>
+</div>
+
+  <form action="{{ path('actionculturelle_edit', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_file_form) }}>
+{% include('LapaperieFileUploadBundle:Admin:form.html.twig') %}
+</form>
+<div class="clearfix"></div>
+{% endblock %}
+
+
+{% block delete %}
+  <div class="row">
+    <div class="span5 offset12">
+        <form action="{{ path('actionculturelle_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit" class="btn danger confirm">Supprimer cette Action Culturelle</button>
+        </form>
+      </div>
+      </div>
+{% endblock %}

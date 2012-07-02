@@ -1,0 +1,10 @@
+{% extends "LapaperieActionCulturelleBundle:Admin:form.html.twig" %}
+
+{% block legend%}Nouvelle Action Culturelle{% endblock %}
+
+{% block action %}
+<form action="{{ path('actionculturelle_create') }}" method="post" {{ form_enctype(form) }}>
+{% endblock %}
+
+{% block button %}Enregistrer cette nouvelle Action Culturelle{% endblock %}
+

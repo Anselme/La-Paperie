@@ -1,0 +1,33 @@
+{% extends "LapaperieAdminBundle::layoutAdmin.html.twig" %}
+
+{% block content %}
+
+<h1>Actions Culturelles</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Année</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>
+            <a href="{{ path('actionculturelle_edit', { 'id': entity.id }) }}">
+            {{ entity.title }}
+            </a>
+            </td>
+            <td>
+            {{ entity.year }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+        <a href="{{ path('actionculturelle_create') }}" class="btn primary">
+        Saisir une nouvelle Action Culturelle
+        </a>
+{% endblock %}
