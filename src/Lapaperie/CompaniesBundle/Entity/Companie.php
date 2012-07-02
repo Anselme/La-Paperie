@@ -107,7 +107,7 @@ class Companie
     /**
      * @var string $slug
      *
-     * @Gedmo\Slug(fields={"name"},unique="true", updatable="true")
+     * @Gedmo\Slug(fields={"name"},unique=true, updatable=true)
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
