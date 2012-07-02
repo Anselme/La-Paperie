@@ -101,3 +101,4 @@
 [WhiteOctoberPagerFantaBundle]
     git=http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
     target=/bundles/WhiteOctober/PagerfantaBundle
+    version=origin/symfony2.0
