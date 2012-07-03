@@ -113,10 +113,14 @@ class MainController extends Controller
             $year = date('Y');
         }
 
-        $companie = $repository->findOneByYearOrderbyDebutResidence($year);
+        //on prends la companies actuellement en résidence
+        $companie = $repository->findOneByYearActive($year);
 
         if (!$companie) {
-            throw $this->createNotFoundException('Unable to find Companie entity.');
+            $companie = $repository->findOneByYearOrderbyDebutResidence($year);
+            if (!$companie) {
+                throw $this->createNotFoundException('Unable to find Companie entity.');
+            }
         }
 
         $slug = $companie[0]->getSlug() ;
@@ -141,7 +145,6 @@ class MainController extends Controller
         }
 
         $companies = $repository->findAllByYearOrderbyDebutResidence($companie->getYear());
-
         $archives = $repository->findAllYear();
 
         return $this->render('LapaperieMainBundle:Soutien:projet.html.twig',
