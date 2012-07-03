@@ -111,6 +111,11 @@ a.red_button:hover
     float: right ;
 }
 
+.definition_sortie_fab {
+    float: left ;
+    width: 70%;
+}
+
 ul {
     list-style-type: none;
     line-height: 16px;

@@ -71,6 +71,8 @@
 
             <div class="dotted_line"></div>
 
+            {% include "LapaperieMainBundle::definition.html.twig" with {"definition": block('definition')} %}
+
             <div class="float_right">
                 <a href="{{ path('newsletter_create') }}?ajax=true&width=450&height=250" class="red_button" rel="prettyNewsletter[ajax]">Abonnez-vous aux News</a>
             </div>
