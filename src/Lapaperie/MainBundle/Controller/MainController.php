@@ -117,9 +117,12 @@ class MainController extends Controller
         $companie = $repository->findOneByYearActive($year);
 
         if (!$companie) {
-            $companie = $repository->findOneByYearOrderbyDebutResidence($year);
+            $companie = $repository->findOneByYearNextComing($year);
             if (!$companie) {
-                throw $this->createNotFoundException('Unable to find Companie entity.');
+                $companie = $repository->findOneByYearOrderbyDebutResidence($year);
+                if (!$companie) {
+                    throw $this->createNotFoundException('Unable to find Companie entity.');
+                }
             }
         }
 
