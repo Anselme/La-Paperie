@@ -17,10 +17,8 @@ La Paperie - Centre National des Arts de la Rue - Videos
     <img src="{{ video.nameThumb ?  video.getWebPath  | apply_filter('video_thumbnail') : asset('bundles/lapaperiemain/images/caravanelapaperie_original.png') | apply_filter('video_thumbnail') }}" width="125" height="94" alt="{{ video.legend }}"/>
     </a>
     </div>
-    {% if loop.index is divisibleby(4) %}
-    <div class="clear"></div>
-    {% endif %}
     {% endfor %}
+    <div class="clear"></div>
     </div>
     <div class="clear"></div>
 {% endblock %}

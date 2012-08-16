@@ -165,10 +165,9 @@ p {
 }
 
 .content_video {
-    width: 50%;
     margin-left: auto;
     margin-right: auto;
-
+    margin-bottom: 5%;
 }
 
 .right-side {
