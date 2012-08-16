@@ -188,32 +188,55 @@ class RessourcesAdminController extends Controller
         return $this->redirect($this->generateUrl('ressources_edit', array('id' => $id_diffusion)));
     }
 
-        /**
-         * Deletes a Ressources entity.
-         *
-         * @Route("/{id}/delete", name="ressources_delete")
-         * @Method("post")
-         */
-        public function deleteAction($id)
+    /**
+     * Delete the File
+     *
+     * @Route("/{id}/delete_file", name="file_ressources_delete")
+     */
+    public function deleteFile($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entity = $em->getRepository('LapaperieRessourcesBundle:Ressources')->find($id);
+
+        if (!$entity)
         {
-            $form = $this->createDeleteForm($id);
-            $request = $this->getRequest();
+            throw $this->createNotFoundException('Unable to find Ressources entity.');
+        }
 
-            $form->bindRequest($request);
+        $entity->removeFile();
+        $em->flush();
 
-            if ($form->isValid())
+        return $this->redirect($this->generateUrl('ressources_edit', array('id' => $id)));
+
+    }
+
+    /**
+     * Deletes a Ressources entity.
+     *
+     * @Route("/{id}/delete", name="ressources_delete")
+     * @Method("post")
+     */
+    public function deleteAction($id)
+    {
+        $form = $this->createDeleteForm($id);
+        $request = $this->getRequest();
+
+        $form->bindRequest($request);
+
+        if ($form->isValid())
+        {
+            $em = $this->getDoctrine()->getEntityManager();
+            $entity = $em->getRepository('LapaperieRessourcesBundle:Ressources')->find($id);
+
+            if (!$entity)
             {
-                $em = $this->getDoctrine()->getEntityManager();
-                $entity = $em->getRepository('LapaperieRessourcesBundle:Ressources')->find($id);
-
-                if (!$entity)
-                {
-                    throw $this->createNotFoundException('Unable to find Ressources entity.');
-                }
-
-                $em->remove($entity);
-                $em->flush();
+                throw $this->createNotFoundException('Unable to find Ressources entity.');
             }
+
+            $em->remove($entity);
+            $em->flush();
+        }
 
         return $this->redirect($this->generateUrl('ressources'));
     }
@@ -223,6 +246,6 @@ class RessourcesAdminController extends Controller
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', 'hidden')
             ->getForm()
-        ;
+            ;
     }
 }

@@ -236,6 +236,15 @@ class Ressources
     }
 
     /**
+     * Remove File
+     *
+     */
+    public function removeFile()
+    {
+        $this->file = null ;
+    }
+
+    /**
      * Set gallery
      *
      * @param Lapaperie\GalleryBundle\Entity\Gallery $gallery

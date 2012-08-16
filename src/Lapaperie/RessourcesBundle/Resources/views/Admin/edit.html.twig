@@ -35,7 +35,30 @@
 {% include('LapaperieFileUploadBundle:Admin:form.html.twig') %}
 </form>
 <div class="clearfix"></div>
+
+
+
+{% if entity.file %}
+<div class="page-header">
+<h4>Fichier actuellement en ligne : 
+<small>
+{{ entity.file.link }}
+<a href="{{ path('file_ressources_delete', { 'id':entity.id}) }}" class="confirmfile">
+<img src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png')}}" alt="Supprimer ce fichier">
+</a>
+</small>
+</h4>
+</div>
+<div class="clearfix"></div>
+{% endif %}
+
+
+
+
 {% endblock %}
+
+
+
 
 
 {% block delete %}
