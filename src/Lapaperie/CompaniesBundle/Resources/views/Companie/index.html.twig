@@ -19,9 +19,9 @@
         <tr>
             <td><a href="{{ path('companie_edit', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
             <td>{{ entity.creation }}</td>
-            <td>{{ entity.dateresidencebeginning|date('j M Y') }}</td>
-            <td>{{ entity.dateresidenceend|date('j M Y') }}</td>
-            <td>{{ entity.datesortiedefabrique|date('j M Y') }}</td>
+            <td>{{ entity.dateresidencebeginning is empty ? "" : entity.dateresidencebeginning|date('j M Y') }}</td>
+            <td>{{ entity.dateresidenceend is empty ? "" : entity.dateresidenceend|date('j M Y') }}</td>
+            <td>{{ entity.datesortiedefabrique is empty ? "" : entity.datesortiedefabrique|date('j M Y') }}</td>
         </tr>
     {% endfor %}
     </tbody>
