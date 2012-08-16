@@ -2,20 +2,15 @@
 <script>
 //affiche l'image d'intro
 $(function(){
-        $('#intro_background').fadeIn();
+
+        //page d'accueil - disparition image au bout de 4 sec'
+        $('#intro_background').delay(4000).fadeOut(1000);
         });
 
-//page d'accueil - disparition image sur click
-$(function(){
-        $('.bg').click(function(){
-            $('.bg').fadeOut(1000);
+        //page d'accueil - disparition image sur click
+        $('#intro_background').on('click', function(e){
+            $(this).fadeOut(1000);
             });
-        });
-
-//page d'accueil - disparition image au bout de 4 sec'
-$(function(){
-        $('.bg').delay(4000).fadeOut(1000);
-        });
 
 </script>
-<img src="{{ asset('bundles/lapaperiemain/images/intro.png') }}" class="bg hide" alt="" id="intro_background">
+<img src="{{ asset('bundles/lapaperiemain/images/intro.png') }}" class="bg " alt="" id="intro_background">
