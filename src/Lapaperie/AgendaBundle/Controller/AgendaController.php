@@ -22,6 +22,9 @@ class AgendaController extends Controller
      */
     public function indexAction(Request $request)
     {
+        //par defaut on n'affiche pas la definition de la sortie de fabrique
+        $definition = false ;
+
         setlocale(LC_TIME, 'fr_FR');
         $current_month = $request->query->get('month');
         $current_year = $request->query->get('year');
@@ -45,6 +48,11 @@ class AgendaController extends Controller
 
         $repository = $this->getDoctrine()->getRepository('LapaperieAgendaBundle:Actualite');
         $agenda = $repository->findActiveActualiteByMonth($date, $date_end);
+
+        //si on a coché la bonne case dans une actualité, la définition de "sortie de fabrique" s'affiche
+        foreach ($agenda as $actualite) {
+            if($actualite->getShowDefinition() == true) $definition = true ;
+        }
 
         $calendar = array();
         $years = array();
@@ -71,6 +79,7 @@ class AgendaController extends Controller
             array('agenda' => $agenda,
             'calendar' => $calendar,
             'years' => $years,
+            'definition' => $definition
         ));
     }
 }

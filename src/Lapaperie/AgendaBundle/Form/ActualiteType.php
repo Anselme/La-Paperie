@@ -21,6 +21,7 @@ class ActualiteType extends AbstractType
             ->add('date_beginning','date', $dateArgsArray)
             ->add('date_end','date', $dateArgsArray)
             ->add('actualite','textarea',array('required' => false))
+            ->add('showDefinition', 'checkbox',array('required' => false))
             ;
     }
 

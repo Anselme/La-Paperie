@@ -30,6 +30,13 @@ class Actualite
     private $title;
 
     /**
+     * @var boolean $showDefinition
+     *
+     * @ORM\Column(name="showDefinition", type="boolean", nullable="true")
+     */
+    private $showDefinition;
+
+    /**
      * @var datetime $date_beginning
      *
      * @ORM\Column(name="date_beginning", type="datetime")
@@ -138,6 +145,26 @@ class Actualite
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set showDefinition
+     *
+     * @param boolean $showDefinition
+     */
+    public function setShowDefinition($showDefinition)
+    {
+        $this->showDefinition= $showDefinition;
+    }
+
+    /**
+     * Get showDefinition
+     *
+     * @return boolean
+     */
+    public function getShowDefinition()
+    {
+        return $this->showDefinition;
     }
 
 }
