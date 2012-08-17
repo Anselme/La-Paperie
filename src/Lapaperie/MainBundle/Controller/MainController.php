@@ -86,7 +86,7 @@ class MainController extends Controller
             throw $this->createNotFoundException('Unable to find Page entity.');
         }
 
-        return $this->render('LapaperieMainBundle:Soutien:ter.html.twig', array('page' => $page));
+        return $this->render('LapaperieMainBundle:Soutien:ter.html.twig', array('page' => $page, 'definition' => true ));
     }
 
     public function solliciterAction($_route)
@@ -117,9 +117,12 @@ class MainController extends Controller
         $companie = $repository->findOneByYearActive($year);
 
         if (!$companie) {
+            //sinon on prends la prochaine en résidence
             $companie = $repository->findOneByYearNextComing($year);
+            //sinon par ordre de date
             if (!$companie) {
                 $companie = $repository->findOneByYearOrderbyDebutResidence($year);
+                //ben sinon y'en pas
                 if (!$companie) {
                     throw $this->createNotFoundException('Unable to find Companie entity.');
                 }
@@ -149,12 +152,15 @@ class MainController extends Controller
 
         $companies = $repository->findAllByYearOrderbyDebutResidence($companie->getYear());
         $archives = $repository->findAllYear();
+        //on affiche la definition d'une sortie de fabrique uniquement si la companie affichée va en avoir une
+        $companie->getDateSortieDeFabrique() != null ? $definition = true : $definition = false ;
 
         return $this->render('LapaperieMainBundle:Soutien:projet.html.twig',
             array('companies' => $companies,
             'companie' => $companie,
             'archives' => $archives,
             'year' => $year,
+            'definition' => $definition
         ));
     }
 
