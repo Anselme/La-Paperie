@@ -119,6 +119,7 @@ a.red_button:hover
     float: left ;
     width: 70%;
     margin-bottom: 5%;
+    font-style: italic ;
 }
 
 ul {

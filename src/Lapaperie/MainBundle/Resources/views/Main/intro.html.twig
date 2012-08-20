@@ -5,11 +5,11 @@ $(function(){
 
         //page d'accueil - disparition image sur click
         $('#intro_background').on('click', function(e){
-            $(this).fadeOut(500);
+            $(this).clearQueue().fadeOut(1000);
             });
 
-        //page d'accueil - disparition image au bout de 4 sec'
-        $('#intro_background').delay(4000).fadeOut(1000);
+        //page d'accueil - disparition image au bout de 3 sec'
+        $('#intro_background').delay(3000).fadeOut(1000);
 
         });
 
