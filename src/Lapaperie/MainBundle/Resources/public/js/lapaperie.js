@@ -18,7 +18,7 @@ $(function() {
     $(".video_home").hover(function(){
         alt = $(this).find("> a > img").attr("alt");
         $(this).find("> a > img").fadeTo("fast",0.3);
-        $(this).append("<div class='video_hover'>"+alt+"</div>") ;
+        $(this).find("> a ").append("<div class='video_hover'>"+alt+"</div>") ;
     }, function() {
         $(this).find("> a > img").fadeTo("fast",1);
         $('.video_hover').detach() ;
