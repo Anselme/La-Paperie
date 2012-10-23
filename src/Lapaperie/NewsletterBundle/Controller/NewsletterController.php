@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Lapaperie\NewsletterBundle\Entity\Subscriber;
 use Lapaperie\NewsletterBundle\Form\SubscriberType;
+use Lapaperie\NewsletterBundle\Form\UnSubscriberType;
 use Lapaperie\NewsletterBundle\Entity\Inscription;
 
 /**
@@ -26,6 +27,48 @@ class NewsletterController extends Controller
     public function indexAction()
     {
         return array('name' => $name);
+    }
+
+    /**
+     * Unsubscribe to the newsletter
+     *
+     * @Route("/desinscription", name="newsletter_unsubscribe")
+     * @Template("LapaperieNewsletterBundle:Default:form-unsubscribe.html.twig")
+     */
+    public function unsubscribeAction(Request $request)
+    {
+
+        $request = $this->getRequest();
+        $subscriber = new Subscriber();
+        $form = $this->createForm(new UnSubscriberType, $subscriber);
+        $courriel = $request->query->get('email');
+
+        if ($request->getMethod() == 'POST') {
+
+            $form->bindRequest($request);
+
+            if ($form->isValid()) {
+
+                $em = $this->getDoctrine()->getEntityManager();
+                $repository = $em->getRepository('LapaperieNewsletterBundle:Subscriber');
+                $subscriber = $repository->findOneByEmail($courriel);
+
+                if(!$subscriber)
+                {
+                    throw $this->createNotFoundException('Pas d\'inscrit sous ce courriel à la newsletter... donc pas de désinscription');
+                }
+
+                $inscription = $subscriber->getInscription();
+
+                $inscription->setConfirmation(false);
+                $inscription->setDateUnscribe(new \DateTime);
+                $em->flush();
+            }
+        }
+
+        return array(
+            'form'   => $form->createView(),
+        );
     }
 
     /**

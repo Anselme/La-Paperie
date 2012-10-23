@@ -1,0 +1,17 @@
+<form action="{{ path('newsletter_unsubscribe') }}" method="post" >
+    {{ form_errors(form) }}
+<fieldset>
+    <h2>Désinscription de la Newsletter de La Paperie</h2>
+    <div class="clear">
+    {{ form_label(form.email, 'Courriel(*) :') }} 
+    <div class="input">
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email) }}
+    </div>
+    </div>
+    {{ form_rest(form) }}
+</fieldset>
+<p>
+        <button type="submit" class="">Pas de remord, je me désinscris</button>
+</p>
+</form>
