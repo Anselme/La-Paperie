@@ -35,13 +35,12 @@ class NewsletterController extends Controller
      * @Route("/desinscription", name="newsletter_unsubscribe")
      * @Template("LapaperieNewsletterBundle:Default:form-unsubscribe.html.twig")
      */
-    public function unsubscribeAction(Request $request)
+    public function unsubscribeAction()
     {
 
         $request = $this->getRequest();
         $subscriber = new Subscriber();
         $form = $this->createForm(new UnSubscriberType, $subscriber);
-        $courriel = $request->query->get('email');
 
         if ($request->getMethod() == 'POST') {
 
@@ -49,6 +48,8 @@ class NewsletterController extends Controller
 
             if ($form->isValid()) {
 
+                $postData = $request->request->get('lapaperie_subscriberbundle_unsubscribertype');
+                $courriel = $postData['email'];
                 $em = $this->getDoctrine()->getEntityManager();
                 $repository = $em->getRepository('LapaperieNewsletterBundle:Subscriber');
                 $subscriber = $repository->findOneByEmail($courriel);
@@ -58,11 +59,15 @@ class NewsletterController extends Controller
                     throw $this->createNotFoundException('Pas d\'inscrit sous ce courriel à la newsletter... donc pas de désinscription');
                 }
 
-                $inscription = $subscriber->getInscription();
+                $inscriptions = $subscriber->getInscriptions();
 
-                $inscription->setConfirmation(false);
-                $inscription->setDateUnscribe(new \DateTime);
-                $em->flush();
+                foreach($inscriptions as $inscription){
+                    $inscription->setConfirmation(false);
+                    $inscription->setDateUnscribe(new \DateTime);
+                    $em->flush();
+                }
+
+                $this->get('session')->setFlash('notice', 'Vous avez bien été désinscris de notre Newsletter.');
             }
         }
 
