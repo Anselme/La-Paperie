@@ -43,12 +43,14 @@
 {{ pagerfanta(paginator, 'adminView') }}
 </div>
 
+<p>
 <a href="{{ path('newsletter_export') }}" class="btn primary">
-Télécharger la liste des mails valides
+Télécharger la liste des mails voulant recevoir la Newsletter
 </a>
 
 <a href="{{ path('newsletter_export', {'all': 1}) }}" class="btn primary">
-Télécharger la liste des inscrits
+Télécharger la liste des inscrits (y compris les désabonnés)
 </a>
+</p>
 
 {% endblock %}

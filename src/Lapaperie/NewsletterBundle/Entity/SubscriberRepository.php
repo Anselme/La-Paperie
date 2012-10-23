@@ -19,7 +19,7 @@ class SubscriberRepository extends EntityRepository
                            JOIN s.inscriptions i
                            WHERE i.date_confirmation IS NOT NULL
                            AND i.date_unscribe IS NULL
-                           ORDER BY date_inscription ASC'
+                           ORDER BY i.date_inscription ASC'
                        )
             ->getResult();
     }
