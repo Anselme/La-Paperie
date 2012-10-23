@@ -293,6 +293,10 @@ label {
     width: 130px;
 }
 
+label.no_float {
+    float: none;
+}
+
 div.input {
     margin-left: 150px;
 }
