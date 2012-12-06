@@ -12,8 +12,8 @@ class SubscriberType extends AbstractType
 
         $builder
             ->add('email','email')
-            ->add('firstname',null,array('required' => false))
-            ->add('lastname',null,array('required' => false))
+            ->add('firstname',null)
+            ->add('lastname',null)
             ;
     }
 
