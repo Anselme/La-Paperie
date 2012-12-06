@@ -14,6 +14,9 @@ class SubscriberType extends AbstractType
             ->add('email','email')
             ->add('firstname',null)
             ->add('lastname',null)
+            ->add('address',null,array('required' => false))
+            ->add('ville',null,array('required' => false))
+            ->add('codePostal',null,array('required' => false))
             ;
     }
 

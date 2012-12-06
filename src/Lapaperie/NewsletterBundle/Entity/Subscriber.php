@@ -46,6 +46,27 @@ class Subscriber
     private $email;
 
     /**
+     * @var string $address
+     *
+     * @ORM\Column(name="address", type="text", nullable="true")
+     */
+    private $address;
+
+    /**
+     * @var string $codePostal
+     *
+     * @ORM\Column(name="codePostal", type="string", length=8, nullable="true")
+     */
+    private $codePostal;
+
+    /**
+     * @var string $ville
+     *
+     * @ORM\Column(name="ville", type="string", length=255, nullable="true")
+     */
+    private $ville;
+
+    /**
      *
      *@ORM\OneToMany(targetEntity="Inscription", mappedBy="subscriber")
      */
@@ -144,5 +165,65 @@ class Subscriber
     public function getInscriptions()
     {
         return $this->inscriptions;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set codePostal
+     *
+     * @param string $codePostal
+     */
+    public function setCodePostal($codePostal)
+    {
+        $this->codePostal = $codePostal;
+    }
+
+    /**
+     * Get codePostal
+     *
+     * @return string
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

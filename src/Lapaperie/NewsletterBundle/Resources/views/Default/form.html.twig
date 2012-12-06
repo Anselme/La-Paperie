@@ -23,6 +23,27 @@
     {{ form_widget(form.lastname) }}
     </div>
     </div>
+    <div class="clear">
+    {{ form_label(form.address, 'Adresse :') }}
+    <div class="input">
+    {{ form_errors(form.address) }}
+    {{ form_widget(form.address) }}
+    </div>
+    </div>
+    <div class="clear">
+    {{ form_label(form.ville, 'Ville :') }}
+    <div class="input">
+    {{ form_errors(form.ville) }}
+    {{ form_widget(form.ville) }}
+    </div>
+    </div>
+    <div class="clear">
+    {{ form_label(form.codePostal, 'Code Postal :') }}
+    <div class="input">
+    {{ form_errors(form.codePostal) }}
+    {{ form_widget(form.codePostal) }}
+    </div>
+    </div>
     {{ form_rest(form) }}
 </fieldset>
 <p>
