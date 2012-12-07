@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Lapaperie\DiffusionBundle\Entity\Diffusion;
 use Lapaperie\DiffusionBundle\Form\DiffusionType;
 
+use Lapaperie\FileUploadBundle\Entity\Directory;
 use Lapaperie\FileUploadBundle\Entity\FileUpload;
 use Lapaperie\FileUploadBundle\Form\FileUploadType;
 
@@ -115,8 +116,9 @@ class DiffusionAdminController extends Controller
                 if ($editFileForm->isValid())
                 {
                     $fileEntity->uploadFile();
+                    $fileEntity->setDirectory($entity->getDirectory());
+
                     $em->persist($fileEntity);
-                    $entity->setFile($fileEntity);
                     $em->flush();
 
                     return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id)));
@@ -153,6 +155,7 @@ class DiffusionAdminController extends Controller
 
         //sans cette ligne, twig ne voit pas les images de l'entité !?
         $images = $entity->getGallery()->getImages();
+        $files = $entity->getDirectory()->getFileUpload();
 
         return array(
             'entity'           => $entity,
@@ -197,19 +200,21 @@ class DiffusionAdminController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $diffusion = $em->getRepository('LapaperieDiffusionBundle:Diffusion')->find($id);
+        $fileUpload = $em->getRepository('LapaperieFileUploadBundle:FileUpload')->find($id);
 
-        if (!$diffusion)
+        if (!$fileUpload)
         {
             throw $this->createNotFoundException('Unable to find Diffusion entity.');
         }
 
-        $diffusion->removeFile();
-        $em->persist($diffusion);
+
+        $diffusion = $em->getRepository('LapaperieDiffusionBundle:Diffusion')->findByFileUploadId($id);
+        $id_diffusion = $diffusion[0]->getId();
+
+        $em->remove($fileUpload);
         $em->flush();
 
-
-        return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id)));
+        return $this->redirect($this->generateUrl('diffusion_edit', array('id' => $id_diffusion)));
     }
 
     /**

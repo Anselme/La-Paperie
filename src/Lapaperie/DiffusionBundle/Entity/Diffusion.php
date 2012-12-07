@@ -9,6 +9,7 @@ use Gedmo\Sluggable\Util\Urlizer;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 use Lapaperie\GalleryBundle\Entity\Gallery;
+use Lapaperie\FileUploadBundle\Entity\Directory;
 
 /**
  * Lapaperie\DiffusionBundle\Entity\Diffusion
@@ -76,6 +77,11 @@ class Diffusion
     protected $gallery;
 
     /**
+     * @ORM\OneToOne(targetEntity="Lapaperie\FileUploadBundle\Entity\Directory", cascade={"persist"})
+     */
+    protected $directory;
+
+    /**
      * @ORM\OneToOne(targetEntity="Lapaperie\FileUploadBundle\Entity\FileUpload", cascade={"remove"})
      */
     protected $file;
@@ -83,6 +89,7 @@ class Diffusion
     function __construct()
     {
         $this->gallery = new Gallery();
+        $this->directory = new Directory();
     }
 
     /**
@@ -258,5 +265,25 @@ class Diffusion
     public function getGallery()
     {
         return $this->gallery;
+    }
+
+    /**
+     * Set directory
+     *
+     * @param Lapaperie\FileUploadBundle\Entity\Directory $directory
+     */
+    public function setDirectory(\Lapaperie\FileUploadBundle\Entity\Directory $directory)
+    {
+        $this->directory = $directory;
+    }
+
+    /**
+     * Get directory
+     *
+     * @return Lapaperie\DirectoryBundle\Entity\Directory
+     */
+    public function getDirectory()
+    {
+        return $this->directory;
     }
 }

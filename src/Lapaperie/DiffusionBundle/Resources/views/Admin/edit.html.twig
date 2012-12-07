@@ -36,19 +36,16 @@
 </form>
 <div class="clearfix"></div>
 
-{% if entity.file %}
 <div class="page-header">
-<h3>Fichier en ligne
-<small>
-{{entity.file.link}}
-<a href="{{ path('diffusion_file_delete', { 'id':entity.id}) }}" class="confirmfile">
+<h3>Fichier(s) en ligne</h3>
+{% for file in entity.directory.fileupload %}
+{{file.link}}
+<a href="{{ path('diffusion_file_delete', { 'id':file.id}) }}" class="confirmfile">
 <img src="{{ asset('bundles/lapaperiemain/images/icons/cancel.png')}}" alt="Supprimer ce fichier">
 </a>
-</small>
-</h3>
+{% endfor %}
 </div>
 <div class="clearfix"></div>
-{% endif %}
 
 {% endblock %}
 
