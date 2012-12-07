@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Lapaperie\FileUploadBundle\Entity\Page
+ * Lapaperie\FileUploadBundle\Entity\FileUpload
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Lapaperie\FileUploadBundle\Entity\FileUploadRepository")
@@ -61,6 +61,12 @@ class FileUpload
      * @ORM\Column(name="link", type="string", length=255, nullable="true")
      */
     private $link;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Directory", inversedBy="fileupload")
+     * @ORM\JoinColumn(name="directory_id", referencedColumnName="id")
+     */
+    protected $directory;
 
 
     /**
@@ -227,5 +233,25 @@ class FileUpload
     public function getFileSize()
     {
         return $this->fileSize;
+    }
+
+    /**
+     * Set directory
+     *
+     * @param Lapaperie\FileUploadBundle\Entity\Directory $directory
+     */
+    public function setDirectory(\Lapaperie\FileUploadBundle\Entity\Directory $directory)
+    {
+        $this->directory = $directory;
+    }
+
+    /**
+     * Get directory
+     *
+     * @return Lapaperie\DirectoryBundle\Entity\Directory
+     */
+    public function getDirectory()
+    {
+        return $this->directory;
     }
 }
