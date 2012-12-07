@@ -47,4 +47,18 @@ class ActionCulturelleRepository extends EntityRepository
              )->setParameter('id',$id)
              ->getResult();
     }
+
+    public function findByFileUploadId($id)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a
+                   FROM LapaperieActionCulturelleBundl:ActionCulturelle a
+                   JOIN a.directory g
+                   JOIN g.fileUpload i
+                  WHERE i.id = :id
+                 '
+             )->setParameter('id',$id)
+             ->getResult();
+    }
 }

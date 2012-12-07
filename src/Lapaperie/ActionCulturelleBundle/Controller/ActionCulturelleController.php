@@ -32,6 +32,7 @@ class ActionCulturelleController extends Controller
 
         //si pas d'appel explicite à getImages, twig ne les voit pas !?
         $action->getGallery()->getImages();
+        $action->getDirectory()->getFileUpload();
 
         return $this->render('LapaperieActionCulturelleBundle:Default:index.html.twig',
             array('action' => $action,

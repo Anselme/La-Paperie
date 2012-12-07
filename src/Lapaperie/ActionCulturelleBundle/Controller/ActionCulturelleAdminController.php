@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Lapaperie\ActionCulturelleBundle\Entity\ActionCulturelle;
 use Lapaperie\ActionCulturelleBundle\Form\ActionCulturelleType;
 
+use Lapaperie\FileUploadBundle\Entity\Directory;
 use Lapaperie\FileUploadBundle\Entity\FileUpload;
 use Lapaperie\FileUploadBundle\Form\FileUploadType;
 
@@ -115,8 +116,9 @@ class ActionCulturelleAdminController extends Controller
                 if ($editFileForm->isValid())
                 {
                     $fileEntity->uploadFile();
+                    $fileEntity->setDirectory($entity->getDirectory());
+
                     $em->persist($fileEntity);
-                    $entity->setFile($fileEntity);
                     $em->flush();
 
                     return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id)));
@@ -153,13 +155,14 @@ class ActionCulturelleAdminController extends Controller
 
         //sans cette ligne, twig ne voit pas les images de l'entité !?
         $images = $entity->getGallery()->getImages();
+        $files = $entity->getDirectory()->getFileUpload();
 
         return array(
-            'entity'      => $entity,
-            'form'   => $editForm->createView(),
+            'entity'           => $entity,
+            'form'             => $editForm->createView(),
             'edit_file_form'   => $editFileForm->createView(),
             'edit_image_form'  => $editImageForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'delete_form'      => $deleteForm->createView(),
         );
     }
 
@@ -188,32 +191,57 @@ class ActionCulturelleAdminController extends Controller
         return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id_diffusion)));
     }
 
-        /**
-         * Deletes a ActionCulturelle entity.
-         *
-         * @Route("/{id}/delete", name="actionculturelle_delete")
-         * @Method("post")
-         */
-        public function deleteAction($id)
+    /**
+     * delete a File
+     *
+     * @Route("/{id}/action_delete_file", name="action_file_delete")
+     */
+    public function deleteFile($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $fileUpload = $em->getRepository('LapaperieFileUploadBundle:FileUpload')->find($id);
+
+        if (!$fileUpload)
         {
-            $form = $this->createDeleteForm($id);
-            $request = $this->getRequest();
+            throw $this->createNotFoundException('Unable to find Action entity.');
+        }
 
-            $form->bindRequest($request);
+        $actions = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->findByFileUploadId($id);
+        $id_action = $actions[0]->getId();
 
-            if ($form->isValid())
+        $em->remove($fileUpload);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('actionculturelle_edit', array('id' => $id_action)));
+    }
+
+    /**
+     * Deletes a ActionCulturelle entity.
+     *
+     * @Route("/{id}/delete", name="actionculturelle_delete")
+     * @Method("post")
+     */
+    public function deleteAction($id)
+    {
+        $form = $this->createDeleteForm($id);
+        $request = $this->getRequest();
+
+        $form->bindRequest($request);
+
+        if ($form->isValid())
+        {
+            $em = $this->getDoctrine()->getEntityManager();
+            $entity = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->find($id);
+
+            if (!$entity)
             {
-                $em = $this->getDoctrine()->getEntityManager();
-                $entity = $em->getRepository('LapaperieActionCulturelleBundle:ActionCulturelle')->find($id);
-
-                if (!$entity)
-                {
-                    throw $this->createNotFoundException('Unable to find ActionCulturelle entity.');
-                }
-
-                $em->remove($entity);
-                $em->flush();
+                throw $this->createNotFoundException('Unable to find ActionCulturelle entity.');
             }
+
+            $em->remove($entity);
+            $em->flush();
+        }
 
         return $this->redirect($this->generateUrl('actionculturelle'));
     }
@@ -223,6 +251,6 @@ class ActionCulturelleAdminController extends Controller
         return $this->createFormBuilder(array('id' => $id))
             ->add('id', 'hidden')
             ->getForm()
-        ;
+            ;
     }
 }

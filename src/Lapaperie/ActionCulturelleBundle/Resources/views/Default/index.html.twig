@@ -14,11 +14,11 @@
   <a href="{{ action.gallery.images[0].getWebPath | apply_filter('companie_big') }}" rel="prettyPhoto[pp_gal]" >
     <img src="{{ action.gallery.images[0].getWebPath | apply_filter('action') }}" width="352" />
     </a>
-  </div>
+</div>
 {% endif %}
 
   <div id="focus">
-<h2>{{ action.title }}</h2>
+    <h2>{{ action.title }}</h2>
     {{ action.contenu | raw }}
   </div>
 
@@ -26,10 +26,9 @@
 </div>
 <div class="clear"></div>
 
-  {% if action.file %}
-  {% set file = action.file %}
+  {% for file in action.directory.fileupload %}
   {% include('LapaperieFileUploadBundle:Default:index.html.twig') %}
-  {% endif %}
+  {% endfor %}
 
 <div class="gallerie_thumbnails">
   {% for image in action.gallery.images %}
