@@ -25,10 +25,9 @@
 </div>
 <div class="clear"></div>
 
-  {% if action.file %}
-  {% set file = action.file %}
+  {% for file in action.directory.fileupload %}
   {% include('LapaperieFileUploadBundle:Default:index.html.twig') %}
-  {% endif %}
+  {% endfor %}
 
 <div class="gallerie_thumbnails">
   {% for image in action.gallery.images %}
