@@ -53,7 +53,7 @@ class ActionCulturelleRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT a
-                   FROM LapaperieActionCulturelleBundl:ActionCulturelle a
+                   FROM LapaperieActionCulturelleBundle:ActionCulturelle a
                    JOIN a.directory g
                    JOIN g.fileUpload i
                   WHERE i.id = :id

@@ -194,7 +194,7 @@ class ActionCulturelleAdminController extends Controller
     /**
      * delete a File
      *
-     * @Route("/{id}/action_delete_file", name="action_file_delete")
+     * @Route("/{id}/action_file_delete", name="action_file_delete")
      */
     public function deleteFile($id)
     {
