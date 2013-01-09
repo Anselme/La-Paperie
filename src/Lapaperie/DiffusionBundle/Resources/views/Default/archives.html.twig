@@ -8,10 +8,10 @@
 <ul>
 {% for entity in entities %}
 {% if loop.index == 1 %}
-<h2>{{ entity.year }}</h2>
+<h2 class="archives">{{ entity.year }}</h2>
 {% elseif year != entity.year %}
 </ul>
-<h2>{{ entity.year }}</h2>
+<h2 class="archives">{{ entity.year }}</h2>
 <ul>
 {% endif %}
 

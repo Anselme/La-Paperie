@@ -1,6 +1,6 @@
-Email ; Prénom ; Nom ; Date d'inscription ; Date de Confirmation ; Date de dé-inscription
+Email ; Prénom ; Nom ; Date d'inscription ; Date de Confirmation ; Date de dé-inscription ; Adresse ; Ville ; Code Postal
 {% for subscriber in entities %}
 {% for inscription in subscriber.inscriptions %}
-{{ subscriber.email }};{{ subscriber.firstname }};{{ subscriber.lastname }};{{ inscription.dateInscription ? inscription.dateInscription| date('j M Y'):' '}};{{ inscription.dateConfirmation ? inscription.dateConfirmation| date('j M Y') : ' '}};{{ inscription.dateUnscribe? inscription.dateUnscribe| date('j M Y'): ' ' }}
+{{ subscriber.email }};{{ subscriber.firstname }};{{ subscriber.lastname }};{{ inscription.dateInscription ? inscription.dateInscription| date('j M Y'):' '}};{{ inscription.dateConfirmation ? inscription.dateConfirmation| date('j M Y') : ' '}};{{ inscription.dateUnscribe? inscription.dateUnscribe| date('j M Y'): ' ' }};{{ subscriber.address}};{{ subscriber.ville}};{{ subscriber.codePostal}}
 {% endfor %}
 {% endfor %}
