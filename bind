@@ -1,0 +1,29 @@
+lapaperie.fr.     3600    IN   MX	5 mta-gw.infomaniak.ch.
+lapaperie.fr.	  3600	  IN   A	176.31.251.55
+www               3600    IN   CNAME    lapaperie.fr.
+cnar              3600    IN   CNAME    lapaperie.fr.
+webmail 	  3600    IN   CNAME 	webmail.infomaniak.ch.
+smtp 	          3600    IN   CNAME 	mail.infomaniak.ch.
+pop3 	          3600    IN   CNAME 	mail.infomaniak.ch.
+pop	          3600    IN   CNAME 	mail.infomaniak.ch.
+imap	          3600    IN   CNAME 	mail.infomaniak.ch.
+mail 	          3600    IN   CNAME 	mail.infomaniak.ch.
+
+Champ 	Type 	Cible
+lapaperie.fr 	MX 	5 mta-gw.infomaniak.ch.
+lapaperie.fr 	A 	93.88.250.216
+cnar.lapaperie.fr 	A 	176.31.251.55
+autoconfig.lapaperie.fr 	CNAME 	autoconfig.infomaniak.ch.
+beta.lapaperie.fr 	A 	88.191.92.106
+inscription.lapaperie.fr 	A 	88.191.92.106
+backup.lapaperie.fr 	CNAME 	ibak2.infomaniak.ch.
+mysql.lapaperie.fr 	CNAME 	myd5-17.infomaniak.ch.
+ftp.lapaperie.fr 	CNAME 	www.lapaperie.fr.
+www.lapaperie.fr 	CNAME 	lapaperie.fr.
+admin.lapaperie.fr 	CNAME 	admin.infomaniak.ch.
+webmail.lapaperie.fr 	CNAME 	webmail.infomaniak.ch.
+smtp.lapaperie.fr 	CNAME 	mail.infomaniak.ch.
+pop3.lapaperie.fr 	CNAME 	mail.infomaniak.ch.
+pop.lapaperie.fr 	CNAME 	mail.infomaniak.ch.
+imap.lapaperie.fr 	CNAME 	mail.infomaniak.ch.
+mail.lapaperie.fr 	CNAME 	mail.infomaniak.ch.

@@ -27,7 +27,7 @@
     {{ form_label(form.address, 'Adresse :') }}
     <div class="input">
     {{ form_errors(form.address) }}
-    {{ form_widget(form.address) }}
+    {{ form_widget(form.address,  {'attr':{'class' : 'textarea_adress'}} ) }}
     </div>
     </div>
     <div class="clear">

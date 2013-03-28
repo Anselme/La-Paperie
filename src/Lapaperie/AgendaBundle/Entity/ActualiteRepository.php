@@ -54,6 +54,12 @@ class ActualiteRepository extends EntityRepository
                                            AND
                                            a.date_end <= :end
                                        )
+                                       OR
+                                       (
+                                           a.date_beginning <= :now
+                                           AND
+                                           a.date_end >= :end
+                                       )
                                    )
                                    ORDER BY a.date_beginning ASC
                            '
