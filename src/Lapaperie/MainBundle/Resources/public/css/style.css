@@ -186,6 +186,10 @@ p {
     width: 70%;
 }
 
+.right-side-top {
+    width: 850px;
+}
+
 .left-side {
     position: relative;
     float: left;
@@ -237,7 +241,8 @@ p {
 .short-text {
     position: relative;
     float: left;
-    width: 60%;
+    margin-left: 1em ;
+    clear: none;
 }
 
 .short-text p {
@@ -254,7 +259,7 @@ p {
 .companie-img {
     position: relative;
     float: left;
-    width: 40%;
+    clear: none;
 }
 
 .home_all {

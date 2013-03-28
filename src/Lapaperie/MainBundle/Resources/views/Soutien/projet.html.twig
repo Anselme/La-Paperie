@@ -37,6 +37,7 @@ La Paperie - {{ companie.name }}
 </div>
 
 <div class="right-side">
+<div class="right-side-top">
     <div class="companie-img">
 
     {% if companie.videos.isEmpty %}
@@ -56,6 +57,7 @@ La Paperie - {{ companie.name }}
 
     <div class="short-text">
     {{ companie.shorttext | raw }}
+    </div>
     </div>
   <div class="long-text">
   {{ companie.longtext | raw }}
