@@ -449,11 +449,21 @@ ul.mainnav li a {
     width: 17%;
 }
 
+.short-text {
+    clear: both;
+    margin-top: 1em;
+    margin-left: 0;
 }
-/* portrait */
 
+.right-side {
+    width: 60%;
+}
+}
+
+/* portrait */
 @media only screen
 and (orientation : portrait) {
+
 #mainnav {
     margin-bottom: 3em;
 }
@@ -467,6 +477,15 @@ h1.header {
     margin-top: 1em;
 }
 
+.short-text {
+    clear: both;
+    margin-top: 1em;
+    margin-left: 0;
+}
+
+.right-side {
+    width: 50%;
+}
 }
 
 /* Smartphones (landscape & portrait) ----------- */
@@ -478,6 +497,15 @@ and (max-device-width: 480px) {
         margin-top: 1em;
     }
 
+    .short-text {
+        clear: both;
+        margin-top: 1em;
+        margin-left: 0;
+    }
+
+    .right-side {
+        width: 50%;
+    }
 }
 
 /* Smartphones (portrait) ----------- */
@@ -505,6 +533,17 @@ and (max-width : 320px) {
     }
     .page {
         clear: both;
+    }
+
+    .short-text {
+        clear: both;
+        margin-top: 1em;
+        margin-left: 0;
+    }
+
+    .companie-img {
+        clear: both;
+        margin-top: 1em;
     }
 
 }
