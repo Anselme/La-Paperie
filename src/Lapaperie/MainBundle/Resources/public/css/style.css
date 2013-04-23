@@ -497,6 +497,10 @@ and (max-device-width: 480px) {
         margin-top: 1em;
     }
 
+    .header{
+        font-size: 10px;
+    }
+
     .short-text {
         clear: both;
         margin-top: 1em;
@@ -506,6 +510,7 @@ and (max-device-width: 480px) {
     .right-side {
         width: 50%;
     }
+
 }
 
 /* Smartphones (portrait) ----------- */
@@ -539,6 +544,7 @@ and (max-width : 320px) {
         clear: both;
         margin-top: 1em;
         margin-left: 0;
+        font-size: 80%;
     }
 
     .companie-img {
@@ -546,4 +552,7 @@ and (max-width : 320px) {
         margin-top: 1em;
     }
 
+    .active-agenda img {
+        display: none;
+    }
 }
